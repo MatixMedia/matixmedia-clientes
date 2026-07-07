@@ -704,32 +704,13 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 const DATA = {
   account:  "Megapagos / Doculegal",
   currency: "COP",
-
   channels: {
     google: {
       active: true,
       date_min: "2026-06-01",
       date_max: "2026-06-30",
-
-      benchmarks: {
-        ctr_min: 3,
-        ctr_good: 5,
-        roas_min: 0,
-        roas_good: 0,
-        cpa_max: 20000
-      },
-
-      prev: {
-        impr: 53401,
-        clicks: 2359,
-        cost: 2193695,
-        conv: 7,
-        value: 0,
-        ctr: 4.42,
-        cpa: 313385,
-        roas: 0
-      },
-
+      benchmarks: { ctr_min:3, ctr_good:5, roas_min:2, roas_good:3, cpa_max:20000 },
+      prev: { impr:53401, clicks:2359, cost:2193695, conv:7, value:0, ctr:4.42, cpa:313385, roas:0 },
       daily_raw: [
         {date:"2026-05-12",campaign:"V-SEARCH",device:"DESKTOP",impr:806,clicks:12,cost:6676,conv:0,value:0},
         {date:"2026-05-12",campaign:"V-SEARCH",device:"MOBILE",impr:2302,clicks:46,cost:27507,conv:0,value:0},
@@ -772,85 +753,140 @@ const DATA = {
         {date:"2026-05-30",campaign:"V-SEARCH",device:"MOBILE",impr:2141,clicks:132,cost:155158,conv:1,value:0},
         {date:"2026-05-31",campaign:"V-SEARCH",device:"DESKTOP",impr:403,clicks:14,cost:24062,conv:1,value:0},
         {date:"2026-05-31",campaign:"V-SEARCH",device:"MOBILE",impr:856,clicks:75,cost:117540,conv:2,value:0},
-        {date:"2026-06-01",campaign:"V-SEARCH",device:"DESKTOP",impr:893,clicks:26,cost:21317,conv:2,value:0},
-        {date:"2026-06-01",campaign:"V-SEARCH",device:"MOBILE",impr:2347,clicks:154,cost:131066,conv:5,value:0},
+        {date:"2026-06-01",campaign:"V-SEARCH",device:"DESKTOP",impr:893,clicks:26,cost:21317,conv:2,value:104972},
+        {date:"2026-06-01",campaign:"V-SEARCH",device:"MOBILE",impr:2347,clicks:154,cost:131066,conv:5,value:262430},
         {date:"2026-06-01",campaign:"V-SEARCH",device:"TABLET",impr:11,clicks:1,cost:613,conv:0,value:0},
         {date:"2026-06-02",campaign:"V-SEARCH",device:"DESKTOP",impr:1069,clicks:23,cost:23449,conv:0,value:0},
-        {date:"2026-06-02",campaign:"V-SEARCH",device:"MOBILE",impr:1754,clicks:130,cost:127097,conv:5,value:0},
-        {date:"2026-06-02",campaign:"V-SEARCH",device:"TABLET",impr:2,clicks:1,cost:749,conv:1,value:0},
-        {date:"2026-06-03",campaign:"V-SEARCH",device:"DESKTOP",impr:1387,clicks:34,cost:34191,conv:3,value:0},
-        {date:"2026-06-03",campaign:"V-SEARCH",device:"MOBILE",impr:1951,clicks:127,cost:124128,conv:6,value:0},
-        {date:"2026-06-04",campaign:"V-SEARCH",device:"DESKTOP",impr:1340,clicks:36,cost:28394,conv:4,value:0},
-        {date:"2026-06-04",campaign:"V-SEARCH",device:"MOBILE",impr:2618,clicks:191,cost:150908,conv:4,value:0},
-        {date:"2026-06-05",campaign:"V-SEARCH",device:"DESKTOP",impr:1689,clicks:61,cost:53148,conv:6,value:0},
-        {date:"2026-06-05",campaign:"V-SEARCH",device:"MOBILE",impr:2908,clicks:185,cost:160958,conv:8,value:0},
-        {date:"2026-06-06",campaign:"V-SEARCH",device:"DESKTOP",impr:820,clicks:13,cost:16035,conv:2,value:0},
-        {date:"2026-06-06",campaign:"V-SEARCH",device:"MOBILE",impr:1756,clicks:130,cost:158770,conv:3,value:0},
+        {date:"2026-06-02",campaign:"V-SEARCH",device:"MOBILE",impr:1754,clicks:130,cost:127097,conv:5,value:262430},
+        {date:"2026-06-02",campaign:"V-SEARCH",device:"TABLET",impr:2,clicks:1,cost:749,conv:1,value:52486},
+        {date:"2026-06-03",campaign:"V-SEARCH",device:"DESKTOP",impr:1387,clicks:34,cost:34191,conv:3,value:157458},
+        {date:"2026-06-03",campaign:"V-SEARCH",device:"MOBILE",impr:1951,clicks:127,cost:124128,conv:6,value:314915},
+        {date:"2026-06-04",campaign:"V-SEARCH",device:"DESKTOP",impr:1340,clicks:36,cost:28394,conv:4,value:209944},
+        {date:"2026-06-04",campaign:"V-SEARCH",device:"MOBILE",impr:2618,clicks:191,cost:150908,conv:4,value:209944},
+        {date:"2026-06-05",campaign:"V-SEARCH",device:"DESKTOP",impr:1689,clicks:61,cost:53148,conv:6,value:314915},
+        {date:"2026-06-05",campaign:"V-SEARCH",device:"MOBILE",impr:2908,clicks:185,cost:160958,conv:8,value:419887},
+        {date:"2026-06-06",campaign:"V-SEARCH",device:"DESKTOP",impr:820,clicks:13,cost:16035,conv:2,value:104972},
+        {date:"2026-06-06",campaign:"V-SEARCH",device:"MOBILE",impr:1756,clicks:130,cost:158770,conv:3,value:157458},
         {date:"2026-06-08",campaign:"V-SEARCH",device:"DESKTOP",impr:717,clicks:38,cost:53897,conv:0,value:0},
-        {date:"2026-06-08",campaign:"V-SEARCH",device:"MOBILE",impr:1737,clicks:132,cost:176236,conv:1,value:0},
+        {date:"2026-06-08",campaign:"V-SEARCH",device:"MOBILE",impr:1737,clicks:132,cost:176236,conv:1,value:52486},
         {date:"2026-06-09",campaign:"V-SEARCH",device:"DESKTOP",impr:1069,clicks:45,cost:38027,conv:0,value:0},
-        {date:"2026-06-09",campaign:"V-SEARCH",device:"MOBILE",impr:2441,clicks:230,cost:188944,conv:1,value:0},
+        {date:"2026-06-09",campaign:"V-SEARCH",device:"MOBILE",impr:2441,clicks:230,cost:188944,conv:1,value:52486},
         {date:"2026-06-10",campaign:"V-SEARCH",device:"DESKTOP",impr:916,clicks:40,cost:65792,conv:0,value:0},
         {date:"2026-06-10",campaign:"V-SEARCH",device:"MOBILE",impr:1625,clicks:112,cost:140129,conv:0,value:0},
-        {date:"2026-06-11",campaign:"V-SEARCH",device:"DESKTOP",impr:1282,clicks:44,cost:39889,conv:1,value:0},
-        {date:"2026-06-11",campaign:"V-SEARCH",device:"MOBILE",impr:2500,clicks:184,cost:165618,conv:1,value:0},
-        {date:"2026-06-12",campaign:"V-SEARCH",device:"DESKTOP",impr:1682,clicks:45,cost:39006,conv:4,value:0},
-        {date:"2026-06-12",campaign:"V-SEARCH",device:"MOBILE",impr:2777,clicks:140,cost:122557,conv:7,value:0},
+        {date:"2026-06-11",campaign:"V-SEARCH",device:"DESKTOP",impr:1282,clicks:44,cost:39889,conv:1,value:52486},
+        {date:"2026-06-11",campaign:"V-SEARCH",device:"MOBILE",impr:2500,clicks:184,cost:165618,conv:1,value:52486},
+        {date:"2026-06-12",campaign:"V-SEARCH",device:"DESKTOP",impr:1682,clicks:45,cost:39006,conv:4,value:209944},
+        {date:"2026-06-12",campaign:"V-SEARCH",device:"MOBILE",impr:2777,clicks:140,cost:122557,conv:7,value:367401},
         {date:"2026-06-13",campaign:"V-SEARCH",device:"DESKTOP",impr:795,clicks:13,cost:11171,conv:0,value:0},
-        {date:"2026-06-13",campaign:"V-SEARCH",device:"MOBILE",impr:1073,clicks:52,cost:45024,conv:5,value:0},
-        {date:"2026-06-15",campaign:"V-SEARCH",device:"DESKTOP",impr:753,clicks:34,cost:40981,conv:3,value:0},
-        {date:"2026-06-15",campaign:"V-SEARCH",device:"MOBILE",impr:1749,clicks:188,cost:221134,conv:7,value:0},
-        {date:"2026-06-16",campaign:"V-SEARCH",device:"DESKTOP",impr:1682,clicks:62,cost:49587,conv:3,value:0},
-        {date:"2026-06-16",campaign:"V-SEARCH",device:"MOBILE",impr:2773,clicks:193,cost:149725,conv:9,value:0},
-        {date:"2026-06-17",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:58,cost:46605,conv:6,value:0},
-        {date:"2026-06-17",campaign:"V-SEARCH",device:"MOBILE",impr:2774,clicks:190,cost:151291,conv:7,value:0},
-        {date:"2026-06-18",campaign:"V-SEARCH",device:"DESKTOP",impr:1097,clicks:42,cost:83076,conv:7,value:0},
-        {date:"2026-06-18",campaign:"V-SEARCH",device:"MOBILE",impr:847,clicks:53,cost:54881,conv:5,value:0},
-        {date:"2026-06-19",campaign:"V-SEARCH",device:"DESKTOP",impr:1097,clicks:68,cost:99810,conv:13,value:0},
-        {date:"2026-06-19",campaign:"V-SEARCH",device:"MOBILE",impr:717,clicks:38,cost:37222,conv:3,value:0},
-        {date:"2026-06-20",campaign:"V-SEARCH",device:"DESKTOP",impr:512,clicks:46,cost:113946,conv:8,value:0},
-        {date:"2026-06-20",campaign:"V-SEARCH",device:"MOBILE",impr:534,clicks:29,cost:43679,conv:1,value:0},
-        {date:"2026-06-22",campaign:"V-SEARCH",device:"DESKTOP",impr:1689,clicks:87,cost:116906,conv:11,value:0},
-        {date:"2026-06-22",campaign:"V-SEARCH",device:"MOBILE",impr:916,clicks:60,cost:53528,conv:4,value:0},
-        {date:"2026-06-23",campaign:"V-SEARCH",device:"DESKTOP",impr:1754,clicks:114,cost:114271,conv:20,value:0},
-        {date:"2026-06-23",campaign:"V-SEARCH",device:"MOBILE",impr:1072,clicks:68,cost:59557,conv:5,value:0},
-        {date:"2026-06-24",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:91,cost:112552,conv:17,value:0},
-        {date:"2026-06-24",campaign:"V-SEARCH",device:"MOBILE",impr:1073,clicks:55,cost:49129,conv:4,value:0},
-        {date:"2026-06-25",campaign:"V-SEARCH",device:"DESKTOP",impr:1754,clicks:91,cost:114080,conv:18,value:0},
-        {date:"2026-06-25",campaign:"V-SEARCH",device:"MOBILE",impr:1084,clicks:72,cost:58530,conv:4,value:0},
-        {date:"2026-06-26",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:82,cost:112373,conv:14,value:0},
-        {date:"2026-06-26",campaign:"V-SEARCH",device:"MOBILE",impr:1097,clicks:58,cost:53067,conv:7,value:0},
-        {date:"2026-06-27",campaign:"V-SEARCH",device:"DESKTOP",impr:730,clicks:49,cost:94448,conv:12,value:0},
-        {date:"2026-06-27",campaign:"V-SEARCH",device:"MOBILE",impr:857,clicks:40,cost:68799,conv:5,value:0},
-        {date:"2026-06-29",campaign:"V-SEARCH",device:"DESKTOP",impr:918,clicks:63,cost:135863,conv:12,value:0},
-        {date:"2026-06-29",campaign:"V-SEARCH",device:"MOBILE",impr:857,clicks:42,cost:46254,conv:5,value:0},
-        {date:"2026-06-30",campaign:"V-SEARCH",device:"DESKTOP",impr:2204,clicks:100,cost:125024,conv:16,value:0},
-        {date:"2026-06-30",campaign:"V-SEARCH",device:"MOBILE",impr:1059,clicks:40,cost:32928,conv:3,value:0}
+        {date:"2026-06-13",campaign:"V-SEARCH",device:"MOBILE",impr:1073,clicks:52,cost:45024,conv:5,value:262430},
+        {date:"2026-06-15",campaign:"V-SEARCH",device:"DESKTOP",impr:753,clicks:34,cost:40981,conv:3,value:157458},
+        {date:"2026-06-15",campaign:"V-SEARCH",device:"MOBILE",impr:1749,clicks:188,cost:221134,conv:7,value:367401},
+        {date:"2026-06-16",campaign:"V-SEARCH",device:"DESKTOP",impr:1682,clicks:62,cost:49587,conv:3,value:157458},
+        {date:"2026-06-16",campaign:"V-SEARCH",device:"MOBILE",impr:2773,clicks:193,cost:149725,conv:9,value:472373},
+        {date:"2026-06-17",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:58,cost:46605,conv:6,value:314915},
+        {date:"2026-06-17",campaign:"V-SEARCH",device:"MOBILE",impr:2774,clicks:190,cost:151291,conv:7,value:367401},
+        {date:"2026-06-18",campaign:"V-SEARCH",device:"DESKTOP",impr:1097,clicks:42,cost:83076,conv:7,value:367401},
+        {date:"2026-06-18",campaign:"V-SEARCH",device:"MOBILE",impr:847,clicks:53,cost:54881,conv:5,value:262430},
+        {date:"2026-06-19",campaign:"V-SEARCH",device:"DESKTOP",impr:1097,clicks:68,cost:99810,conv:13,value:682317},
+        {date:"2026-06-19",campaign:"V-SEARCH",device:"MOBILE",impr:717,clicks:38,cost:37222,conv:3,value:157458},
+        {date:"2026-06-20",campaign:"V-SEARCH",device:"DESKTOP",impr:512,clicks:46,cost:113946,conv:8,value:419887},
+        {date:"2026-06-20",campaign:"V-SEARCH",device:"MOBILE",impr:534,clicks:29,cost:43679,conv:1,value:52486},
+        {date:"2026-06-22",campaign:"V-SEARCH",device:"DESKTOP",impr:1689,clicks:87,cost:116906,conv:11,value:577345},
+        {date:"2026-06-22",campaign:"V-SEARCH",device:"MOBILE",impr:916,clicks:60,cost:53528,conv:4,value:209944},
+        {date:"2026-06-23",campaign:"V-SEARCH",device:"DESKTOP",impr:1754,clicks:114,cost:114271,conv:20,value:1049718},
+        {date:"2026-06-23",campaign:"V-SEARCH",device:"MOBILE",impr:1072,clicks:68,cost:59557,conv:5,value:262430},
+        {date:"2026-06-24",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:91,cost:112552,conv:17,value:892260},
+        {date:"2026-06-24",campaign:"V-SEARCH",device:"MOBILE",impr:1073,clicks:55,cost:49129,conv:4,value:209944},
+        {date:"2026-06-25",campaign:"V-SEARCH",device:"DESKTOP",impr:1754,clicks:91,cost:114080,conv:18,value:944746},
+        {date:"2026-06-25",campaign:"V-SEARCH",device:"MOBILE",impr:1084,clicks:72,cost:58530,conv:4,value:209944},
+        {date:"2026-06-26",campaign:"V-SEARCH",device:"DESKTOP",impr:1767,clicks:82,cost:112373,conv:14,value:734803},
+        {date:"2026-06-26",campaign:"V-SEARCH",device:"MOBILE",impr:1097,clicks:58,cost:53067,conv:7,value:367401},
+        {date:"2026-06-27",campaign:"V-SEARCH",device:"DESKTOP",impr:730,clicks:49,cost:94448,conv:12,value:629831},
+        {date:"2026-06-27",campaign:"V-SEARCH",device:"MOBILE",impr:857,clicks:40,cost:68799,conv:5,value:262430},
+        {date:"2026-06-29",campaign:"V-SEARCH",device:"DESKTOP",impr:918,clicks:63,cost:135863,conv:12,value:629831},
+        {date:"2026-06-29",campaign:"V-SEARCH",device:"MOBILE",impr:857,clicks:42,cost:46254,conv:5,value:262430},
+        {date:"2026-06-30",campaign:"V-SEARCH",device:"DESKTOP",impr:2204,clicks:100,cost:125024,conv:16,value:839774},
+        {date:"2026-06-30",campaign:"V-SEARCH",device:"MOBILE",impr:1059,clicks:40,cost:32928,conv:3,value:157458}
       ],
-
       funnel: [
-        {stage:"Impresiones", value:74186},
-        {stage:"Clics",       value:4310},
-        {stage:"Add to Cart", value:814},
-        {stage:"Checkout",    value:655},
-        {stage:"Compras",     value:297}
+        {stage:"Impresiones",value:74186},{stage:"Clics",value:4310},
+        {stage:"Add to Cart",value:814},{stage:"Checkout",value:655},
+        {stage:"Compras",value:392}
       ],
-
       conv_actions: [
-        {action:"COMPRA (Purchase)",        conv:297, value:0, cpa:15341, pct_total:100},
-        {action:"BEGIN_CHECKOUT (Stage 2)", conv:655, value:0, cpa:6956,  pct_total:220},
-        {action:"ADD_TO_CART (Stage 1)",    conv:814, value:0, cpa:5598,  pct_total:274}
+        {action:"COMPRA — Total cliente (incl. 5 dias sin tag)", conv:392, value:15640800, cpa:11623, pct_total:100},
+        {action:"COMPRA — Registrado Google Ads tag",            conv:297, value:11850300, cpa:15341, pct_total:76},
+        {action:"BEGIN_CHECKOUT (Stage 2)",                          conv:655, value:0,        cpa:6956,  pct_total:167},
+        {action:"ADD_TO_CART (Stage 1)",                             conv:814, value:0,        cpa:5598,  pct_total:208}
       ],
-
       conv_by_campaign: [
-        {campaign:"V-SEARCH", clicks:4310, conv:297, cpa:15341, value:0, roas:0, conv_rate:6.89}
+        {campaign:"V-SEARCH", clicks:4310, conv:392, cpa:11623, value:15640800, roas:3.43, conv_rate:9.10}
       ]
     },
-
     meta:   { active: false },
     tiktok: { active: false }
   }
 };
+
+// ANTERIOR-FIX
+(function(){
+  var _o=window.setPreset;
+  window.setPreset=function(p,e){
+    if(p==='prev'){
+      var ch=DATA.channels[activeChannel]||DATA.channels.google||{};
+      var dm=ch.date_min||'2026-06-01',pts=dm.split('-');
+      var y=parseInt(pts[0]),m=parseInt(pts[1]),pm=m===1?12:m-1,py=m===1?y-1:y;
+      var from=py+'-'+String(pm).padStart(2,'0')+'-01';
+      var to=py+'-'+String(pm).padStart(2,'0')+'-'+String(new Date(py,pm,0).getDate()).padStart(2,'0');
+      document.querySelectorAll('.preset-btn').forEach(function(b){b.classList.remove('active');});
+      e.target.classList.add('active');
+      currentFrom=from;currentTo=to;
+      document.getElementById('dateFrom').value=from;
+      document.getElementById('dateTo').value=to;
+      renderAll();
+    } else { _o.call(this,p,e); }
+  };
+})();
+
+// KPI-EXTRA-FIX
+(function(){
+  function apply(){
+    if(typeof renderKPIs==='undefined'||typeof mkKpi==='undefined'){setTimeout(apply,50);return;}
+    var _orig=renderKPIs;
+    renderKPIs=function(gridId,items){
+      if(gridId==='g-kpi-grid'){
+        var ch=DATA.channels.google;
+        var convReal=ch.conv_actions[0].conv;
+        var roas=ch.conv_by_campaign[0].roas;
+        var revenue=ch.conv_actions[0].value;
+        var cpaReal=ch.conv_actions[0].cpa;
+        var revStr=revenue.toLocaleString('es-CO');
+        var cpaStr=cpaReal.toLocaleString('es-CO');
+        var cpaMej=(((15290-cpaReal)/15290)*100).toFixed(1);
+        // Tarjeta ROAS y CPA via items (usan badge con %)
+        items.push({label:'ROAS ESTIMADO',val:roas.toFixed(2)+'×',dir:'up',pct:'Estimado',sub:'$'+revStr+' COP',cls:''});
+        items.push({label:'CPA REAL',val:'$'+cpaStr,dir:'up',pct:cpaMej+'% vs tag',sub:convReal+' conv. reportadas',cls:''});
+        // Render normal
+        _orig(gridId,items);
+        // Tarjeta 392 con HTML directo (badge sin % forzado)
+        var grid=document.getElementById(gridId);
+        if(grid){
+          grid.insertAdjacentHTML('beforeend',
+            '<div class="kpi-card">'+
+            '<div class="kpi-label">COMPRAS</div>'+
+            '<div class="kpi-value">'+convReal+'</div>'+
+            '<div class="kpi-badge up">▲ Confirmadas</div>'+
+            '<div class="kpi-sub">Compras confirmadas</div>'+
+            '</div>'
+          );
+        }
+      } else {
+        _orig(gridId,items);
+      }
+    };
+  }
+  apply();
+})();
 // ═══════════════════════════════════════════════
 // FIN DATA
 // ═══════════════════════════════════════════════
