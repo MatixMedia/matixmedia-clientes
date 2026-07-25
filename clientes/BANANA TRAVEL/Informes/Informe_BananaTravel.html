@@ -1685,7 +1685,8 @@ function renderMeta(){
   renderMicroTable('m-microBody', absStages.length?absStages:(funnel||[]), {
     'Impresiones→Clics':         {good:3,  warn:1,  desc:'CTR · Feed/Reels — Bueno >3%'},
     'Clics→Conversaciones':      {good:3,  warn:1,  desc:'Conv. WA · Clic a mensaje — Bueno >3%'},
-    'Conversaciones→Leads form': {good:50, warn:20, desc:'Cierre formulario — Bueno >50%'}
+    'Conversaciones→Leads form': {good:50, warn:20, desc:'Cierre formulario — Bueno >50%'},
+    'Leads form→Contacto':       {good:95, warn:80, desc:'Confirmación de lead — Bueno >95%'}
   });
 
   // ── 05. Diagnóstico ─────────────────────────────
