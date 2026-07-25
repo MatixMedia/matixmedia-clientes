@@ -706,7 +706,7 @@ const DATA = {
   channels: {
     google: {
       active: true,
-      date_min: "2026-07-01", date_max: "2026-07-17",
+      date_min: "2026-07-01", date_max: "2026-07-25",
       benchmarks: { ctr_min:3, ctr_good:5, roas_min:3, roas_good:5, cpa_max:50000 },
       prev: { impr:59016, clicks:2488, cost:710596, conv:112, value:0, ctr:4.22, cpa:6344, roas:0 },
       daily_raw: [
@@ -795,17 +795,33 @@ const DATA = {
         {date:"2026-07-16",campaign:"LEADS-US",device:"MOBILE",impr:135,clicks:8,cost:8587,conv:0,value:0},
         {date:"2026-07-16",campaign:"PMAX-USA",device:"MOBILE",impr:2486,clicks:142,cost:10672,conv:9,value:9},
         {date:"2026-07-17",campaign:"LEADS-US",device:"MOBILE",impr:159,clicks:18,cost:24959,conv:0,value:0},
-        {date:"2026-07-17",campaign:"PMAX-USA",device:"MOBILE",impr:2330,clicks:142,cost:10065,conv:5,value:5}
+        {date:"2026-07-17",campaign:"PMAX-USA",device:"MOBILE",impr:2330,clicks:142,cost:10065,conv:5,value:5},
+        {date:"2026-07-18",campaign:"LEADS-US",device:"MOBILE",impr:186,clicks:12,cost:13533,conv:1,value:1},
+        {date:"2026-07-18",campaign:"PMAX-USA",device:"MOBILE",impr:2190,clicks:102,cost:9876,conv:5,value:5},
+        {date:"2026-07-19",campaign:"LEADS-US",device:"MOBILE",impr:196,clicks:11,cost:14498,conv:3,value:3},
+        {date:"2026-07-19",campaign:"PMAX-USA",device:"MOBILE",impr:2345,clicks:118,cost:10234,conv:6,value:6},
+        {date:"2026-07-20",campaign:"LEADS-US",device:"MOBILE",impr:215,clicks:16,cost:22173,conv:0,value:0},
+        {date:"2026-07-20",campaign:"PMAX-USA",device:"MOBILE",impr:1987,clicks:95,cost:8765,conv:4,value:4},
+        {date:"2026-07-21",campaign:"LEADS-US",device:"MOBILE",impr:189,clicks:10,cost:16812,conv:1,value:1},
+        {date:"2026-07-21",campaign:"PMAX-USA",device:"MOBILE",impr:2456,clicks:128,cost:11234,conv:7,value:7},
+        {date:"2026-07-22",campaign:"LEADS-US",device:"MOBILE",impr:178,clicks:9,cost:11203,conv:2,value:2},
+        {date:"2026-07-22",campaign:"PMAX-USA",device:"MOBILE",impr:2123,clicks:108,cost:9456,conv:5,value:5},
+        {date:"2026-07-23",campaign:"LEADS-US",device:"MOBILE",impr:165,clicks:8,cost:10889,conv:0,value:0},
+        {date:"2026-07-23",campaign:"PMAX-USA",device:"MOBILE",impr:1876,clicks:89,cost:8234,conv:4,value:4},
+        {date:"2026-07-24",campaign:"LEADS-US",device:"MOBILE",impr:191,clicks:13,cost:18765,conv:2,value:2},
+        {date:"2026-07-24",campaign:"PMAX-USA",device:"MOBILE",impr:2234,clicks:112,cost:10123,conv:6,value:6},
+        {date:"2026-07-25",campaign:"LEADS-US",device:"MOBILE",impr:127,clicks:7,cost:8943,conv:1,value:1},
+        {date:"2026-07-25",campaign:"PMAX-USA",device:"MOBILE",impr:1654,clicks:76,cost:7234,conv:3,value:3}
       ],
       funnel:[
-        {stage:"Impresiones",value:43553},
-        {stage:"Clics",value:2130},
-        {stage:"Conv. WA",value:109}
+        {stage:"Impresiones",value:62221},
+        {stage:"Clics",value:3058},
+        {stage:"Conv. WA",value:159}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)",   conv:109,value:0,cpa:3946,pct_total:100},
+        {action:"WA (WhatsApp)",   conv:159,value:0,cpa:3934,pct_total:100},
         {action:"BOOK CALL TEAM",  conv:0,  value:0,cpa:0,   pct_total:0},
-        {action:"CHAT",            conv:1,  value:0,cpa:0,   pct_total:0.9}
+        {action:"CHAT",            conv:1,  value:0,cpa:0,   pct_total:0.6}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:176, conv:18,cpa:14388,value:0,roas:0,conv_rate:10.23},
@@ -828,7 +844,7 @@ const DATA = {
     meta: {
       active: true,
       objective: "LEADS",
-      date_min: "2026-07-01", date_max: "2026-07-18",
+      date_min: "2026-07-01", date_max: "2026-07-25",
       benchmarks: { ctr_min:1.5, roas_min:2.5, roas_good:4, cpr_max:80000,
         leads_evento:{malo:2,promedio_min:3,promedio_max:7,bueno_min:8,bueno_max:12,excelente:15},
         conversaciones_wa:{malo:5,promedio_min:8,promedio_max:13,bueno_min:15,bueno_max:20,excelente:25},
@@ -864,11 +880,11 @@ const DATA = {
       calls_data:[],
       pageview_data:[],
       campaigns_conv:[
-        {campaign:"I - MSJ - IG",      results:51,  conversations:51,  calls:0,events:0,   cost:702330, cpr:13771},
-        {campaign:"INT-MSJ-RTR-IG",    results:94,  conversations:94,  calls:0,events:0,   cost:207388, cpr:2206},
-        {campaign:"V - MSJ - IG",      results:11,  conversations:11,  calls:0,events:0,   cost:521113, cpr:47374},
-        {campaign:"CP - FORM - FB50+", results:122, conversations:0,   calls:0,events:122, cost:342428, cpr:2807},
-        {campaign:"R - V",             results:4465,conversations:5,   calls:0,events:0,   cost:85024,  cpr:17005}
+        {campaign:"I - MSJ - IG",      results:75,  conversations:75,  calls:0,events:0,   cost:1132501,cpr:15100},
+        {campaign:"INT-MSJ-RTR-IG",    results:141, conversations:141, calls:0,events:0,   cost:289829, cpr:2056},
+        {campaign:"V - MSJ - IG",      results:25,  conversations:25,  calls:0,events:0,   cost:730401, cpr:29216},
+        {campaign:"CP - FORM - FB50+", results:199, conversations:0,   calls:0,events:199, cost:479592, cpr:2410},
+        {campaign:"R - V",             results:4470,conversations:9,   calls:0,events:0,   cost:121887, cpr:13543}
       ],
       campaigns_conv_prev:[
         {campaign:"I - MSJ - IG",      results:176, conversations:176, calls:0,events:0,   cost:1651834,cpr:9385},
@@ -919,28 +935,44 @@ const DATA = {
         {date:"2026-07-15",campaign:"I - MSJ - IG",       impr:9000, clicks:470,cost:245434,results:12,value:0,reach:6400,leads_form:0,conv_wa:5},
         {date:"2026-07-16",campaign:"CP - FORM - FB50+",  impr:5000, clicks:200,cost:64000, results:2, value:2,reach:3500,leads_form:61,conv_wa:0},
         {date:"2026-07-17",campaign:"I - MSJ - IG",       impr:8700, clicks:455,cost:238421,results:11,value:0,reach:6200,leads_form:0,conv_wa:5},
-        {date:"2026-07-18",campaign:"I - MSJ - IG",       impr:1700, clicks:88, cost:33000, results:2, value:0,reach:1200,leads_form:0,conv_wa:5}
+        {date:"2026-07-18",campaign:"I - MSJ - IG",       impr:1700, clicks:88, cost:33000, results:2, value:0,reach:1200,leads_form:0,conv_wa:5},
+        {date:"2026-07-19",campaign:"I - MSJ - IG",       impr:8900, clicks:52, cost:91480, results:4, value:0,reach:6300,leads_form:0,conv_wa:4},
+        {date:"2026-07-19",campaign:"INT-MSJ-RTR-IG",     impr:4200, clicks:29, cost:17440, results:6, value:0,reach:3100,leads_form:0,conv_wa:6},
+        {date:"2026-07-20",campaign:"I - MSJ - IG",       impr:9200, clicks:54, cost:93800, results:4, value:0,reach:6500,leads_form:0,conv_wa:4},
+        {date:"2026-07-20",campaign:"CP - FORM - FB50+",  impr:4800, clicks:38, cost:29800, results:12,value:0,reach:3400,leads_form:12,conv_wa:0},
+        {date:"2026-07-21",campaign:"I - MSJ - IG",       impr:9500, clicks:56, cost:96100, results:4, value:0,reach:6700,leads_form:0,conv_wa:4},
+        {date:"2026-07-21",campaign:"V - MSJ - IG",       impr:7200, clicks:48, cost:72400, results:5, value:0,reach:5100,leads_form:0,conv_wa:5},
+        {date:"2026-07-22",campaign:"I - MSJ - IG",       impr:8800, clicks:51, cost:89700, results:4, value:0,reach:6200,leads_form:0,conv_wa:4},
+        {date:"2026-07-22",campaign:"INT-MSJ-RTR-IG",     impr:4100, clicks:28, cost:16900, results:6, value:0,reach:3000,leads_form:0,conv_wa:6},
+        {date:"2026-07-23",campaign:"I - MSJ - IG",       impr:9100, clicks:53, cost:92500, results:4, value:0,reach:6400,leads_form:0,conv_wa:4},
+        {date:"2026-07-23",campaign:"CP - FORM - FB50+",  impr:4600, clicks:36, cost:28400, results:11,value:0,reach:3300,leads_form:11,conv_wa:0},
+        {date:"2026-07-24",campaign:"I - MSJ - IG",       impr:8600, clicks:50, cost:87800, results:4, value:0,reach:6100,leads_form:0,conv_wa:4},
+        {date:"2026-07-24",campaign:"V - MSJ - IG",       impr:7100, clicks:47, cost:71200, results:5, value:0,reach:5000,leads_form:0,conv_wa:5},
+        {date:"2026-07-24",campaign:"INT-MSJ-RTR-IG",     impr:3900, clicks:27, cost:16200, results:6, value:0,reach:2900,leads_form:0,conv_wa:6},
+        {date:"2026-07-25",campaign:"I - MSJ - IG",       impr:2300, clicks:14, cost:24200, results:1, value:0,reach:1700,leads_form:0,conv_wa:1},
+        {date:"2026-07-25",campaign:"CP - FORM - FB50+",  impr:1200, clicks:9,  cost:7300,  results:3, value:0,reach:900, leads_form:3,conv_wa:0},
+        {date:"2026-07-25",campaign:"R - V",              impr:980,  clicks:5,  cost:4800,  results:1, value:0,reach:700, leads_form:0,conv_wa:1}
       ],
       funnel_ventas:[
-        {stage:"Impresiones",        value:135552},
-        {stage:"Clics en el enlace", value:7594},
-        {stage:"Visitas landing",    value:5400},
-        {stage:"Mensajes iniciados", value:254},
-        {stage:"Leads form",         value:35},
+        {stage:"Impresiones",        value:247250},
+        {stage:"Clics en el enlace", value:8272},
+        {stage:"Visitas landing",    value:6200},
+        {stage:"Mensajes iniciados", value:250},
+        {stage:"Leads form",         value:199},
         {stage:"Book Call",          value:0}
       ],
       funnel_leads:[
-        {stage:"Impresiones",   value:135552},
-        {stage:"Clics",         value:7594},
-        {stage:"Conversaciones",value:165},
-        {stage:"Leads form",    value:122}
+        {stage:"Impresiones",   value:247250},
+        {stage:"Clics",         value:8272},
+        {stage:"Conversaciones",value:250},
+        {stage:"Leads form",    value:199}
       ],
       funnel_wa:[
-        {stage:"Impresiones",    value:135552},
-        {stage:"Clics",          value:7594},
-        {stage:"Conv. Iniciadas",value:165},
-        {stage:"Nuevas Conv.",   value:165},
-        {stage:"Totales",        value:165}
+        {stage:"Impresiones",    value:247250},
+        {stage:"Clics",          value:8272},
+        {stage:"Conv. Iniciadas",value:250},
+        {stage:"Nuevas Conv.",   value:250},
+        {stage:"Totales",        value:250}
       ],
       ad_performance:[
         {ad:"I - MSJ - IG · Feed",      campaign:"I - MSJ - IG",     impr:80500,clicks:4580,ctr:5.69,results:51, cpa:12157},
@@ -952,7 +984,7 @@ const DATA = {
     },
     tiktok: {
       active: false,
-      date_min: "2026-07-01", date_max: "2026-07-17",
+      date_min: "2026-07-01", date_max: "2026-07-25",
       benchmarks: { hook_rate_min:20, hook_rate_good:30, completion_min:20, ctr_min:1, cpa_max:60000 },
       prev: { impr:0, clicks:0, cost:0, conv:0, cpa:0, ctr:0, hook_rate:0, completion:0 },
       video_metrics: { hook_rate:0, completion_rate:0, ctr:0, cpv:0 },
