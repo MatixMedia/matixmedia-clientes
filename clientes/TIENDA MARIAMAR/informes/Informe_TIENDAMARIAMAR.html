@@ -81,13 +81,13 @@ a{color:var(--accent);text-decoration:none}
 .funnel-wrap{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:22px;overflow:hidden}
 .funnel-stage{margin-bottom:5px}
 .funnel-bar-wrap{display:flex;align-items:center;gap:10px;margin-bottom:3px}
-.funnel-label{font-family:var(--mono);font-size:10px;color:var(--ink-dim);width:180px;text-align:right;flex-shrink:0}
+.funnel-label{font-family:var(--mono);font-size:10px;color:var(--ink-dim);width:130px;text-align:left;flex-shrink:0}
 .funnel-bar-track{flex:1;background:var(--bg-3);border-radius:3px;height:32px;overflow:hidden}
 .funnel-bar-fill{height:100%;border-radius:3px;background:var(--accent);opacity:.75;transition:width .8s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:50px}
 .funnel-bar-val{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--bg)}
 .funnel-bar-fill.meta-fill{background:#1877F2}
 .funnel-bar-fill.tiktok-fill{background:#69C9D0}
-.funnel-retention{display:flex;align-items:center;gap:5px;padding-left:190px;margin-bottom:5px}
+.funnel-retention{display:flex;align-items:center;gap:5px;padding-left:140px;margin-bottom:5px}
 .funnel-ret-pct{font-family:var(--mono);font-size:10px;font-weight:600}
 .funnel-ret-pct.good{color:var(--teal)}.funnel-ret-pct.warn{color:var(--accent)}.funnel-ret-pct.bad{color:var(--red)}
 .badge-fuga{display:inline-block;background:rgba(207,52,58,.2);color:var(--red);border:1px solid rgba(207,52,58,.4);font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;margin-left:6px}
@@ -199,9 +199,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 }
 
 
-  .funnel-retention{padding-left:75px!important}
   .kpi-value{font-size:17px}
-  
 }
 
 </style>
@@ -279,13 +277,13 @@ a{color:var(--accent);text-decoration:none}
 .funnel-wrap{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:22px;overflow:hidden}
 .funnel-stage{margin-bottom:5px}
 .funnel-bar-wrap{display:flex;align-items:center;gap:10px;margin-bottom:3px}
-.funnel-label{font-family:var(--mono);font-size:10px;color:var(--ink-dim);width:180px;text-align:right;flex-shrink:0}
+.funnel-label{font-family:var(--mono);font-size:10px;color:var(--ink-dim);width:130px;text-align:left;flex-shrink:0}
 .funnel-bar-track{flex:1;background:var(--bg-3);border-radius:3px;height:32px;overflow:hidden}
 .funnel-bar-fill{height:100%;border-radius:3px;background:var(--accent);opacity:.75;transition:width .8s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:50px}
 .funnel-bar-val{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--bg)}
 .funnel-bar-fill.meta-fill{background:#1877F2}
 .funnel-bar-fill.tiktok-fill{background:#69C9D0}
-.funnel-retention{display:flex;align-items:center;gap:5px;padding-left:190px;margin-bottom:5px}
+.funnel-retention{display:flex;align-items:center;gap:5px;padding-left:140px;margin-bottom:5px}
 .funnel-ret-pct{font-family:var(--mono);font-size:10px;font-weight:600}
 .funnel-ret-pct.good{color:var(--teal)}.funnel-ret-pct.warn{color:var(--accent)}.funnel-ret-pct.bad{color:var(--red)}
 .badge-fuga{display:inline-block;background:rgba(207,52,58,.2);color:var(--red);border:1px solid rgba(207,52,58,.4);font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;margin-left:6px}
@@ -3071,6 +3069,19 @@ table{min-width:400px!important}
 
 /* FOOTER */
 .footer-inner{flex-wrap:wrap!important;gap:12px!important}
+
+/* MOBILE — header y footer centrados en pantallas angostas.
+   En PC se mantiene el layout original. Solo <=640px pasa a centrado. */
+@media(max-width:640px){
+  .report-header .wrap{flex-direction:column!important;align-items:center!important;text-align:center!important}
+  .header-left{flex-direction:column!important;align-items:center!important;text-align:center!important;gap:8px!important}
+  .header-right{justify-content:center!important;width:100%!important}
+  .preset-btns{justify-content:center!important;width:100%!important}
+
+  .footer-inner{flex-direction:column!important;align-items:center!important;text-align:center!important}
+  .footer-brand{flex-direction:column!important;align-items:center!important;text-align:center!important}
+  .footer-links{justify-content:center!important}
+}
 </style>
 
 </body>
