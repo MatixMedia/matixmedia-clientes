@@ -189,6 +189,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   .channel-bar,.preset-bar,#btn-pdf,#monthBar,.date-row{display:none!important}
   /* Mostrar todos los paneles al imprimir */
   .ch-panel{display:block!important;page-break-inside:avoid;margin-bottom:40px}
+  .ch-panel.print-hide-inactive{display:none!important}
   .section{page-break-inside:avoid}
   canvas{max-width:100%!important;height:auto!important}
   /* Mantener colores de cards y badges */
@@ -1693,16 +1694,30 @@ function renderKPIs(gridId,items){
 
 // ─── EXPORT PDF ──────────────────────────────────
 function exportPDF(){
-  // Mostrar todos los paneles para imprimir
+  // FIX — mostraba TODOS los .ch-panel (Google/Meta/TikTok) sin importar si
+  // el canal estaba activo. Para clientes con un solo canal activo (ej. solo
+  // Meta), esto imprimía páginas enteras en $0/0% del canal inactivo antes
+  // de llegar a los datos reales. Ahora solo se muestran los paneles cuyo
+  // canal está activo en DATA.channels.
+  // NOTA: el CSS @media print tiene ".ch-panel{display:block!important}",
+  // así que un estilo inline NO alcanza para ocultarlos al imprimir — se
+  // necesita la clase .print-hide-inactive (también con !important) para
+  // ganarle a esa regla.
   const panels=document.querySelectorAll('.ch-panel');
-  panels.forEach(p=>{p._disp=p.style.display;p.style.display='block';});
+  panels.forEach(p=>{
+    p._disp=p.style.display;
+    const chKey=p.id.replace('panel-','');
+    const isActive = DATA.channels[chKey] && DATA.channels[chKey].active;
+    p.classList.toggle('print-hide-inactive', !isActive);
+    p.style.display = isActive ? 'block' : 'none';
+  });
   // Scroll al inicio
   window.scrollTo(0,0);
   window.print();
   // Restaurar después de imprimir
   setTimeout(()=>{
-    panels.forEach(p=>{p.style.display=p._disp||'';});
-    showChannel(activeChannel);
+    panels.forEach(p=>{p.style.display=p._disp||'';p.classList.remove('print-hide-inactive');});
+    switchChannel(activeChannel);
   },1000);
 }
 
