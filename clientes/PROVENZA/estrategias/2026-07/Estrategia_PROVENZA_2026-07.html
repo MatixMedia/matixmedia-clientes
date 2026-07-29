@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provenza · Estrategia de Lanzamiento — MatixMedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --green:#199477;--green-light:#22B088;--green-pale:rgba(25,148,119,.12);
+  --amber:#E8C046;--amber-pale:rgba(232,192,70,.12);
+  --red:#CF343A;--red-pale:rgba(207,52,58,.12);
+  --blue:#4A9EE0;--blue-pale:rgba(74,158,224,.12);
+  --purple:#A78BFA;--purple-pale:rgba(167,139,250,.12);
+  --ink:#FDFCF7;--ink-2:#C8C7C0;--ink-3:#A8A598;
+  --border:#1E1F28;--bg:#04050A;--white:#0C0D13;--gold:#E8C046;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6}
+a{color:var(--amber);text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(4,5,10,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap}
+.nav-inner{display:flex;align-items:center;max-width:1160px;margin:0 auto;padding:0 32px}
+.nav-brand{font-family:var(--mono);font-size:11px;color:var(--ink-3);padding:14px 16px 14px 0;border-right:1px solid rgba(255,255,255,.08);margin-right:8px;flex-shrink:0}
+.nav-item{padding:14px 12px;font-size:11px;font-family:var(--mono);color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.nav-item:hover{color:var(--amber)}
+
+/* HEADER */
+.header{padding:56px 0 40px}
+.header-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:14px}
+.header h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,50px);font-weight:300;line-height:1.15;margin-bottom:10px}
+.header h1 em{font-style:italic;color:var(--amber)}
+.header-sub{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:36px;max-width:640px}
+.header-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;border-top:1px solid var(--border);padding-top:28px}
+.hk-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:6px}
+.hk-val{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:var(--ink)}
+.hk-val.amber{color:var(--amber)}
+.hk-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+
+/* SECTION */
+.section{padding:44px 0;border-bottom:1px solid var(--border)}
+.section:last-of-type{border-bottom:none}
+.section-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--amber);font-weight:500;margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:18px}
+.section-title em{font-style:italic;color:var(--amber)}
+.section-desc{font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:24px;max-width:720px}
+
+/* BLOCKER CARDS */
+.blocker-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.blocker{border:1px solid var(--border);border-radius:10px;padding:18px 20px;background:rgba(255,255,255,.015)}
+.blocker.done{border-color:rgba(25,148,119,.35);background:var(--green-pale)}
+.blocker-status{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.blocker.done .blocker-status{color:var(--green-light)}
+.blocker:not(.done) .blocker-status{color:var(--amber)}
+.blocker h4{font-size:13.5px;font-weight:500;margin-bottom:6px}
+.blocker p{font-size:12px;color:var(--ink-3);line-height:1.5}
+
+/* PHASE TABS */
+.phase-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.phase-pill{font-family:var(--mono);font-size:11px;padding:8px 16px;border-radius:20px;border:1px solid var(--border)}
+.phase-pill.live{border-color:var(--green);color:var(--green-light);background:var(--green-pale)}
+.phase-pill.wait{border-color:var(--ink-3);color:var(--ink-3)}
+
+/* CAMPAIGN TREE */
+.channel-block{border:1px solid var(--border);border-radius:12px;padding:26px 28px;margin-bottom:20px}
+.channel-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.channel-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.channel-icon.yt{background:var(--red-pale);color:var(--red)}
+.channel-icon.meta{background:var(--blue-pale);color:var(--blue)}
+.channel-name{font-family:'Fraunces',serif;font-size:19px;font-weight:400}
+.channel-badge{font-family:var(--mono);font-size:10px;color:var(--ink-3);background:rgba(255,255,255,.05);padding:3px 9px;border-radius:12px;margin-left:auto}
+
+.camp{border-left:2px solid var(--border);padding:14px 0 14px 18px;margin-left:6px;position:relative}
+.camp::before{content:'';position:absolute;left:-5px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--border)}
+.camp.active::before{background:var(--green)}
+.camp-title{font-size:13.5px;font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.camp-status{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:4px}
+.camp-status.live{background:var(--green-pale);color:var(--green-light)}
+.camp-status.wait{background:rgba(255,255,255,.06);color:var(--ink-3)}
+.camp-detail{font-size:12px;color:var(--ink-3);line-height:1.6}
+.camp-detail b{color:var(--ink-2);font-weight:500}
+
+/* AUDIENCE GRID */
+.aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.aud-card{border:1px solid var(--border);border-radius:10px;padding:20px}
+.aud-card h4{font-size:13.5px;margin-bottom:10px;color:var(--amber)}
+.aud-card ul{list-style:none;font-size:12px;color:var(--ink-2);line-height:1.9}
+.aud-card ul li::before{content:'—  ';color:var(--ink-3)}
+
+/* COPY CARDS */
+.copy-card{border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.copy-label{font-family:var(--mono);font-size:10px;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.copy-text{font-style:italic;color:var(--ink-2);font-size:13px;line-height:1.6;margin-bottom:10px}
+.copy-meta{display:flex;gap:18px;font-size:11px;color:var(--ink-3)}
+.copy-meta b{color:var(--ink-2)}
+
+/* BUDGET */
+.budget-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:24px}
+.budget-table th{text-align:left;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding:10px 12px;border-bottom:1px solid var(--border)}
+.budget-table td{padding:12px;border-bottom:1px solid var(--border);color:var(--ink-2)}
+.budget-table td.strong{color:var(--ink);font-weight:500}
+.budget-bar{display:flex;height:34px;border-radius:6px;overflow:hidden;margin-bottom:12px}
+.b-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--bg);font-weight:500}
+.b-yt{background:var(--red)}
+.b-meta{background:var(--blue)}
+.budget-legend{display:flex;gap:20px;font-size:11px;color:var(--ink-3);flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:6px}
+
+/* ROADMAP */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-24px;top:2px;width:12px;height:12px;border-radius:50%;border:2px solid var(--bg)}
+.tl-dot.now{background:var(--green)}
+.tl-dot.next{background:var(--amber)}
+.tl-dot.later{background:var(--ink-3)}
+.tl-week{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:4px}
+.tl-title{font-size:14.5px;font-weight:500;margin-bottom:8px}
+.tl-action{font-size:12.5px;color:var(--ink-2);padding:3px 0;padding-left:14px;position:relative}
+.tl-action::before{content:'·';position:absolute;left:0;color:var(--amber)}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:2px}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.check-item:last-child{border-bottom:none}
+.check-box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink-3);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.check-box.done{background:var(--green);border-color:var(--green);color:var(--bg)}
+.check-label{font-size:13px;color:var(--ink-2)}
+.check-item.done .check-label{color:var(--ink-3);text-decoration:line-through}
+
+footer{padding:32px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink-3);border-top:1px solid var(--border)}
+
+@media(max-width:640px){.wrap{padding:0 18px}.header{padding:36px 0 28px}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav"><div class="nav-inner">
+  <div class="nav-brand">PROVENZA · ESTRATEGIA</div>
+  <div class="nav-item" onclick="document.getElementById('s-contexto').scrollIntoView({behavior:'smooth'})">Contexto</div>
+  <div class="nav-item" onclick="document.getElementById('s-estructura').scrollIntoView({behavior:'smooth'})">Campañas</div>
+  <div class="nav-item" onclick="document.getElementById('s-audiencias').scrollIntoView({behavior:'smooth'})">Audiencias</div>
+  <div class="nav-item" onclick="document.getElementById('s-copies').scrollIntoView({behavior:'smooth'})">Copies</div>
+  <div class="nav-item" onclick="document.getElementById('s-presupuesto').scrollIntoView({behavior:'smooth'})">Presupuesto</div>
+  <div class="nav-item" onclick="document.getElementById('s-roadmap').scrollIntoView({behavior:'smooth'})">Roadmap</div>
+  <div class="nav-item" onclick="document.getElementById('s-checklist').scrollIntoView({behavior:'smooth'})">Checklist</div>
+</div></nav>
+
+<div class="wrap">
+  <header class="header">
+    <div class="header-eyebrow">MatixMedia · Estrategia de Lanzamiento</div>
+    <h1>Provenza — el secreto<br><em>de Elizabeth, NJ</em></h1>
+    <p class="header-sub">Estrategia de medios pagados para fase pre-apertura (sin fecha confirmada) · Google Ads (Local/GMB + YouTube) + Meta Ads (Facebook/Instagram)</p>
+    <div class="header-kpis">
+      <div><div class="hk-label">Fase actual</div><div class="hk-val amber">Fase 1</div><div class="hk-sub">Awareness + Lista VIP</div></div>
+      <div><div class="hk-label">Canales</div><div class="hk-val">2</div><div class="hk-sub">YouTube · Meta</div></div>
+      <div><div class="hk-label">Presupuesto medios</div><div class="hk-val">$1.6K–2.5K</div><div class="hk-sub">USD / mes</div></div>
+      <div><div class="hk-label">Honorarios</div><div class="hk-val">$1,230</div><div class="hk-sub">USD / mes</div></div>
+      <div><div class="hk-label">Fecha apertura</div><div class="hk-val" style="color:var(--red)">Por definir</div><div class="hk-sub">Activa Fase 2</div></div>
+    </div>
+  </header>
+
+  <section class="section" id="s-contexto">
+    <div class="section-label">01 · Contexto</div>
+    <h2 class="section-title">Por qué esto es <em>lanzamiento</em>, no optimización</h2>
+    <p class="section-desc">Provenza no tiene cuentas publicitarias activas ni historial de datos. La fecha de apertura original (15 de mayo) ya pasó y aún no hay una nueva confirmada. La landing (provenzanj.com) está en preparación. Por eso se arranca con awareness y captación de leads vía formularios nativos — no dependen de la landing — mientras se resuelven los bloqueantes de abajo.</p>
+    <div class="blocker-grid">
+      <div class="blocker"><div class="blocker-status">En curso</div><h4>Landing / provenzanj.com</h4><p>En preparación por el cliente. Bloquea Pixel, GA4 y las campañas de tráfico/conversión — no bloquea awareness ni lead gen nativo.</p></div>
+      <div class="blocker"><div class="blocker-status">Pendiente</div><h4>Video hero "nevera → venue"</h4><p>Pieza creativa principal para YouTube y Meta. Sin ella se arranca con placeholder del brand kit mientras se produce.</p></div>
+      <div class="blocker"><div class="blocker-status">Pendiente</div><h4>Fecha de apertura</h4><p>Determina cuándo se activan las campañas de conversión/reservas (Fase 2). Hasta entonces, Fase 1 corre indefinida.</p></div>
+      <div class="blocker"><div class="blocker-status">Pendiente</div><h4>Accesos a plataformas</h4><p>Google Ads Manager y Meta Business Manager de Provenza — necesarios para construir y lanzar las campañas.</p></div>
+      <div class="blocker"><div class="blocker-status">Bloqueante · iniciar ya</div><h4>Google Business Profile no existe</h4><p>El brief confirma que no está creado. Sin ficha verificada no se puede lanzar la campaña Local/GMB — y la verificación de Google puede tardar días, así que es la primera tarea de la lista.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="s-estructura">
+    <div class="section-label">02 · Estructura de campañas</div>
+    <h2 class="section-title">Dos canales, <em>una sola idea creativa</em></h2>
+    <p class="section-desc">El gancho es el mismo en ambos canales: la puerta de nevera que esconde un venue inmersivo. Google Ads corre 100% en YouTube — sin Search, porque la marca todavía no tiene volumen de búsqueda propio.</p>
+
+    <div class="channel-block">
+      <div class="channel-head">
+        <div class="channel-icon yt">▶</div>
+        <div class="channel-name">Google Ads — YouTube + Local</div>
+        <div class="channel-badge">sin Search de marca por ahora</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">GOOGLE_Provenza_Local_GMB <span class="camp-status wait">Bloqueada por GMB</span></div>
+        <div class="camp-detail">Campaña Local (Performance Max para objetivos locales) — corre en Search, Maps, Display y YouTube optimizando por visitas al lugar, llamadas y cómo llegar · usa directamente la ficha de Google Business Profile, no requiere landing · <b>Geo:</b> radio 5–10 mi (tráfico local real) · <b>Intención:</b> "eventos cerca de mí", "salón de eventos Elizabeth NJ", "venue para evento corporativo" · <b>Prerequisito:</b> crear y verificar Google Business Profile</div>
+      </div>
+      <div class="camp active">
+        <div class="camp-title">YT_Provenza_Awareness_TriState <span class="camp-status live">Lanzar ya</span></div>
+        <div class="camp-detail">Bumper 6s + In-Stream saltable 15–20s · <b>Objetivo:</b> vistas y alcance · <b>Geo:</b> radio 25 mi desde Elizabeth, NJ · <b>Audiencia:</b> 25–60 años, intereses en nightlife premium, música electrónica, tecnología inmersiva</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">YT_Provenza_ListaVIP_VideoAction <span class="camp-status wait">Semana 3–4</span></div>
+        <div class="camp-detail"><b>Objetivo:</b> registro en lista VIP · <b>Audiencia:</b> remarketing sobre viewers ≥50% del video de la campaña de awareness</div>
+      </div>
+    </div>
+
+    <div class="channel-block">
+      <div class="channel-head">
+        <div class="channel-icon meta">◆</div>
+        <div class="channel-name">Meta Ads — Facebook + Instagram</div>
+        <div class="channel-badge">lead gen nativo</div>
+      </div>
+      <div class="camp active">
+        <div class="camp-title">META_Provenza_Awareness_Video <span class="camp-status live">Lanzar ya</span></div>
+        <div class="camp-detail">ThruPlay, Reels 9:16 · <b>Ad sets:</b> AS1 amplio Tri-State · AS2 intereses inmersivos (Anyma, Sandbox VR, música electrónica)</div>
+      </div>
+      <div class="camp active">
+        <div class="camp-title">META_Provenza_ListaVIP_LeadGen <span class="camp-status live">Lanzar ya</span></div>
+        <div class="camp-detail">Instant Form — Nombre, Email, Teléfono, Ciudad · no depende de la landing · dos copies en test (ver sección Copies)</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">META_Provenza_Conversion_Reservas <span class="camp-status wait">Con landing + Pixel</span></div>
+        <div class="camp-detail">Tráfico calificado + conversión de reserva en provenzanj.com</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">META_Provenza_Retargeting <span class="camp-status wait">Con Fase 2</span></div>
+        <div class="camp-detail">Video viewers ≥75% · leads capturados · visitantes de landing</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s-audiencias">
+    <div class="section-label">03 · Audiencias</div>
+    <h2 class="section-title">A quién <em>sí</em> y a quién <em>no</em></h2>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <h4>Perfil objetivo</h4>
+        <ul>
+          <li>25–60 años, género mixto</li>
+          <li>Área Tri-State (NJ / NY), radio 25 mi de Elizabeth</li>
+          <li>Nivel socioeconómico medio – medio-alto</li>
+          <li>Intereses: nightlife premium, música electrónica (Anyma), experiencias inmersivas (Sandbox VR), tecnología</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <h4>Excluir</h4>
+        <ul>
+          <li>Perfil de "barra clásica" / solo buscan excesos</li>
+          <li>Bajo poder adquisitivo</li>
+          <li>Menores de 21 años (venta de alcohol — restricción legal)</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <h4>Lenguaje prohibido en anuncios</h4>
+        <ul>
+          <li>"discoteca" · "night club" · "centro de eventos"</li>
+          <li>"club" · "clásico" · "antiguo"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s-copies">
+    <div class="section-label">04 · Copies — Lead Gen Meta</div>
+    <h2 class="section-title">Dos ángulos para <em>testear</em></h2>
+    <div class="copy-card">
+      <div class="copy-label">Copy A · Misterio / Curiosidad</div>
+      <div class="copy-text">"Hay una puerta en Elizabeth que parece una nevera de gaseosas. No lo es. 👁️ Sé de los primeros en cruzarla — únete a la lista VIP de Provenza."</div>
+      <div class="copy-meta"><span><b>Headline:</b> El secreto de Elizabeth</span><span><b>CTA:</b> Registrarme</span></div>
+    </div>
+    <div class="copy-card">
+      <div class="copy-label">Copy B · Tecnología / Exclusividad</div>
+      <div class="copy-text">"Sonido 8D. Pantallas LED en cada pared. Un ambiente que cambia con un solo clic. Provenza está por abrir sus puertas en Elizabeth, NJ — y quiere que tú lo sepas primero."</div>
+      <div class="copy-meta"><span><b>Headline:</b> Sé el primero en entrar</span><span><b>CTA:</b> Registrarme</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="s-presupuesto">
+    <div class="section-label">05 · Presupuesto</div>
+    <h2 class="section-title">Paquete mínimo <em>para arrancar</em></h2>
+    <p class="section-desc">Se recomienda el paquete mínimo de la propuesta mientras no haya fecha de apertura — evita invertir de forma agresiva en un funnel que todavía no puede cerrar reserva.</p>
+    <div class="budget-bar">
+      <div class="b-seg b-yt" style="flex:38">Google · 38%</div>
+      <div class="b-seg b-meta" style="flex:62">Meta · 62%</div>
+    </div>
+    <div class="budget-legend">
+      <span><span class="dot" style="background:var(--red)"></span>Google (Local + YouTube) — $600–1,000/mes</span>
+      <span><span class="dot" style="background:var(--blue)"></span>Meta — $1,000–1,500/mes</span>
+    </div>
+    <br>
+    <table class="budget-table">
+      <thead><tr><th>Canal</th><th>Campaña</th><th>% del canal</th><th>Rango mensual</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">Google</td><td>Local / GMB ⭐ nueva</td><td>35%</td><td>$210–350</td></tr>
+        <tr><td class="strong">Google</td><td>Awareness (YouTube)</td><td>45%</td><td>$270–450</td></tr>
+        <tr><td class="strong">Google</td><td>Lista VIP (YouTube, desde sem. 3–4)</td><td>20%</td><td>$120–200</td></tr>
+        <tr><td class="strong">Meta</td><td>Awareness Video</td><td>40%</td><td>$400–600</td></tr>
+        <tr><td class="strong">Meta</td><td>Lista VIP (Lead Gen)</td><td>60%</td><td>$600–900</td></tr>
+      </tbody>
+    </table>
+    <p class="section-desc" style="margin-bottom:0"><b style="color:var(--ink)">Total Fase 1:</b> $1,600–2,500/mes en medios + $1,230/mes honorarios MatixMedia. Al confirmarse fecha de apertura, escalar al paquete completo: $2,500–4,000/mes en medios + $1,600/mes honorarios.</p>
+  </section>
+
+  <section class="section" id="s-roadmap">
+    <div class="section-label">06 · Roadmap</div>
+    <h2 class="section-title">De <em>hoy</em> a la apertura</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot now"></div>
+        <div class="tl-week">Ahora</div>
+        <div class="tl-title">Lanzamiento de Fase 1</div>
+        <div class="tl-action">Crear y enviar a verificación el Google Business Profile (tarda días — arrancar primero)</div>
+        <div class="tl-action">Configurar Google Ads Manager y Meta Business Manager</div>
+        <div class="tl-action">Subir video hero (real o placeholder del brand kit)</div>
+        <div class="tl-action">Lanzar YT Awareness + Meta Awareness + Meta Lead Gen</div>
+        <div class="tl-action">En cuanto se verifique el GMB: lanzar GOOGLE_Local_GMB</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot next"></div>
+        <div class="tl-week">Semana 3–4</div>
+        <div class="tl-title">Activar remarketing por video</div>
+        <div class="tl-action">Lanzar YT_ListaVIP_VideoAction sobre viewers del video de awareness</div>
+        <div class="tl-action">Revisar performance de Copy A vs Copy B en Meta y quedarse con el ganador</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot later"></div>
+        <div class="tl-week">Cuando la landing esté lista</div>
+        <div class="tl-title">Instalar tracking y activar conversión</div>
+        <div class="tl-action">Instalar Meta Pixel + GA4 + evento de conversión (Lead/Reserva)</div>
+        <div class="tl-action">Activar META_Conversion_Reservas y META_Retargeting</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot later"></div>
+        <div class="tl-week">Con fecha de apertura confirmada</div>
+        <div class="tl-title">Fase 2 — escalar a conversión</div>
+        <div class="tl-action">Escalar presupuesto al paquete completo ($2,500–4,000/mes)</div>
+        <div class="tl-action">Activar Search Brand en Google (cuando exista volumen de búsqueda de marca)</div>
+        <div class="tl-action">Evaluar incorporar TikTok Ads (mes 3–4, según propuesta original)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s-checklist" style="border-bottom:none">
+    <div class="section-label">07 · Checklist de lanzamiento</div>
+    <h2 class="section-title">Antes de <em>encender</em> las campañas</h2>
+    <div class="checklist">
+      <div class="check-item done"><div class="check-box done">✓</div><div class="check-label">Estrategia y estructura de campañas definidas</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Crear y verificar Google Business Profile (bloqueante de Local/GMB — iniciar ya)</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Confirmar acceso a Google Ads Manager y Meta Business Manager de Provenza</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Recibir o producir video hero "nevera → venue"</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Configurar formularios nativos (Google Lead Form + Meta Instant Form)</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Lanzar campañas de awareness y lead gen (no bloqueadas por la landing)</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-label">Cuando la landing esté lista: instalar Pixel + GA4 y activar campañas de conversión</div></div>
+    </div>
+  </section>
+
+  <footer>MatixMedia · Estrategia Provenza · Julio 2026</footer>
+</div>
+
+</body>
+</html>
