@@ -1097,21 +1097,27 @@ function fixFunnelSemaforo(containerId){
   var el = document.getElementById(containerId);
   if(!el) return;
   var retEls = el.querySelectorAll('.funnel-retention');
-  if(retEls.length >= 1){
+  // FIX — antes hacía parseFloat(pctEl.textContent), releyendo un texto que
+  // renderFunnelEl ya había redondeado a 1 decimal (ej. "0.9%"), y luego lo
+  // reformateaba con 2 decimales ("0.90%") — dando una falsa precisión que
+  // en realidad era MENOS exacta que el dato real (0.92%). Ahora se recalcula
+  // directo desde ch.funnel_ventas (Impresiones/Clics/Compras reales).
+  var funnel = ch && ch.funnel_ventas;
+  if(retEls.length >= 1 && funnel && funnel[0] && funnel[1]){
     var pctEl = retEls[0].querySelector('.funnel-ret-pct');
     if(pctEl){
-      var ctr = parseFloat(pctEl.textContent);
+      var ctr = funnel[0].value ? (funnel[1].value/funnel[0].value*100) : 0;
       var ctrMin = B.ctr_min!=null?B.ctr_min:1.5;
       var ctrGood = B.ctr_good!=null?B.ctr_good:3;
       var cls = ctr>=ctrGood?'good':ctr>=ctrMin?'warn':'bad';
       pctEl.className = 'funnel-ret-pct '+cls;
-      pctEl.textContent = ctr.toFixed(1)+'% retención (CTR vs. benchmark '+ctrMin+'–'+ctrGood+'%)';
+      pctEl.textContent = ctr.toFixed(2)+'% retención (CTR vs. benchmark '+ctrMin+'–'+ctrGood+'%)';
     }
   }
-  if(retEls.length >= 2){
+  if(retEls.length >= 2 && funnel && funnel[1] && funnel[2]){
     var pctEl2 = retEls[1].querySelector('.funnel-ret-pct');
     if(pctEl2){
-      var cvr = parseFloat(pctEl2.textContent);
+      var cvr = funnel[1].value ? (funnel[2].value/funnel[1].value*100) : 0;
       var ec = B.ecommerce || {malo:1, bueno_min:3};
       var cls2 = cvr>=ec.bueno_min?'good':cvr>=ec.malo?'warn':'bad';
       pctEl2.className = 'funnel-ret-pct '+cls2;
@@ -2222,8 +2228,8 @@ function renderMicroTable(bodyId, stages){
       <td style="font-weight:600">${s.stage}</td>
       <td class="mono">${fmt(s.value)}</td>
       <td style="color:var(--ink-dim)">${next.stage}</td>
-      <td><span class="funnel-ret-pct ${cls}">${ret.toFixed(1)}%</span></td>
-      <td class="mono" style="color:var(--red)">${fuga.toFixed(1)}%</td>
+      <td><span class="funnel-ret-pct ${cls}">${ret.toFixed(2)}%</span></td>
+      <td class="mono" style="color:var(--red)">${fuga.toFixed(2)}%</td>
       <td>${ret>60?'<span class="badge-status badge-escalar">Saludable</span>':ret>30?'<span class="badge-status badge-monitorear">Monitorear</span>':'<span class="badge-status badge-pausar">Fuga crítica</span>'}</td>
     </tr>`;
   }).join('');
