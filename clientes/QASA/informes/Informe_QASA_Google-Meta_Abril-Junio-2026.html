@@ -49,6 +49,12 @@ a{color:var(--accent);text-decoration:none}
 .preset-btn:hover,.preset-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
 .month-tab-select{appearance:none;-webkit-appearance:none;outline:none}
 .month-tab-select option{background:var(--bg-3);color:var(--ink)}
+.month-dd-wrap{position:relative;display:inline-block}
+.month-dd-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:140px;background:var(--bg-3);border:1px solid var(--line);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:50;overflow:hidden}
+.month-dd-menu.open{display:block}
+.month-dd-item{padding:9px 14px;font-size:11px;font-family:var(--mono);color:var(--ink-dim);cursor:pointer;transition:.15s;white-space:nowrap}
+.month-dd-item:hover{background:var(--bg-2);color:var(--ink)}
+.month-dd-item.selected{color:var(--accent);font-weight:600}
 
 /* CHANNEL TABS */
 .channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line);padding:0}
@@ -2653,7 +2659,8 @@ function loadMonth(idx){
     if(df)df.value=currentFrom;if(dt)dt.value=currentTo;
   }
   // Actualizar selector visual completo (botón directo + desplegable)
-  buildMonthSelector();
+  // Se posterga con setTimeout para no reconstruir el DOM en medio del propio evento de clic del item
+  setTimeout(buildMonthSelector, 0);
   renderAll();
 }
 
@@ -2677,16 +2684,33 @@ function buildMonthSelector(){
 
   if(olderIdx.length){
     const isOlderSelected = olderIdx.includes(selectedMonthIdx);
-    const options = olderIdx.map(i=>`<option value="${i}"${selectedMonthIdx===i?' selected':''}>${getName(i)}</option>`).join('');
-    html += `<select class="preset-btn month-tab-select${isOlderSelected?' active':''}" onchange="loadMonth(parseInt(this.value))">
-      <option value="" disabled ${!isOlderSelected?'selected':''}>Anterior ▾</option>
-      ${options}
-    </select>`;
+    const items = olderIdx.map(i=>`<div class="month-dd-item${selectedMonthIdx===i?' selected':''}" onclick="event.stopPropagation();selectMonthFromDropdown(${i})">${getName(i)}</div>`).join('');
+    html += `<div class="month-dd-wrap">
+      <button type="button" class="preset-btn month-tab-select${isOlderSelected?' active':''}" onclick="toggleMonthDropdown(event)">Anterior ▾</button>
+      <div class="month-dd-menu" id="monthDropdownMenu">${items}</div>
+    </div>`;
   }
 
   bar.innerHTML = html;
   bar.classList.add('visible');
 }
+
+function toggleMonthDropdown(e){
+  e.stopPropagation();
+  const menu=document.getElementById('monthDropdownMenu');
+  if(!menu)return;
+  const isOpen=menu.classList.contains('open');
+  closeMonthDropdown();
+  if(!isOpen) menu.classList.add('open');
+}
+function closeMonthDropdown(){
+  const menu=document.getElementById('monthDropdownMenu');
+  if(menu) menu.classList.remove('open');
+}
+function selectMonthFromDropdown(idx){
+  loadMonth(idx);
+}
+document.addEventListener('click', closeMonthDropdown);
 
 function initMultiMes(){
   if(DATA.months&&DATA.months.length>0){
@@ -4017,10 +4041,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 .channel-bar .wrap::-webkit-scrollbar{display:none}
 .ch-tab{white-space:nowrap!important;flex-shrink:0!important}
 
-/* MONTH BAR scroll */
-#monthBar{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;flex-wrap:nowrap!important}
-#monthBar::-webkit-scrollbar{display:none}
-#monthBar .preset-btn{white-space:nowrap!important;flex-shrink:0!important}
+/* MONTH BAR — ya no necesita scroll horizontal (botón único + dropdown), el overflow rompía el dropdown */
+#monthBar .preset-btn{white-space:nowrap!important}
 
 /* TABLAS siempre scroll */
 .table-wrap{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
