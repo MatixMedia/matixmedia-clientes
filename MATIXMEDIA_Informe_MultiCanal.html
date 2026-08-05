@@ -180,13 +180,11 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 
 #btn-pdf{background:var(--accent);color:#000;border:none;border-radius:6px;padding:7px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--mono);letter-spacing:.05em;margin-left:8px}
 #btn-pdf:hover{opacity:.85}
-#monthBar{display:none;padding:10px 24px;background:var(--bg-2);border-bottom:1px solid var(--line);gap:6px;flex-wrap:wrap}
-#monthBar.visible{display:flex}
 @media print{
   /* Forzar impresión con colores reales del tema oscuro */
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
   body{background:var(--bg)!important;color:var(--ink)!important}
-  .channel-bar,.preset-bar,#btn-pdf,#monthBar,.date-row{display:none!important}
+  .channel-bar,.preset-bar,#btn-pdf,#monthBar,#monthDropdownWrap,.date-row{display:none!important}
   /* Mostrar todos los paneles al imprimir */
   .ch-panel{display:block!important;margin-bottom:40px}
   .ch-panel.print-hide-inactive{display:none!important}
@@ -389,17 +387,19 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <span style="color:var(--ink-dim);font-size:11px">→</span>
       <input type="date" class="date-input" id="dateTo">
       <div class="preset-btns">
-        <button class="preset-btn active" id="btn-preset-current" onclick="setPreset('current',event)">Este mes</button>
-        <button class="preset-btn" id="btn-preset-prev" onclick="setPreset('prev',event)">Anterior</button>
+        <button class="preset-btn active" id="btn-preset-current" onclick="selectCurrentMonth(event)">Este mes</button>
+        <div class="month-dropdown-wrap" id="monthDropdownWrap" style="display:none">
+          <button class="preset-btn month-dropdown-btn" id="btn-preset-prev" onclick="toggleMonthDropdown(event)">
+            Anterior<span class="dropdown-caret">▾</span>
+          </button>
+          <div class="month-dropdown-menu" id="monthDropdownMenu"></div>
+        </div>
         <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
       <button id="btn-pdf" onclick="exportPDF()">⬇ PDF</button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- CHANNEL TABS -->
-<div id="monthBar" class="channel-bar" style="display:none"></div>
 
   <div class="channel-bar">
   <div class="wrap" id="channelTabs"></div>
@@ -408,6 +408,20 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 <!-- GOOGLE ADS PANEL -->
 <div class="ch-panel active" id="panel-google">
 <div class="wrap">
+
+  <!-- NOTIFICACIONES -->
+  <div class="notif-panel" id="g-notifPanel" style="display:none">
+    <div class="notif-panel-header" onclick="toggleNotifPanel('g')">
+      <span class="notif-bell">🔔</span>
+      <span class="notif-panel-title">Notificaciones</span>
+      <span class="notif-panel-count" id="g-notifCount"></span>
+      <span class="notif-panel-caret">▾</span>
+    </div>
+    <div class="notif-panel-body">
+      <div class="notif-cards" id="g-notifCards"></div>
+      <div class="notif-pagination" id="g-notifPagination" style="display:none"></div>
+    </div>
+  </div>
 
   <!-- 01. KPI CARDS -->
   <div class="section">
@@ -418,7 +432,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <!-- 02. SERIE SEMANAL -->
   <div class="section">
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Serie semanal</span></div>
-    <div class="charts-3col">
+    <div class="charts-weekly">
       <div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="g-chartWk1"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Clics → Conversiones</div><div style="height:200px"><canvas id="g-chartWk2"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Conversiones → Costo</div><div style="height:200px"><canvas id="g-chartWk3"></canvas></div></div>
@@ -569,6 +583,20 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 <div class="ch-panel" id="panel-meta">
 <div class="wrap">
 
+  <!-- NOTIFICACIONES -->
+  <div class="notif-panel" id="m-notifPanel" style="display:none">
+    <div class="notif-panel-header" onclick="toggleNotifPanel('m')">
+      <span class="notif-bell">🔔</span>
+      <span class="notif-panel-title">Notificaciones</span>
+      <span class="notif-panel-count" id="m-notifCount"></span>
+      <span class="notif-panel-caret">▾</span>
+    </div>
+    <div class="notif-panel-body">
+      <div class="notif-cards" id="m-notifCards"></div>
+      <div class="notif-pagination" id="m-notifPagination" style="display:none"></div>
+    </div>
+  </div>
+
   <!-- 01. KPIs (incluye seguidores + me gusta para ambos objetivos) -->
   <div class="section">
     <div class="section-header"><span class="section-num">01</span><span class="section-title">Resumen del período</span><span id="m-obj-badge"></span></div>
@@ -578,7 +606,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <!-- 02. SERIE SEMANAL -->
   <div class="section">
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Serie semanal</span></div>
-    <div class="charts-3col">
+    <div class="charts-weekly">
       <div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="m-chartWk1"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Clics → Resultados</div><div style="height:200px"><canvas id="m-chartWk2"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Resultados → Costo</div><div style="height:200px"><canvas id="m-chartWk3"></canvas></div></div>
@@ -683,9 +711,23 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 <!-- TIKTOK ADS PANEL -->
 <div class="ch-panel" id="panel-tiktok">
 <div class="wrap">
+  <!-- NOTIFICACIONES -->
+  <div class="notif-panel" id="t-notifPanel" style="display:none">
+    <div class="notif-panel-header" onclick="toggleNotifPanel('t')">
+      <span class="notif-bell">🔔</span>
+      <span class="notif-panel-title">Notificaciones</span>
+      <span class="notif-panel-count" id="t-notifCount"></span>
+      <span class="notif-panel-caret">▾</span>
+    </div>
+    <div class="notif-panel-body">
+      <div class="notif-cards" id="t-notifCards"></div>
+      <div class="notif-pagination" id="t-notifPagination" style="display:none"></div>
+    </div>
+  </div>
+
   <div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Resumen del período</span><span id="t-obj-badge"></span></div><div class="kpi-grid" id="t-kpi-grid"></div></div>
   <div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">Métricas de video · Hook Rate · Completion · Watch Time</span></div><div class="video-metrics" id="t-video-metrics"></div><div class="charts-3col" style="margin-top:10px"><div class="chart-host"><div class="chart-title">Hook Rate en el tiempo (3s)</div><div style="height:180px"><canvas id="t-hookChart"></canvas></div></div><div class="chart-host"><div class="chart-title">Completion Rate en el tiempo</div><div style="height:180px"><canvas id="t-completionChart"></canvas></div></div><div class="chart-host"><div class="chart-title">CPV en el tiempo</div><div style="height:180px"><canvas id="t-cpvChart"></canvas></div></div></div></div>
-  <div class="section"><div class="section-header"><span class="section-num">03</span><span class="section-title">Serie semanal</span></div><div class="charts-3col"><div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="t-chartWk1"></canvas></div></div><div class="chart-host"><div class="chart-title">Clics → Resultados</div><div style="height:200px"><canvas id="t-chartWk2"></canvas></div></div><div class="chart-host"><div class="chart-title">Resultados → Costo</div><div style="height:200px"><canvas id="t-chartWk3"></canvas></div></div></div></div>
+  <div class="section"><div class="section-header"><span class="section-num">03</span><span class="section-title">Serie semanal</span></div><div class="charts-weekly"><div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="t-chartWk1"></canvas></div></div><div class="chart-host"><div class="chart-title">Clics → Resultados</div><div style="height:200px"><canvas id="t-chartWk2"></canvas></div></div><div class="chart-host"><div class="chart-title">Resultados → Costo</div><div style="height:200px"><canvas id="t-chartWk3"></canvas></div></div></div></div>
   <div class="section"><div class="section-header"><span class="section-num">04</span><span class="section-title">Embudo expandido · <span id="t-funnel-label" style="color:var(--accent)"></span></span></div><div class="charts-2col"><div class="funnel-wrap" id="t-funnel"></div><div class="chart-host"><div class="chart-title">Retención por etapa</div><div style="height:280px"><canvas id="t-chartFunnel"></canvas></div></div></div></div>
   <div class="section"><div class="section-header"><span class="section-num">05</span><span class="section-title">Micro-conversiones · Tasa de retención entre etapas</span></div><div class="table-wrap"><table id="t-microTable"><thead><tr><th>Etapa</th><th>Total</th><th>Siguiente etapa</th><th>Retención %</th><th>Fuga %</th><th>Estado</th></tr></thead><tbody id="t-microBody"></tbody></table></div></div>
   <div class="section"><div class="section-header"><span class="section-num">06</span><span class="section-title">Diagnóstico clínico de fugas · Plan de acción</span></div><div id="t-diagnosis"></div></div>
@@ -1048,7 +1090,7 @@ function agg(rows){
 function byCamp(rows){
   const m={};
   rows.forEach(d=>{if(!m[d.campaign])m[d.campaign]={campaign:d.campaign,impr:0,clicks:0,cost:0,conv:0,value:0,reach:0,results:0};
-    const c=m[d.campaign];c.impr+=(d.impr||d.impressions||0);c.clicks+=d.clicks||0;c.cost+=(d.cost||d.spend||0);c.conv+=d.conv||0;c.value+=d.value||0;c.reach+=d.reach||0;c.results+=d.results||d.conv||0;});
+    const c=m[d.campaign];c.impr+=(d.impr||d.impressions||0);c.clicks+=d.clicks||0;c.cost+=(d.cost||d.spend||0);c.conv+=(d.conv||d.results||0);c.value+=d.value||0;c.reach+=d.reach||0;c.results+=d.results||d.conv||0;});
   // FIX — cpa usaba "c.conv", que queda en 0 para datos con objetivo VENTAS
   // (usan el campo "results", no "conv"). Esto dejaba CPA=$0 en TODAS las
   // campañas de cualquier cliente VENTAS -> recomendaciones "PAUSAR" falsas.
@@ -1135,21 +1177,38 @@ function renderFunnelEl(containerId,chartId,stages,accentColor,benchmarks){
     // resultados->conversaciones, clientes potenciales) -> escala generica
     return pct>60?'good':pct>30?'warn':'bad';
   }
-  const max=stages[0]?.value||1;
+  if(!stages||!stages.length)return;
+  // FIX — el paso a paso SIEMPRE se calcula sobre las etapas ABSOLUTAS
+  // (sin isRate). Antes se usaba stages[i-1] directo, que si el funnel
+  // traia una etapa de tasa embebida (ej. CTR) entre dos etapas absolutas,
+  // comparaba el valor siguiente contra esa tasa en vez del stage real
+  // anterior -> retenciones sin sentido (ej. Conversiones vs CTR%).
+  const absStages=stages.filter(s=>!s.isRate);
+  const max=absStages[0]?.value||1;
   let mainIdx=-1,mainPct=100;
-  const retentions=stages.map((s,i)=>{if(i===0)return null;const p=stages[i-1].value?s.value/stages[i-1].value*100:0;if(p<mainPct){mainPct=p;mainIdx=i;}return p;});
+  const retentions=absStages.map((s,i)=>{if(i===0)return null;const p=absStages[i-1].value?s.value/absStages[i-1].value*100:0;if(p<mainPct){mainPct=p;mainIdx=i;}return p;});
   // No marcar conversiones como fuga si su retención supera el 2%
   if(mainIdx!==-1&&retentions[mainIdx]!==null){
-    const sl=(stages[mainIdx]?.stage||'').toLowerCase();
+    const sl=(absStages[mainIdx]?.stage||'').toLowerCase();
     const isConv=sl.includes('conv')||sl.includes('lead')||sl.includes('compra')||sl.includes('venta');
     if(isConv&&retentions[mainIdx]>2){
       let alt=-1,altPct=100;
-      retentions.forEach((p,i)=>{if(i===0||p===null||i===mainIdx)return;const s2=(stages[i]?.stage||'').toLowerCase();const ic=s2.includes('conv')||s2.includes('lead')||s2.includes('compra')||s2.includes('venta');if(!ic&&p<altPct){altPct=p;alt=i;}});
+      retentions.forEach((p,i)=>{if(i===0||p===null||i===mainIdx)return;const s2=(absStages[i]?.stage||'').toLowerCase();const ic=s2.includes('conv')||s2.includes('lead')||s2.includes('compra')||s2.includes('venta');if(!ic&&p<altPct){altPct=p;alt=i;}});
       mainIdx=alt;
     }
   }
   let html='';
-  stages.forEach((s,i)=>{
+  stages.forEach(s=>{
+    if(s.isRate){
+      html+=`<div class="funnel-stage"><div class="funnel-bar-wrap">
+        <div class="funnel-label" style="color:var(--accent)">${s.stage}</div>
+        <div style="flex:1;background:var(--bg-3);border-radius:3px;height:28px;display:flex;align-items:center;padding:0 14px">
+          <span style="font-family:var(--mono);font-size:13px;font-weight:600;color:${accentColor}">${s.rateLabel}</span>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--ink-dim);margin-left:8px">tasa calculada</span>
+        </div></div></div>`;
+      return;
+    }
+    const i=absStages.indexOf(s);
     const w=max?(s.value/max*100).toFixed(1):0;
     const isFuga=i===mainIdx;
     html+=`<div class="funnel-stage"><div class="funnel-bar-wrap"><div class="funnel-label">${s.stage}</div><div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${w}%;${isFuga?`background:var(--red);opacity:.85`:``}"><span class="funnel-bar-val">${fmt(s.value)}</span></div></div>${isFuga?'<span class="badge-fuga">⚠ FUGA</span>':''}</div>`;
@@ -1160,7 +1219,7 @@ function renderFunnelEl(containerId,chartId,stages,accentColor,benchmarks){
   const chartEl=document.getElementById(chartId);
   if(!chartEl)return;
   destroyC(chartId);
-  CHARTS[chartId]=new Chart(chartEl,{type:'bar',data:{labels:stages.map(s=>s.stage),datasets:[{data:retentions.map((r,i)=>i===0?100:r),backgroundColor:stages.map((s,i)=>{if(i===0)return accentColor+'AA';const cls=classifyRetention(s.stage,retentions[i]);return cls==='good'?'rgba(25,148,119,.6)':cls==='warn'?accentColor+'AA':'rgba(207,52,58,.6)';}),borderColor:stages.map((s,i)=>{if(i===0)return accentColor;const cls=classifyRetention(s.stage,retentions[i]);return cls==='good'?'#199477':cls==='warn'?accentColor:'#CF343A';}),borderWidth:1.5,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>` ${(c.raw||0).toFixed(1)}% retención`}}},scales:{x:{max:100,ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'}}}}});
+  CHARTS[chartId]=new Chart(chartEl,{type:'bar',data:{labels:absStages.map(s=>s.stage),datasets:[{data:retentions.map((r,i)=>i===0?100:r),backgroundColor:absStages.map((s,i)=>{if(i===0)return accentColor+'AA';const cls=classifyRetention(s.stage,retentions[i]);return cls==='good'?'rgba(25,148,119,.6)':cls==='warn'?accentColor+'AA':'rgba(207,52,58,.6)';}),borderColor:absStages.map((s,i)=>{if(i===0)return accentColor;const cls=classifyRetention(s.stage,retentions[i]);return cls==='good'?'#199477':cls==='warn'?accentColor:'#CF343A';}),borderWidth:1.5,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>` ${(c.raw||0).toFixed(1)}% retención`}}},scales:{x:{max:100,ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'}}}}});
 }
 
 // ─── DIAGNOSIS ───────────────────────────────────
@@ -1328,7 +1387,18 @@ function aggregateForPrev(ch){
 function loadMonth(idx){
   if(!DATA.months||!DATA.months[idx])return;
   const m=DATA.months[idx];
+  // Preservar el flag "active" de cada canal (decide que tabs se muestran).
+  // Vive en DATA.channels a nivel raiz y no necesariamente se replica dentro
+  // de cada entrada de DATA.months[].channels, asi que lo guardamos ANTES de
+  // pisar DATA.channels y lo reaplicamos despues si el mes no lo trae.
+  const prevActive={};
+  if(DATA.channels){
+    Object.keys(DATA.channels).forEach(k=>{prevActive[k]=DATA.channels[k]?.active;});
+  }
   DATA.channels=JSON.parse(JSON.stringify(m.channels));
+  Object.keys(DATA.channels).forEach(k=>{
+    if(DATA.channels[k].active==null&&prevActive[k]!=null) DATA.channels[k].active=prevActive[k];
+  });
   // Inyectar prev desde mes anterior (idx+1)
   if(DATA.months[idx+1]){
     const pm=DATA.months[idx+1].channels;
@@ -1351,31 +1421,65 @@ function loadMonth(idx){
     const df=document.getElementById('dateFrom');const dt=document.getElementById('dateTo');
     if(df)df.value=currentFrom;if(dt)dt.value=currentTo;
   }
-  // Actualizar labels preset con nombres reales de mes
+  // Actualizar label del boton "Este mes" con el nombre real del mes
+  // (el boton "Anterior" NO se toca aqui — buildMonthSelector() es la unica
+  // fuente de verdad para su estado, así se preserva el caret del dropdown)
   const btnCurr = document.getElementById('btn-preset-current');
-  const btnPrev = document.getElementById('btn-preset-prev');
   if(btnCurr) btnCurr.textContent = window._currMonthName || 'Este mes';
-  if(btnPrev){
-    if(window._prevMonthName && window._prevMonthName !== 'Mes anterior'){
-      btnPrev.textContent = window._prevMonthName;
-      btnPrev.style.display = '';
-    } else {
-      btnPrev.style.display = 'none'; // ocultar si no hay mes anterior
-    }
-  }
-  // Actualizar selector
-  document.querySelectorAll('.month-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  // Actualizar selector — trackear el mes activo y refrescar el dropdown
+  selectedMonthIdx = idx;
+  buildMonthSelector();
   renderAll();
 }
 
 function buildMonthSelector(){
-  const bar=document.getElementById('monthBar');if(!bar)return;
-  if(!DATA.months||DATA.months.length<=1){bar.classList.remove('visible');return;}
-  bar.innerHTML=DATA.months.map((m,i)=>{
+  const wrap=document.getElementById('monthDropdownWrap');
+  const menu=document.getElementById('monthDropdownMenu');
+  if(!wrap||!menu)return;
+  if(!DATA.months||DATA.months.length<=1){wrap.style.display='none';return;}
+  // El indice 0 es "Este mes" (boton aparte) — el dropdown "Anterior" agrupa todo lo demas
+  const items=DATA.months.slice(1).map((m,i)=>{
+    const realIdx=i+1;
     const name=getMonthName(m.channels.google?.date_min||m.channels.meta?.date_min||m.channels.tiktok?.date_min);
-    return`<button class="preset-btn month-tab${i===0?' active':''}" onclick="loadMonth(${i})">${name}</button>`;
+    return`<button class="month-dropdown-item${realIdx===selectedMonthIdx?' active':''}" data-idx="${realIdx}" onclick="selectMonthFromDropdown(${realIdx})">${name}</button>`;
   }).join('');
-  bar.classList.add('visible');
+  menu.innerHTML=items;
+  wrap.style.display='inline-block';
+  // Marcar boton "Anterior" y boton "Este mes" segun cual este activo
+  const btnPrev=document.getElementById('btn-preset-prev');
+  const btnCurr=document.getElementById('btn-preset-current');
+  if(btnPrev) btnPrev.classList.toggle('active', selectedMonthIdx!==0);
+  if(btnCurr) btnCurr.classList.toggle('active', selectedMonthIdx===0);
+}
+
+function toggleMonthDropdown(e){
+  e.stopPropagation();
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(!menu||!btn)return;
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Cerrar el dropdown al hacer click afuera
+document.addEventListener('click',()=>{
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(menu) menu.classList.remove('open');
+  if(btn) btn.classList.remove('open');
+});
+
+function selectMonthFromDropdown(idx){
+  loadMonth(idx);
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(menu) menu.classList.remove('open');
+  if(btn) btn.classList.remove('open');
+}
+
+function selectCurrentMonth(e){
+  if(e) e.preventDefault();
+  loadMonth(0);
 }
 
 function initMultiMes(){
@@ -1408,11 +1512,32 @@ function renderMoM(gridId,items){
 
 // ─── RECOS ───────────────────────────────────────
 function renderRecos(gridId,camps,B,roasKey='roas',cpaKey='cpa'){
+  // FIX — asumía que B.roas_good/B.roas_min siempre venían definidos. Para
+  // cuentas con objetivo LEADS (donde no se trackea "value" y por lo tanto
+  // no hay ROAS real), ambos quedaban undefined: el texto mostraba
+  // literalmente "ROAS 0.0× por debajo de undefined×" y TODAS las campañas
+  // caían en PAUSAR sin importar su performance real. Ahora: si hay
+  // thresholds de ROAS definidos Y la campaña tiene ROAS real (>0), se usa
+  // ese criterio (igual que antes para cuentas VENTAS); si no, se clasifica
+  // por CPA contra B.cpa_max (el benchmark que sí suele venir siempre
+  // poblado); sin ninguno de los dos, se usa 'monitorear' en vez de asumir
+  // lo peor.
+  const roasGood=B.roas_good, roasMin=B.roas_min, cpaMax=B.cpa_max;
+  const useRoas=roasGood!=null&&roasMin!=null;
   const cards=camps.sort((a,b)=>b.cost-a.cost).map(c=>{
     const r=c[roasKey]||0,p=c[cpaKey]||0;
-    const status=r>=B.roas_good?'escalar':r>=B.roas_min?'monitorear':'pausar';
-    const reasons={escalar:`ROAS ${fmtX(r)} supera ${B.roas_good}×. Aumentar presupuesto +15–20% semanal mientras se mantenga.`,monitorear:`ROAS ${fmtX(r)} entre ${B.roas_min}×–${B.roas_good}×. Monitorear 7 días antes de escalar.`,pausar:`ROAS ${fmtX(r)} por debajo de ${B.roas_min}×. Reestructurar antes de continuar invirtiendo.`};
-    return`<div class="reco-card ${status}"><div class="reco-tag">⬤ ${status.toUpperCase()}</div><div class="reco-name">${c.campaign}</div><div class="reco-reason">${reasons[status]}</div><div class="reco-metrics"><div class="reco-metric">ROAS <span>${fmtX(r)}</span></div><div class="reco-metric">CTR <span>${fmtP(c.ctr)}</span></div><div class="reco-metric">CPA <span>${fmtM(p)}</span></div></div></div>`;
+    let status,reasonText;
+    if(useRoas&&r>0){
+      status=r>=roasGood?'escalar':r>=roasMin?'monitorear':'pausar';
+      reasonText={escalar:`ROAS ${fmtX(r)} supera ${roasGood}×. Aumentar presupuesto +15–20% semanal mientras se mantenga.`,monitorear:`ROAS ${fmtX(r)} entre ${roasMin}×–${roasGood}×. Monitorear 7 días antes de escalar.`,pausar:`ROAS ${fmtX(r)} por debajo de ${roasMin}×. Reestructurar antes de continuar invirtiendo.`}[status];
+    } else if(cpaMax!=null&&p>0){
+      status=p<=cpaMax*0.7?'escalar':p<=cpaMax?'monitorear':'pausar';
+      reasonText={escalar:`CPA ${fmtM(p)} está bien por debajo del máximo aceptable (${fmtM(cpaMax)}). Aumentar presupuesto +15–20% semanal mientras se mantenga.`,monitorear:`CPA ${fmtM(p)} está cerca del máximo aceptable (${fmtM(cpaMax)}). Monitorear 7 días antes de escalar.`,pausar:`CPA ${fmtM(p)} supera el máximo aceptable (${fmtM(cpaMax)}). Reestructurar antes de continuar invirtiendo.`}[status];
+    } else {
+      status='monitorear';
+      reasonText='Datos insuficientes para clasificar automáticamente esta campaña. Revisar manualmente.';
+    }
+    return`<div class="reco-card ${status}"><div class="reco-tag">⬤ ${status.toUpperCase()}</div><div class="reco-name">${c.campaign}</div><div class="reco-reason">${reasonText}</div><div class="reco-metrics"><div class="reco-metric">ROAS <span>${fmtX(r)}</span></div><div class="reco-metric">CTR <span>${fmtP(c.ctr)}</span></div><div class="reco-metric">CPA <span>${fmtM(p)}</span></div></div></div>`;
   });
   document.getElementById(gridId).innerHTML=cards.join('');
 }
@@ -1454,8 +1579,70 @@ function sortTable(id,col){
 // ════════════════════════════════════════════════
 // GOOGLE ADS RENDER — 12 secciones según prompt
 // ════════════════════════════════════════════════
+// ─── NOTIFICACIONES ──────────────────────────────
+const NOTIF_PAGE={};
+const NOTIF_DATA={};
+function renderNotifications(prefix,notifs){
+  const panel=document.getElementById(prefix+'-notifPanel');
+  if(!panel)return;
+  panel.style.display='';
+  const countEl=document.getElementById(prefix+'-notifCount');
+  const cardsEl0=document.getElementById(prefix+'-notifCards');
+  const pagEl0=document.getElementById(prefix+'-notifPagination');
+  if(!notifs||!notifs.length){
+    NOTIF_DATA[prefix]=[];
+    if(countEl)countEl.textContent='0';
+    if(cardsEl0)cardsEl0.innerHTML='<div class="notif-empty">No hay notificaciones para mostrar</div>';
+    if(pagEl0)pagEl0.style.display='none';
+    return;
+  }
+  NOTIF_DATA[prefix]=notifs;
+  if(countEl)countEl.textContent=notifs.length;
+  if(NOTIF_PAGE[prefix]==null)NOTIF_PAGE[prefix]=0;
+  const perPage=3;
+  const totalPages=Math.max(1,Math.ceil(notifs.length/perPage));
+  if(NOTIF_PAGE[prefix]>=totalPages)NOTIF_PAGE[prefix]=totalPages-1;
+  const page=NOTIF_PAGE[prefix];
+  const start=page*perPage;
+  const pageItems=notifs.slice(start,start+perPage);
+  const iconFor=()=>'⬤';
+  const cardsHtml=pageItems.map(n=>{
+    const lvl=(n.level==='bad'||n.level==='good')?n.level:'warn';
+    const tagsHtml=(n.tags||[]).map(t=>`<span class="notif-tag">📅 ${(t&&t.label)||t}</span>`).join('');
+    const recosHtml=(n.recommendations&&n.recommendations.length)?`<div class="notif-recos"><div class="notif-recos-title">◆ Recomendaciones</div>${n.recommendations.map((r,i)=>`<div class="notif-reco"><span class="notif-reco-num">${String(i+1).padStart(2,'0')}</span><span>${r}</span></div>`).join('')}</div>`:'';
+    const noteHtml=n.note?`<div class="notif-note">${n.note}</div>`:'';
+    return`<div class="notif-card level-${lvl}">
+      <div class="notif-card-head"><span class="notif-card-icon">${iconFor(lvl)}</span><span class="notif-card-title">${n.title||''}</span></div>
+      <div class="notif-card-text">${n.text||''}</div>
+      ${tagsHtml?`<div class="notif-tags">${tagsHtml}</div>`:''}
+      ${noteHtml}
+      ${recosHtml}
+    </div>`;
+  }).join('');
+  const cardsEl=document.getElementById(prefix+'-notifCards');
+  if(cardsEl)cardsEl.innerHTML=cardsHtml;
+  const pagEl=document.getElementById(prefix+'-notifPagination');
+  if(pagEl){
+    if(totalPages<=1){pagEl.style.display='none';}
+    else{
+      pagEl.style.display='flex';
+      const dots=Array.from({length:totalPages}).map((_,i)=>`<button class="notif-page-dot${i===page?' active':''}" onclick="goNotifPage('${prefix}',${i})"></button>`).join('');
+      pagEl.innerHTML=`<button class="notif-page-btn" onclick="goNotifPage('${prefix}',${page-1})" ${page===0?'disabled':''}>‹</button><div class="notif-page-dots">${dots}</div><button class="notif-page-btn" onclick="goNotifPage('${prefix}',${page+1})" ${page>=totalPages-1?'disabled':''}>›</button>`;
+    }
+  }
+}
+function goNotifPage(prefix,idx){
+  NOTIF_PAGE[prefix]=idx;
+  renderNotifications(prefix,NOTIF_DATA[prefix]||[]);
+}
+function toggleNotifPanel(prefix){
+  const panel=document.getElementById(prefix+'-notifPanel');
+  if(panel)panel.classList.toggle('collapsed');
+}
+
 function renderGoogle(){
   const ch=DATA.channels.google; if(!ch)return;
+  renderNotifications('g',ch.notifications||[]);
   const rows=getFiltered('google');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -1798,6 +1985,7 @@ var renderDiagnosisMetaVentas = renderDiagnosisGoogle;
 
 function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
+  renderNotifications('m',ch.notifications||[]);
   const rows=getFiltered('meta');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -2181,6 +2369,7 @@ const TT_FUNNEL_MAP = {
 
 function renderTikTok(){
   const ch=DATA.channels.tiktok; if(!ch)return;
+  renderNotifications('t',ch.notifications||[]);
   const rows=getFiltered('tiktok');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -2423,11 +2612,24 @@ function renderCreativesTable(ch,B){
   }
   const Bh=B.hook_rate||{bueno_min:30};
   const Bc=B.completion||{bueno_min:25};
+  // FIX — "decision" no venia calculado en ningun lado: se leia v.decision
+  // directo de los datos crudos (video_performance[]), un campo que la fuente
+  // de datos nunca provee. Esto rompia con "Cannot read properties of
+  // undefined (reading 'toUpperCase')" y tumbaba toda la seccion de
+  // creatividades. Ahora se calcula una sola vez por video, en base a las
+  // mismas metricas (hook_rate/completion) que ya se muestran en la tabla,
+  // para que el badge nunca contradiga los colores de esas columnas.
+  vids.forEach(v=>{
+    const hrOk=(v.hook_rate||0)>=Bh.bueno_min;
+    const crOk=(v.completion||0)>=Bc.bueno_min;
+    const hrBad=(v.hook_rate||0)<20, crBad=(v.completion||0)<20;
+    v.decision=(hrOk&&crOk)?'escalar':(hrBad||crBad)?'pausar':'monitorear';
+  });
   // Scatter Hook Rate vs Completion
   destroyC('t-scatterCreatives');
   CHARTS['t-scatterCreatives']=new Chart(document.getElementById('t-scatterCreatives'),{type:'scatter',
-    data:{datasets:vids.map((v,i)=>({label:v.video.slice(0,30)+'…',
-      data:[{x:+v.hook_rate.toFixed(1),y:+v.completion.toFixed(1)}],
+    data:{datasets:vids.map((v,i)=>({label:(v.video||'—').slice(0,30)+'…',
+      data:[{x:+(v.hook_rate||0).toFixed(1),y:+(v.completion||0).toFixed(1)}],
       backgroundColor:v.decision==='escalar'?'rgba(25,148,119,.7)':v.decision==='pausar'?'rgba(207,52,58,.7)':'rgba(232,192,70,.7)',
       borderColor:v.decision==='escalar'?'#199477':v.decision==='pausar'?'#CF343A':'#E8C046',
       pointRadius:12,pointHoverRadius:15}))},
@@ -2438,16 +2640,21 @@ function renderCreativesTable(ch,B){
     scales:{x:{title:{display:true,text:'Hook Rate %',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}},
     y:{title:{display:true,text:'Completion Rate %',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}});
   // Tabla
-  document.getElementById('t-creativesBody').innerHTML=vids.sort((a,b)=>b.hook_rate-a.hook_rate).map(v=>{
-    const hrCls=v.hook_rate>=Bh.bueno_min?'good':v.hook_rate>=20?'warn':'bad';
-    const crCls=v.completion>=Bc.bueno_min?'good':v.completion>=20?'warn':'bad';
+  // FIX — hook_rate/completion/ctr/video sin "||0" fallback: si algún video
+  // venia con un campo incompleto (comun en breakdowns manuales de creatividad),
+  // .toFixed() sobre undefined tumbaba toda la tabla. El sort tambien podia
+  // dar NaN y desordenar la lista sin avisar.
+  document.getElementById('t-creativesBody').innerHTML=vids.sort((a,b)=>(b.hook_rate||0)-(a.hook_rate||0)).map(v=>{
+    const hr=v.hook_rate||0, cr=v.completion||0, ctr=v.ctr||0;
+    const hrCls=hr>=Bh.bueno_min?'good':hr>=20?'warn':'bad';
+    const crCls=cr>=Bc.bueno_min?'good':cr>=20?'warn':'bad';
     return`<tr>
-      <td style="font-size:11px;max-width:200px">${v.video}</td>
-      <td class="mono ${hrCls}">${v.hook_rate.toFixed(1)}%</td>
-      <td class="mono ${crCls}">${v.completion.toFixed(1)}%</td>
-      <td class="mono ${v.ctr>=3?'good':v.ctr>=1.5?'warn':'bad'}">${v.ctr.toFixed(2)}%</td>
+      <td style="font-size:11px;max-width:200px">${v.video||'—'}</td>
+      <td class="mono ${hrCls}">${hr.toFixed(1)}%</td>
+      <td class="mono ${crCls}">${cr.toFixed(1)}%</td>
+      <td class="mono ${ctr>=3?'good':ctr>=1.5?'warn':'bad'}">${ctr.toFixed(2)}%</td>
       <td class="mono">${fmt(v.views)}</td>
-      <td class="mono" style="font-weight:700">${v.results}</td>
+      <td class="mono" style="font-weight:700">${v.results||0}</td>
       <td class="mono ${v.cpa>80000?'bad':'good'}">${v.cpa?fmtM(v.cpa):'—'}</td>
       <td><span class="badge-status badge-${v.decision}">${v.decision.toUpperCase()}</span></td>
     </tr>`;
@@ -2484,8 +2691,26 @@ function renderCampsTikTok(ch,B){
     const ctrCls=c.ctr>=3?'good':c.ctr>=1.5?'warn':'bad';
     const hrCls=c.hook_rate>=Bh.bueno_min?'good':c.hook_rate>=20?'warn':'bad';
     const cpaCls=c.cpa&&c.cpa>(B.cpa_max||80000)?'bad':'good';
+    // FIX — cuando las campañas se auto-agregan desde daily_raw (arriba), NUNCA
+    // se acumula "value"/"roas" (solo investment/results). Eso dejaba c.roas
+    // siempre undefined -> roas=0 -> status SIEMPRE 'pausar', sin importar el
+    // performance real. Ahora: si hay ROAS real (campaigns_data del cliente
+    // con objetivo VENTAS lo trae), se usa igual que antes; si no hay ROAS
+    // (caso normal de TikTok con objetivo LEADS/interacciones), se clasifica
+    // por CPA vs el mismo benchmark que ya pinta la columna CPA (cpaCls),
+    // para que el semáforo nunca contradiga esa columna. Sin datos de ninguno
+    // de los dos, se usa 'monitorear' en vez de asumir lo peor.
+    const cpaMax=B.cpa_max||80000;
+    const hasRoas=c.roas!=null&&c.roas>0;
     const roas=c.roas||0;
-    const status=roas>=3?'escalar':roas>=1.5?'monitorear':'pausar';
+    let status;
+    if(hasRoas){
+      status=roas>=3?'escalar':roas>=1.5?'monitorear':'pausar';
+    } else if(c.cpa){
+      status=c.cpa<=cpaMax*0.7?'escalar':c.cpa<=cpaMax?'monitorear':'pausar';
+    } else {
+      status='monitorear';
+    }
     const dec=c.results>0?status:'pausar';
     return`<tr>
       <td style="font-size:11px">${c.campaign}</td>
@@ -2648,9 +2873,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 .ch-tab{white-space:nowrap!important;flex-shrink:0!important}
 
 /* MONTH BAR scroll */
-#monthBar{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;flex-wrap:nowrap!important}
-#monthBar::-webkit-scrollbar{display:none}
-#monthBar .preset-btn{white-space:nowrap!important;flex-shrink:0!important}
 
 /* TABLAS siempre scroll */
 .table-wrap{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
@@ -2675,6 +2897,108 @@ table{min-width:400px!important}
   .footer-brand{flex-direction:column!important;align-items:center!important;text-align:center!important}
   .footer-links{justify-content:center!important}
 }
+
+/* SERIE SEMANAL — siempre 2 columnas fijas (2x2), nunca 3, para evitar huecos
+   cuando hay 4 gráficos (Impresiones→Clics, Clics→Conv/Resultados,
+   Conv/Resultados→Costo, Conversiones/Resultados/Compras por semana) */
+.charts-weekly{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+}
+@media(max-width:640px){
+  .charts-weekly{grid-template-columns:1fr!important}
+}
+
+/* FIX: Chart.js canvas resize bug — sin position:relative en el contenedor
+   inmediato del canvas, al estirar la ventana y volver a su tamaño original
+   el canvas entra en un loop de crecimiento y queda roto/deformado.
+   Este fix aplica a TODOS los divs con altura fija que envuelven un canvas
+   (el patrón <div style="height:XXXpx"><canvas></canvas></div> usado en
+   todo el reporte), forzando position:relative en el wrapper y que el
+   canvas se ajuste siempre al 100% de ese wrapper via position:absolute. */
+.chart-host div:has(> canvas),
+.funnel-wrap div:has(> canvas){
+  position:relative!important;
+  width:100%!important;
+}
+.chart-host canvas,
+.funnel-wrap canvas{
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  width:100%!important;
+  height:100%!important;
+}
+
+/* DROPDOWN DE MESES ANTERIORES */
+.month-dropdown-wrap{position:relative;display:inline-block}
+.month-dropdown-btn{display:flex!important;align-items:center;gap:5px}
+.month-dropdown-btn .dropdown-caret{font-size:9px;transition:.2s;display:inline-block}
+.month-dropdown-btn.open .dropdown-caret{transform:rotate(180deg)}
+.month-dropdown-menu{
+  display:none;position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:8px;
+  min-width:160px;padding:6px;z-index:50;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.month-dropdown-menu.open{display:block}
+.month-dropdown-item{
+  display:block;width:100%;text-align:left;background:transparent;border:none;
+  color:var(--ink-dim);font-family:var(--mono);font-size:12px;padding:8px 10px;
+  border-radius:5px;cursor:pointer;transition:.15s;white-space:nowrap;
+}
+.month-dropdown-item:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+.month-dropdown-item.active{background:rgba(232,192,70,.14);color:var(--accent);font-weight:600}
+
+/* NOTIFICACIONES — mismo lenguaje visual que .reco-card/.diag-box:
+   fondo neutro (bg-2) + borde gris + acento de color SOLO en el borde
+   izquierdo, en vez de fondo tintado + borde completo de color. Tipografia
+   y tracking alineados 1:1 con .section-title/.diag-title/.diag-text para
+   que el panel se sienta parte del mismo sistema, no un componente aparte. */
+.notif-panel{padding-bottom:22px}
+.notif-panel-header{display:flex!important;align-items:center!important;gap:10px!important;cursor:pointer;padding:4px 0;user-select:none;border-radius:6px;transition:background .15s}
+.notif-panel-header:hover{background:rgba(255,255,255,.03)}
+.notif-bell{font-size:14px;color:var(--accent)}
+.notif-panel-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink)}
+.notif-panel-count{font-family:var(--mono);font-size:10px;color:var(--ink-dim);background:var(--bg-3);border-radius:10px;padding:1px 8px;min-width:16px;text-align:center}
+.notif-panel-caret{margin-left:auto;font-size:11px;color:var(--ink-dim);transition:transform .2s;display:inline-block}
+.notif-panel.collapsed .notif-panel-caret{transform:rotate(-90deg)}
+.notif-panel.collapsed .notif-panel-body{display:none!important}
+.notif-panel-body{margin-top:16px}
+.notif-cards{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(clamp(240px,45%,340px),1fr))!important;gap:12px!important}
+.notif-card{background:var(--bg-2);border:1px solid var(--line);border-left:3px solid;border-radius:8px;padding:16px 18px}
+.notif-card.level-bad{border-left-color:var(--red)}
+.notif-card.level-warn{border-left-color:var(--accent)}
+.notif-card.level-good{border-left-color:var(--teal)}
+.notif-card-head{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.notif-card-icon{font-size:11px;line-height:1}
+.notif-card.level-bad .notif-card-icon{color:var(--red)}
+.notif-card.level-warn .notif-card-icon{color:var(--accent)}
+.notif-card.level-good .notif-card-icon{color:var(--teal)}
+.notif-card-title{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.notif-card.level-bad .notif-card-title{color:var(--red)}
+.notif-card.level-warn .notif-card-title{color:var(--accent)}
+.notif-card.level-good .notif-card-title{color:var(--teal)}
+.notif-card-text{font-size:12px;color:var(--ink-dim);line-height:1.7}
+.notif-card-text strong{color:var(--ink);font-weight:600}
+.notif-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notif-tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--ink-dim);background:var(--bg-3);border:1px solid var(--line);padding:4px 9px;border-radius:5px}
+.notif-note{font-size:11px;color:var(--ink-dim);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.notif-recos{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.notif-recos-title{font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim);margin-bottom:9px}
+.notif-reco{display:flex;gap:9px;font-size:11px;color:var(--ink-dim);line-height:1.6;margin-bottom:7px}
+.notif-reco:last-child{margin-bottom:0}
+.notif-reco-num{flex-shrink:0;width:16px;height:16px;border-radius:3px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.notif-empty{font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-align:center;padding:22px 0;border:1px dashed var(--line);border-radius:8px}
+.notif-pagination{display:flex!important;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.notif-page-btn{background:var(--bg-2);border:1px solid var(--line);color:var(--ink-dim);border-radius:5px;padding:3px 9px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:.15s}
+.notif-page-btn:hover:not(:disabled){color:var(--ink);border-color:var(--ink-dim)}
+.notif-page-btn:disabled{opacity:.3;cursor:default}
+.notif-page-dots{display:flex;gap:5px}
+.notif-page-dot{width:6px;height:6px;border-radius:50%;background:var(--line);cursor:pointer;padding:0;border:none;transition:.15s}
+.notif-page-dot.active{background:var(--accent)}
+@media(max-width:640px){.notif-cards{grid-template-columns:1fr!important}}
 </style>
 
 </body>
