@@ -75,14 +75,13 @@ a{color:var(--accent);text-decoration:none}
 .charts-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .charts-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:860px){.charts-2col,.charts-3col{grid-template-columns:1fr}}
-.period-select{display:block;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:6px;cursor:pointer;outline:none;min-width:180px}
-.period-select option{background:var(--bg-2);color:var(--ink)}
+
 @media(max-width:600px){
   .report-header .wrap{flex-direction:column;align-items:center;text-align:center}
   .header-left{flex-direction:column;align-items:center;text-align:center}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
-  .period-select{width:100%}
+  .preset-btns{justify-content:center;flex-wrap:wrap}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -262,14 +261,13 @@ a{color:var(--accent);text-decoration:none}
 .charts-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .charts-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:860px){.charts-2col,.charts-3col{grid-template-columns:1fr}}
-.period-select{display:block;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:6px;cursor:pointer;outline:none;min-width:180px}
-.period-select option{background:var(--bg-2);color:var(--ink)}
+
 @media(max-width:600px){
   .report-header .wrap{flex-direction:column;align-items:center;text-align:center}
   .header-left{flex-direction:column;align-items:center;text-align:center}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
-  .period-select{width:100%}
+  .preset-btns{justify-content:center;flex-wrap:wrap}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -398,12 +396,12 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <input type="date" class="date-input" id="dateFrom">
       <span style="color:var(--ink-dim);font-size:11px">→</span>
       <input type="date" class="date-input" id="dateTo">
-      <select class="period-select" onchange="setPeriodFromSelect(this)">
-        <option value="current">📅 Agosto (actual)</option>
-        <option value="jul">📅 Julio</option>
-        <option value="jun">📅 Junio</option>
-        <option value="all">📅 Todo el período</option>
-      </select>
+      <div class="preset-btns">
+        <button class="preset-btn active" onclick="setPreset('current',event)">Agosto</button>
+        <button class="preset-btn" onclick="setPreset('jul',event)">Julio</button>
+        <button class="preset-btn" onclick="setPreset('jun',event)">Junio</button>
+        <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1180,9 +1178,6 @@ function getFiltered(channel){
   });
 }
 
-function setPeriodFromSelect(sel){
-  setPreset(sel.value, {target:{classList:{add:()=>{},remove:()=>{}}}});
-}
 function setPreset(p,e){
   document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
   e.target.classList.add('active');
