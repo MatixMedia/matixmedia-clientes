@@ -30,6 +30,8 @@ a{color:var(--accent);text-decoration:none}
 .preset-btns{display:flex;gap:5px}
 .preset-btn{background:var(--bg-3);border:1px solid var(--line);color:var(--ink-dim);font-size:11px;font-family:var(--mono);padding:5px 10px;border-radius:5px;cursor:pointer;transition:.2s}
 .preset-btn:hover,.preset-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+#period-select option{background:var(--bg-2);color:var(--ink)}
+#period-select:focus{border-color:var(--accent)}
 
 /* CHANNEL TABS */
 .channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line);padding:0}
@@ -82,6 +84,7 @@ a{color:var(--accent);text-decoration:none}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
   .preset-btns{justify-content:center;flex-wrap:wrap}
+  #period-select{width:100%}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -216,6 +219,8 @@ a{color:var(--accent);text-decoration:none}
 .preset-btns{display:flex;gap:5px}
 .preset-btn{background:var(--bg-3);border:1px solid var(--line);color:var(--ink-dim);font-size:11px;font-family:var(--mono);padding:5px 10px;border-radius:5px;cursor:pointer;transition:.2s}
 .preset-btn:hover,.preset-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+#period-select option{background:var(--bg-2);color:var(--ink)}
+#period-select:focus{border-color:var(--accent)}
 
 /* CHANNEL TABS */
 .channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line);padding:0}
@@ -268,6 +273,7 @@ a{color:var(--accent);text-decoration:none}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
   .preset-btns{justify-content:center;flex-wrap:wrap}
+  #period-select{width:100%}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -396,14 +402,14 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <input type="date" class="date-input" id="dateFrom">
       <span style="color:var(--ink-dim);font-size:11px">→</span>
       <input type="date" class="date-input" id="dateTo">
-      <div class="preset-btns">
-        <button class="preset-btn active" onclick="setPreset('current',event)">Agosto</button>
-        <button class="preset-btn" onclick="setPreset('jul',event)">Julio</button>
-        <button class="preset-btn" onclick="setPreset('jun',event)">Junio</button>
-        <button class="preset-btn" onclick="setPreset('may',event)">Mayo</button>
-        <button class="preset-btn" onclick="setPreset('abr',event)">Abril</button>
-        <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
-      </div>
+      <select id="period-select" onchange="setPreset(this.value,{target:this})" style="background:var(--bg-3);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 10px;border-radius:6px;cursor:pointer;outline:none;min-width:160px">
+        <option value="current">📅 Agosto 2026 (actual)</option>
+        <option value="jul">📅 Julio 2026</option>
+        <option value="jun">📅 Junio 2026</option>
+        <option value="may">📅 Mayo 2026</option>
+        <option value="abr">📅 Abril 2026</option>
+        <option value="all">📅 Todo el período</option>
+      </select>
     </div>
   </div>
 </div>
@@ -1271,8 +1277,9 @@ function getFiltered(channel){
 }
 
 function setPreset(p,e){
-  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
+  // Sincronizar el select con el valor activo
+  const sel=document.getElementById('period-select');
+  if(sel && sel.value!==p) sel.value=p;
   const ch=DATA.channels[activeChannel]||{};
   if(p==='current'){currentFrom=ch.date_min||DATA.channels.google?.date_min;currentTo=ch.date_max||DATA.channels.google?.date_max;}
   else if(p==='jul'){currentFrom='2026-07-01';currentTo='2026-07-31';}
