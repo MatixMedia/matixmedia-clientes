@@ -149,6 +149,7 @@ footer{padding:32px;text-align:center;font-family:var(--mono);font-size:11px;col
   <div class="nav-item" onclick="document.getElementById('s-presupuesto').scrollIntoView({behavior:'smooth'})">Presupuesto</div>
   <div class="nav-item" onclick="document.getElementById('s-roadmap').scrollIntoView({behavior:'smooth'})">Roadmap</div>
   <div class="nav-item" onclick="document.getElementById('s-checklist').scrollIntoView({behavior:'smooth'})">Checklist</div>
+  <div class="nav-item" onclick="document.getElementById('s-sept').scrollIntoView({behavior:'smooth'})">Sprint Sept</div>
 </div></nav>
 
 <div class="wrap">
@@ -340,7 +341,7 @@ footer{padding:32px;text-align:center;font-family:var(--mono);font-size:11px;col
     </div>
   </section>
 
-  <section class="section" id="s-checklist" style="border-bottom:none">
+  <section class="section" id="s-checklist">
     <div class="section-label">07 · Checklist de lanzamiento</div>
     <h2 class="section-title">Antes de <em>encender</em> las campañas</h2>
     <div class="checklist">
@@ -354,6 +355,85 @@ footer{padding:32px;text-align:center;font-family:var(--mono);font-size:11px;col
       <div class="check-item"><div class="check-box"></div><div class="check-label">Lanzar campañas de awareness y lead gen (no bloqueadas por la landing)</div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-label">Cuando la landing esté lista: instalar Pixel + GA4 y activar campañas de conversión</div></div>
     </div>
+  </section>
+
+  <section class="section" id="s-sept" style="border-bottom:none">
+    <div class="section-label">08 · Sprint de lanzamiento — Septiembre 2026</div>
+    <h2 class="section-title">La <em>noche de apertura</em> tiene fecha objetivo</h2>
+    <p class="section-desc">Audiencia ampliada: americanos y latinos de buen poder adquisitivo, en NJ o dispuestos a viajar por experiencias de alto nivel — más un segmento B2B de organizadores de eventos que buscan venue.</p>
+
+    <div class="aud-grid" style="margin-bottom:24px">
+      <div class="aud-card">
+        <h4>Núcleo · 0–15 mi</h4>
+        <ul>
+          <li>Elizabeth, Newark, Jersey City, Hoboken</li>
+          <li>Union, Cranford, Westfield, Summit, Short Hills</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <h4>Extendido · misma distancia que NYC (~15–30 mi)</h4>
+        <ul>
+          <li>Manhattan, Brooklyn, Staten Island, Bronx</li>
+          <li>Bergen County: Englewood, Tenafly, Alpine, Ridgewood</li>
+          <li>Essex County: Montclair, Livingston, Millburn</li>
+          <li>Costa Monmouth: Long Branch, Red Bank</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <h4>Excluido por ahora</h4>
+        <ul>
+          <li>Philadelphia — 1.5–2h, no cumple el límite de "misma distancia que NY"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="channel-block">
+      <div class="channel-head">
+        <div class="channel-icon yt">▶</div>
+        <div class="channel-name">Google Ads — Local/GMB · assets</div>
+        <div class="channel-badge">PMax para objetivos locales</div>
+      </div>
+      <div class="camp-detail" style="margin-bottom:14px"><b>Headlines (≤30 car.):</b> Evento Exclusivo en NJ · Un Venue Como Ningún Otro · Gran Apertura Septiembre · Reserva tu Lugar Ahora · Tecnología + Gastronomía · El Secreto de Elizabeth</div>
+      <div class="camp-detail" style="margin-bottom:14px"><b>Descriptions (≤90 car.):</b> "Sonido 8D, LED inmersivo y gastronomía de alto nivel. Gran apertura este septiembre." · "El venue más innovador de NJ abre sus puertas." · "Ideal para bodas, eventos corporativos y celebraciones inolvidables." · "A minutos de NYC — una experiencia que no existe en ningún otro lugar." · "Música, tecnología y sabor en un mismo lugar."</div>
+      <div class="camp-detail"><b>Keywords / temas de búsqueda:</b> venue para eventos Elizabeth NJ · salón de eventos New Jersey · venue para bodas NJ · event space near me · corporate event venue NJ · immersive experience venue NJ · nightlife venue Elizabeth NJ · lugares para eventos cerca de Nueva York · venue para quinceañera NJ · private event venue New Jersey · gran apertura evento NJ · fine dining venue New Jersey · LED immersive venue NJ · best venue near Newark · salón para eventos corporativos NJ</div>
+    </div>
+
+    <div class="channel-block">
+      <div class="channel-head">
+        <div class="channel-icon meta">◆</div>
+        <div class="channel-name">Meta — 4 campañas del sprint</div>
+        <div class="channel-badge">agosto–septiembre</div>
+      </div>
+      <div class="camp active">
+        <div class="camp-title">META_Provenza_LaunchAwareness_Sept <span class="camp-status live">Lanzar ya</span></div>
+        <div class="camp-detail">Reach/ThruPlay · reveal de fecha del evento · Núcleo + Extendido</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">META_Provenza_WebTraffic_Registro <span class="camp-status wait">Necesita Pixel</span></div>
+        <div class="camp-detail">Tráfico/Conversión a landing de RSVP · evento "Registro_Lanzamiento"</div>
+      </div>
+      <div class="camp">
+        <div class="camp-title">META_Provenza_Automatizacion_DM <span class="camp-status wait">Definir mecanismo</span></div>
+        <div class="camp-detail">Click-to-Messenger/WhatsApp con flujo automatizado de FAQ del evento · pendiente decidir Meta nativo vs. ManyChat</div>
+      </div>
+      <div class="camp active">
+        <div class="camp-title">META_Provenza_EventPlanners_B2B <span class="camp-status live">Lanzar ya</span></div>
+        <div class="camp-detail">Segmento organizadores — wedding/corporate/quinceañera planners · targeting por cargo + intereses profesionales</div>
+      </div>
+    </div>
+
+    <table class="budget-table" style="margin-top:20px">
+      <thead><tr><th>Canal</th><th>Campaña</th><th>Rango mensual</th></tr></thead>
+      <tbody>
+        <tr><td class="strong">Google</td><td>Local/GMB</td><td>$400–600</td></tr>
+        <tr><td class="strong">Google</td><td>YouTube Launch Awareness</td><td>$600–900</td></tr>
+        <tr><td class="strong">Meta</td><td>Launch Awareness</td><td>$500–700</td></tr>
+        <tr><td class="strong">Meta</td><td>Web Traffic Registro</td><td>$700–1,000</td></tr>
+        <tr><td class="strong">Meta</td><td>Automatización DM</td><td>$200–300</td></tr>
+        <tr><td class="strong">Meta</td><td>Event Planners B2B</td><td>$300–500</td></tr>
+      </tbody>
+    </table>
+    <p class="section-desc" style="margin-top:14px;margin-bottom:0"><b style="color:var(--ink)">Total sprint:</b> $2,700–4,000/mes + $1,600/mes honorarios (paquete completo — justificado por tener fecha de evento real que vender). <b style="color:var(--red)">Pendiente del cliente:</b> fecha exacta del evento y mecanismo de automatización (Meta nativo vs. externo).</p>
   </section>
 
   <footer>MatixMedia · Estrategia Provenza · Julio 2026</footer>
