@@ -1400,7 +1400,14 @@ function renderGoogle(){
   const ch=DATA.channels.google; if(!ch)return;
   const rows=getFiltered('google');
   const totals=agg(rows);
-  const P=ch.prev||{};
+  // P: calcular prev dinámicamente según período activo
+  // Si período activo es ago→ prev=jul | jul→ prev=jun | jun→ prev estático
+  const P=(()=>{
+    const from=currentFrom||ch.date_min||'';
+    if(from.startsWith('2026-08')) return agg(ch.daily_raw.filter(r=>r.date.startsWith('2026-07')));
+    if(from.startsWith('2026-07')) return agg(ch.daily_raw.filter(r=>r.date.startsWith('2026-06')));
+    return ch.prev||{};
+  })();
   const B=ch.benchmarks||{};
   document.getElementById('g-period-hint').textContent=`${currentFrom||ch.date_min} → ${currentTo||ch.date_max}`;
 
@@ -1739,10 +1746,22 @@ function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
   const rows=getFiltered('meta');
   const totals=agg(rows);
-  const P=ch.prev||{};
   const B=ch.benchmarks||{};
   const obj=ch.objective||'VENTAS';
   const isVentas=obj==='VENTAS';
+  // P dinámico: agosto→julio, julio→junio, junio→estático
+  const P=(()=>{
+    const from=currentFrom||ch.date_min||'';
+    if(from.startsWith('2026-08')){
+      const jr=ch.daily_raw.filter(r=>r.date.startsWith('2026-07'));
+      const ja=agg(jr);ja.leads_form=jr.reduce((s,r)=>s+(r.leads_form||0),0);ja.conversations=jr.reduce((s,r)=>s+(r.conv_wa||0),0);return ja;
+    }
+    if(from.startsWith('2026-07')){
+      const jr=ch.daily_raw.filter(r=>r.date.startsWith('2026-06'));
+      const ja=agg(jr);ja.leads_form=jr.reduce((s,r)=>s+(r.leads_form||0),0);ja.conversations=jr.reduce((s,r)=>s+(r.conv_wa||0),0);return ja;
+    }
+    return ch.prev||{};
+  })();
 
   // Badge objetivo
   const badge=document.getElementById('m-obj-badge');
