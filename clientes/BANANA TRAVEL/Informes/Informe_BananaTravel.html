@@ -75,15 +75,14 @@ a{color:var(--accent);text-decoration:none}
 .charts-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .charts-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:860px){.charts-2col,.charts-3col{grid-template-columns:1fr}}
-.period-select{display:none;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 10px;border-radius:6px;cursor:pointer;outline:none;width:100%}
+.period-select{display:block;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:6px;cursor:pointer;outline:none;min-width:180px}
 .period-select option{background:var(--bg-2);color:var(--ink)}
 @media(max-width:600px){
   .report-header .wrap{flex-direction:column;align-items:center;text-align:center}
   .header-left{flex-direction:column;align-items:center;text-align:center}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
-  .preset-btns{display:none}
-  .period-select{display:block}
+  .period-select{width:100%}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -263,15 +262,14 @@ a{color:var(--accent);text-decoration:none}
 .charts-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .charts-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:860px){.charts-2col,.charts-3col{grid-template-columns:1fr}}
-.period-select{display:none;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 10px;border-radius:6px;cursor:pointer;outline:none;width:100%}
+.period-select{display:block;background:var(--bg-3);border:1px solid var(--accent);color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:6px;cursor:pointer;outline:none;min-width:180px}
 .period-select option{background:var(--bg-2);color:var(--ink)}
 @media(max-width:600px){
   .report-header .wrap{flex-direction:column;align-items:center;text-align:center}
   .header-left{flex-direction:column;align-items:center;text-align:center}
   .header-right{flex-direction:column;align-items:center;text-align:center;width:100%}
   .header-title{text-align:center}
-  .preset-btns{display:none}
-  .period-select{display:block}
+  .period-select{width:100%}
   .date-range{justify-content:center;flex-wrap:wrap}
   .channel-tabs{justify-content:center}
   footer .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -400,17 +398,11 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <input type="date" class="date-input" id="dateFrom">
       <span style="color:var(--ink-dim);font-size:11px">→</span>
       <input type="date" class="date-input" id="dateTo">
-      <div class="preset-btns">
-        <button class="preset-btn active" onclick="setPreset('current',event)">Agosto (actual)</button>
-        <button class="preset-btn" onclick="setPreset('jul',event)">Julio</button>
-        <button class="preset-btn" onclick="setPreset('jun',event)">Junio</button>
-        <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
-      </div>
       <select class="period-select" onchange="setPeriodFromSelect(this)">
-        <option value="current">Agosto (actual)</option>
-        <option value="jul">Julio</option>
-        <option value="jun">Junio</option>
-        <option value="all">Todo</option>
+        <option value="current">📅 Agosto (actual)</option>
+        <option value="jul">📅 Julio</option>
+        <option value="jun">📅 Junio</option>
+        <option value="all">📅 Todo el período</option>
       </select>
     </div>
   </div>
@@ -1189,12 +1181,7 @@ function getFiltered(channel){
 }
 
 function setPeriodFromSelect(sel){
-  const val = sel.value;
-  // Sincronizar botones
-  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
-  const btn = [...document.querySelectorAll('.preset-btn')].find(b=>b.onclick?.toString().includes("'"+val+"'"));
-  if(btn) btn.classList.add('active');
-  setPreset(val, {target:{classList:{add:()=>{},remove:()=>{}}}});
+  setPreset(sel.value, {target:{classList:{add:()=>{},remove:()=>{}}}});
 }
 function setPreset(p,e){
   document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
