@@ -1858,11 +1858,20 @@ function loadMonth(idx){
     const df=document.getElementById('dateFrom');const dt=document.getElementById('dateTo');
     if(df)df.value=currentFrom;if(dt)dt.value=currentTo;
   }
-  // Actualizar label del boton "Este mes" con el nombre real del mes
+  // FIX: el boton "Este mes" debe mostrar SIEMPRE el nombre del mes mas
+  // reciente (DATA.months[0]), sin importar cual mes este cargado
+  // actualmente. Antes se pisaba con window._currMonthName (el mes que
+  // se acaba de cargar), asi que al elegir "Julio" desde el dropdown
+  // "Anterior", el boton "Este mes" pasaba a decir "Julio 2026" — dando
+  // la falsa impresion de que Julio se habia vuelto el mes actual.
   // (el boton "Anterior" NO se toca aqui — buildMonthSelector() es la unica
   // fuente de verdad para su estado, así se preserva el caret del dropdown)
   const btnCurr = document.getElementById('btn-preset-current');
-  if(btnCurr) btnCurr.textContent = window._currMonthName || 'Este mes';
+  if(btnCurr){
+    const latest=DATA.months[0];
+    const latestName=getMonthName(latest.channels.google?.date_min||latest.channels.meta?.date_min||latest.channels.tiktok?.date_min);
+    btnCurr.textContent = latestName || 'Este mes';
+  }
   // Actualizar selector — trackear el mes activo y refrescar el dropdown
   selectedMonthIdx = idx;
   buildMonthSelector();
