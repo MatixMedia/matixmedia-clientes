@@ -32,16 +32,6 @@ a{color:var(--accent);text-decoration:none}
 .preset-btn{background:var(--bg-3);border:1px solid var(--line);color:var(--ink-dim);font-size:11px;font-family:var(--mono);padding:5px 10px;border-radius:5px;cursor:pointer;transition:.2s}
 .preset-btn:hover,.preset-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
 
-/* CURRENT MONTH BANNER — mes en curso, datos parciales */
-.current-month-banner{background:rgba(232,192,70,.08);border-bottom:1px solid rgba(232,192,70,.35)}
-.current-month-banner .wrap{display:flex;align-items:flex-start;gap:12px;padding:12px 24px}
-.current-month-banner-icon{font-size:16px;color:var(--accent);flex-shrink:0;line-height:1.4}
-.current-month-banner-text{display:flex;flex-direction:column;gap:2px;font-size:12px;line-height:1.5}
-.current-month-banner-text strong{color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.02em}
-.current-month-banner-text span{color:var(--ink-dim)}
-@media(max-width:600px){
-  .current-month-banner .wrap{flex-direction:column;align-items:center;text-align:center;gap:6px}
-}
 
 /* CHANNEL TABS */
 .channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line);padding:0}
@@ -233,16 +223,6 @@ a{color:var(--accent);text-decoration:none}
 .preset-btn{background:var(--bg-3);border:1px solid var(--line);color:var(--ink-dim);font-size:11px;font-family:var(--mono);padding:5px 10px;border-radius:5px;cursor:pointer;transition:.2s}
 .preset-btn:hover,.preset-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
 
-/* CURRENT MONTH BANNER — mes en curso, datos parciales */
-.current-month-banner{background:rgba(232,192,70,.08);border-bottom:1px solid rgba(232,192,70,.35)}
-.current-month-banner .wrap{display:flex;align-items:flex-start;gap:12px;padding:12px 24px}
-.current-month-banner-icon{font-size:16px;color:var(--accent);flex-shrink:0;line-height:1.4}
-.current-month-banner-text{display:flex;flex-direction:column;gap:2px;font-size:12px;line-height:1.5}
-.current-month-banner-text strong{color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.02em}
-.current-month-banner-text span{color:var(--ink-dim)}
-@media(max-width:600px){
-  .current-month-banner .wrap{flex-direction:column;align-items:center;text-align:center;gap:6px}
-}
 
 /* CHANNEL TABS */
 .channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line);padding:0}
@@ -419,16 +399,6 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
         <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
       <button id="btn-pdf" onclick="exportPDF()">⬇ PDF</button>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="current-month-banner" id="currentMonthBanner" style="display:none">
-  <div class="wrap">
-    <span class="current-month-banner-icon">⚠</span>
-    <div class="current-month-banner-text">
-      <strong>¡LOS DATOS QUE VES DEL MES ACTUAL SON TEMPORALES!</strong>
-      <span>Los datos del mes actual se comparan con el total del mes anterior, por lo cual verá datos negativos en todo el informe hasta que no se consolide toda la información del mes.</span>
     </div>
   </div>
 </div>
@@ -1904,12 +1874,6 @@ function loadMonth(idx){
     const latestName=getMonthName(latest.channels.google?.date_min||latest.channels.meta?.date_min||latest.channels.tiktok?.date_min);
     btnCurr.textContent = latestName || 'Este mes';
   }
-  // Banner de aviso: solo visible cuando el mes activo ES el mes actual
-  // (idx===0) — sus datos son parciales y el MoM contra el mes anterior
-  // completo puede mostrar caídas que no son reales, solo por comparar
-  // un mes a mitad de camino contra uno ya cerrado.
-  const banner=document.getElementById('currentMonthBanner');
-  if(banner) banner.style.display = (idx===0) ? '' : 'none';
   // Actualizar selector — trackear el mes activo y refrescar el dropdown
   selectedMonthIdx = idx;
   buildMonthSelector();
@@ -2087,6 +2051,19 @@ function sortTable(id,col){
 // ─── NOTIFICACIONES ──────────────────────────────
 const NOTIF_PAGE={};
 const NOTIF_DATA={};
+function getCurrentMonthNotif(){
+  // Solo aplica cuando el mes activo es el mes en curso (idx 0 dentro de
+  // DATA.months). Sus datos son parciales — comparar el mes a mitad de
+  // camino contra un mes anterior ya cerrado genera caídas (▼) que no
+  // reflejan una baja real de desempeño, solo la diferencia de días.
+  if(typeof DATA==='undefined'||!DATA.months||!DATA.months.length) return null;
+  if(selectedMonthIdx!==0) return null;
+  return {
+    title:'¡Los datos que ves del mes actual son temporales!',
+    text:'Los datos del mes actual se comparan con el total del mes anterior, por lo cual verá datos negativos en todo el informe hasta que no se consolide toda la información del mes.',
+    level:'warn'
+  };
+}
 function renderNotifications(prefix,notifs){
   const panel=document.getElementById(prefix+'-notifPanel');
   if(!panel)return;
@@ -2147,7 +2124,7 @@ function toggleNotifPanel(prefix){
 
 function renderGoogle(){
   const ch=DATA.channels.google; if(!ch)return;
-  renderNotifications('g',ch.notifications||[]);
+  renderNotifications('g',[getCurrentMonthNotif(),...(ch.notifications||[])].filter(Boolean));
   const rows=getFiltered('google');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -2503,7 +2480,7 @@ var renderDiagnosisMetaVentas = renderDiagnosisGoogle;
 
 function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
-  renderNotifications('m',ch.notifications||[]);
+  renderNotifications('m',[getCurrentMonthNotif(),...(ch.notifications||[])].filter(Boolean));
   const rows=getFiltered('meta');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -2898,7 +2875,7 @@ const TT_FUNNEL_MAP = {
 
 function renderTikTok(){
   const ch=DATA.channels.tiktok; if(!ch)return;
-  renderNotifications('t',ch.notifications||[]);
+  renderNotifications('t',[getCurrentMonthNotif(),...(ch.notifications||[])].filter(Boolean));
   const rows=getFiltered('tiktok');
   const totals=agg(rows);
   const P=ch.prev||{};
