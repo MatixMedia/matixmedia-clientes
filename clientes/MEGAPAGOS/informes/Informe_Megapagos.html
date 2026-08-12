@@ -785,6 +785,7 @@ const DATA = {
       channels: {
         google: {
           active: true,
+          confirmed: 690,
           date_min: "2026-07-01", date_max: "2026-07-31",
           benchmarks: { ctr_min:3, ctr_good:5, roas_min:2, roas_good:3, cpa_max:20000 },
           prev: { impr:74186, clicks:4310, cost:4556331, conv:392, value:15640800, ctr:5.65, cpa:11623, roas:3.43 },
@@ -2897,6 +2898,57 @@ document.addEventListener('DOMContentLoaded',()=>{
   buildTabs();
   renderAll();
 });
+
+
+// KPI-EXTRA-FIX: si el mes activo tiene 'confirmed' (conversiones reales del cliente),
+// ajusta el sub-label de Conversiones, agrega ROAS Estimado + CPA Real,
+// y agrega tarjeta dedicada COMPRAS con el numero grande.
+(function(){
+  function apply(){
+    if(typeof renderKPIs==='undefined'||typeof mkKpi==='undefined'){setTimeout(apply,50);return;}
+    var _orig = renderKPIs;
+    renderKPIs = function(gridId, items){
+      if(gridId==='g-kpi-grid'){
+        var ch = DATA.channels.google;
+        if(ch && ch.confirmed){
+          var TICKET = 39900;
+          var confirmed = ch.confirmed;
+          var rows = getFiltered('google');
+          var cost = rows.reduce(function(a,r){return a+r.cost;},0);
+          var revenue = TICKET * confirmed;
+          var roas = revenue / cost;
+          var cpaReal = cost / confirmed;
+          items.forEach(function(k){
+            if(k.label==='Conversiones') k.sub = 'Confirmadas: '+confirmed;
+          });
+          items.push({label:'ROAS ESTIMADO', val:roas.toFixed(2)+'\u00d7',
+            dir:'up', pct:'Estimado', sub:'$'+revenue.toLocaleString('es-CO')+' COP', cls:''});
+          items.push({label:'CPA REAL', val:'$'+Math.round(cpaReal).toLocaleString('es-CO'),
+            dir:'up', pct:'vs tag', sub:confirmed+' conv. confirmadas', cls:''});
+        }
+      }
+      _orig(gridId, items);
+      // Tarjeta dedicada COMPRAS (numero grande, HTML directo)
+      if(gridId==='g-kpi-grid'){
+        var ch2 = DATA.channels.google;
+        if(ch2 && ch2.confirmed){
+          var grid = document.getElementById(gridId);
+          if(grid){
+            grid.insertAdjacentHTML('beforeend',
+              '<div class="kpi-card">' +
+              '<div class="kpi-label">COMPRAS</div>' +
+              '<div class="kpi-value">'+ch2.confirmed+'</div>' +
+              '<div class="kpi-badge up">\u25b2 Confirmadas</div>' +
+              '<div class="kpi-sub">Compras confirmadas</div>' +
+              '</div>'
+            );
+          }
+        }
+      }
+    };
+  }
+  apply();
+})();
 </script>
 
 <style id="responsive-override">
