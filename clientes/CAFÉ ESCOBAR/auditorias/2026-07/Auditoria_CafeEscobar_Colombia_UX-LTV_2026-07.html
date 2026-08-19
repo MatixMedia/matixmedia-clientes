@@ -218,7 +218,7 @@ const WDATA = {
     instagram: "https://www.instagram.com/matixmedia/",
     tiktok:    "https://tiktok.com/@matixmedia"
   },
-  scores: { total:66, criticos:9, mejoras:7, ok:8 },
+  scores: { total:64, criticos:10, mejoras:7, ok:8 },
   sections: [
     {
       num:"01", title:"Problemas Criticos", type:"bad", icon:"\u274c",
@@ -226,7 +226,7 @@ const WDATA = {
         { type:"bad", badge:"Critico", icon:"\u26a0",
           title:"La home no comunica 'aqui se compra cafe' — parece sitio de marca o turismo",
           desc:"El hero dice 'Bienvenidos a Cafe Escobar' y 'Nuestro principal proposito es resignificar la palabra Escobar' -mision de marca, no oferta de producto. El menu superior pone 'Turismo' y 'Arbolito' al mismo nivel visual que 'Tienda', y justo debajo aparece el banner de preventa Europa con un cronometro en 00:00:00:00:00. Un visitante que llega desde un anuncio de 'cafe especial colombiano' no ve cafe, precio ni boton de compra en los primeros segundos -exactamente la sensacion de 'parece web de turismo' que reportas.",
-          code:"Actual: hero de marca + nav con Turismo/Arbolito al mismo nivel que Tienda + banner CHF con cronometro en cero<br>Correcto: hero con oferta clara ('Cafe especial colombiano - 7 lineas') + CTA directo a Tienda + banner Europa fuera de la home CO",
+          code:"Actual: hero de marca + nav con Turismo/Arbolito al mismo nivel que Tienda + el banner de preventa Europa (precios en francos suizos, con su cronometro en cero) aparece incrustado en esta misma home colombiana<br>Correcto: hero con oferta clara ('Cafe especial colombiano - 7 lineas') en pesos colombianos + CTA directo a Tienda + banner de Europa removido de la home CO (ese contenido pertenece solo a /europe/)",
           fix:"\u2192 FIX: Rediseñar el hero con oferta y precio visibles, mover 'Turismo' a un submenu secundario, remover el banner Europa de la home colombiana (1-2 dias dev+diseno)" },
         { type:"bad", badge:"Critico", icon:"\u26a0",
           title:"Filtros de categoria en la tienda no funcionan",
@@ -285,9 +285,9 @@ const WDATA = {
           code:"Actual: 'granos... de nuestro productor aliado'<br>Correcto: 'Tostado por Los Frailes. Cultivado por Oro Molido en Fredonia'",
           fix:"\u2192 FIX: Reescribir descripciones de las 7 lineas con nombres reales del ecosistema (1 dia copy)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
-          title:"Tres correos de contacto distintos en el sitio",
-          desc:"El footer usa cafe.escobar.medellin@gmail.com y la politica de datos usa cafe.escobar.admon@gmail.com -entre otras variantes vistas en el sitio completo. Esta inconsistencia de marca resta profesionalismo y puede confundir a quien intenta escribir.",
-          code:"Actual: multiples correos distintos segun la pagina<br>Correcto: 1 correo unico en todo el sitio",
+          title:"Dos correos de contacto distintos entre el sitio y su politica de privacidad",
+          desc:"El footer de todas las paginas de Colombia usa cafe.escobar.medellin@gmail.com, pero la Politica de Tratamiento de Datos (enlazada desde ese mismo footer) usa cafe.escobar.admon@gmail.com. Es una inconsistencia menor pero real -resta prolijidad justo en el documento legal que un comprador nuevo puede revisar antes de confiar en la marca.",
+          code:"Actual: medellin@gmail.com en el sitio, admon@gmail.com en la politica de privacidad<br>Correcto: 1 correo unico en ambos lugares",
           fix:"\u2192 FIX: Consolidar a un solo correo de contacto en todas las paginas (1 hora)" }
       ]
     },
@@ -328,7 +328,11 @@ const WDATA = {
         { type:"bad", badge:"Riesgo Policy", icon:"\u26a0",
           title:"Cronometro en cero visible tambien en la home de Colombia — riesgo de tergiversacion",
           desc:"El banner de preventa Europa con el cronometro roto (00:00:00:00:00) aparece incrustado en la home colombiana. La politica de 'Tergiversacion' de Google Ads prohibe explicitamente indicadores de urgencia falsos o que no funcionen como se anuncian -un revisor de Google que vea este elemento en cualquier pagina del dominio puede marcar la cuenta completa, no solo la campana de Suiza.",
-          code:"", fix:"\u2192 FIX: Remover o corregir el banner y cronometro en TODAS las paginas del dominio, no solo en /europe/ (prioridad alta, compartido con el fix de home)" }
+          code:"", fix:"\u2192 FIX: Remover o corregir el banner y cronometro en TODAS las paginas del dominio, no solo en /europe/ (prioridad alta, compartido con el fix de home)" },
+        { type:"bad", badge:"Riesgo Policy", icon:"\u26a0",
+          title:"Dos contenedores de Google Tag Manager distintos en todo el dominio",
+          desc:"Se detectaron dos IDs de GTM diferentes (uno al inicio del documento, otro en el footer) en TODAS las paginas revisadas del sitio, incluida la home y la tienda de Colombia -no es un problema exclusivo de la pagina de Suiza. Esto puede indicar una instalacion duplicada o un remanente de pruebas, y vale la pena confirmar con Codigo X cual es el contenedor activo real antes de confiar en los datos de conversion que alimentan las campanas de Google Ads de ambos mercados.",
+          code:"", fix:"\u2192 FIX: Confirmar con Codigo X cual GTM es el correcto y remover el duplicado en todo el sitio (1 hora, coordinar con dev)" }
       ]
     }
 ],
