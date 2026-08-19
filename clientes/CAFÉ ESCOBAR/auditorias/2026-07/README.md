@@ -2,15 +2,25 @@
 
 ## 📊 Julio 2026
 
-| Mercado / Enfoque | Score | Link |
-|---------|-------|------|
-| 🇨🇴 Colombia — Conversión general | 76/100 (Mejorable) | [Ver auditoría](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Colombia_2026-07.html) |
-| 🇨🇴 Colombia — UX / LTV | 72/100 (Mejorable) | [Ver auditoría](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Colombia_UX-LTV_2026-07.html) |
-| 🇨🇭 Suiza / Europa | 71/100 (Mejorable) | [Ver auditoría](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Suiza_2026-07.html) |
+| Auditoría | Score | Link |
+|-----------|-------|------|
+| 🇨🇴 Colombia — Conversión general | 76/100 (Mejorable) | [Ver](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Colombia_2026-07.html) |
+| 🇨🇴 Colombia — UX / LTV / Google Ads Policy | 66/100 (Mejorable) | [Ver](https://matixmedia.github.io/matixmedia-clientes/ir/cafe-escobar-auditoriaweb-colombia-uxltv-jul2026.html) |
+| 🇨🇭 Suiza — Conversión general | 71/100 (Mejorable) | [Ver](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Suiza_2026-07.html) |
+| 🇨🇭 Suiza — Embudo Reserva / Google Ads Policy | **58/100 (Crítico)** ⚠️ | [Ver](https://matixmedia.github.io/matixmedia-clientes/clientes/CAF%C3%89%20ESCOBAR/auditorias/2026-07/Auditoria_CafeEscobar_Suiza_Reserva_2026-07.html) |
 
-**Hallazgos P0:**
-- Suiza: el botón "Reserve now" lleva a un login genérico en español en vez de completar la reserva
-- Colombia: la home no comunica "tienda de café" — nav mezcla Turismo/Tienda al mismo nivel, banner Europa con cronómetro roto incrustado
+## 🔴 Hallazgos P0 — corregir antes de escalar presupuesto
+
+**Suiza (riesgo de política Google Ads, no solo conversión):**
+- Cronómetro en `00:00:00:00:00` → viola política de Tergiversación
+- Fecha de entrega Dic vs Sept contradictoria → información inconsistente del producto
+- Precio en CHF, cobro en USD sin aviso → riesgo de precios engañosos
+- Sin reserva real de bajo compromiso — solo pago completo o botón roto
+
+**Colombia:**
+- Home no comunica "tienda de café" — nav mezcla Turismo/Tienda al mismo nivel
+- Sin banner de consentimiento de cookies pese a tener GTM + Meta Pixel activos
+- Sin Términos y Condiciones ni Política de Devoluciones
 
 ---
 *Actualizado: Julio 2026 · MatixMedia*
