@@ -277,9 +277,9 @@ const WDATA = {
           desc:"El checkout tiene un desplegable 'Referred by? (optional)' con nombres como 'Ismael Rivera', 'Nicolas', 'Robert Lopez', 'Subi' sin ninguna explicacion. Un comprador que no reconoce estos nombres puede confundirse justo en el paso final antes de pagar.",
           code:"", fix:"\u2192 FIX: Anadir texto explicativo ('si un embajador te invito, escribe su nombre') o remover el campo (1 hora)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
-          title:"Tres correos de contacto distintos en la misma pagina",
-          desc:"El mailto del footer usa cafe.escobar.medellin@gmail.com pero el texto visible de contacto en esta misma pagina dice cafe.escobar.info@gmail.com. Esta inconsistencia resta profesionalismo justo en el mercado donde la marca es menos conocida y mas necesita transmitir seriedad.",
-          code:"Actual: 2-3 correos distintos visibles en la misma pagina<br>Correcto: 1 correo unico y consistente",
+          title:"Dos correos distintos en la misma pagina, un tercero en la politica enlazada",
+          desc:"El mailto del footer usa cafe.escobar.medellin@gmail.com pero el texto visible de contacto en esta misma pagina dice cafe.escobar.info@gmail.com -dos correos distintos a simple vista, sin salir de /europe/. Si el visitante sigue el enlace a la Politica de Tratamiento de Datos aparece un tercer correo (admon@gmail.com). Esta inconsistencia resta profesionalismo justo en el mercado donde la marca es menos conocida y mas necesita transmitir seriedad.",
+          code:"Actual: medellin@gmail.com (mailto) + info@gmail.com (texto visible) en esta pagina, + admon@gmail.com en la politica enlazada<br>Correcto: 1 correo unico en toda la experiencia de Europa",
           fix:"\u2192 FIX: Unificar a un solo correo en toda la pagina de Europa (1 hora)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
           title:"Instagram enlazado es el de Colombia, no uno relevante para Suiza",
@@ -290,8 +290,8 @@ const WDATA = {
           desc:"No hay preguntas frecuentes sobre aduanas, que pasa si el envio se retrasa, como funciona la reserva sin pagar completo, o legitimidad de comprar desde Colombia. Para un comprador europeo que nunca ha comprado en la region, esto es una barrera real antes de comprometerse.",
           code:"", fix:"\u2192 FIX: Crear seccion FAQ con 6-8 preguntas de preventa internacional, incluyendo como funciona la reserva (1 dia)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
-          title:"Dos contenedores de Google Tag Manager distintos en el sitio",
-          desc:"Se detectaron dos IDs de GTM diferentes (uno al inicio del documento, otro en el footer). Esto puede indicar una instalacion duplicada o un remanente de pruebas -vale la pena confirmar con Codigo X cual es el contenedor activo real antes de confiar en los datos de conversion.",
+          title:"Dos contenedores de Google Tag Manager distintos (afecta todo el dominio)",
+          desc:"Se detectaron dos IDs de GTM diferentes (uno al inicio del documento, otro en el footer) en esta pagina. Es el mismo patron que aparece en TODO el dominio, incluida la home de Colombia -no es exclusivo de Suiza, pero afecta directamente la confiabilidad de los datos de conversion que alimentan tambien la campana de preventa europea. Vale la pena confirmar con Codigo X cual es el contenedor activo real.",
           code:"", fix:"\u2192 FIX: Confirmar con Codigo X cual GTM es el correcto y remover el duplicado (1 hora, coordinar con dev)" }
       ]
     },
