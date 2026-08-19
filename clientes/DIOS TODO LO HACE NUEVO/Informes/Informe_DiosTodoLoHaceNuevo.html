@@ -1116,8 +1116,21 @@ function renderFunnelEl(containerId,chartId,stages,accentColor,benchmarks){
       const ec=B.ecommerce||{malo:1,bueno_min:3};
       return pct>=ec.bueno_min?'good':pct>=ec.malo?'warn':'bad';
     }
-    // Sin benchmark especifico definido para este tipo de etapa (ej.
-    // resultados->conversaciones, clientes potenciales) -> escala generica
+    if((sl.includes('msj')||sl.includes('iniciad'))&&B.conversaciones_wa){
+      const wa=B.conversaciones_wa;
+      return pct>=wa.bueno_min?'good':pct>=wa.malo?'warn':'bad';
+    }
+    if(sl.includes('leads')&&B.leads_evento){
+      const le=B.leads_evento;
+      return pct>=le.bueno_min?'good':pct>=le.malo?'warn':'bad';
+    }
+    if(sl.includes('llamad')&&B.llamadas){
+      const ll=B.llamadas;
+      return pct>=ll.bueno_min?'good':pct>=ll.malo?'warn':'bad';
+    }
+    if(sl.includes('respond')){
+      return pct>=50?'good':pct>=20?'warn':'bad';
+    }
     return pct>60?'good':pct>30?'warn':'bad';
   }
   if(!stages||!stages.length)return;
@@ -1729,6 +1742,21 @@ function renderFunnelGoogle(containerId,chartId,stages,benchmarks){
       const ctrMin=B.ctr_min!=null?B.ctr_min:1.5, ctrGood=B.ctr_good!=null?B.ctr_good:3;
       return pct>=ctrGood?'good':pct>=ctrMin?'warn':'bad';
     }
+    if((sl.includes('msj')||sl.includes('iniciad'))&&B.conversaciones_wa){
+      const wa=B.conversaciones_wa;
+      return pct>=wa.bueno_min?'good':pct>=wa.malo?'warn':'bad';
+    }
+    if(sl.includes('leads')&&B.leads_evento){
+      const le=B.leads_evento;
+      return pct>=le.bueno_min?'good':pct>=le.malo?'warn':'bad';
+    }
+    if(sl.includes('llamad')&&B.llamadas){
+      const ll=B.llamadas;
+      return pct>=ll.bueno_min?'good':pct>=ll.malo?'warn':'bad';
+    }
+    if(sl.includes('respond')){
+      return pct>=50?'good':pct>=20?'warn':'bad';
+    }
     if(sl.includes('conv')){
       const cvrMin=B.cvr_min!=null?B.cvr_min:2, cvrGood=B.cvr_good!=null?B.cvr_good:3.5;
       return pct>=cvrGood?'good':pct>=cvrMin?'warn':'bad';
@@ -1796,6 +1824,21 @@ function renderMicroTable(bodyId, stages, benchmarks){
     if(sl.includes('compra')||sl.includes('venta')){
       const ec=B.ecommerce||{malo:1,bueno_min:3};
       return pct>=ec.bueno_min?'good':pct>=ec.malo?'warn':'bad';
+    }
+    if((sl.includes('msj')||sl.includes('iniciad'))&&B.conversaciones_wa){
+      const wa=B.conversaciones_wa;
+      return pct>=wa.bueno_min?'good':pct>=wa.malo?'warn':'bad';
+    }
+    if(sl.includes('leads')&&B.leads_evento){
+      const le=B.leads_evento;
+      return pct>=le.bueno_min?'good':pct>=le.malo?'warn':'bad';
+    }
+    if(sl.includes('llamad')&&B.llamadas){
+      const ll=B.llamadas;
+      return pct>=ll.bueno_min?'good':pct>=ll.malo?'warn':'bad';
+    }
+    if(sl.includes('respond')){
+      return pct>=50?'good':pct>=20?'warn':'bad';
     }
     if(sl.includes('conv')&&B.cvr_min!=null){
       return pct>=(B.cvr_good||3.5)?'good':pct>=(B.cvr_min||2)?'warn':'bad';
