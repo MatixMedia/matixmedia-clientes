@@ -218,7 +218,7 @@ const WDATA = {
     instagram: "https://www.instagram.com/matixmedia/",
     tiktok:    "https://tiktok.com/@matixmedia"
   },
-  scores: { total:68, criticos:9, mejoras:7, ok:8 },
+  scores: { total:66, criticos:10, mejoras:8, ok:8 },
   sections: [
     {
       num:"01", title:"Problemas Criticos", type:"bad", icon:"\u274c",
@@ -252,17 +252,22 @@ const WDATA = {
           title:"Costo y tiempo de domicilio invisibles en toda la ruta de compra",
           desc:"El domicilio de $12.000 en el area metropolitana (usado en las campanas de Google Ads) no aparece en la tienda, en el producto ni antes del checkout. El comprador no sabe cuanto le costara el envio hasta el ultimo paso, lo que genera abandono justo antes de pagar -coincide con el patron de 'agregan al carrito pero pocos compran'.",
           code:"Actual: sin mencion de costo de domicilio en tienda ni producto<br>Correcto: 'Domicilio AM $12.000' visible desde la tienda",
-          fix:"\u2192 FIX: Agregar barra o texto fijo con el costo de domicilio en tienda y producto (2 horas dev)" }
+          fix:"\u2192 FIX: Agregar barra o texto fijo con el costo de domicilio en tienda y producto (2 horas dev)" },
+        { type:"bad", badge:"Critico", icon:"\u26a0",
+          title:"Demasiados pasos de seleccion antes de poder agregar al carrito en varios productos",
+          desc:"Para las lineas con variantes (ej. TIERRA, TRADICION) el usuario debe elegir Peso (Media libra / 1 Libra / 5 libras) Y Tipo (Molido / Grano) en dos menus desplegables distintos antes de que el boton 'Añadir al carrito' quede habilitado. Combinado con la falta de guia entre las 7 lineas (ver hallazgo anterior), esto suma demasiadas decisiones seguidas para un comprador nuevo -cada paso adicional de seleccion es una oportunidad mas de abandonar antes de completar la compra.",
+          code:"Actual: 2 selects obligatorios (Peso + Tipo) antes de poder agregar al carrito<br>Correcto: preseleccionar la combinacion mas popular por defecto (ej. Media libra + Molido) y permitir agregar al carrito con 1 clic; mover el ajuste fino (peso exacto, molido vs grano) a un paso posterior, despues de agregar al carrito, no antes",
+          fix:"\u2192 FIX: Configurar una variante por defecto preseleccionada + explorar mover la personalizacion de peso/tipo a un paso post-carrito (revisar con Codigo X la viabilidad en WooCommerce, 2-4 dias)" }
       ]
     },
     {
       num:"02", title:"Mejoras Importantes", type:"warn", icon:"\u26a0\ufe0f",
       items:[
         { type:"warn", badge:"Mejora", icon:"\u26a0",
-          title:"Sin resenas ni testimonios reales en ningun punto de la ruta de compra",
-          desc:"La home tiene un titulo '¿Que dicen nuestros clientes?' pero ningun testimonio debajo -una seccion vacia se ve mas rota que si no existiera. Ni la tienda ni las paginas de producto muestran resenas. Para una marca que resignifica el apellido 'Escobar', la prueba social es clave para que un visitante nuevo confie antes de comprar.",
-          code:"Actual: titulo de seccion sin contenido debajo<br>Correcto: modulo de resenas reales de Google/Instagram en home, tienda y producto",
-          fix:"\u2192 FIX: Completar la seccion de testimonios en home y replicarla en tienda/producto (integracion 1 semana)" },
+          title:"Las resenas existen en Google pero no se muestran dentro de la ruta de compra",
+          desc:"Cafe Escobar si tiene resenas reales de clientes -viven en su perfil de Google (Maps/Negocio)- pero esa prueba social no esta conectada a la home, la tienda ni las paginas de producto. La home tiene un titulo '¿Que dicen nuestros clientes?' con una seccion vacia debajo -una seccion vacia se ve mas rota que si no existiera. El visitante tendria que salir del sitio y buscar la marca en Google para encontrar las resenas reales, justo en el momento en que mas ayudarian a decidir la compra.",
+          code:"Actual: resenas reales existen en Google pero el titulo '¿Que dicen nuestros clientes?' en la home no tiene contenido debajo<br>Correcto: incrustar el widget de resenas de Google directamente en home, tienda y pagina de producto",
+          fix:"\u2192 FIX: Conectar el widget de resenas de Google Business a la seccion vacia de la home y replicarlo en tienda/producto (integracion 2-3 dias, mas rapido de lo estimado porque las resenas ya existen)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
           title:"Sin mecanismo de suscripcion — impacta directamente el LTV",
           desc:"No existe ninguna opcion de compra recurrente (suscripcion mensual de cafe). Cada venta es una transaccion unica, lo que obliga a recuperar el costo de adquisicion (CAC) en una sola compra. Las marcas de cafe de especialidad con mejor LTV en el mundo dependen de suscripciones -sin esto, el techo de rentabilidad de las campanas pagas es mucho mas bajo.",
@@ -288,7 +293,11 @@ const WDATA = {
           title:"Dos correos de contacto distintos entre el sitio y su politica de privacidad",
           desc:"El footer de todas las paginas de Colombia usa cafe.escobar.medellin@gmail.com, pero la Politica de Tratamiento de Datos (enlazada desde ese mismo footer) usa cafe.escobar.admon@gmail.com. Es una inconsistencia menor pero real -resta prolijidad justo en el documento legal que un comprador nuevo puede revisar antes de confiar en la marca.",
           code:"Actual: medellin@gmail.com en el sitio, admon@gmail.com en la politica de privacidad<br>Correcto: 1 correo unico en ambos lugares",
-          fix:"\u2192 FIX: Consolidar a un solo correo de contacto en todas las paginas (1 hora)" }
+          fix:"\u2192 FIX: Consolidar a un solo correo de contacto en todas las paginas (1 hora)" },
+        { type:"warn", badge:"Mejora", icon:"\u26a0",
+          title:"La tienda puede mejorar visualmente",
+          desc:"La grilla de productos usa las tarjetas por defecto de WooCommerce sin personalizacion visual fuerte -tipografia, espaciado y jerarquia estandar de plantilla, sin elementos que refuercen la identidad de marca (colores, iconografia de las 7 lineas, fotografia mas cuidada). Para una marca que se apoya en una narrativa fuerte (7 lineas, 4 origenes, ecosistema de aliados), la tienda deberia sentirse tan cuidada como el discurso de marca -hoy se siente generica.",
+          code:"", fix:"\u2192 FIX: Rediseñar las tarjetas de producto de la tienda con la identidad visual de marca una vez este definido el brand kit (coordinar con mm_brandkit, 3-5 dias diseno+dev)" }
       ]
     },
     {
@@ -341,7 +350,9 @@ const WDATA = {
     { priority:"P3 \u2014 Mes siguiente", cls:"p3", action:"Evaluar modelo de suscripcion mensual de cafe", responsible:"Producto", impact:"Mejora el LTV y el techo de rentabilidad de las campanas pagas", time:"2-4 semanas" },
     { priority:"P3 \u2014 Mes siguiente", cls:"p3", action:"Reescribir descripciones con el ecosistema de aliados + consolidar correo de contacto", responsible:"Copy", impact:"Coherencia anuncio-landing, mejora percepcion de marca", time:"2 dias" },
     { priority:"P1 \u2014 Esta semana", cls:"p1", action:"Implementar banner de consentimiento de cookies antes de que carguen los pixeles de tracking", responsible:"Dev", impact:"Protege la cuenta de Google Ads y cumple con la Ley 1581 de habeas data", time:"2-3 dias" },
-    { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Crear y enlazar Terminos y Condiciones + Politica de Devoluciones desde el footer", responsible:"Dev/Copy", impact:"Requisito de Google Ads para evitar revision manual o restriccion de cuenta", time:"1-2 dias" }
+    { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Crear y enlazar Terminos y Condiciones + Politica de Devoluciones desde el footer", responsible:"Dev/Copy", impact:"Requisito de Google Ads para evitar revision manual o restriccion de cuenta", time:"1-2 dias" },
+    { priority:"P1 \u2014 Esta semana", cls:"p1", action:"Preseleccionar variante por defecto en productos con Peso+Tipo y evaluar mover personalizacion a post-carrito", responsible:"Dev", impact:"Reduce los pasos de decision antes de comprar, principal sospechoso de 'agregan poco al carrito'", time:"2-4 dias" },
+    { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Conectar el widget de resenas de Google Business a la seccion vacia de la home", responsible:"Dev", impact:"Prueba social ya existe, solo falta mostrarla en el momento de decision", time:"2-3 dias" }
   ]
 };
 
