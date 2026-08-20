@@ -218,7 +218,7 @@ const WDATA = {
     instagram: "https://www.instagram.com/matixmedia/",
     tiktok:    "https://tiktok.com/@matixmedia"
   },
-  scores: { total:58, criticos:13, mejoras:7, ok:8 },
+  scores: { total:56, criticos:15, mejoras:7, ok:9 },
   sections: [
     {
       num:"01", title:"Problemas Criticos", type:"bad", icon:"\u274c",
@@ -257,7 +257,21 @@ const WDATA = {
           title:"Los CTA principales solo bajan la pagina, no cierran ningun ciclo",
           desc:"'Reserve my collection' (hero) y 'I want to be a Founder' (cierre) son anclas que hacen scroll hasta #sale -no llevan a ninguna accion directa, solo devuelven al usuario a la misma seccion de precios donde ya esta el problema de Buy/Reserve roto. Para el visitante que ya decidio actuar, forzarlo a bajar de nuevo y volver a decidir entre dos botones (uno roto) es friccion adicional evitable.",
           code:"Actual: Reserve my collection -> #sale (scroll, no accion)<br>Correcto: CTA principal que lleve directo al producto/paquete mas popular o al formulario de reserva",
-          fix:"\u2192 FIX: Cambiar el ancla por un link directo al paquete recomendado o al formulario de reserva (2 horas)" }
+          fix:"\u2192 FIX: Cambiar el ancla por un link directo al paquete recomendado o al formulario de reserva (2 horas)" },
+        { type:"bad", badge:"Critico", icon:"\u26a0",
+          title:"Al confirmar el pago, el flujo regresa al contexto de Colombia en vez de mantener al comprador en Europa",
+          desc:"Segun lo reportado por el equipo al probar el checkout, despues de 'Payment confirmed!' el usuario termina de vuelta en la experiencia de Colombia en vez de una pantalla de agradecimiento propia del mercado europeo (en ingles, con los siguientes pasos de la preventa: fecha estimada, como se le avisara, etc.). Un comprador suizo que acaba de pagar en CHF y de repente ve contenido en espanol orientado a Colombia pierde la sensacion de haber comprado algo hecho para el, justo en el momento de mayor confianza post-compra.",
+          code:"Actual: confirmacion de pago -> regresa a contexto/pagina de Colombia<br>Correcto: pagina de agradecimiento propia de /europe/ en ingles, con resumen del pedido y proximos pasos de la preventa",
+          fix:"\u2192 FIX: Configurar una pagina de 'thank you' especifica para el checkout de Europa que no redirija a Colombia (coordinar con Codigo X, 1-2 dias)" },
+        { type:"bad", badge:"Critico", icon:"\u26a0",
+          title:"Faltan CTAs de compra durante el tramo largo de storytelling — vacio de conversion en el medio de la pagina",
+          desc:"Entre el bloque de precios (arriba) y el CTA final ('I want to be a Founder', hasta abajo) hay un tramo largo de solo contenido -'Our story', 'From origin to your cup', el mapa de Zurich, el testimonio, e Instagram- sin ningun boton de compra o reserva. En una pagina de 52 minutos de lectura, un visitante que se engancha con la historia y quiere comprar en ese momento tiene que desplazarse mucho para volver a encontrar un CTA. Cada tramo de contenido sin CTA es una oportunidad de conversion perdida mientras el interes esta mas alto.",
+          code:"Actual: CTAs de compra solo al inicio y al final de una pagina de 52 min de lectura<br>Correcto: repetir un CTA de compra/reserva cada 2-3 secciones de contenido (ej. despues de 'Our story', despues del proceso, despues del testimonio)",
+          fix:"\u2192 FIX: Insertar botones de compra/reserva repetidos a lo largo de las secciones de storytelling (1 dia dev+diseno)" },
+        { type:"bad", badge:"Critico", icon:"\u26a0",
+          title:"Visualmente la pagina no incentiva la compra ni transmite por que el cafe colombiano es relevante para un comprador suizo",
+          desc:"El contenido cuenta la historia de la marca (origen, proceso, liderazgo de Nicolas Escobar) pero no construye un argumento dirigido a un comprador suizo especifico sobre por que este cafe colombiano en particular merece su atencion frente a lo que ya consume en Suiza -no hay comparacion de perfil de taza, puntaje SCA destacado visualmente, premios o reconocimiento internacional, ni una razon clara de 'por que ahora, por que este cafe'. La pieza se siente mas como un documental de marca que como una pagina disenada para vender: faltan elementos visuales de peso (badges de puntaje SCA grandes, comparativas, foco en escasez real de la Edicion Fundadores) que refuercen la decision de compra en cada seccion, no solo al final.",
+          code:"", fix:"\u2192 FIX: Agregar elementos visuales de venta (puntaje SCA destacado, badges de escasez/edicion limitada, comparativa de perfil de sabor) distribuidos junto al storytelling, no solo en la seccion de precios (revisar con diseno una vez este el brand kit, 3-5 dias)" }
       ]
     },
     {
@@ -313,7 +327,9 @@ const WDATA = {
         { type:"ok", badge:"OK", icon:"\u2705", title:"Fotografia de producto propia y real",
           desc:"Cada linea de cafe tiene su propia foto, no imagenes genericas de stock.", code:"", fix:"" },
         { type:"ok", badge:"OK", icon:"\u2705", title:"HTTPS activo y certificado valido",
-          desc:"Todo el sitio carga de forma segura sin advertencias del navegador.", code:"", fix:"" }
+          desc:"Todo el sitio carga de forma segura sin advertencias del navegador.", code:"", fix:"" },
+        { type:"ok", badge:"OK", icon:"\u2705", title:"Banner de consentimiento de cookies presente y bien configurado",
+          desc:"A diferencia de la home de Colombia, esta pagina si muestra un banner de cookies con opciones claras (Aceptar todo, Rechazar, Preferencias) separando cookies necesarias, analiticas y publicitarias -cumple con lo esperado para trafico europeo/suizo.", code:"", fix:"" }
       ]
     }
   ,
@@ -332,11 +348,7 @@ const WDATA = {
           title:"Precio anunciado en CHF, cobro real en USD sin aviso previo — riesgo de precios enganosos",
           desc:"Google Ads exige que el precio que ve el comprador coincida con lo que finalmente paga, o que cualquier diferencia (impuestos, conversion de moneda, cargos adicionales) se muestre de forma clara antes del pago. Cobrar en USD cuando toda la pagina promociona CHF sin conversion visible antes del checkout puede clasificarse como practica de precios enganosos si un comprador suizo lo reporta.",
           code:"", fix:"\u2192 FIX: Mostrar el monto exacto en USD junto al precio en CHF desde la pagina de producto, no solo hasta el checkout (1 dia dev, ya identificado en Criticos)" },
-        { type:"bad", badge:"Riesgo Policy", icon:"\u26a0",
-          title:"Sin banner de consentimiento de cookies para trafico europeo/suizo",
-          desc:"Google Tag Manager y Meta Pixel recolectan datos de visitantes suizos y europeos sin un banner de consentimiento visible. La Ley Federal de Proteccion de Datos suiza revisada (nDSG, vigente desde septiembre 2023) y las normas de proteccion de datos de la UE exigen consentimiento explicito para el uso de cookies no esenciales -sin esto, Google puede restringir la personalizacion de anuncios y el remarketing para audiencias europeas, ademas del riesgo legal directo.",
-          code:"", fix:"\u2192 FIX: Implementar banner de consentimiento de cookies especifico para visitantes europeos/suizos antes de que carguen los pixeles (2-3 dias dev, prioridad alta)" },
-        { type:"bad", badge:"Riesgo Policy", icon:"\u26a0",
+                { type:"bad", badge:"Riesgo Policy", icon:"\u26a0",
           title:"Politica de privacidad solo cubre la ley colombiana, no menciona GDPR ni la ley suiza",
           desc:"La unica politica de privacidad publicada cita la Ley 1581 de 2012 de Colombia. Un visitante europeo cuyos datos se recolectan en este sitio no tiene ninguna informacion sobre sus derechos bajo el RGPD (GDPR) o la ley suiza de proteccion de datos (nDSG) -esto no es asesoria legal, pero es un vacio real que vale la pena revisar con un abogado antes de escalar la inversion publicitaria en Europa.",
           code:"", fix:"\u2192 FIX: Consultar con un asesor legal la necesidad de una politica de privacidad especifica para visitantes europeos/suizos (coordinar con el cliente, no es tarea de MatixMedia)" },
@@ -358,7 +370,10 @@ const WDATA = {
     { priority:"P1 \u2014 Esta semana", cls:"p1", action:"Implementar banner de consentimiento de cookies para trafico europeo antes de escalar presupuesto", responsible:"Dev", impact:"Protege la cuenta de Google Ads y cumple con normativa europea/suiza de datos", time:"2-3 dias" },
     { priority:"P1 \u2014 Esta semana", cls:"p1", action:"Mostrar el monto exacto en USD junto al precio en CHF antes del checkout", responsible:"Dev", impact:"Evita riesgo de politica de precios enganosos de Google Ads", time:"1 dia" },
     { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Confirmar con Bold la tasa de aprobacion real para tarjetas europeas/suizas", responsible:"Dev", impact:"Evita pagos fallidos que danan la experiencia de usuario y la senal de calidad para Google", time:"1 dia" },
-    { priority:"P3 \u2014 Mes siguiente", cls:"p3", action:"Consultar con asesor legal la necesidad de politica de privacidad especifica para Europa/Suiza", responsible:"Cliente/Legal", impact:"Cumplimiento de GDPR y ley suiza de proteccion de datos", time:"Coordinar externamente" }
+    { priority:"P3 \u2014 Mes siguiente", cls:"p3", action:"Consultar con asesor legal la necesidad de politica de privacidad especifica para Europa/Suiza", responsible:"Cliente/Legal", impact:"Cumplimiento de GDPR y ley suiza de proteccion de datos", time:"Coordinar externamente" },
+    { priority:"P1 \u2014 Esta semana", cls:"p1", action:"Configurar pagina de agradecimiento propia para el checkout de Europa (no redirigir a Colombia)", responsible:"Dev", impact:"El comprador suizo mantiene la confianza justo despues de pagar, en vez de ver contenido de otro mercado", time:"1-2 dias" },
+    { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Insertar CTAs de compra/reserva repetidos durante las secciones de storytelling", responsible:"Dev/Diseno", impact:"Reduce el tramo sin conversion en una pagina de 52 minutos de lectura", time:"1 dia" },
+    { priority:"P2 \u2014 2 semanas", cls:"p2", action:"Agregar elementos visuales de venta (puntaje SCA, badges de escasez, comparativas) junto al storytelling", responsible:"Diseno", impact:"Refuerza por que el cafe colombiano es relevante para un comprador suizo, no solo cuenta la historia", time:"3-5 dias" }
   ]
 };
 
