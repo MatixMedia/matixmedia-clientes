@@ -230,9 +230,9 @@ const WDATA = {
           fix:"\u2192 FIX: Rediseñar el hero con oferta y precio visibles, mover 'Turismo' a un submenu secundario, remover el banner Europa de la home colombiana (1-2 dias dev+diseno)" },
         { type:"bad", badge:"Critico", icon:"\u26a0",
           title:"Filtros de categoria en la tienda no funcionan",
-          desc:"En /tienda/ los checkboxes de categoria aparecen vacios, sin nombre ni etiqueta. El visitante no puede filtrar por linea de cafe y debe hacer scroll manual entre 13 productos mezclados. Esto dificulta encontrar el producto del anuncio, razon directa de las pocas adiciones al carrito.",
-          code:"Actual: checkboxes sin texto (- [ ] x4)<br>Correcto: checkboxes con nombre de categoria visible y funcional",
-          fix:"\u2192 FIX: Reparar el widget de filtro de categorias de WooCommerce (2-3 horas dev)" },
+          desc:"En /tienda/ los checkboxes de categoria aparecen vacios, sin nombre ni etiqueta. El visitante no puede filtrar por linea de cafe y debe hacer scroll manual entre 13 productos mezclados. Esto dificulta encontrar el producto del anuncio, razon directa de las pocas adiciones al carrito. La causa mas probable es que los productos nunca fueron asignados a una categoria de WooCommerce -sin categorias marcadas por producto, no solo falla el filtro visual: tambien se pierde relevancia para busqueda interna, para SEO (Google no puede entender la taxonomia del catalogo) y para cualquier campana de Shopping/Merchant Center a futuro, que depende directamente de esa categorizacion.",
+          code:"Actual: checkboxes sin texto (- [ ] x4), probablemente porque ningun producto tiene categoria asignada<br>Correcto: asignar cada producto a su categoria (Cafe / Experiencias / por linea) + checkboxes con nombre visible y funcional",
+          fix:"\u2192 FIX: Asignar categorias a los 13 productos en WooCommerce y reparar el widget de filtro (2-3 horas dev)" },
         { type:"bad", badge:"Critico", icon:"\u26a0",
           title:"La tienda mezcla cafe con experiencias turisticas sin separar",
           desc:"Junto a las 7 lineas de cafe especial aparecen 'Experiencia Barista en casa' ($250.000), 'Guianza personalizada Barrios y Comunas' ($500.000) y 'Cafe, Laureles y Buena Comida' ($270.000) en la misma grilla, sin categorizar. Sin filtros funcionales, alguien que solo quiere comprar cafe debe pasar por productos de turismo de hasta medio millon de pesos -refuerza la sensacion de sitio de turismo justo donde deberia sentirse mas como tienda de cafe.",
@@ -295,8 +295,8 @@ const WDATA = {
           code:"Actual: medellin@gmail.com en el sitio, admon@gmail.com en la politica de privacidad<br>Correcto: 1 correo unico en ambos lugares",
           fix:"\u2192 FIX: Consolidar a un solo correo de contacto en todas las paginas (1 hora)" },
         { type:"warn", badge:"Mejora", icon:"\u26a0",
-          title:"La tienda puede mejorar visualmente",
-          desc:"La grilla de productos usa las tarjetas por defecto de WooCommerce sin personalizacion visual fuerte -tipografia, espaciado y jerarquia estandar de plantilla, sin elementos que refuercen la identidad de marca (colores, iconografia de las 7 lineas, fotografia mas cuidada). Para una marca que se apoya en una narrativa fuerte (7 lineas, 4 origenes, ecosistema de aliados), la tienda deberia sentirse tan cuidada como el discurso de marca -hoy se siente generica.",
+          title:"La tienda puede mejorar visualmente — y esto tambien afecta el LTV, no solo la primera compra",
+          desc:"La grilla de productos usa las tarjetas por defecto de WooCommerce sin personalizacion visual fuerte -tipografia, espaciado y jerarquia estandar de plantilla, sin elementos que refuercen la identidad de marca (colores, iconografia de las 7 lineas, fotografia mas cuidada). Para una marca que se apoya en una narrativa fuerte (7 lineas, 4 origenes, ecosistema de aliados), la tienda deberia sentirse tan cuidada como el discurso de marca -hoy se siente generica. Esto no es solo un problema de primera impresion: una tienda que se ve generica reduce la confianza para volver a comprar o pasar a un plan de suscripcion, justamente los mecanismos que mas mueven el LTV (ver hallazgo de suscripcion). Un cliente que ya compro una vez y encuentra la misma experiencia poco cuidada tiene menos motivo para volver.",
           code:"", fix:"\u2192 FIX: Rediseñar las tarjetas de producto de la tienda con la identidad visual de marca una vez este definido el brand kit (coordinar con mm_brandkit, 3-5 dias diseno+dev)" }
       ]
     },
