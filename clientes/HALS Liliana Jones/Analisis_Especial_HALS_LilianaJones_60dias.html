@@ -135,10 +135,9 @@ td.bad{color:var(--red);font-family:var(--mono);font-weight:600}
     </div>
 
     <div class="subhead">Gasto vs. Leads por campaña/servicio (escala logarítmica)</div>
-    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:14px;display:flex;flex-direction:column;align-items:center">
-      <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px">
+    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:14px;display:flex;flex-direction:column;align-items:center;position:relative">
+      <svg id="scatterSvg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px">
   <rect x="0" y="0" width="720" height="440" fill="transparent"/>
-  <!-- Grid -->
   <line x1="60.0" y1="20" x2="60.0" y2="390" stroke="#1E1F28" stroke-width="1"/>
 <text x="60.0" y="408" fill="#A8A598" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle">$50</text>
 <line x1="146.0" y1="20" x2="146.0" y2="390" stroke="#1E1F28" stroke-width="1"/>
@@ -161,7 +160,6 @@ td.bad{color:var(--red);font-family:var(--mono);font-weight:600}
 <line x1="60" y1="42.0" x2="690" y2="42.0" stroke="#1E1F28" stroke-width="1"/>
 <text x="50" y="45.0" fill="#A8A598" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="end">500</text>
 
-  <!-- Líneas de CPL de referencia -->
   <line x1="60.0" y1="225.5" x2="690.0" y2="-12.5" stroke="#E8C046" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
 <text x="685.0" y="26.0" fill="#E8C046" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="end" opacity="0.7">CPL $5</text>
 <line x1="60.0" y1="290.6" x2="690.0" y2="52.5" stroke="#E8C046" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
@@ -169,45 +167,100 @@ td.bad{color:var(--red);font-family:var(--mono);font-weight:600}
 <line x1="60.0" y1="366.0" x2="690.0" y2="128.0" stroke="#E8C046" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
 <text x="685.0" y="124.0" fill="#E8C046" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="end" opacity="0.7">CPL $100</text>
 
-  <!-- Ejes -->
   <line x1="60" y1="20" x2="60" y2="390" stroke="#A8A598" stroke-width="1.5"/>
   <line x1="60" y1="390" x2="690" y2="390" stroke="#A8A598" stroke-width="1.5"/>
-  <!-- Puntos -->
-  <circle cx="369.4" cy="253.6" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Campaña Búsqueda Analisis Residencia: $604.34 / 5.5 leads</title></circle>
-<circle cx="369.8" cy="145.1" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Search- KW-abogado de inmigración: $606.54 / 55.5 leads</title></circle>
-<circle cx="369.6" cy="279.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Campaña Búsqueda Asilos: $605.57 / 3.2 leads</title></circle>
-<circle cx="370.2" cy="309.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Busqueda Leads Peticiones: $608.59 / 1.7 leads</title></circle>
-<circle cx="342.0" cy="320.2" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads Visa U: $484.87 / 1.3 leads</title></circle>
-<circle cx="370.0" cy="172.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Leads Search Visa T (english): $607.61 / 31.0 leads</title></circle>
-<circle cx="342.3" cy="268.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Busqueda Leads Demanda Corte Federal: $485.86 / 4.0 leads</title></circle>
-<circle cx="369.8" cy="376.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Busqueda Leads Visa Vawa: $606.60 / 0.4 leads</title></circle>
-<circle cx="340.0" cy="230.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads Cancelación de Expulsión: $477.11 / 9.0 leads</title></circle>
-<circle cx="368.5" cy="181.6" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads Plan Escudo Inmigrante: $600.39 / 25.5 leads</title></circle>
-<circle cx="370.0" cy="292.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads Visa Juvenil: $607.42 / 2.4 leads</title></circle>
-<circle cx="370.1" cy="263.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Leads Busqueda Fraude Migratorio: $608.02 / 4.5 leads</title></circle>
-<circle cx="342.1" cy="282.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Leads Search Juvenile Visa (english): $485.02 / 3.0 leads</title></circle>
-<circle cx="369.7" cy="242.3" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads General Apelaciones Mociones: $606.12 / 7.0 leads</title></circle>
-<circle cx="369.5" cy="249.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>SEARCH | Revisión de Casos - Fraude: $604.90 / 6.0 leads</title></circle>
-<circle cx="341.2" cy="236.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Búsqueda Leads Visa T: $481.77 / 8.0 leads</title></circle>
-<circle cx="585.8" cy="28.5" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Fraude Migratorio: $3454.73 / 668 leads</title></circle>
-<circle cx="510.7" cy="53.7" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Visa Vawa: $1887.69 / 390 leads</title></circle>
-<circle cx="663.9" cy="36.3" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>SIN CLASIFICAR: $6484.02 / 565 leads</title></circle>
-<circle cx="447.2" cy="116.6" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Peticiones: $1131.10 / 102 leads</title></circle>
-<circle cx="519.5" cy="67.4" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Asilo: $2025.86 / 291 leads</title></circle>
-<circle cx="259.9" cy="155.0" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Cancelación Expulsión: $250.31 / 45 leads</title></circle>
-<circle cx="265.4" cy="158.2" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Visa U: $261.67 / 42 leads</title></circle>
-<circle cx="459.2" cy="120.9" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Residencia: $1246.27 / 93 leads</title></circle>
-<circle cx="374.8" cy="132.3" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1"><title>Visa Juvenil: $631.67 / 73 leads</title></circle>
-  <!-- Labels de ejes -->
+  <g id="groupGoogle">
+  <circle class="scatter-pt pt-google" cx="369.4" cy="253.6" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Campaña Búsqueda Analisis Residencia" data-cost="604.34" data-leads="5.5" data-cpl="109.88" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="369.8" cy="145.1" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Search- KW-abogado de inmigración" data-cost="606.54" data-leads="55.5" data-cpl="10.93" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="369.6" cy="279.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Campaña Búsqueda Asilos" data-cost="605.57" data-leads="3.2" data-cpl="189.24" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="370.2" cy="309.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Busqueda Leads Peticiones" data-cost="608.59" data-leads="1.7" data-cpl="364.43" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="342.0" cy="320.2" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads Visa U" data-cost="484.87" data-leads="1.3" data-cpl="364.56" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="370.0" cy="172.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Leads Search Visa T (english)" data-cost="607.61" data-leads="31.0" data-cpl="19.60" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="342.3" cy="268.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Busqueda Leads Demanda Corte Federal" data-cost="485.86" data-leads="4.0" data-cpl="121.47" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="369.8" cy="376.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Busqueda Leads Visa Vawa" data-cost="606.60" data-leads="0.4" data-cpl="1516.50" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="340.0" cy="230.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads Cancelación de Expulsión" data-cost="477.11" data-leads="9.0" data-cpl="53.01" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="368.5" cy="181.6" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads Plan Escudo Inmigrante" data-cost="600.39" data-leads="25.5" data-cpl="23.54" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="370.0" cy="292.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads Visa Juvenil" data-cost="607.42" data-leads="2.4" data-cpl="253.09" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="370.1" cy="263.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Leads Busqueda Fraude Migratorio" data-cost="608.02" data-leads="4.5" data-cpl="135.12" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="342.1" cy="282.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Leads Search Juvenile Visa (english)" data-cost="485.02" data-leads="3.0" data-cpl="161.67" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="369.7" cy="242.3" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads General Apelaciones Mociones" data-cost="606.12" data-leads="7.0" data-cpl="86.59" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="369.5" cy="249.5" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="SEARCH | Revisión de Casos - Fraude" data-cost="604.90" data-leads="6.0" data-cpl="100.82" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-google" cx="341.2" cy="236.0" r="5" fill="#4A9EE0" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Búsqueda Leads Visa T" data-cost="481.77" data-leads="8.0" data-cpl="60.22" data-channel="Google Ads" style="cursor:pointer;transition:r .15s"/>
+  </g>
+  <g id="groupMeta">
+  <circle class="scatter-pt pt-meta" cx="585.8" cy="28.5" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Fraude Migratorio" data-cost="3454.73" data-leads="668" data-cpl="5.17" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="510.7" cy="53.7" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Visa Vawa" data-cost="1887.69" data-leads="390" data-cpl="4.84" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="663.9" cy="36.3" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="SIN CLASIFICAR" data-cost="6484.02" data-leads="565" data-cpl="11.48" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="447.2" cy="116.6" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Peticiones" data-cost="1131.10" data-leads="102" data-cpl="11.09" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="519.5" cy="67.4" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Asilo" data-cost="2025.86" data-leads="291" data-cpl="6.96" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="259.9" cy="155.0" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Cancelación Expulsión" data-cost="250.31" data-leads="45" data-cpl="5.56" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="265.4" cy="158.2" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Visa U" data-cost="261.67" data-leads="42" data-cpl="6.23" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="459.2" cy="120.9" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Residencia" data-cost="1246.27" data-leads="93" data-cpl="13.40" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+<circle class="scatter-pt pt-meta" cx="374.8" cy="132.3" r="6" fill="#1877F2" fill-opacity="0.75" stroke="#0C0D13" stroke-width="1" data-name="Visa Juvenil" data-cost="631.67" data-leads="73" data-cpl="8.65" data-channel="Meta Ads" style="cursor:pointer;transition:r .15s"/>
+  </g>
   <text x="375.0" y="435" fill="#FDFCF7" font-size="11" font-family="Inter, sans-serif" text-anchor="middle">Gasto acumulado (escala log)</text>
   <text x="15" y="205.0" fill="#FDFCF7" font-size="11" font-family="Inter, sans-serif" text-anchor="middle" transform="rotate(-90, 15, 205.0)">Leads generados (escala log)</text>
 </svg>
+      <div id="scatterTooltip" style="display:none;position:absolute;pointer-events:none;background:#14151C;border:1px solid var(--accent);border-radius:6px;padding:8px 12px;font-family:var(--mono);font-size:11px;color:var(--ink);z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.5);white-space:nowrap"></div>
       <div style="display:flex;gap:20px;margin-top:10px;font-size:11px;color:var(--ink-dim)">
-        <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4A9EE0;margin-right:5px"></span>Google Ads (16 campañas)</span>
-        <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1877F2;margin-right:5px"></span>Meta Ads (9 servicios)</span>
+        <span id="legendGoogle" style="cursor:pointer;user-select:none;transition:opacity .15s"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4A9EE0;margin-right:5px"></span>Google Ads (16 campañas)</span>
+        <span id="legendMeta" style="cursor:pointer;user-select:none;transition:opacity .15s"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1877F2;margin-right:5px"></span>Meta Ads (9 servicios)</span>
       </div>
-      <div style="font-size:10px;color:var(--ink-dim);margin-top:6px;text-align:center">Líneas punteadas = CPL de referencia. Puntos por encima y a la izquierda de una línea son más eficientes que ese CPL.</div>
+      <div style="font-size:10px;color:var(--ink-dim);margin-top:6px;text-align:center">Pasa el mouse sobre un punto para ver el detalle · Clic en la leyenda para mostrar/ocultar cada canal · Líneas punteadas = CPL de referencia</div>
     </div>
+
+    <script>
+    (function(){
+      const tooltip = document.getElementById('scatterTooltip');
+      const svgEl = document.getElementById('scatterSvg');
+      const points = svgEl.querySelectorAll('.scatter-pt');
+      const container = svgEl.closest('div');
+
+      points.forEach(pt => {
+        pt.addEventListener('mouseenter', (e) => {
+          const name = pt.getAttribute('data-name');
+          const cost = parseFloat(pt.getAttribute('data-cost'));
+          const leads = pt.getAttribute('data-leads');
+          const cpl = parseFloat(pt.getAttribute('data-cpl'));
+          const channel = pt.getAttribute('data-channel');
+          tooltip.innerHTML = `<strong style="color:var(--accent)">${channel}</strong><br>${name}<br>Gasto: $${cost.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}<br>Leads: ${leads}<br>CPL: $${cpl.toFixed(2)}`;
+          tooltip.style.display = 'block';
+          pt.setAttribute('r', channel === 'Google Ads' ? '8' : '9');
+          pt.setAttribute('fill-opacity', '1');
+        });
+        pt.addEventListener('mousemove', (e) => {
+          const rect = container.getBoundingClientRect();
+          let left = e.clientX - rect.left + 14;
+          let top = e.clientY - rect.top - 10;
+          tooltip.style.left = left + 'px';
+          tooltip.style.top = top + 'px';
+        });
+        pt.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+          const channel = pt.getAttribute('data-channel');
+          pt.setAttribute('r', channel === 'Google Ads' ? '5' : '6');
+          pt.setAttribute('fill-opacity', '0.75');
+        });
+      });
+
+      let googleVisible = true, metaVisible = true;
+      const legendGoogle = document.getElementById('legendGoogle');
+      const legendMeta = document.getElementById('legendMeta');
+      const groupGoogle = document.getElementById('groupGoogle');
+      const groupMeta = document.getElementById('groupMeta');
+
+      legendGoogle.addEventListener('click', () => {
+        googleVisible = !googleVisible;
+        groupGoogle.style.display = googleVisible ? '' : 'none';
+        legendGoogle.style.opacity = googleVisible ? '1' : '0.35';
+      });
+      legendMeta.addEventListener('click', () => {
+        metaVisible = !metaVisible;
+        groupMeta.style.display = metaVisible ? '' : 'none';
+        legendMeta.style.opacity = metaVisible ? '1' : '0.35';
+      });
+    })();
+    </script>
 
     <div class="diag-box ok">
       <div class="diag-title">Lectura general del período</div>
