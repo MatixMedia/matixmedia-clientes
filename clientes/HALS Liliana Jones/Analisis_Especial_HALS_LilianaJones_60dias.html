@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatixMedia · HALS Liliana Jones — Análisis Especial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04050A;--bg-2:#0C0D13;--bg-3:#14151C;--accent:#E8C046;--teal:#199477;--red:#CF343A;--ink:#FDFCF7;--ink-dim:#A8A598;--line:#1E1F28;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.report-header{background:var(--bg-2);border-bottom:1px solid var(--line);padding:28px 0}
+.report-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-title{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--ink-dim);margin-bottom:3px;font-family:var(--mono)}
+.header-client{font-size:21px;font-weight:600;color:var(--ink)}
+.header-period{font-size:11px;color:var(--ink-dim);font-family:var(--mono);margin-top:2px}
+.header-badge{display:inline-block;background:rgba(232,192,70,.12);color:var(--accent);border:1px solid rgba(232,192,70,.3);font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.channel-bar{background:var(--bg-2);border-bottom:1px solid var(--line)}
+.channel-bar .wrap{display:flex;align-items:center;gap:0}
+.ch-tab{display:flex;align-items:center;gap:8px;padding:14px 22px;font-size:12px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;color:var(--ink-dim);transition:.2s;user-select:none;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.ch-tab:hover{color:var(--ink)}
+.ch-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.ch-dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6}
+.ch-tab.active .ch-dot{opacity:1}
+.ch-panel{display:none}
+.ch-panel.active{display:block}
+.section{padding:28px 0;border-top:1px solid var(--line)}
+.section:first-child{border-top:none}
+.section-header{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+.section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)}
+.section-sub{font-size:11px;color:var(--ink-dim);margin-top:4px}
+.table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--line);margin-bottom:8px}
+table{width:100%;border-collapse:collapse;background:var(--bg-3);font-size:12px}
+thead th{background:rgba(232,192,70,.07);color:var(--accent);font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;padding:9px 13px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--line)}
+tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:9px 13px;color:var(--ink);vertical-align:middle}
+td.mono{font-family:var(--mono);font-size:11px}
+td.good{color:var(--teal);font-family:var(--mono);font-weight:600}
+td.bad{color:var(--red);font-family:var(--mono);font-weight:600}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:8px}
+.kpi-card{background:var(--bg-2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:14px 16px}
+.kpi-label{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-dim);margin-bottom:6px;font-family:var(--mono)}
+.kpi-value{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--ink);line-height:1}
+.kpi-sub{font-size:10px;color:var(--ink-dim);margin-top:6px;font-family:var(--mono)}
+.diag-box{background:var(--bg-2);border:1px solid var(--line);border-left:3px solid;border-radius:8px;padding:14px 18px;margin-bottom:12px}
+.diag-box.ok{border-left-color:var(--teal)}
+.diag-box.warn{border-left-color:var(--accent)}
+.diag-box.fuga{border-left-color:var(--red)}
+.diag-title{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.diag-box.ok .diag-title{color:var(--teal)}
+.diag-box.warn .diag-title{color:var(--accent)}
+.diag-box.fuga .diag-title{color:var(--red)}
+.diag-text{font-size:12px;color:var(--ink-dim);line-height:1.7}
+.missing-data-alert{background:var(--bg-2);border:1px solid rgba(232,192,70,.3);border-left:3px solid var(--accent);border-radius:8px;padding:14px 18px;margin-bottom:14px}
+.missing-data-alert-title{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.missing-data-alert-list{font-size:12px;color:var(--ink-dim);line-height:1.8}
+.reco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.reco-card{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px 18px;border-left:3px solid}
+.reco-card.escalar{border-left-color:var(--teal)}
+.reco-card.monitorear{border-left-color:var(--accent)}
+.reco-card.pausar{border-left-color:var(--red)}
+.reco-tag{font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.reco-card.escalar .reco-tag{color:var(--teal)}
+.reco-card.monitorear .reco-tag{color:var(--accent)}
+.reco-card.pausar .reco-tag{color:var(--red)}
+.reco-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.reco-reason{font-size:11px;color:var(--ink-dim);line-height:1.6}
+.subhead{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin:20px 0 10px;font-family:var(--mono)}
+.report-footer{background:var(--bg-2);border-top:1px solid var(--line);padding:20px 0;margin-top:24px}
+.report-footer .wrap{font-size:10px;color:var(--ink-dim);text-align:center;font-family:var(--mono)}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <div class="wrap">
+    <div>
+      <div class="header-title">MatixMedia · Análisis Especial — Solicitud del Cliente</div>
+      <div class="header-client">HALS · Liliana Jones</div>
+      <div class="header-period">Rendimiento acumulado Julio + Junio 2026</div>
+    </div>
+    <div class="header-badge">Complementario al informe mensual</div>
+  </div>
+</div>
+
+<div class="channel-bar">
+  <div class="wrap" id="channelTabs">
+    <div class="ch-tab active" data-panel="panel-resumen"><span class="ch-dot"></span>Resumen General</div>
+    <div class="ch-tab" data-panel="panel-google"><span class="ch-dot" style="color:#4A9EE0"></span>Google Ads</div>
+    <div class="ch-tab" data-panel="panel-meta"><span class="ch-dot" style="color:#1877F2"></span>Meta Ads</div>
+  </div>
+</div>
+
+<!-- ============ PANEL RESUMEN GENERAL ============ -->
+<div class="ch-panel active" id="panel-resumen">
+<div class="wrap">
+
+  <div class="missing-data-alert">
+    <div class="missing-data-alert-title">⚠️ Nota metodológica</div>
+    <div class="missing-data-alert-list">
+      Este documento se construyó con los datos disponibles en los reportes de Google Ads y Meta Ads de julio y junio,
+      mostrando el <strong>rendimiento acumulado de ambos meses</strong>. Algunos puntos solicitados requieren
+      información que <strong style="color:var(--accent)">no forma parte de los reportes descargados hasta ahora</strong>
+      — quedan marcados como <span style="color:var(--red);font-weight:600">PENDIENTE</span> dentro de cada pestaña,
+      con el detalle de qué reporte adicional se necesita.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">1 · Resumen general — Julio + Junio 2026</span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Gasto total</div><div class="kpi-value">$26,545.41</div><div class="kpi-sub">2 meses acumulados</div></div>
+      <div class="kpi-card"><div class="kpi-label">Gasto Google / Gasto Meta</div><div class="kpi-value" style="font-size:20px">$9,172.09 / $17,373.32</div></div>
+      <div class="kpi-card"><div class="kpi-label">Leads Google / Leads Meta</div><div class="kpi-value" style="font-size:20px">1,103 / 2,269</div></div>
+      <div class="kpi-card"><div class="kpi-label">CPL Google / CPL Meta</div><div class="kpi-value" style="font-size:20px">$8.23 / $7.66</div></div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Plataforma</th><th>Gasto</th><th>Leads</th><th>CPL</th><th>% del gasto total</th></tr></thead>
+        <tbody>
+          <tr><td>Google Ads</td><td class="mono">$9,172.09</td><td class="mono">1,103</td><td class="mono">$8.32</td><td class="mono">34.6%</td></tr>
+          <tr><td>Meta Ads</td><td class="mono">$17,373.32</td><td class="mono">2,269</td><td class="mono">$7.66</td><td class="mono">65.4%</td></tr>
+          <tr><td><strong>Total</strong></td><td class="mono"><strong>$26,545.41</strong></td><td class="mono"><strong>3,372</strong></td><td class="mono"><strong>$7.87</strong></td><td class="mono"><strong>100%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diag-box ok">
+      <div class="diag-title">Lectura general del período</div>
+      <div class="diag-text">
+        Entre julio y junio, la cuenta invirtió $26,545.41 en total, generando 3,372 leads a un CPL
+        promedio de $7.87. Meta Ads concentra el 65% del gasto y aporta el
+        67% de los leads, con un CPL de $7.66, muy similar al de
+        Google Ads ($8.32) — solo 8.6% más alto. A diferencia de lo que se veía antes de incluir ubicaciones,
+        llamadas y extensiones en el total de Google, ambos canales muestran ahora una eficiencia comparable.
+      </div>
+    </div>
+
+    <div class="diag-box warn">
+      <div class="diag-title">Contexto — cuenta de Google en fase de aprendizaje</div>
+      <div class="diag-text">
+        Desde mayo, la cuenta de Google cambió su configuración de conversiones (de <em>page views</em> a
+        <em>acciones</em> reales). Esto significa que varias campañas todavía están en fase de aprendizaje/recolección
+        de clics, acumulando señal antes de que el sistema pueda optimizar hacia conversiones. Es esperable ver CPLs
+        altos o inestables en este período de transición — no necesariamente refleja el desempeño real de largo
+        plazo de esas campañas.
+      </div>
+    </div>
+
+    <div class="diag-box ok">
+      <div class="diag-title">Contexto — Meta: reinicio de campañas por restricción a mediados de mayo</div>
+      <div class="diag-text">
+        Meta tuvo una restricción a mediados de mayo que obligó a reiniciar las campañas. Aunque implicó perder el
+        aprendizaje acumulado, permitió hacer ajustes que <strong>redujeron el CPL en un 38%</strong>. Esto es
+        relevante para interpretar el desempeño de Meta en el período: la eficiencia actual ya refleja las mejoras
+        post-reinicio, no el desempeño previo a la restricción.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">Recomendaciones preliminares</span></div>
+    <div class="reco-grid">
+      <div class="reco-card escalar">
+        <div class="reco-tag">Escalar</div>
+        <div class="reco-name">Fraude Migratorio y Visa Vawa (Meta)</div>
+        <div class="reco-reason">CPL de $5.17 y $4.84 respectivamente en el acumulado de 2 meses, los más eficientes de la cuenta. Buen volumen de leads (668 y 390).</div>
+      </div>
+      <div class="reco-card escalar">
+        <div class="reco-tag">Escalar</div>
+        <div class="reco-name">Visa T (english) y Plan Escudo Inmigrante (Google)</div>
+        <div class="reco-reason">CPL de $19.60 y $23.54 — las dos campañas de Google con mejor eficiencia entre las limitadas por presupuesto (14 de 16 campañas lo están). Buen volumen (31 y 25.5 conversiones) y margen real para crecer sin perder eficiencia.</div>
+      </div>
+      <div class="reco-card escalar">
+        <div class="reco-tag">Escalar</div>
+        <div class="reco-name">Visa U y Cancelación de Expulsión (Meta)</div>
+        <div class="reco-reason">CPL de $6.23 y $5.56 — eficientes, aunque con menor volumen (42 y 45 leads) que Fraude Migratorio y Visa Vawa. Candidatas secundarias para escalar una vez priorizadas las de mayor volumen.</div>
+      </div>
+      <div class="reco-card monitorear">
+        <div class="reco-tag">Monitorear</div>
+        <div class="reco-name">Asilo — resultado distinto por canal</div>
+        <div class="reco-reason">En Meta, Asilo tiene CPL saludable ($6.96, 291 leads). En Google, la campaña de Asilos no tiene leads atribuidos en ninguno de los 2 meses pese a $611.72 de gasto acumulado — no recomendamos mover presupuesto ahí hasta confirmar si es un problema de tracking.</div>
+      </div>
+      <div class="reco-card monitorear">
+        <div class="reco-tag">Monitorear</div>
+        <div class="reco-name">Visa Juvenil (Meta)</div>
+        <div class="reco-reason">CPL de $8.65 — no es malo, pero está por encima de las mejores campañas de Meta. Antes de escalar, conviene revisar si hay margen de mejora en creatividad primero.</div>
+      </div>
+      <div class="reco-card pausar">
+        <div class="reco-tag">No aumentar por ahora</div>
+        <div class="reco-name">Residencia y Peticiones (Meta)</div>
+        <div class="reco-reason">CPL más altos del set clasificado ($13.40 y $11.09). Sin evidencia de estar limitados por presupuesto — antes de escalar, conviene revisar creatividad.</div>
+      </div>
+      <div class="reco-card pausar">
+        <div class="reco-tag">No aumentar por ahora</div>
+        <div class="reco-name">Visa Vawa, Visa U y Peticiones (Google)</div>
+        <div class="reco-reason">CPL de $1,516.50, $364.56 y $364.43 — los peores de toda la cuenta, pese a estar limitadas por presupuesto. El problema aquí no es falta de presupuesto, es eficiencia; aumentar inversión solo aumentaría el gasto desperdiciado.</div>
+      </div>
+      <div class="reco-card escalar">
+        <div class="reco-tag">Escalar (secundaria)</div>
+        <div class="reco-name">Cancelación de Expulsión (Google)</div>
+        <div class="reco-reason">CPL de $53.01, limitada por presupuesto — no tan eficiente como Visa T (english) o Plan Escudo, pero razonable y con margen real para crecer. Candidata de segunda prioridad tras escalar las 2 mejores.</div>
+      </div>
+      <div class="reco-card monitorear">
+        <div class="reco-tag">Monitorear</div>
+        <div class="reco-name">Visa T, Revisión de Casos-Fraude y Análisis Residencia (Google)</div>
+        <div class="reco-reason">CPL entre $60 y $110, todas limitadas por presupuesto. No son las más eficientes, pero tampoco las peores — antes de escalarlas conviene revisar si hay oportunidad de mejorar keywords/anuncios primero (ver sección de keywords para candidatas a pausar).</div>
+      </div>
+      <div class="reco-card pausar">
+        <div class="reco-tag">No aumentar por ahora</div>
+        <div class="reco-name">Demanda Corte Federal, Fraude Migratorio, Juvenile Visa (english) y Visa Juvenil (Google)</div>
+        <div class="reco-reason">CPL entre $121 y $253, todas limitadas por presupuesto. Antes de considerar más inversión, conviene depurar las keywords de bajo desempeño identificadas en la sección de keywords de este mismo panel.</div>
+      </div>
+      <div class="reco-card monitorear">
+        <div class="reco-tag">Mantener — ya en su techo</div>
+        <div class="reco-name">Search-KW-abogado y General Apelaciones Mociones (Google)</div>
+        <div class="reco-reason">CPL de $10.93 (el mejor de toda la cuenta) y $86.59 respectivamente. Ninguna está limitada por presupuesto — ya captan toda la demanda disponible. Subir su presupuesto no generaría más leads proporcionalmente.</div>
+      </div>
+    </div>
+
+    <div class="diag-box fuga" style="margin-top:14px">
+      <div class="diag-title">Sobre la redistribución del presupuesto de Asilo</div>
+      <div class="diag-text">
+        No podemos recomendar con confianza redistribuir el presupuesto de Asilo todavía ya que es una de las
+        campañas más tráfico y búsquedas. Aunque en Google, esta campaña no tiene leads atribuidos en julio ni en
+        junio pese a tener gasto activo los 2 meses — antes de mover dinero hay que confirmar si es un problema
+        real de performance o un problema de atribución/tracking. En Meta, Asilo sí muestra resultados saludables
+        en el acumulado. Sugerimos resolver primero el punto de tracking en Google antes de decidir cualquier
+        redistribución.
+      </div>
+    </div>
+
+    <div class="diag-box warn" style="margin-top:14px">
+      <div class="diag-title">Recomendación preliminar — consolidar campañas de Google</div>
+      <div class="diag-text">
+        Google reparte su presupuesto en 16 campañas, cada una limitada a solo $10/día. El 49% del gasto de Google
+        (<strong>$4,491.95 de $9,172.09</strong>) está repartido entre 8 campañas que generan menos de 5
+        conversiones cada una en 2 meses (Visa Vawa, Visa U, Peticiones, Visa Juvenil, Juvenile Visa english,
+        Asilos, Demanda Corte Federal y Fraude Migratorio) — muy poco volumen para que el algoritmo de Google
+        pueda optimizar bien con una muestra tan chica.
+        <br><br>
+        Recomendamos evaluar <strong>agrupar estas campañas de bajo volumen en un número menor de campañas más
+        grandes</strong> (por ejemplo, consolidando servicios relacionados o de menor prioridad comercial en 2-3
+        campañas), liberando presupuesto diario para concentrarlo en las campañas que ya muestran mejor eficiencia
+        (Visa T english, Plan Escudo Inmigrante, Cancelación de Expulsión). Esto evitaría diluir tanto el
+        presupuesto y le daría a cada campaña restante más señal para optimizar.
+      </div>
+    </div>
+
+    <div class="diag-box warn" style="margin-top:14px">
+      <div class="diag-title">Confirmado — Google Ads: 14 de 16 campañas limitadas por presupuesto</div>
+      <div class="diag-text">
+        De las 16 campañas de Google, 14 están limitadas por presupuesto (todas a $10/día). Las mejores candidatas
+        para recibir más inversión son <strong>Leads Search Visa T (english)</strong> (CPL $19.60) y
+        <strong>Plan Escudo Inmigrante</strong> (CPL $23.54) — ver detalle completo en la pestaña Google Ads,
+        sección "Aspectos destacados". Solo <strong>Search- KW-abogado de inmigración</strong> y
+        <strong>General Apelaciones Mociones</strong> ya están en su techo de demanda, no de presupuesto.
+      </div>
+    </div>
+
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ PENDIENTE — Tasa de conversión por servicio (leads → clientes)</div>
+      <div class="missing-data-alert-list">
+        No tenemos acceso a la tabla de cierres, citas o agendamientos del equipo legal, así que no podemos calcular
+        qué porcentaje de los leads generados por cada servicio efectivamente se convierte en cliente o cita
+        agendada. Lo que sí mostramos en este documento es CPL y volumen de leads por servicio — la tasa de
+        conversión de lead a cliente requiere ese dato adicional del equipo interno.
+      </div>
+    </div>
+
+    <div class="diag-box ok">
+      <div class="diag-title">📊 Vista mes a mes — disponible en el informe mensual</div>
+      <div class="diag-text">
+        Este documento muestra el rendimiento <strong>acumulado</strong> de julio + junio. Si quieres ver la
+        evolución mes a mes (incluyendo mayo y abril también), esa vista ya existe en el informe mensual regular,
+        con selector de mes y comparativo automático vs. el mes anterior:
+        <br><br>
+        <a href="https://matixmedia.github.io/matixmedia-clientes/ir/hals-liliana-jones-informe-jul2026.html" target="_blank" style="display:inline-block;background:rgba(232,192,70,.12);border:1px solid rgba(232,192,70,.3);color:var(--accent);padding:8px 16px;border-radius:6px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em">
+          Ver informe mensual → Julio 2026
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ============ PANEL GOOGLE ADS ============ -->
+<div class="ch-panel" id="panel-google">
+<div class="wrap">
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">Resumen — Google Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio 2026</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Campañas activas</div><div class="kpi-value">16</div></div>
+      <div class="kpi-card"><div class="kpi-label">Servicios anunciados</div><div class="kpi-value">16</div></div>
+      <div class="kpi-card"><div class="kpi-label">Anuncios activos</div><div class="kpi-value">32</div></div>
+      <div class="kpi-card"><div class="kpi-label">Leads generados</div><div class="kpi-value">1,103</div><div class="kpi-sub">Incluye ubicaciones, llamadas y extensiones</div></div>
+      <div class="kpi-card"><div class="kpi-label">Gasto total</div><div class="kpi-value">$9,080.73</div></div>
+      <div class="kpi-card"><div class="kpi-label">CPL promedio</div><div class="kpi-value">$8.23</div></div>
+    </div>
+
+    <div class="diag-box warn">
+      <div class="diag-title">Contexto — cuenta en fase de aprendizaje</div>
+      <div class="diag-text">
+        Desde mayo, la cuenta cambió su configuración de conversiones (de <em>page views</em> a <em>acciones</em>
+        reales). Muchas campañas todavía están en fase de clics, acumulando señal antes de poder optimizar hacia
+        conversiones — los CPL altos que se ven en varias campañas de este panel son esperables durante esta
+        transición y no reflejan necesariamente su desempeño de largo plazo.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">2 · Desempeño por servicio legal — Google Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio · dato completo de las 16 campañas (vía reporte de keywords)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Servicio (campaña)</th><th>Grupo de anuncios</th><th>Clics</th><th>Gasto</th><th>Conv.</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Search- KW-abogado de inmigración</td><td style="font-size:10px;color:var(--ink-dim)">keywords abogado inmigración</td><td class="mono">734</td><td class="mono">$606.54</td><td class="mono">55.5</td><td class="mono good">$10.93</td></tr>
+<tr><td>Leads Search Visa T (english)</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1916</td><td class="mono">$607.61</td><td class="mono">31.0</td><td class="mono good">$19.60</td></tr>
+<tr><td>Búsqueda Leads Plan Escudo Inmigrante</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1514</td><td class="mono">$600.39</td><td class="mono">25.5</td><td class="mono good">$23.54</td></tr>
+<tr><td>Búsqueda Leads Cancelación de Expulsión</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1267</td><td class="mono">$477.11</td><td class="mono">9.0</td><td class="mono ">$53.01</td></tr>
+<tr><td>Búsqueda Leads Visa T</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">692</td><td class="mono">$481.77</td><td class="mono">8.0</td><td class="mono ">$60.22</td></tr>
+<tr><td>Búsqueda Leads General Apelaciones Mociones</td><td style="font-size:10px;color:var(--ink-dim)">Grupo de anuncios 1</td><td class="mono">1522</td><td class="mono">$606.12</td><td class="mono">7.0</td><td class="mono ">$86.59</td></tr>
+<tr><td>SEARCH | Revisión de Casos - Fraude</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1230</td><td class="mono">$604.90</td><td class="mono">6.0</td><td class="mono ">$100.82</td></tr>
+<tr><td>Campaña Búsqueda Analisis Residencia</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1096</td><td class="mono">$604.34</td><td class="mono">5.5</td><td class="mono ">$109.88</td></tr>
+<tr><td>Leads Busqueda Fraude Migratorio</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1132</td><td class="mono">$608.02</td><td class="mono">4.5</td><td class="mono ">$135.12</td></tr>
+<tr><td>Busqueda Leads Demanda Corte Federal</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1316</td><td class="mono">$485.86</td><td class="mono">4.0</td><td class="mono ">$121.47</td></tr>
+<tr><td>Campaña Búsqueda Asilos</td><td style="font-size:10px;color:var(--ink-dim)">Asilos</td><td class="mono">1394</td><td class="mono">$605.57</td><td class="mono">3.2</td><td class="mono bad">$189.24</td></tr>
+<tr><td>Leads Search Juvenile Visa (english)</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">702</td><td class="mono">$485.02</td><td class="mono">3.0</td><td class="mono bad">$161.67</td></tr>
+<tr><td>Búsqueda Leads Visa Juvenil</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1744</td><td class="mono">$607.42</td><td class="mono">2.4</td><td class="mono bad">$253.09</td></tr>
+<tr><td>Busqueda Leads Peticiones</td><td style="font-size:10px;color:var(--ink-dim)">Peticiones</td><td class="mono">1206</td><td class="mono">$608.59</td><td class="mono">1.7</td><td class="mono bad">$364.43</td></tr>
+<tr><td>Búsqueda Leads Visa U</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1163</td><td class="mono">$484.87</td><td class="mono">1.3</td><td class="mono bad">$364.56</td></tr>
+<tr><td>Busqueda Leads Visa Vawa</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1245</td><td class="mono">$606.60</td><td class="mono">0.4</td><td class="mono bad">$1516.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diag-box fuga">
+      <div class="diag-title">Hallazgo — Asilos: las 3 conversiones no vienen de keywords de asilo</div>
+      <div class="diag-text">
+        Con el reporte de keywords pudimos confirmar leads en las 16 campañas (antes solo teníamos 6 confirmadas).
+        Asilos muestra 3.2 conversiones, pero al revisar el detalle, esas conversiones vienen de la keyword genérica
+        <strong>"abogado en línea"</strong>, no de términos relacionados a asilo. Las keywords específicas
+        ("asilos", "asilo para estados unidos") siguen en <strong>cero conversiones</strong> pese a $343 de gasto
+        combinado. Esto refuerza la señal de alerta sobre esta campaña — no recomendamos escalarla todavía.
+      </div>
+    </div>
+
+    <div class="diag-box warn">
+      <div class="diag-title">Otras campañas con CPL crítico</div>
+      <div class="diag-text">
+        <strong>Visa Vawa</strong> ($1,516.50 CPL, 0.4 conv de $606.60 gasto) y <strong>Visa U</strong> ($364.56 CPL)
+        muestran el peor desempeño de Google en el período — muy por debajo de lo que Meta logra para los mismos
+        servicios (Visa Vawa en Meta: CPL $4.84 combinado). Vale la pena revisar si estos servicios deberían
+        priorizarse en Meta en vez de Google mientras se resuelve su desempeño en Search.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">Detalle de conversiones — Google Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio · objetivos principales, secundarios, ubicaciones y extensiones</div>
+
+    <div class="subhead">Objetivo principal de conversión</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acción</th><th>Conversiones</th></tr></thead>
+        <tbody>
+<tr><td>Llamadas desde anuncios (Click to Call)</td><td class="mono">105</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Objetivos secundarios</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acción</th><th>Conversiones</th></tr></thead>
+        <tbody>
+<tr><td>Page view (Calendly)</td><td class="mono">44</td></tr>
+<tr><td>Clicks to call</td><td class="mono">26</td></tr>
+<tr><td>Conversación iniciada</td><td class="mono">10</td></tr>
+<tr><td>Click Calendly</td><td class="mono">10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Ubicaciones</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acción</th><th>Conversiones</th></tr></thead>
+        <tbody>
+<tr><td>Directions (Google Maps)</td><td class="mono">216</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Llamadas — dato verificado</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acción</th><th>Conversiones</th><th>Detalle</th></tr></thead>
+        <tbody>
+<tr><td>Llamadas desde anuncios (dato verificado por el equipo)</td><td class="mono">127</td><td style="color:var(--ink-dim);font-size:10px">Julio: 67 · Junio: 60</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Extensiones de anuncio (interacciones, no conversión directa)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Extensión</th><th>Clics</th><th>Interacciones</th></tr></thead>
+        <tbody>
+<tr><td>Imágenes (AD_IMAGE)</td><td class="mono">14,688</td><td class="mono">1,515</td></tr>
+<tr><td>Sitelinks</td><td class="mono">3,095</td><td class="mono">285</td></tr>
+<tr><td>Llamadas (extensión CALL, sheet)</td><td class="mono">384</td><td class="mono">453</td></tr>
+<tr><td>Business Message</td><td class="mono">298</td><td class="mono">112</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ Por qué el total de leads de las tarjetas (1,103) es distinto al de la tabla de servicio legal (168)</div>
+      <div class="missing-data-alert-list">
+        Las tarjetas de "Leads generados" de este panel y del Resumen General suman <strong>objetivo principal +
+        objetivos secundarios + ubicaciones + llamadas verificadas + extensiones de Llamadas (CALL) y Business
+        Message</strong> = 1,103 leads, CPL $8.23. La tabla de "Desempeño por servicio legal" (168 leads) usa solo
+        las conversiones atribuidas directamente por campaña vía el reporte de keywords — es un número más estricto
+        y más preciso a nivel de servicio individual. Ambos números son correctos, solo miden cosas distintas:
+        1,103 es el volumen total de interacciones de valor de la cuenta; 168 es lo atribuible con certeza a cada
+        servicio específico.<br><br>
+        <strong>Imágenes (AD_IMAGE) y Sitelinks quedaron excluidos</strong> a pedido del equipo, por no considerarse
+        leads reales (son clics de exploración/navegación, no interacciones de conversión).
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">3 · Panorama de campañas y grupos de anuncios — Google Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio · en Google, cada campaña corresponde a un servicio legal específico, así que esta tabla ya está organizada por servicio</div>
+    <div class="kpi-grid" style="margin-bottom:16px">
+      <div class="kpi-card"><div class="kpi-label">Campañas activas</div><div class="kpi-value">16</div></div>
+      <div class="kpi-card"><div class="kpi-label">Grupos de anuncios activos</div><div class="kpi-value">16</div></div>
+      <div class="kpi-card"><div class="kpi-label">Clics totales</div><div class="kpi-value">19,873</div></div>
+      <div class="kpi-card"><div class="kpi-label">CPL promedio ponderado</div><div class="kpi-value">$8.32</div></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Campaña</th><th>Grupo de anuncios</th><th>Clics</th><th>Gasto</th><th>Conv.</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Search- KW-abogado de inmigración</td><td style="font-size:10px;color:var(--ink-dim)">keywords abogado inmigración</td><td class="mono">734</td><td class="mono">$606.54</td><td class="mono">55.5</td><td class="mono good">$10.93</td></tr>
+<tr><td>Leads Search Visa T (english)</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1916</td><td class="mono">$607.61</td><td class="mono">31.0</td><td class="mono good">$19.60</td></tr>
+<tr><td>Búsqueda Leads Plan Escudo Inmigrante</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1514</td><td class="mono">$600.39</td><td class="mono">25.5</td><td class="mono good">$23.54</td></tr>
+<tr><td>Búsqueda Leads Cancelación de Expulsión</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1267</td><td class="mono">$477.11</td><td class="mono">9.0</td><td class="mono ">$53.01</td></tr>
+<tr><td>Búsqueda Leads Visa T</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">692</td><td class="mono">$481.77</td><td class="mono">8.0</td><td class="mono ">$60.22</td></tr>
+<tr><td>Búsqueda Leads General Apelaciones Mociones</td><td style="font-size:10px;color:var(--ink-dim)">Grupo de anuncios 1</td><td class="mono">1522</td><td class="mono">$606.12</td><td class="mono">7.0</td><td class="mono ">$86.59</td></tr>
+<tr><td>SEARCH | Revisión de Casos - Fraude</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1230</td><td class="mono">$604.90</td><td class="mono">6.0</td><td class="mono ">$100.82</td></tr>
+<tr><td>Campaña Búsqueda Analisis Residencia</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1096</td><td class="mono">$604.34</td><td class="mono">5.5</td><td class="mono ">$109.88</td></tr>
+<tr><td>Leads Busqueda Fraude Migratorio</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1132</td><td class="mono">$608.02</td><td class="mono">4.5</td><td class="mono ">$135.12</td></tr>
+<tr><td>Busqueda Leads Demanda Corte Federal</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1316</td><td class="mono">$485.86</td><td class="mono">4.0</td><td class="mono ">$121.47</td></tr>
+<tr><td>Campaña Búsqueda Asilos</td><td style="font-size:10px;color:var(--ink-dim)">Asilos</td><td class="mono">1394</td><td class="mono">$605.57</td><td class="mono">3.2</td><td class="mono bad">$189.24</td></tr>
+<tr><td>Leads Search Juvenile Visa (english)</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">702</td><td class="mono">$485.02</td><td class="mono">3.0</td><td class="mono bad">$161.67</td></tr>
+<tr><td>Búsqueda Leads Visa Juvenil</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1744</td><td class="mono">$607.42</td><td class="mono">2.4</td><td class="mono bad">$253.09</td></tr>
+<tr><td>Busqueda Leads Peticiones</td><td style="font-size:10px;color:var(--ink-dim)">Peticiones</td><td class="mono">1206</td><td class="mono">$608.59</td><td class="mono">1.7</td><td class="mono bad">$364.43</td></tr>
+<tr><td>Búsqueda Leads Visa U</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1163</td><td class="mono">$484.87</td><td class="mono">1.3</td><td class="mono bad">$364.56</td></tr>
+<tr><td>Busqueda Leads Visa Vawa</td><td style="font-size:10px;color:var(--ink-dim)">Ad group 1</td><td class="mono">1245</td><td class="mono">$606.60</td><td class="mono">0.4</td><td class="mono bad">$1516.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ PENDIENTE — Anuncios/RSA individuales</div>
+      <div class="missing-data-alert-list">
+        Ya sabemos que hay <strong>32 anuncios activos</strong> en total, pero seguimos sin su detalle individual
+        (impresiones, clics, conversiones y costo por anuncio). Para tener paridad total con Meta se necesita un
+        reporte de "Anuncios" de Google Ads con esas métricas por anuncio.
+      </div>
+    </div>
+  </div>
+
+<div class="section">
+    <div class="section-header"><span class="section-title">4 · Aspectos destacados de Google Ads (keywords)</span></div>
+    <div class="section-sub">Acumulado 1 de junio – 31 de julio 2026 · reporte de palabras clave a nivel de cuenta</div>
+
+    <div class="subhead">Top 10 keywords por conversiones</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Concordancia</th><th>Campaña</th><th>Clics</th><th>Conv.</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>liliana jones</td><td class="mono">Concordancia amplia</td><td>Search- KW-abogado de inmigración</td><td class="mono">116</td><td class="mono good">34</td><td class="mono">$2.54</td></tr>
+<tr><td>liliana jones immigration attorney</td><td class="mono">Concordancia amplia</td><td>Leads Search Visa T (english)</td><td class="mono">113</td><td class="mono good">24</td><td class="mono">$2.74</td></tr>
+<tr><td>abogados de inmigración</td><td class="mono">Concordancia de frase</td><td>Búsqueda Leads Plan Escudo Inmigrante</td><td class="mono">55</td><td class="mono good">18</td><td class="mono">$2.03</td></tr>
+<tr><td>abogada liliana jones</td><td class="mono">Concordancia amplia</td><td>Search- KW-abogado de inmigración</td><td class="mono">39</td><td class="mono good">11</td><td class="mono">$2.61</td></tr>
+<tr><td>abogada visa t</td><td class="mono">Concordancia amplia</td><td>Búsqueda Leads Visa T</td><td class="mono">69</td><td class="mono good">8</td><td class="mono">$5.38</td></tr>
+<tr><td>casos de migración</td><td class="mono">Concordancia amplia</td><td>Búsqueda Leads General Apelaciones Mociones</td><td class="mono">1271</td><td class="mono good">5</td><td class="mono">$98.65</td></tr>
+<tr><td>liliana jones abogada de inmigración</td><td class="mono">Concordancia amplia</td><td>Search- KW-abogado de inmigración</td><td class="mono">26</td><td class="mono good">4</td><td class="mono">$5.12</td></tr>
+<tr><td>immigration lawyer</td><td class="mono">Concordancia amplia</td><td>Search- KW-abogado de inmigración</td><td class="mono">408</td><td class="mono good">4</td><td class="mono">$86.08</td></tr>
+<tr><td>immigration case</td><td class="mono">Concordancia amplia</td><td>Busqueda Leads Demanda Corte Federal</td><td class="mono">71</td><td class="mono good">3</td><td class="mono">$7.18</td></tr>
+<tr><td>abogado de inmigración</td><td class="mono">Concordancia de frase</td><td>Búsqueda Leads Plan Escudo Inmigrante</td><td class="mono">83</td><td class="mono good">3</td><td class="mono">$12.45</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Top 10 keywords por inversión</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Concordancia</th><th>Campaña</th><th>Gasto</th><th>Clics</th><th>Conv.</th></tr></thead>
+        <tbody>
+<tr><td>abogada de inmigración</td><td class="mono">Concordancia amplia</td><td>Busqueda Leads Peticiones</td><td class="mono">$553.48</td><td class="mono">1078</td><td class="mono good">2</td></tr>
+<tr><td>casos de migración</td><td class="mono">Concordancia amplia</td><td>Búsqueda Leads General Apelaciones Mociones</td><td class="mono">$493.23</td><td class="mono">1271</td><td class="mono good">5</td></tr>
+<tr><td>abogados de inmigración near me</td><td class="mono">Concordancia amplia</td><td>Búsqueda Leads Visa Juvenil</td><td class="mono">$348.07</td><td class="mono">1057</td><td class="mono bad">0</td></tr>
+<tr><td>immigration lawyer</td><td class="mono">Concordancia amplia</td><td>Search- KW-abogado de inmigración</td><td class="mono">$344.31</td><td class="mono">408</td><td class="mono good">4</td></tr>
+<tr><td>uscis status</td><td class="mono">Concordancia amplia</td><td>SEARCH | Revisión de Casos - Fraude</td><td class="mono">$271.32</td><td class="mono">370</td><td class="mono good">1</td></tr>
+<tr><td>immigration attorney consultation</td><td class="mono">Concordancia amplia</td><td>Leads Search Visa T (english)</td><td class="mono">$197.56</td><td class="mono">737</td><td class="mono bad">0</td></tr>
+<tr><td>asilo para estados unidos</td><td class="mono">Concordancia amplia</td><td>Campaña Búsqueda Asilos</td><td class="mono">$178.46</td><td class="mono">397</td><td class="mono bad">0</td></tr>
+<tr><td>asesoría legal inmigrantes</td><td class="mono">Concordancia amplia</td><td>Búsqueda Leads Plan Escudo Inmigrante</td><td class="mono">$172.77</td><td class="mono">437</td><td class="mono good">1</td></tr>
+<tr><td>estatus de residencia estados unidos</td><td class="mono">Concordancia amplia</td><td>Campaña Búsqueda Analisis Residencia</td><td class="mono">$164.85</td><td class="mono">294</td><td class="mono good">2</td></tr>
+<tr><td>asilos</td><td class="mono">Concordancia amplia</td><td>Campaña Búsqueda Asilos</td><td class="mono">$164.82</td><td class="mono">313</td><td class="mono bad">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Gasto alto sin conversiones (candidatas a revisar/negativizar)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Campaña</th><th>Gasto</th><th>Clics</th></tr></thead>
+        <tbody>
+<tr><td>abogados de inmigración near me</td><td>Búsqueda Leads Visa Juvenil</td><td class="mono bad">$348.07</td><td class="mono">1057</td></tr>
+<tr><td>immigration attorney consultation</td><td>Leads Search Visa T (english)</td><td class="mono bad">$197.56</td><td class="mono">737</td></tr>
+<tr><td>asilo para estados unidos</td><td>Campaña Búsqueda Asilos</td><td class="mono bad">$178.46</td><td class="mono">397</td></tr>
+<tr><td>asilos</td><td>Campaña Búsqueda Asilos</td><td class="mono bad">$164.82</td><td class="mono">313</td></tr>
+<tr><td>visa t que es</td><td>Búsqueda Leads Visa T</td><td class="mono bad">$132.65</td><td class="mono">170</td></tr>
+<tr><td>caso de inmigración en estados unidos</td><td>Busqueda Leads Demanda Corte Federal</td><td class="mono bad">$131.10</td><td class="mono">445</td></tr>
+<tr><td>juvenil visa</td><td>Leads Search Juvenile Visa (english)</td><td class="mono bad">$109.78</td><td class="mono">142</td></tr>
+<tr><td>abogada inmigración cerca de mí</td><td>Búsqueda Leads Plan Escudo Inmigrante</td><td class="mono bad">$108.43</td><td class="mono">318</td></tr>
+<tr><td>requisitos para vawa</td><td>Busqueda Leads Visa Vawa</td><td class="mono bad">$105.76</td><td class="mono">168</td></tr>
+<tr><td>revisar caso de inmigración</td><td>Leads Busqueda Fraude Migratorio</td><td class="mono bad">$90.21</td><td class="mono">170</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diag-box fuga">
+      <div class="diag-title">Hallazgo — Asilos confirmado también a nivel de keyword</div>
+      <div class="diag-text">
+        Las keywords "asilo para estados unidos" ($178.46, 397 clics) y "asilos" ($164.82, 313 clics) tienen
+        <strong>cero conversiones</strong> en el período. Esto refuerza lo visto a nivel de campaña: el problema de
+        Asilos en Google es consistente en ambos niveles de detalle, lo que hace menos probable que sea solo un
+        tema de atribución agregada y más probable que sea un problema real de tracking en la página de destino o
+        de calidad del tráfico — vale la pena revisar la landing page y el pixel de conversión específicos de esa
+        campaña antes de decidir sobre su presupuesto.
+      </div>
+    </div>
+
+    <div class="diag-box warn">
+      <div class="diag-title">Otras señales relevantes</div>
+      <div class="diag-text">
+        "casos de migración" (concordancia amplia) tiene el CPL más alto del top-10 por conversión ($98.65) con
+        1,271 clics — probable match demasiado amplio captando tráfico poco calificado. "immigration lawyer"
+        (broad) también muestra CPL elevado ($86.08, 408 clics) — candidatas a revisar tipo de concordancia o
+        agregar negativas.
+      </div>
+    </div>
+
+    <div class="subhead">Campañas limitadas por presupuesto (confirmado en Google Ads)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Campaña</th><th>Estado</th><th>Clics</th><th>Gasto</th><th>Conv.</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Leads Search Visa T (english)</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1916</td><td class="mono">$607.61</td><td class="mono">31.0</td><td class="mono good">$19.60</td></tr>
+<tr><td>Búsqueda Leads Plan Escudo Inmigrante</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1514</td><td class="mono">$600.39</td><td class="mono">25.5</td><td class="mono good">$23.54</td></tr>
+<tr><td>Búsqueda Leads Cancelación de Expulsión</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1267</td><td class="mono">$477.11</td><td class="mono">9.0</td><td class="mono good">$53.01</td></tr>
+<tr><td>Búsqueda Leads Visa T</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">692</td><td class="mono">$481.77</td><td class="mono">8.0</td><td class="mono ">$60.22</td></tr>
+<tr><td>SEARCH | Revisión de Casos - Fraude</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1230</td><td class="mono">$604.90</td><td class="mono">6.0</td><td class="mono ">$100.82</td></tr>
+<tr><td>Campaña Búsqueda Analisis Residencia</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1096</td><td class="mono">$604.34</td><td class="mono">5.5</td><td class="mono ">$109.88</td></tr>
+<tr><td>Busqueda Leads Demanda Corte Federal</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1316</td><td class="mono">$485.86</td><td class="mono">4.0</td><td class="mono ">$121.47</td></tr>
+<tr><td>Leads Busqueda Fraude Migratorio</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1132</td><td class="mono">$608.02</td><td class="mono">4.5</td><td class="mono ">$135.12</td></tr>
+<tr><td>Leads Search Juvenile Visa (english)</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">702</td><td class="mono">$485.02</td><td class="mono">3.0</td><td class="mono bad">$161.67</td></tr>
+<tr><td>Campaña Búsqueda Asilos</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1394</td><td class="mono">$605.57</td><td class="mono">3.2</td><td class="mono bad">$189.24</td></tr>
+<tr><td>Búsqueda Leads Visa Juvenil</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1744</td><td class="mono">$607.42</td><td class="mono">2.4</td><td class="mono bad">$253.09</td></tr>
+<tr><td>Busqueda Leads Peticiones</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1206</td><td class="mono">$608.59</td><td class="mono">1.7</td><td class="mono bad">$364.43</td></tr>
+<tr><td>Búsqueda Leads Visa U</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1163</td><td class="mono">$484.87</td><td class="mono">1.3</td><td class="mono bad">$364.56</td></tr>
+<tr><td>Busqueda Leads Visa Vawa</td><td><span style="color:var(--red)">Limitada</span></td><td class="mono">1245</td><td class="mono">$606.60</td><td class="mono">0.4</td><td class="mono bad">$1516.50</td></tr>
+<tr><td>Search- KW-abogado de inmigración</td><td><span style="color:var(--teal)">No limitada</span></td><td class="mono">734</td><td class="mono">$606.54</td><td class="mono">55.5</td><td class="mono good">$10.93</td></tr>
+<tr><td>Búsqueda Leads General Apelaciones Mociones</td><td><span style="color:var(--teal)">No limitada</span></td><td class="mono">1522</td><td class="mono">$606.12</td><td class="mono">7.0</td><td class="mono ">$86.59</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diag-box ok">
+      <div class="diag-title">Mejores candidatas a escalar (limitadas + buen CPL)</div>
+      <div class="diag-text">
+        <strong>Leads Search Visa T (english)</strong> (CPL $19.60, limitada) y <strong>Plan Escudo Inmigrante</strong>
+        (CPL $23.54, limitada) son las mejores candidatas de la cuenta para recibir más presupuesto: tienen buen
+        desempeño y están dejando de mostrarse por falta de presupuesto diario ($10/día), no por falta de demanda.
+      </div>
+    </div>
+
+    <div class="diag-box fuga">
+      <div class="diag-title">Limitada por presupuesto NO es sinónimo de "aumentar aquí"</div>
+      <div class="diag-text">
+        <strong>Visa Vawa</strong> está limitada por presupuesto pero con CPL de $1,516.50 — el peor de toda la
+        cuenta. Aumentar su presupuesto no es recomendable hasta resolver por qué su costo por lead es tan alto
+        (posible problema de keywords/landing, no de presupuesto). Lo mismo aplica, con menor severidad, a
+        <strong>Visa U</strong> y <strong>Peticiones</strong> (CPL >$360).
+      </div>
+    </div>
+
+    <div class="diag-box warn">
+      <div class="diag-title">Ya en su techo — no limitadas por presupuesto</div>
+      <div class="diag-text">
+        <strong>Search- KW-abogado de inmigración</strong> (el mejor CPL de la cuenta, $10.93) y
+        <strong>General Apelaciones Mociones</strong> NO están limitadas por presupuesto — ya están captando toda
+        la demanda disponible a $10/día. Subir su presupuesto no generaría más leads proporcionalmente; su techo
+        es de volumen de búsquedas, no de dinero.
+      </div>
+    </div></div>
+
+</div>
+</div>
+
+<!-- ============ PANEL META ADS ============ -->
+<div class="ch-panel" id="panel-meta">
+<div class="wrap">
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">Resumen — Meta Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio 2026</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Campañas activas</div><div class="kpi-value">4</div></div>
+      <div class="kpi-card"><div class="kpi-label">Servicios anunciados</div><div class="kpi-value">8</div><div class="kpi-sub">+141 anuncios sin clasificar</div></div>
+      <div class="kpi-card"><div class="kpi-label">Anuncios activos</div><div class="kpi-value">228</div></div>
+      <div class="kpi-card"><div class="kpi-label">Leads generados</div><div class="kpi-value">2,269</div></div>
+      <div class="kpi-card"><div class="kpi-label">Gasto total</div><div class="kpi-value">$17,373.32</div></div>
+      <div class="kpi-card"><div class="kpi-label">CPL promedio</div><div class="kpi-value">$7.66</div></div>
+    </div>
+
+    <div class="diag-box ok">
+      <div class="diag-title">Contexto — reinicio de campañas por restricción a mediados de mayo</div>
+      <div class="diag-text">
+        Meta tuvo una restricción a mediados de mayo que obligó a reiniciar las campañas. Aunque implicó perder el
+        aprendizaje acumulado hasta ese momento, permitió hacer ajustes que <strong>redujeron el CPL en un 38%</strong>.
+        La eficiencia mostrada en este panel ya refleja las mejoras logradas después del reinicio.
+      </div>
+    </div>
+
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ No hay campañas limitadas por presupuesto en Meta</div>
+      <div class="missing-data-alert-list">
+        Desde el cambio de campañas por políticas, ninguna campaña de Meta está actualmente limitada por
+        presupuesto. A diferencia de Google (donde 14 de 16 campañas sí lo están), en Meta el techo actual es de
+        rendimiento/estructura de campaña, no de presupuesto disponible — subir la inversión sin antes ajustar la
+        estructura no debería generar más leads proporcionalmente.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">2 · Desempeño por servicio legal — Meta Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio · leads agrupados por servicio según nombre de creatividad — Meta no segmenta campañas por servicio</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Servicio (inferido del anuncio)</th><th>Leads</th><th>Gasto</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Fraude Migratorio</td><td class="mono">668</td><td class="mono">$3,454.73</td><td class="mono">$5.17</td></tr>
+<tr><td style="color:var(--accent)">SIN CLASIFICAR</td><td class="mono">565</td><td class="mono">$6,484.02</td><td class="mono">$11.48</td></tr>
+<tr><td>Visa Vawa</td><td class="mono">390</td><td class="mono">$1,887.69</td><td class="mono">$4.84</td></tr>
+<tr><td>Asilo</td><td class="mono">291</td><td class="mono">$2,025.86</td><td class="mono">$6.96</td></tr>
+<tr><td>Peticiones</td><td class="mono">102</td><td class="mono">$1,131.10</td><td class="mono">$11.09</td></tr>
+<tr><td>Residencia</td><td class="mono">93</td><td class="mono">$1,246.27</td><td class="mono">$13.40</td></tr>
+<tr><td>Visa Juvenil</td><td class="mono">73</td><td class="mono">$631.67</td><td class="mono">$8.65</td></tr>
+<tr><td>Cancelación Expulsión</td><td class="mono">45</td><td class="mono">$250.31</td><td class="mono">$5.56</td></tr>
+<tr><td>Visa U</td><td class="mono">42</td><td class="mono">$261.67</td><td class="mono">$6.23</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ PENDIENTE — Meta no segmenta campañas por servicio</div>
+      <div class="missing-data-alert-list">
+        Las campañas de Meta están estructuradas por objetivo (WA, Llamadas, Reconocimiento), no por servicio legal.
+        La clasificación se hizo inferiendo el servicio desde el nombre de cada creatividad — 565 leads (categoría
+        "SIN CLASIFICAR") no pudieron asignarse con certeza en el acumulado. Se recomienda confirmar con el equipo
+        la taxonomía real de servicios por creatividad para depurar esta clasificación.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-title">3 · Panorama de campañas y creatividades — Meta Ads</span></div>
+    <div class="section-sub">Acumulado Julio + Junio (mínimo 25 leads para entrar en los rankings)</div>
+    <div class="kpi-grid" style="margin-bottom:16px">
+      <div class="kpi-card"><div class="kpi-label">Campañas activas</div><div class="kpi-value">4</div></div>
+      <div class="kpi-card"><div class="kpi-label">Anuncios únicos activos</div><div class="kpi-value">228</div></div>
+      <div class="kpi-card"><div class="kpi-label">Leads totales</div><div class="kpi-value">2,269</div></div>
+      <div class="kpi-card"><div class="kpi-label">CPL promedio</div><div class="kpi-value">$7.66</div></div>
+    </div>
+
+    <div class="subhead">Campañas y anuncios activos por servicio</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Servicio</th><th># Anuncios activos</th><th>Campañas donde corre</th></tr></thead>
+        <tbody>
+<tr><td style="color:var(--accent)">SIN CLASIFICAR</td><td class="mono">141</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(50 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(37 anuncios)</span><br>Campaña reconocimiento NOV <span style="color:var(--ink-dim)">(29 anuncios)</span><br>TRF - PRFL - IG <span style="color:var(--ink-dim)">(25 anuncios)</span></td></tr>
+<tr><td>Visa Vawa</td><td class="mono">43</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(22 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(21 anuncios)</span></td></tr>
+<tr><td>Asilo</td><td class="mono">23</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(10 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(11 anuncios)</span><br>TRF - PRFL - IG <span style="color:var(--ink-dim)">(2 anuncios)</span></td></tr>
+<tr><td>Fraude Migratorio</td><td class="mono">22</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(11 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(11 anuncios)</span></td></tr>
+<tr><td>Visa U</td><td class="mono">18</td><td style="font-size:11px">efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(4 anuncios)</span><br>efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(14 anuncios)</span></td></tr>
+<tr><td>Peticiones</td><td class="mono">15</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(9 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(6 anuncios)</span></td></tr>
+<tr><td>Residencia</td><td class="mono">6</td><td style="font-size:11px">efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(4 anuncios)</span><br>Campaña reconocimiento NOV <span style="color:var(--ink-dim)">(1 anuncios)</span><br>efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(1 anuncios)</span></td></tr>
+<tr><td>Cancelación Expulsión</td><td class="mono">3</td><td style="font-size:11px">efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(1 anuncios)</span><br>TRF - PRFL - IG <span style="color:var(--ink-dim)">(1 anuncios)</span><br>efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(1 anuncios)</span></td></tr>
+<tr><td>Visa Juvenil</td><td class="mono">3</td><td style="font-size:11px">efe | Ventas | WA | All Services - NON SOCIALS <span style="color:var(--ink-dim)">(2 anuncios)</span><br>efe | Ventas | Llamadas | Todos los servicios <span style="color:var(--ink-dim)">(1 anuncios)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ Nota — 141 anuncios sin clasificar por servicio</div>
+      <div class="missing-data-alert-list">
+        Un mismo anuncio puede estar activo en más de una campaña (ej. Llamadas y WA en paralelo), por eso los
+        totales de anuncios por servicio no sirven para sumar contra el total general de la cuenta. La categoría
+        "SIN CLASIFICAR" (141 anuncios) sigue pendiente de que el equipo confirme la taxonomía real de servicio por
+        creatividad.
+      </div>
+    </div>
+
+    <div class="subhead">Campañas activas y anuncios distintos por campaña (vista general)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Campaña</th><th># Anuncios distintos</th><th>Leads</th><th>Gasto</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>efe | Ventas | Llamadas | Todos los servicios</td><td class="mono">122</td><td class="mono">974</td><td class="mono">$9,193.74</td><td class="mono">$9.44</td></tr>
+<tr><td>efe | Ventas | WA | All Services - NON SOCIALS</td><td class="mono">94</td><td class="mono">1284</td><td class="mono">$6,377.67</td><td class="mono">$4.97</td></tr>
+<tr><td>Campaña reconocimiento NOV</td><td class="mono">30</td><td class="mono">7</td><td class="mono">$1,202.23</td><td class="mono bad">$171.75</td></tr>
+<tr><td>TRF - PRFL - IG</td><td class="mono">28</td><td class="mono">4</td><td class="mono">$599.68</td><td class="mono bad">$149.92</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ Nota — campañas genéricas, no por servicio</div>
+      <div class="missing-data-alert-list">
+        Las 4 campañas de Meta no están organizadas por servicio legal (son por objetivo: Llamadas, WA,
+        Reconocimiento, Tráfico). El detalle por servicio real está a nivel de anuncio individual, ver clasificación
+        en la sección 2 de este panel. "Campaña reconocimiento NOV" y "TRF - PRFL - IG" tienen CPL muy alto porque
+        son campañas de reconocimiento/tráfico, no de conversión directa — es esperable, no es una señal de alerta.
+      </div>
+    </div>
+
+    <div class="subhead">Top 10 creatividades por leads</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Creatividad</th><th>Leads</th><th>Gasto</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>ESTAFA - ABR - AD2</td><td class="mono">538</td><td class="mono">$2,977.42</td><td class="mono">$5.53</td></tr>
+<tr><td>Revisión aplicación Visa VAWA</td><td class="mono">164</td><td class="mono">$961.51</td><td class="mono">$5.86</td></tr>
+<tr><td>Reporte de policia</td><td class="mono">132</td><td class="mono">$1,089.86</td><td class="mono">$8.26</td></tr>
+<tr><td>Asilo personas que temen regresar mensajes</td><td class="mono">132</td><td class="mono">$645.09</td><td class="mono">$4.89</td></tr>
+<tr><td>FRAUDE - 0626 - AD1</td><td class="mono">117</td><td class="mono">$387.37</td><td class="mono">$3.31</td></tr>
+<tr><td>VD - VAWA - AD8</td><td class="mono">117</td><td class="mono">$384.80</td><td class="mono">$3.29</td></tr>
+<tr><td>AJUSTE 0526 - AD5</td><td class="mono">93</td><td class="mono">$701.60</td><td class="mono">$7.54</td></tr>
+<tr><td>Pasos para la petición</td><td class="mono">78</td><td class="mono">$940.91</td><td class="mono">$12.06</td></tr>
+<tr><td>Visa Juvenil Imágenes mensajes</td><td class="mono">69</td><td class="mono">$570.99</td><td class="mono">$8.28</td></tr>
+<tr><td>Visa Vawa Storytelling</td><td class="mono">68</td><td class="mono">$190.29</td><td class="mono">$2.80</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Mejor CPL (Top 10)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Creatividad</th><th>Leads</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Visa Vawa Storytelling</td><td class="mono">68</td><td class="mono good">$2.80</td></tr>
+<tr><td>VD - VAWA - AD8</td><td class="mono">117</td><td class="mono good">$3.29</td></tr>
+<tr><td>FRAUDE - 0626 - AD1</td><td class="mono">117</td><td class="mono good">$3.31</td></tr>
+<tr><td>Citas SAB/JUN - POST1 -  WA</td><td class="mono">32</td><td class="mono good">$3.37</td></tr>
+<tr><td>VD - VISA U - JUN - AD3</td><td class="mono">31</td><td class="mono good">$4.32</td></tr>
+<tr><td>Asilo personas que temen regresar mensajes</td><td class="mono">132</td><td class="mono good">$4.89</td></tr>
+<tr><td>Asilos imágenes mensajes</td><td class="mono">66</td><td class="mono good">$5.40</td></tr>
+<tr><td>ESTAFA - ABR - AD2</td><td class="mono">538</td><td class="mono good">$5.53</td></tr>
+<tr><td>VD - ENTRVST - AD16</td><td class="mono">44</td><td class="mono good">$5.61</td></tr>
+<tr><td>Revisión aplicación Visa VAWA</td><td class="mono">164</td><td class="mono good">$5.86</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">Peor CPL / posible fatiga (Top 10)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Creatividad</th><th>Leads</th><th>CPL</th></tr></thead>
+        <tbody>
+<tr><td>Podrías perder tu residencia legal</td><td class="mono">55</td><td class="mono bad">$14.12</td></tr>
+<tr><td>Análisis Riesgos Migratorios para Residentes</td><td class="mono">34</td><td class="mono bad">$13.35</td></tr>
+<tr><td>Pasos para la petición</td><td class="mono">78</td><td class="mono bad">$12.06</td></tr>
+<tr><td>0526 ASILO - AD3 #2</td><td class="mono">68</td><td class="mono bad">$9.82</td></tr>
+<tr><td>Visa Juvenil Imágenes mensajes</td><td class="mono">69</td><td class="mono bad">$8.28</td></tr>
+<tr><td>Reporte de policia</td><td class="mono">132</td><td class="mono bad">$8.26</td></tr>
+<tr><td>AJUSTE 0526 - AD5</td><td class="mono">93</td><td class="mono bad">$7.54</td></tr>
+<tr><td>Revisión aplicación Visa VAWA</td><td class="mono">164</td><td class="mono bad">$5.86</td></tr>
+<tr><td>VD - ENTRVST - AD16</td><td class="mono">44</td><td class="mono bad">$5.61</td></tr>
+<tr><td>ESTAFA - ABR - AD2</td><td class="mono">538</td><td class="mono bad">$5.53</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="missing-data-alert">
+      <div class="missing-data-alert-title">⚠️ PENDIENTE — Señal real de fatiga de creatividad</div>
+      <div class="missing-data-alert-list">
+        No tenemos el campo de <strong>frecuencia</strong> (frequency) en los datos de Meta, que es la métrica
+        estándar para confirmar fatiga real. La tabla "peor CPL" de arriba es una aproximación indirecta, no un
+        diagnóstico de fatiga confirmado.
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="report-footer">
+  <div class="wrap">MatixMedia · Documento complementario — HALS Liliana Jones · Rendimiento acumulado Julio + Junio 2026</div>
+</div>
+
+<script>
+document.querySelectorAll('.ch-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ch-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.ch-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.panel).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
