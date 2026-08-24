@@ -2102,8 +2102,7 @@ function loadMonth(idx){
     btnPrev.style.display = 'none';
   }
   // Actualizar selector — ÚNICA fuente de cambio de mes
-  document.querySelectorAll('.month-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
-  document.querySelectorAll('.preset-btn').forEach(b=>{ if(!b.classList.contains('month-tab')) b.classList.remove('active'); });
+  buildMonthSelector();
   renderAll();
 }
 
@@ -2115,17 +2114,51 @@ function buildMonthSelector(){
   if(oldBar){ oldBar.style.display='none'; oldBar.innerHTML=''; }
   const presetBtns=document.querySelector('.preset-btns');
   if(!presetBtns) return;
-  // Limpiar tabs de mes previos (si se re-ejecuta)
-  presetBtns.querySelectorAll('.month-tab').forEach(el=>el.remove());
+  // Limpiar selector de mes previo (si se re-ejecuta)
+  const oldSelector=document.getElementById('month-selector-group');
+  if(oldSelector) oldSelector.remove();
   if(!DATA.months||DATA.months.length<=1) return;
-  const tabsHtml=DATA.months.map((m,i)=>{
+
+  // El mes más reciente (índice 0) queda como botón fijo "mes actual".
+  // Todos los demás (índices 1+) se agrupan dentro de un dropdown
+  // "Mes anterior ▾" para no llenar la fila de botones sueltos a medida
+  // que se acumulan meses (actinfo agrega uno nuevo cada mes).
+  const currentName=getMonthName(DATA.months[0].channels.google?.date_min||DATA.months[0].channels.meta?.date_min||DATA.months[0].channels.tiktok?.date_min);
+  const prevMonths=DATA.months.slice(1);
+  const activeIdx=(typeof selectedMonthIdx!=='undefined')?selectedMonthIdx:0;
+  const isPrevActive=activeIdx>0;
+  const activePrevName=isPrevActive?getMonthName(DATA.months[activeIdx].channels.google?.date_min||DATA.months[activeIdx].channels.meta?.date_min||DATA.months[activeIdx].channels.tiktok?.date_min):null;
+
+  const dropdownItemsHtml=prevMonths.map((m,i)=>{
+    const realIdx=i+1;
     const name=getMonthName(m.channels.google?.date_min||m.channels.meta?.date_min||m.channels.tiktok?.date_min);
-    return`<button class="preset-btn month-tab${i===0?' active':''}" onclick="loadMonth(${i})">${name}</button>`;
+    return`<button class="month-dropdown-item${realIdx===activeIdx?' active':''}" onclick="loadMonth(${realIdx});toggleMonthDropdown(false)">${name}</button>`;
   }).join('');
-  presetBtns.insertAdjacentHTML('afterbegin', tabsHtml);
+
+  const groupHtml=`<div id="month-selector-group" style="display:inline-flex;gap:6px;position:relative">
+    <button class="preset-btn month-tab${!isPrevActive?' active':''}" onclick="loadMonth(0)">${currentName}</button>
+    <div style="position:relative">
+      <button class="preset-btn" id="month-dropdown-toggle" onclick="toggleMonthDropdown()" style="${isPrevActive?'border-color:var(--accent);color:var(--accent)':''}">${isPrevActive?activePrevName:'Mes anterior'} ▾</button>
+      <div id="month-dropdown-list" style="display:none;position:absolute;top:calc(100% + 4px);left:0;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:4px;z-index:50;min-width:140px;flex-direction:column;gap:2px">
+        ${dropdownItemsHtml}
+      </div>
+    </div>
+  </div>`;
+  presetBtns.insertAdjacentHTML('afterbegin', groupHtml);
   // FIX — el div viejo "monthBar" ya no se usa; los tabs ahora viven en
   // .preset-btns (misma fila de fechas). Se deja oculto arriba por si acaso.
 }
+
+function toggleMonthDropdown(forceShow){
+  const list=document.getElementById('month-dropdown-list');
+  if(!list) return;
+  const show=(forceShow!==undefined)?forceShow:(list.style.display==='none');
+  list.style.display=show?'flex':'none';
+}
+document.addEventListener('click', function(e){
+  const group=document.getElementById('month-selector-group');
+  if(group && !group.contains(e.target)) toggleMonthDropdown(false);
+});
 
 function initMultiMes(){
   if(DATA.months&&DATA.months.length>0){
