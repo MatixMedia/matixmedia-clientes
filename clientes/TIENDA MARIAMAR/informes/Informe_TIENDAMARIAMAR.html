@@ -393,8 +393,13 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <span style="color:var(--ink-dim);font-size:11px">→</span>
       <input type="date" class="date-input" id="dateTo">
       <div class="preset-btns">
-        <button class="preset-btn active" id="btn-preset-current" onclick="setPreset('current',event)" style="display:none">Este mes</button>
-        <button class="preset-btn" id="btn-preset-prev" onclick="setPreset('prev',event)">Anterior</button>
+        <button class="preset-btn active" id="btn-preset-current" onclick="selectCurrentMonth(event)">Este mes</button>
+        <div class="month-dropdown-wrap" id="monthDropdownWrap" style="display:none">
+          <button class="preset-btn month-dropdown-btn" id="btn-preset-prev" onclick="toggleMonthDropdown(event)">
+            Anterior<span class="dropdown-caret">▾</span>
+          </button>
+          <div class="month-dropdown-menu" id="monthDropdownMenu"></div>
+        </div>
         <button class="preset-btn" onclick="setPreset('all',event)">Todo</button>
       <button id="btn-pdf" onclick="exportPDF()">⬇ PDF</button>
       </div>
@@ -2092,73 +2097,61 @@ function loadMonth(idx){
     const df=document.getElementById('dateFrom');const dt=document.getElementById('dateTo');
     if(df)df.value=currentFrom;if(dt)dt.value=currentTo;
   }
-  // FIX — "Este mes" quedaba redundante con los tabs de mes del header (hacer
-  // clic en un tab YA pone el rango de fechas de ese mes). El botón "Anterior"
-  // además creaba un segundo selector de mes duplicado y desincronizado (ver
-  // bug reportado). El ÚNICO selector de mes es el del header (.month-tab).
-  // Arriba solo quedan: fechas manuales, "Todo" y "PDF".
-  const btnPrev = document.getElementById('btn-preset-prev');
-  if(btnPrev){
-    btnPrev.style.display = 'none';
-  }
-  // Actualizar selector — ÚNICA fuente de cambio de mes
+  // Actualizar selector — ÚNICA fuente de cambio de mes (dropdown "Anterior"
+  // + botón "Este mes"), manejado completo por buildMonthSelector()
   buildMonthSelector();
   renderAll();
 }
 
 function buildMonthSelector(){
-  // FIX — los tabs de mes vivían en una barra separada debajo de las fechas,
-  // lo cual no tenía sentido (dos filas de controles para una sola cosa).
-  // Ahora se insertan en la MISMA fila de fechas, junto a "Todo"/"PDF".
-  const oldBar=document.getElementById('monthBar');
-  if(oldBar){ oldBar.style.display='none'; oldBar.innerHTML=''; }
-  const presetBtns=document.querySelector('.preset-btns');
-  if(!presetBtns) return;
-  // Limpiar selector de mes previo (si se re-ejecuta)
-  const oldSelector=document.getElementById('month-selector-group');
-  if(oldSelector) oldSelector.remove();
-  if(!DATA.months||DATA.months.length<=1) return;
-
-  // El mes más reciente (índice 0) queda como botón fijo "mes actual".
-  // Todos los demás (índices 1+) se agrupan dentro de un dropdown
-  // "Mes anterior ▾" para no llenar la fila de botones sueltos a medida
-  // que se acumulan meses (actinfo agrega uno nuevo cada mes).
-  const currentName=getMonthName(DATA.months[0].channels.google?.date_min||DATA.months[0].channels.meta?.date_min||DATA.months[0].channels.tiktok?.date_min);
-  const prevMonths=DATA.months.slice(1);
-  const activeIdx=(typeof selectedMonthIdx!=='undefined')?selectedMonthIdx:0;
-  const isPrevActive=activeIdx>0;
-  const activePrevName=isPrevActive?getMonthName(DATA.months[activeIdx].channels.google?.date_min||DATA.months[activeIdx].channels.meta?.date_min||DATA.months[activeIdx].channels.tiktok?.date_min):null;
-
-  const dropdownItemsHtml=prevMonths.map((m,i)=>{
+  const wrap=document.getElementById('monthDropdownWrap');
+  const menu=document.getElementById('monthDropdownMenu');
+  if(!wrap||!menu)return;
+  if(!DATA.months||DATA.months.length<=1){wrap.style.display='none';return;}
+  // El indice 0 es "Este mes" (boton aparte) — el dropdown "Anterior" agrupa todo lo demas
+  const items=DATA.months.slice(1).map((m,i)=>{
     const realIdx=i+1;
     const name=getMonthName(m.channels.google?.date_min||m.channels.meta?.date_min||m.channels.tiktok?.date_min);
-    return`<button class="month-dropdown-item${realIdx===activeIdx?' active':''}" onclick="loadMonth(${realIdx});toggleMonthDropdown(false)">${name}</button>`;
+    return`<button class="month-dropdown-item${realIdx===selectedMonthIdx?' active':''}" data-idx="${realIdx}" onclick="selectMonthFromDropdown(${realIdx})">${name}</button>`;
   }).join('');
-
-  const groupHtml=`<div id="month-selector-group" style="display:inline-flex;gap:6px;position:relative">
-    <button class="preset-btn month-tab${!isPrevActive?' active':''}" onclick="loadMonth(0)">${currentName}</button>
-    <div style="position:relative">
-      <button class="preset-btn" id="month-dropdown-toggle" onclick="toggleMonthDropdown()" style="${isPrevActive?'border-color:var(--accent);color:var(--accent)':''}">${isPrevActive?activePrevName:'Mes anterior'} ▾</button>
-      <div id="month-dropdown-list" style="display:none;position:absolute;top:calc(100% + 4px);left:0;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:4px;z-index:50;min-width:140px;flex-direction:column;gap:2px">
-        ${dropdownItemsHtml}
-      </div>
-    </div>
-  </div>`;
-  presetBtns.insertAdjacentHTML('afterbegin', groupHtml);
-  // FIX — el div viejo "monthBar" ya no se usa; los tabs ahora viven en
-  // .preset-btns (misma fila de fechas). Se deja oculto arriba por si acaso.
+  menu.innerHTML=items;
+  wrap.style.display='inline-block';
+  // Marcar boton "Anterior" y boton "Este mes" segun cual este activo
+  const btnPrev=document.getElementById('btn-preset-prev');
+  const btnCurr=document.getElementById('btn-preset-current');
+  if(btnPrev) btnPrev.classList.toggle('active', selectedMonthIdx!==0);
+  if(btnCurr) btnCurr.classList.toggle('active', selectedMonthIdx===0);
 }
 
-function toggleMonthDropdown(forceShow){
-  const list=document.getElementById('month-dropdown-list');
-  if(!list) return;
-  const show=(forceShow!==undefined)?forceShow:(list.style.display==='none');
-  list.style.display=show?'flex':'none';
+function toggleMonthDropdown(e){
+  e.stopPropagation();
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(!menu||!btn)return;
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
 }
-document.addEventListener('click', function(e){
-  const group=document.getElementById('month-selector-group');
-  if(group && !group.contains(e.target)) toggleMonthDropdown(false);
+
+// Cerrar el dropdown al hacer click afuera
+document.addEventListener('click',()=>{
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(menu) menu.classList.remove('open');
+  if(btn) btn.classList.remove('open');
 });
+
+function selectMonthFromDropdown(idx){
+  loadMonth(idx);
+  const menu=document.getElementById('monthDropdownMenu');
+  const btn=document.getElementById('btn-preset-prev');
+  if(menu) menu.classList.remove('open');
+  if(btn) btn.classList.remove('open');
+}
+
+function selectCurrentMonth(e){
+  if(e) e.preventDefault();
+  loadMonth(0);
+}
 
 function initMultiMes(){
   if(DATA.months&&DATA.months.length>0){
@@ -3348,6 +3341,25 @@ table{min-width:400px!important}
 
 /* MOBILE — header y footer centrados en pantallas angostas.
    En PC se mantiene el layout original. Solo <=640px pasa a centrado. */
+.month-dropdown-wrap{position:relative;display:inline-block}
+.month-dropdown-btn{display:flex!important;align-items:center;gap:5px}
+.month-dropdown-btn .dropdown-caret{font-size:9px;transition:.2s;display:inline-block}
+.month-dropdown-btn.open .dropdown-caret{transform:rotate(180deg)}
+.month-dropdown-menu{
+  display:none;position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:8px;
+  min-width:160px;padding:6px;z-index:50;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.month-dropdown-menu.open{display:block}
+.month-dropdown-item{
+  display:block;width:100%;text-align:left;background:transparent;border:none;
+  color:var(--ink-dim);font-family:var(--mono);font-size:12px;padding:8px 10px;
+  border-radius:5px;cursor:pointer;transition:.15s;white-space:nowrap;
+}
+.month-dropdown-item:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+.month-dropdown-item.active{background:rgba(232,192,70,.14);color:var(--accent);font-weight:600}
+
 @media(max-width:640px){
   .report-header .wrap{flex-direction:column!important;align-items:center!important;text-align:center!important}
   .header-left{flex-direction:column!important;align-items:center!important;text-align:center!important;gap:8px!important}
