@@ -2121,6 +2121,22 @@ function buildMonthSelector(){
   const btnCurr=document.getElementById('btn-preset-current');
   if(btnPrev) btnPrev.classList.toggle('active', selectedMonthIdx!==0);
   if(btnCurr) btnCurr.classList.toggle('active', selectedMonthIdx===0);
+  // Nombres reales en los botones: "Este mes" -> nombre del mes mas reciente;
+  // "Anterior" -> nombre del mes seleccionado si hay uno activo distinto al actual.
+  const currName=getMonthName(DATA.months[0].channels.google?.date_min||DATA.months[0].channels.meta?.date_min||DATA.months[0].channels.tiktok?.date_min);
+  if(btnCurr) btnCurr.textContent=currName;
+  if(btnPrev){
+    var caret=document.createElement('span');
+    caret.className='dropdown-caret';
+    caret.textContent='▾';
+    if(selectedMonthIdx!==0){
+      var selName=getMonthName(DATA.months[selectedMonthIdx].channels.google?.date_min||DATA.months[selectedMonthIdx].channels.meta?.date_min||DATA.months[selectedMonthIdx].channels.tiktok?.date_min);
+      btnPrev.textContent=selName+' ';
+    } else {
+      btnPrev.textContent='Anterior ';
+    }
+    btnPrev.appendChild(caret);
+  }
 }
 
 function toggleMonthDropdown(e){
