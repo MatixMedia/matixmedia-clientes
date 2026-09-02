@@ -577,6 +577,20 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 <div class="ch-panel" id="panel-meta">
 <div class="wrap">
 
+  <!-- NOTIFICACIONES -->
+  <div class="notif-panel" id="m-notifPanel" style="display:none">
+    <div class="notif-panel-header" onclick="toggleNotifPanel('m')">
+      <span class="notif-bell">🔔</span>
+      <span class="notif-panel-title">Notificaciones</span>
+      <span class="notif-panel-count" id="m-notifCount"></span>
+      <span class="notif-panel-caret">▾</span>
+    </div>
+    <div class="notif-panel-body">
+      <div class="notif-cards" id="m-notifCards"></div>
+      <div class="notif-pagination" id="m-notifPagination" style="display:none"></div>
+    </div>
+  </div>
+
   <!-- 01. KPIs (incluye seguidores + me gusta para ambos objetivos) -->
   <div class="section">
     <div class="section-header"><span class="section-num">01</span><span class="section-title">Resumen del período</span><span id="m-obj-badge"></span></div>
@@ -2581,8 +2595,70 @@ function renderAdScatter(ch){
 // ════════════════════════════════════════════════
 // META ADS RENDER — Ventas / Leads / WA
 // ════════════════════════════════════════════════
+// ─── NOTIFICACIONES ──────────────────────────────
+const NOTIF_PAGE={};
+const NOTIF_DATA={};
+function renderNotifications(prefix,notifs){
+  const panel=document.getElementById(prefix+'-notifPanel');
+  if(!panel)return;
+  panel.style.display='';
+  const countEl=document.getElementById(prefix+'-notifCount');
+  const cardsEl0=document.getElementById(prefix+'-notifCards');
+  const pagEl0=document.getElementById(prefix+'-notifPagination');
+  if(!notifs||!notifs.length){
+    NOTIF_DATA[prefix]=[];
+    if(countEl)countEl.textContent='0';
+    if(cardsEl0)cardsEl0.innerHTML='<div class="notif-empty">No hay notificaciones para mostrar</div>';
+    if(pagEl0)pagEl0.style.display='none';
+    return;
+  }
+  NOTIF_DATA[prefix]=notifs;
+  if(countEl)countEl.textContent=notifs.length;
+  if(NOTIF_PAGE[prefix]==null)NOTIF_PAGE[prefix]=0;
+  const perPage=3;
+  const totalPages=Math.max(1,Math.ceil(notifs.length/perPage));
+  if(NOTIF_PAGE[prefix]>=totalPages)NOTIF_PAGE[prefix]=totalPages-1;
+  const page=NOTIF_PAGE[prefix];
+  const start=page*perPage;
+  const pageItems=notifs.slice(start,start+perPage);
+  const iconFor=()=>'⬤';
+  const cardsHtml=pageItems.map(n=>{
+    const lvl=(n.level==='bad'||n.level==='good')?n.level:'warn';
+    const tagsHtml=(n.tags||[]).map(t=>`<span class="notif-tag">📅 ${(t&&t.label)||t}</span>`).join('');
+    const recosHtml=(n.recommendations&&n.recommendations.length)?`<div class="notif-recos"><div class="notif-recos-title">◆ Recomendaciones</div>${n.recommendations.map((r,i)=>`<div class="notif-reco"><span class="notif-reco-num">${String(i+1).padStart(2,'0')}</span><span>${r}</span></div>`).join('')}</div>`:'';
+    const noteHtml=n.note?`<div class="notif-note">${n.note}</div>`:'';
+    return`<div class="notif-card level-${lvl}">
+      <div class="notif-card-head"><span class="notif-card-icon">${iconFor(lvl)}</span><span class="notif-card-title">${n.title||''}</span></div>
+      <div class="notif-card-text">${n.text||''}</div>
+      ${tagsHtml?`<div class="notif-tags">${tagsHtml}</div>`:''}
+      ${noteHtml}
+      ${recosHtml}
+    </div>`;
+  }).join('');
+  const cardsEl=document.getElementById(prefix+'-notifCards');
+  if(cardsEl)cardsEl.innerHTML=cardsHtml;
+  const pagEl=document.getElementById(prefix+'-notifPagination');
+  if(pagEl){
+    if(totalPages<=1){pagEl.style.display='none';}
+    else{
+      pagEl.style.display='flex';
+      const dots=Array.from({length:totalPages}).map((_,i)=>`<button class="notif-page-dot${i===page?' active':''}" onclick="goNotifPage('${prefix}',${i})"></button>`).join('');
+      pagEl.innerHTML=`<button class="notif-page-btn" onclick="goNotifPage('${prefix}',${page-1})" ${page===0?'disabled':''}>‹</button><div class="notif-page-dots">${dots}</div><button class="notif-page-btn" onclick="goNotifPage('${prefix}',${page+1})" ${page>=totalPages-1?'disabled':''}>›</button>`;
+    }
+  }
+}
+function goNotifPage(prefix,idx){
+  NOTIF_PAGE[prefix]=idx;
+  renderNotifications(prefix,NOTIF_DATA[prefix]||[]);
+}
+function toggleNotifPanel(prefix){
+  const panel=document.getElementById(prefix+'-notifPanel');
+  if(panel)panel.classList.toggle('collapsed');
+}
+
 function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
+  renderNotifications('m',ch.notifications||[]);
   const rows=getFiltered('meta');
   const totals=agg(rows);
   const P=ch.prev||{};
@@ -3416,6 +3492,49 @@ table{min-width:400px!important}
 }
 .month-dropdown-item:hover{background:rgba(255,255,255,.06);color:var(--ink)}
 .month-dropdown-item.active{background:rgba(232,192,70,.14);color:var(--accent);font-weight:600}
+
+.notif-panel{padding-bottom:22px}
+.notif-panel-header{display:flex!important;align-items:center!important;gap:10px!important;cursor:pointer;padding:4px 0;user-select:none;border-radius:6px;transition:background .15s}
+.notif-panel-header:hover{background:rgba(255,255,255,.03)}
+.notif-bell{font-size:14px;color:var(--accent)}
+.notif-panel-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink)}
+.notif-panel-count{font-family:var(--mono);font-size:10px;color:var(--ink-dim);background:var(--bg-3);border-radius:10px;padding:1px 8px;min-width:16px;text-align:center}
+.notif-panel-caret{margin-left:auto;font-size:11px;color:var(--ink-dim);transition:transform .2s;display:inline-block}
+.notif-panel.collapsed .notif-panel-caret{transform:rotate(-90deg)}
+.notif-panel.collapsed .notif-panel-body{display:none!important}
+.notif-panel-body{margin-top:16px}
+.notif-cards{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(clamp(240px,45%,340px),1fr))!important;gap:12px!important}
+.notif-card{background:var(--bg-2);border:1px solid var(--line);border-left:3px solid;border-radius:8px;padding:16px 18px}
+.notif-card.level-bad{border-left-color:var(--red)}
+.notif-card.level-warn{border-left-color:var(--accent)}
+.notif-card.level-good{border-left-color:var(--teal)}
+.notif-card-head{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.notif-card-icon{font-size:11px;line-height:1}
+.notif-card.level-bad .notif-card-icon{color:var(--red)}
+.notif-card.level-warn .notif-card-icon{color:var(--accent)}
+.notif-card.level-good .notif-card-icon{color:var(--teal)}
+.notif-card-title{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.notif-card.level-bad .notif-card-title{color:var(--red)}
+.notif-card.level-warn .notif-card-title{color:var(--accent)}
+.notif-card.level-good .notif-card-title{color:var(--teal)}
+.notif-card-text{font-size:12px;color:var(--ink-dim);line-height:1.7}
+.notif-card-text strong{color:var(--ink);font-weight:600}
+.notif-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notif-tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--ink-dim);background:var(--bg-3);border:1px solid var(--line);padding:4px 9px;border-radius:5px}
+.notif-note{font-size:11px;color:var(--ink-dim);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.notif-recos{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.notif-recos-title{font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim);margin-bottom:9px}
+.notif-reco{display:flex;gap:9px;font-size:11px;color:var(--ink-dim);line-height:1.6;margin-bottom:7px}
+.notif-reco:last-child{margin-bottom:0}
+.notif-reco-num{flex-shrink:0;width:16px;height:16px;border-radius:3px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.notif-empty{font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-align:center;padding:22px 0;border:1px dashed var(--line);border-radius:8px}
+.notif-pagination{display:flex!important;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.notif-page-btn{background:var(--bg-2);border:1px solid var(--line);color:var(--ink-dim);border-radius:5px;padding:3px 9px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:.15s}
+.notif-page-btn:hover:not(:disabled){color:var(--ink);border-color:var(--ink-dim)}
+.notif-page-btn:disabled{opacity:.3;cursor:default}
+.notif-page-dots{display:flex;gap:5px}
+.notif-page-dot{width:6px;height:6px;border-radius:50%;background:var(--line);cursor:pointer;padding:0;border:none;transition:.15s}
+.notif-page-dot.active{background:var(--accent)}
 
 @media(max-width:640px){
   .report-header .wrap{flex-direction:column!important;align-items:center!important;text-align:center!important}
