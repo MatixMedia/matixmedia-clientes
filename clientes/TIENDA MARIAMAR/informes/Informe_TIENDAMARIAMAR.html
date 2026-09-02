@@ -764,6 +764,21 @@ const DATA = {
     meta: {
       active: true,
       objective: "VENTAS",
+      notifications: [
+        {
+          level: "bad",
+          title: "Caida de compras por terremoto",
+          text: "En la semana del 10 al 16 de agosto se registraron <strong>15 compras</strong>, un <strong>47.1% por debajo</strong> del promedio de las otras 3 semanas del mes (28.3 compras/semana). El CPA subio a $66.037 en esa semana (vs. $34.340 la semana previa al terremoto). La caida coincide con el terremoto reportado en ese periodo -- no se detecto ningun cambio en configuracion de campanas, presupuesto o segmentacion que explique la baja.",
+          tags: ["10-16 ago"],
+          note: "Semanas de comparacion: S1 (01-09 ago) 36 compras . S3 (17-23 ago) 18 compras . S4 (24-31 ago) 31 compras."
+        },
+        {
+          level: "good",
+          title: "Recuperacion y estabilidad post-terremoto",
+          text: "A partir de la semana del 17 de agosto se evidencia una <strong>recuperacion progresiva</strong>: las compras subieron a 18 en esa semana (vs. 15 la semana del terremoto), con un pico de 6 compras en un solo dia (17 ago) -- el mejor dia de todo el periodo de crisis. Desde la semana del 24 de agosto la cuenta muestra <strong>estabilidad</strong>, con 31 compras -- ya cerca del nivel previo al terremoto (36 compras en la semana del 01-09 ago) y un CPA de $45.779, en camino de normalizarse.",
+          tags: ["17-31 ago"]
+        }
+      ],
       date_min: "2026-08-01", date_max: "2026-08-31",
       benchmarks: {
         ctr_min: 1.5, ctr_good: 3,
