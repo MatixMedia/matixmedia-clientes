@@ -3053,11 +3053,18 @@ function renderMetaCampExtra(ch,obj){
       ${camps.sort((a,b)=>b.calls-a.calls).map(c=>`<tr><td style="font-size:11px">${c.campaign}</td><td class="mono" style="font-weight:700">${c.calls}</td><td class="mono">${c.cost&&c.calls?fmtM(c.cost/c.calls):'—'}</td></tr>`).join('')}
       </tbody></table></div></div>`;
   }
+  // Tabla conversaciones WA por campaña (si no hay llamadas, ocupa ese espacio)
+  if(!camps.some(c=>c.calls>0) && camps.some(c=>c.conversations>0)){
+    html+=`<div><div style="font-family:var(--mono);font-size:10px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Campañas · Conversaciones WA de mayor a menor</div>
+      <div class="table-wrap"><table><thead><tr><th>Campaña</th><th>Conv. WA ⇅</th><th>CPR</th></tr></thead><tbody>
+      ${camps.slice().sort((a,b)=>b.conversations-a.conversations).map(c=>`<tr><td style="font-size:11px">${c.campaign}</td><td class="mono" style="font-weight:700">${c.conversations}</td><td class="mono">${c.cost&&c.conversations?fmtM(c.cost/c.conversations):'—'}</td></tr>`).join('')}
+      </tbody></table></div></div>`;
+  }
   // Tabla eventos personalizados por campaña
   if(camps.some(c=>c.events>0)){
     html+=`<div><div style="font-family:var(--mono);font-size:10px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Campañas · Eventos personalizados</div>
       <div class="table-wrap"><table><thead><tr><th>Campaña</th><th>Eventos ⇅</th><th>Costo/Evento</th></tr></thead><tbody>
-      ${camps.sort((a,b)=>b.events-a.events).map(c=>`<tr><td style="font-size:11px">${c.campaign}</td><td class="mono" style="font-weight:700">${c.events}</td><td class="mono">${c.cost&&c.events?fmtM(c.cost/c.events):'—'}</td></tr>`).join('')}
+      ${camps.slice().sort((a,b)=>b.events-a.events).map(c=>`<tr><td style="font-size:11px">${c.campaign}</td><td class="mono" style="font-weight:700">${c.events}</td><td class="mono">${c.cost&&c.events?fmtM(c.cost/c.events):'—'}</td></tr>`).join('')}
       </tbody></table></div></div>`;
   }
   html+='</div>';
