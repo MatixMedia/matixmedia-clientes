@@ -791,6 +791,18 @@ const DATA = {
       objective: "LEADS",
       date_min: "2026-08-01", date_max: "2026-08-28",
       benchmarks: { ctr_min:2, ctr_good:5, roas_min:3, roas_good:5, cpa_max:50000, cvr_min:3, cvr_good:8 },
+      notifications: [
+        {
+          title: "Impacto del terremoto en la obtención de leads",
+          text: "Durante agosto se registraron cancelaciones e incertidumbre en los usuarios producto de un terremoto, lo que afectó negativamente la obtención de leads en el período.",
+          level: "warn"
+        },
+        {
+          title: "Condiciones climáticas en EE. UU.",
+          text: "Las condiciones climáticas en Estados Unidos durante agosto dificultan la decisión de viaje de los usuarios, un efecto que se espera se extienda hasta finales de septiembre.",
+          level: "warn"
+        }
+      ],
       daily_raw: [
         {date:"2026-08-03",campaign:"LEADS-US",device:"MOBILE",impr:1,clicks:0,cost:0,conv:0,value:0},
         {date:"2026-08-05",campaign:"LEADS-US",device:"MOBILE",impr:133,clicks:6,cost:6740,conv:0,value:0},
@@ -870,6 +882,16 @@ const DATA = {
         roas:{malo:1.8,promedio_min:2.5,promedio_max:3.2,bueno_min:3.5,bueno_max:5.0,excelente:7.0}
       },
       notifications: [
+        {
+          title: "Impacto del terremoto en la obtención de leads",
+          text: "Durante agosto se registraron cancelaciones e incertidumbre en los usuarios producto de un terremoto, lo que afectó negativamente la obtención de leads en el período.",
+          level: "warn"
+        },
+        {
+          title: "Condiciones climáticas en EE. UU.",
+          text: "Las condiciones climáticas en Estados Unidos durante agosto dificultan la decisión de viaje de los usuarios, un efecto que se espera se extienda hasta finales de septiembre.",
+          level: "warn"
+        },
         {
           title: "Pausa de campañas Colombia",
           text: "En agosto se pausaron las campañas INT-MSJ-RTR-IG y R-V, dirigidas principalmente a Colombia. En julio, Colombia representaba el 36.9% del total de conversaciones de Meta (101 de 274) a través de estas dos campañas. Al pausarlas, la caída real en conversaciones totales fue de solo -17.2% (274 → 227), muy por debajo del ~37% que representaban, gracias a que la nueva campaña de apoyo compensó buena parte de esa pérdida.",
