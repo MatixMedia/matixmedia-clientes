@@ -603,6 +603,10 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <div class="section">
     <div class="section-header"><span class="section-num">01</span><span class="section-title">Resumen del período</span><span id="m-obj-badge"></span></div>
     <div class="kpi-grid" id="m-kpi-grid"></div>
+    <div class="charts-2col" id="m-leadsConvScatterWrap" style="margin-top:16px;display:none">
+      <div class="chart-host"><div class="chart-title">Leads (Formulario) en el tiempo</div><div style="height:220px"><canvas id="m-scatterLeadsTime"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title">Conversaciones WA en el tiempo</div><div style="height:220px"><canvas id="m-scatterConvTime"></canvas></div></div>
+    </div>
   </div>
 
   <!-- 02. SERIE SEMANAL -->
@@ -2688,6 +2692,54 @@ function renderMeta(){
   if(hasLeadsForm){
     kpis.push(mkKpi('Leads (Formulario)',totals.leads_form||0,P.leads_form||0,fmt,'Clientes potenciales form','meta-accent'));
     kpis.push(mkKpi('Conversaciones WA',totals.conv_wa||0,P.conversations||0,fmt,'Mensajes iniciados','meta-accent'));
+
+    // ── Dispersion Leads/Conversaciones en el tiempo ─────────────
+    const scatterWrap=document.getElementById('m-leadsConvScatterWrap');
+    if(scatterWrap){
+      scatterWrap.style.display='';
+      const byDate={};
+      rows.forEach(r=>{
+        if(!byDate[r.date]) byDate[r.date]={leads:0,conv:0};
+        byDate[r.date].leads+=(r.leads_form||0);
+        byDate[r.date].conv+=(r.conv_wa||0);
+      });
+      const dates=Object.keys(byDate).sort();
+      const dLabels=dates.map(d=>d.slice(5)); // MM-DD
+      const leadsVals=dates.map(d=>byDate[d].leads);
+      const convVals=dates.map(d=>byDate[d].conv);
+      const leadsPts=dates.map((d,i)=>({x:i,y:byDate[d].leads}));
+      const convPts=dates.map((d,i)=>({x:i,y:byDate[d].conv}));
+
+      destroyC('m-scatterLeadsTime');
+      CHARTS['m-scatterLeadsTime']=new Chart(document.getElementById('m-scatterLeadsTime'),{
+        type:'scatter',
+        data:{datasets:[{label:'Leads form',data:leadsPts,
+          backgroundColor:'#1877F2BB',borderColor:'#1877F2',pointRadius:5,pointHoverRadius:7}]},
+        options:{responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{
+            title:c=>dLabels[c[0].raw.x]||'',label:c=>` ${c.raw.y} leads`
+          }}},
+          scales:{
+            x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:9},callback:v=>dLabels[v]||''},grid:{color:'rgba(255,255,255,0.04)'}},
+            y:{beginAtZero:true,ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'}}
+          }}
+      });
+
+      destroyC('m-scatterConvTime');
+      CHARTS['m-scatterConvTime']=new Chart(document.getElementById('m-scatterConvTime'),{
+        type:'scatter',
+        data:{datasets:[{label:'Conversaciones WA',data:convPts,
+          backgroundColor:'#199477BB',borderColor:'#199477',pointRadius:5,pointHoverRadius:7}]},
+        options:{responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{
+            title:c=>dLabels[c[0].raw.x]||'',label:c=>` ${c.raw.y} conversaciones`
+          }}},
+          scales:{
+            x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:9},callback:v=>dLabels[v]||''},grid:{color:'rgba(255,255,255,0.04)'}},
+            y:{beginAtZero:true,ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'}}
+          }}
+      });
+    }
   } else {
     if(ch.followers_gained!=null) kpis.push(mkKpi('Seguidores IG ganados',ch.followers_gained,P.followers_gained||0,fmt,'Instagram total del período','meta-accent'));
     if(ch.page_likes!=null) kpis.push(mkKpi('Me gusta Fb ganados',ch.page_likes,P.page_likes||0,fmt,'Página de Facebook','meta-accent'));
