@@ -2942,6 +2942,31 @@ function renderMetaConvTables(ch,obj){
   const P=ch.prev||{};
   let html='<div class="charts-2col">';
 
+  // Tabla Leads (Formulario) y Conversaciones WA (si el daily_raw las trae)
+  // Se usa cuando no hay conv_detail cargado pero sí leads_form/conv_wa
+  // por fila -- caso tipico de objetivo LEADS/WA sin tracking de eventos.
+  const hasLeadsWaData=(ch.daily_raw||[]).some(r=>r.leads_form!=null);
+  if(hasLeadsWaData && !(ch.conv_detail||[]).length){
+    const totalLeads=ch.daily_raw.reduce((a,d)=>a+(d.leads_form||0),0);
+    const totalConvWa=ch.daily_raw.reduce((a,d)=>a+(d.conv_wa||0),0);
+    const prevLeads=P.leads_form||0;
+    const prevConvWa=P.conversations||0;
+    const deltaLeads=prevLeads?((totalLeads-prevLeads)/prevLeads*100).toFixed(1):null;
+    const deltaConvWa=prevConvWa?((totalConvWa-prevConvWa)/prevConvWa*100).toFixed(1):null;
+    const fmtDelta=d=>d===null?' —':`${d>0?'▲ +':'▼ '}${Math.abs(d)}%`;
+    const clsDelta=d=>d===null?'':(d>0?'good':'bad');
+    html+=`<div><div style="font-family:var(--mono);font-size:10px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Leads (Formulario) · comparativa MoM</div>
+      <div class="table-wrap"><table><thead><tr><th>Métrica</th><th>Valor</th><th>vs mes anterior</th></tr></thead><tbody>
+      <tr><td>Leads formulario</td><td class="mono">${fmt(totalLeads)}</td><td class="mono ${clsDelta(deltaLeads)}">${fmtDelta(deltaLeads)}</td></tr>
+      <tr><td>Mes anterior</td><td class="mono">${fmt(prevLeads)}</td><td>—</td></tr>
+      </tbody></table></div></div>`;
+    html+=`<div><div style="font-family:var(--mono);font-size:10px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Conversaciones WA · comparativa MoM</div>
+      <div class="table-wrap"><table><thead><tr><th>Métrica</th><th>Valor</th><th>vs mes anterior</th></tr></thead><tbody>
+      <tr><td>Conversaciones WA</td><td class="mono">${fmt(totalConvWa)}</td><td class="mono ${clsDelta(deltaConvWa)}">${fmtDelta(deltaConvWa)}</td></tr>
+      <tr><td>Mes anterior</td><td class="mono">${fmt(prevConvWa)}</td><td>—</td></tr>
+      </tbody></table></div></div>`;
+  }
+
   // Tabla Resultados → Conversaciones
   // NOTA: usa escala generica 60/30 a proposito -- no hay un benchmark
   // externo definido para "tasa de continuacion de conversacion" en el
