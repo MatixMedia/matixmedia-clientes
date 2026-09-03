@@ -1,7 +1,7 @@
 # Lovely Hounds — Informe MatixMedia
 
-| Archivo | Período | Link |
-|---------|---------|------|
-| Informe_LovelyHounds.html | Julio 2026 (acumulativo Mayo-Julio) | [Ver](https://matixmedia.github.io/matixmedia-clientes/clientes/LOVELY%20HOUNDS/informes/Informe_LovelyHounds.html) |
+| Archivo | Periodo vigente | Link |
+|---------|------------------|------|
+| Informe_LovelyHounds.html | Agosto 2026 (acumulativo Mayo-Agosto) | [Ver](https://portal.matix.media/clientes/LOVELY%20HOUNDS/informes/Informe_LovelyHounds.html) |
 
-*Actualizado: Julio 2026 · MatixMedia*
+*Actualizado: Agosto 2026 (mes completo) - MatixMedia*
