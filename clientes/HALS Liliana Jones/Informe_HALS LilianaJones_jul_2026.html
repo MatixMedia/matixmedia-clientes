@@ -2100,7 +2100,7 @@ const DATA = {
         {date:"2026-08-31",campaign:"Search- KW-abogado de inmigración",device:"MOBILE",impr:83,clicks:5,cost:19.86,conv:2,value:0}
         ],
         funnel:[{stage:"Impresiones",value:361970},{stage:"Clics",value:10436},{stage:"Conversiones",value:122}],
-        conv_actions:[{action:"Calls from ads (Llamadas desde anuncios)",conv:76,cpa:59.7,pct_total:62},{action:"Clicks to call",conv:38,cpa:119.41,pct_total:31},{action:"Directions (Google Maps)",conv:47,cpa:0,pct_total:0},{action:"Conversacion iniciada",conv:6,cpa:756.26,pct_total:5},{action:"Click Calendly",conv:2,cpa:2268.78,pct_total:2}],
+        conv_actions:[{action:"Calls from ads (Llamadas desde anuncios)",conv:76,cpa:59.7,pct_total:62},{action:"Clicks to call",conv:38,cpa:119.41,pct_total:31},{action:"Directions (Google Maps)",conv:47,cpa:0,pct_total:0},{action:"Conversacion iniciada",conv:6,cpa:756.26,pct_total:5},{action:"Click Calendly",conv:2,cpa:2268.78,pct_total:2},{action:"Local actions - Other engagements",conv:368,cpa:0,pct_total:0}],
         conv_by_campaign:[{campaign:"Search- KW-abogado de inmigración",clicks:227,conv:50,cpa:6.08,value:0,roas:0,conv_rate:22.02},{campaign:"Búsqueda Leads Plan Escudo Inmigrante",clicks:712,conv:12,cpa:25.4,value:0,roas:0,conv_rate:1.69},{campaign:"Leads Search Visa T (english)",clicks:966,conv:8,cpa:40.52,value:0,roas:0,conv_rate:0.78},{campaign:"Busqueda Leads Peticiones",clicks:681,conv:4,cpa:75.95,value:0,roas:0,conv_rate:0.59},{campaign:"Campaña Búsqueda Asilos",clicks:688,conv:3,cpa:101.35,value:0,roas:0,conv_rate:0.44},{campaign:"Campaña Búsqueda Analisis Residencia",clicks:534,conv:3,cpa:101.28,value:0,roas:0,conv_rate:0.56},{campaign:"Búsqueda Leads Visa Juvenil",clicks:960,conv:3,cpa:98.89,value:0,roas:0,conv_rate:0.31},{campaign:"Búsqueda Leads Cancelación de Expulsión",clicks:699,conv:2,cpa:121.31,value:0,roas:0,conv_rate:0.29},{campaign:"Búsqueda Leads General Apelaciones Mociones",clicks:943,conv:2,cpa:202.82,value:0,roas:0,conv_rate:0.16},{campaign:"Busqueda Leads Visa Vawa",clicks:645,conv:1,cpa:291.41,value:0,roas:0,conv_rate:0.16},{campaign:"Búsqueda Leads Visa T",clicks:345,conv:1,cpa:243.2,value:0,roas:0,conv_rate:0.29},{campaign:"Leads Busqueda Fraude Migratorio",clicks:662,conv:1,cpa:303.63,value:0,roas:0,conv_rate:0.15}],
         extensions:[{name:"Imagenes (AD_IMAGE)",clicks:8015,conv:914},{name:"Sitelinks",clicks:5895,conv:35},{name:"Business Name",clicks:3245,conv:0},{name:"Business Logo",clicks:2855,conv:0},{name:"Business Message",clicks:262,conv:17},{name:"Llamadas (CALL)",clicks:232,conv:222},{name:"Callout",clicks:4049,conv:0},{name:"Structured Snippet",clicks:98,conv:0},{name:"Directions (Google Maps)",clicks:47,conv:47},{name:"Directions - Como llegar",clicks:47,conv:47},{name:"Llamadas desde anuncios",clicks:76,conv:76}],
         kpi_extensions:[{name:"Directions - Como llegar",clicks:47,conv:47},{name:"Llamadas desde anuncios",clicks:76,conv:76}]
@@ -6252,13 +6252,14 @@ function renderGoogle(){
   document.getElementById('g-period-hint').textContent=`${currentFrom||ch.date_min} → ${currentTo||ch.date_max}`;
 
   // ── 01. KPI Cards ──────────────────────────────
-  // Conv desde conv_actions: sumar todas excepto Directions (acción local sin CPA)
+  // Conv desde conv_actions: sumar todas excepto Directions y engagements (acciones locales sin CPA, no son leads)
+  const _isNonLead=a=>{const t=a.action.toLowerCase();return t.includes('direction')||t.includes('engagement');};
   const _caSum=(ch.conv_actions||[])
-    .filter(a=>!a.action.toLowerCase().includes('direction'))
+    .filter(a=>!_isNonLead(a))
     .reduce((s,a)=>s+(a.conv||0),0);
   if(_caSum>0) totals.conv=_caSum;
   const _pcaSum=(P.conv_actions||[])
-    .filter(a=>!a.action.toLowerCase().includes('direction'))
+    .filter(a=>!_isNonLead(a))
     .reduce((s,a)=>s+(a.conv||0),0);
   if(_pcaSum>0) P.conv=_pcaSum;
   const convRate=totals.clicks?((totals.conv/totals.clicks)*100):0;
