@@ -2201,6 +2201,19 @@ function buildMonthSelector(){
   const btnCurr=document.getElementById('btn-preset-current');
   if(btnPrev) btnPrev.classList.toggle('active', selectedMonthIdx!==0);
   if(btnCurr) btnCurr.classList.toggle('active', selectedMonthIdx===0);
+  // FIX: el boton "Anterior" debe mostrar el NOMBRE del mes elegido en el
+  // dropdown (ej. "Agosto 2026") mientras ese mes este activo, y volver al
+  // texto generico "Anterior" cuando se regresa al mes actual (idx 0).
+  // Se usa innerHTML preservando el <span class="dropdown-caret"> existente.
+  if(btnPrev){
+    let label='Anterior';
+    if(selectedMonthIdx!==0){
+      const sel=DATA.months[selectedMonthIdx];
+      const selName=getMonthName(sel.channels.google?.date_min||sel.channels.meta?.date_min||sel.channels.tiktok?.date_min);
+      if(selName) label=selName;
+    }
+    btnPrev.innerHTML=`${label}<span class="dropdown-caret">▾</span>`;
+  }
 }
 
 function toggleMonthDropdown(e){
