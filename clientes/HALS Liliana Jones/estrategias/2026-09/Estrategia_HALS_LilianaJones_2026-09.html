@@ -820,9 +820,12 @@ const D = {
       { tipo:"problem",   tag:"🔴 Problema crítico",     metrica:"$4,476 (33%)",      metrica_cls:"bad",
         titulo:"Un tercio del presupuesto se va a búsquedas que nunca convierten",
         desc:"44 keywords con más de $40 de gasto acumulado y CERO conversiones en 3 meses. Encabezan la lista 'abogados de inmigración near me' ($487, 1,531 clics) e 'immigration attorney consultation' ($291) — tráfico en inglés y de comparación, no de contratación." },
-      { tipo:"problem",   tag:"🔴 VAWA roto en Google",   metrica:"CPL $632.03",             metrica_cls:"bad",
+      { tipo:"problem",   tag:"🔴 VAWA roto en Google",   metrica:"CPL $429.28",             metrica_cls:"bad",
         titulo:"VAWA es el peor CPL de toda la cuenta en Google (aunque funciona bien en Meta)",
-        desc:"1,873 clics y $884.84 de gasto para solo 1.4 conversiones reales. Las keywords que more volumen traen ('requisitos para vawa', 'vawa español', 'la visa vawa') son de concordancia amplia e intención informativa, no de contratación." },
+        desc:"2,101 clics y $1,030.28 de gasto para solo 2.4 conversiones reales — sumando tanto las búsquedas que dicen 'vawa' como las que describen la circunstancia sin nombrar el servicio ('visa por violencia doméstica usa'). Las keywords de mayor volumen ('requisitos para vawa', 'vawa español', 'la visa vawa') son de concordancia amplia e intención informativa, no de contratación." },
+      { tipo:"opportunity",tag:"🟢 Búsquedas por circunstancia sin explotar", metrica:"228 clics ya activos", metrica_cls:"good",
+        titulo:"La gente busca su situación, no el nombre legal del servicio — y esto casi no está targeteado",
+        desc:"'Visa por violencia doméstica usa' (65 clics, 1 conversión real) prueba que hay demanda de gente que no sabe que existe 'VAWA', solo sabe describir su situación. En Visa U el gap es total: cero keywords de circunstancia ('fui víctima de un robo y no tengo papeles', 'denuncié un crimen y soy indocumentado') están corriendo hoy — es terreno completamente sin tocar." },
       { tipo:"opportunity",tag:"🟢 Oportunidad probada", metrica:"CPL $18.25", metrica_cls:"good",
         titulo:"La campaña General/Abogado ya es rentable — solo falta depurarla",
         desc:"7,657 clics, $3,370.86 de gasto y 184.7 conversiones reales — el mejor CPL de la cuenta por lejos. Quitando solo 'near me' y las variantes en inglés, este CPL puede bajar todavía más." },
@@ -1055,9 +1058,23 @@ const D = {
         keywords:[
           {kw:"visa vawa",                intent:"intent-buy",   nota:"Mantener en exact al reconstruir"},
           {kw:"caso de vawa",             intent:"intent-buy",   nota:"0.4 conv. reales · revisar en exact"},
+          {kw:"visa por violencia domestica usa", intent:"intent-buy", nota:"65 clics, 1 conv. real · por circunstancia, sin decir 'vawa'"},
+          {kw:"mi esposo me golpea y no tengo papeles", intent:"intent-buy", nota:"Nueva · circunstancia, alta intención"},
+          {kw:"como denunciar a mi esposo siendo indocumentada", intent:"intent-buy", nota:"Nueva · circunstancia"},
+          {kw:"puedo divorciarme si no tengo papeles", intent:"intent-buy", nota:"Nueva · circunstancia"},
           {kw:"requisitos para vawa",     intent:"intent-info",  nota:"0 conv. en $128 gastados · Negativizar"},
           {kw:"vawa español",             intent:"intent-info",  nota:"0 conv. en $80 gastados · Negativizar"},
           {kw:"la visa vawa",             intent:"intent-info",  nota:"0 conv. en $76 gastados · Negativizar"},
+        ]
+      },
+      { producto:"Visa U — búsquedas por circunstancia (gap total, 0 clics hoy)", color_cls:"badge-a", color_bg:"#FDF3E3",
+        keywords:[
+          {kw:"fui victima de un robo y no tengo papeles", intent:"intent-buy", nota:"Nueva · sin ninguna keyword de circunstancia activa hoy"},
+          {kw:"me asaltaron y soy indocumentado",           intent:"intent-buy", nota:"Nueva · circunstancia"},
+          {kw:"denuncie un crimen puedo conseguir papeles", intent:"intent-buy", nota:"Nueva · circunstancia"},
+          {kw:"que pasa si denuncio y no tengo documentos", intent:"intent-buy", nota:"Nueva · circunstancia"},
+          {kw:"fui victima de violencia y coopere con la policia", intent:"intent-buy", nota:"Nueva · circunstancia"},
+          {kw:"proteccion para testigos indocumentados",    intent:"intent-info", nota:"Nueva · circunstancia, intención media"},
         ]
       }
     ]
