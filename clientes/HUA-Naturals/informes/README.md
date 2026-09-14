@@ -2,6 +2,6 @@
 
 | Archivo | Período | Link |
 |---------|---------|------|
-| Informe_HUA_NATURALS.html | Julio 2026 | [Ver](https://matixmedia.github.io/matixmedia-clientes/clientes/HUA-Naturals/informes/Informe_HUA_NATURALS.html) |
+| Informe_HUA_NATURALS.html | Abril – Agosto 2026 (acumulativo) | [Ver](https://portal.matix.media/clientes/HUA-Naturals/informes/Informe_HUA_NATURALS.html) |
 
-*Actualizado: Julio 2026 · MatixMedia*
+*Actualizado: Agosto 2026 · MatixMedia*
