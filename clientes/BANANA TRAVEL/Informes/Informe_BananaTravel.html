@@ -785,27 +785,41 @@ const DATA = {
     google: {
       active: true,
       objective: "LEADS",
-      date_min: "2026-09-01", date_max: "2026-09-04",
+      date_min: "2026-09-01", date_max: "2026-09-11",
       benchmarks: { ctr_min:2, ctr_good:5, roas_min:3, roas_good:5, cpa_max:50000, cvr_min:3, cvr_good:8 },
       daily_raw: [
         {date:"2026-09-02",campaign:"LEADS-US",device:"MOBILE",impr:49,clicks:5,cost:3430,conv:1,value:1},
         {date:"2026-09-03",campaign:"LEADS-US",device:"MOBILE",impr:72,clicks:8,cost:4083,conv:0,value:0},
         {date:"2026-09-04",campaign:"LEADS-US",device:"MOBILE",impr:142,clicks:27,cost:29921,conv:5,value:5},
-        {date:"2026-09-02",campaign:"PMAX-USA",device:"MOBILE",impr:2053,clicks:148,cost:20141,conv:7,value:7},
+        {date:"2026-09-05",campaign:"LEADS-US",device:"MOBILE",impr:169,clicks:35,cost:29999,conv:4,value:4},
+        {date:"2026-09-06",campaign:"LEADS-US",device:"MOBILE",impr:175,clicks:9,cost:11690,conv:2,value:2},
+        {date:"2026-09-07",campaign:"LEADS-US",device:"MOBILE",impr:338,clicks:28,cost:29577,conv:3,value:3},
+        {date:"2026-09-08",campaign:"LEADS-US",device:"MOBILE",impr:2114,clicks:18,cost:17028,conv:0,value:0},
+        {date:"2026-09-09",campaign:"LEADS-US",device:"MOBILE",impr:366,clicks:21,cost:16193,conv:1,value:1},
+        {date:"2026-09-10",campaign:"LEADS-US",device:"MOBILE",impr:123,clicks:12,cost:14748,conv:2,value:2},
+        {date:"2026-09-11",campaign:"LEADS-US",device:"MOBILE",impr:86,clicks:18,cost:16553,conv:0,value:0},
+        {date:"2026-09-02",campaign:"PMAX-USA",device:"MOBILE",impr:2053,clicks:147,cost:19300,conv:7,value:7},
         {date:"2026-09-03",campaign:"PMAX-USA",device:"MOBILE",impr:2091,clicks:140,cost:10870,conv:3,value:3},
-        {date:"2026-09-04",campaign:"PMAX-USA",device:"MOBILE",impr:1674,clicks:132,cost:10644,conv:6,value:6}
+        {date:"2026-09-04",campaign:"PMAX-USA",device:"MOBILE",impr:1674,clicks:133,cost:10671,conv:6,value:6},
+        {date:"2026-09-05",campaign:"PMAX-USA",device:"MOBILE",impr:2298,clicks:135,cost:9587,conv:5,value:5},
+        {date:"2026-09-06",campaign:"PMAX-USA",device:"MOBILE",impr:2985,clicks:196,cost:13978,conv:12,value:12},
+        {date:"2026-09-07",campaign:"PMAX-USA",device:"MOBILE",impr:1401,clicks:89,cost:5584,conv:6,value:6},
+        {date:"2026-09-08",campaign:"PMAX-USA",device:"MOBILE",impr:3807,clicks:195,cost:15282,conv:7,value:7},
+        {date:"2026-09-09",campaign:"PMAX-USA",device:"MOBILE",impr:1176,clicks:63,cost:11969,conv:2,value:2},
+        {date:"2026-09-10",campaign:"PMAX-USA",device:"MOBILE",impr:2006,clicks:110,cost:8821,conv:10,value:10},
+        {date:"2026-09-11",campaign:"PMAX-USA",device:"MOBILE",impr:1411,clicks:122,cost:9431,conv:6,value:6}
       ],
       funnel:[
-        {stage:"Impresiones",value:6081},
-        {stage:"Clics",value:460},
-        {stage:"Conv. WA",value:22}
+        {stage:"Impresiones",value:24536},
+        {stage:"Clics",value:1511},
+        {stage:"Conv. WA",value:82}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:22, value:0, cpa:3595, pct_total:100}
+        {action:"WA (WhatsApp)", conv:82, value:0, cpa:3521, pct_total:100}
       ],
       conv_by_campaign:[
-        {campaign:"LEADS-US",clicks:40,conv:6,cpa:6239,value:0,roas:0,conv_rate:15.0},
-        {campaign:"PMAX-USA",clicks:420,conv:16,cpa:2603,value:0,roas:0,conv_rate:3.81}
+        {campaign:"LEADS-US",clicks:181,conv:18,cpa:9623,value:0,roas:0,conv_rate:9.94},
+        {campaign:"PMAX-USA",clicks:1330,conv:64,cpa:1805,value:0,roas:0,conv_rate:4.81}
       ],
       extensions:[],
       ad_performance:[]
@@ -813,7 +827,7 @@ const DATA = {
     meta: {
       active: true,
       objective: "LEADS",
-      date_min: "2026-09-01", date_max: "2026-09-04",
+      date_min: "2026-09-01", date_max: "2026-09-11",
       benchmarks: { ctr_min:1, ctr_good:3, cvr_min:1, cvr_good:3, cpr_max:80000,
         leads_evento:{malo:2,promedio_min:3,promedio_max:7,bueno_min:8,bueno_max:12,excelente:15},
         conversaciones_wa:{malo:5,promedio_min:8,promedio_max:13,bueno_min:15,bueno_max:20,excelente:25},
@@ -824,22 +838,22 @@ const DATA = {
       followers_gained: null,
       page_likes: null,
       funnel_leads_detail:[
-        {stage:"Impresiones",   value:135317},
-        {stage:"Clics",         value:899},
-        {stage:"CTR",           value:0.66, isRate:true, rateLabel:"0.66%"},
-        {stage:"Conversaciones",value:49},
-        {stage:"Leads form",    value:30},
-        {stage:"CPL form",      value:25139, isRate:true, rateLabel:"$25.1K"}
+        {stage:"Impresiones",   value:311532},
+        {stage:"Clics",         value:1852},
+        {stage:"CTR",           value:0.59, isRate:true, rateLabel:"0.59%"},
+        {stage:"Conversaciones",value:141},
+        {stage:"Leads form",    value:81},
+        {stage:"CPL form",      value:24364, isRate:true, rateLabel:"$24.4K"}
       ],
       conv_detail:[],
       calls_data:[],
       pageview_data:[],
       campaigns_conv:[
-        {campaign:"I - MSJ - IG",results:10,conversations:10,calls:0,events:0,cost:284709,cpr:28471},
-        {campaign:"R - V",results:2,conversations:2,calls:0,events:0,cost:19501,cpr:9750},
-        {campaign:"V - MSJ - IG",results:8,conversations:8,calls:0,events:0,cost:151625,cpr:18953},
-        {campaign:"CP - FORM - FB50+",results:30,conversations:0,calls:0,events:30,cost:73588,cpr:2453},
-        {campaign:"V - MSJ - IG - #2",results:29,conversations:29,calls:0,events:0,cost:224735,cpr:7749}
+        {campaign:"I - MSJ - IG",results:29,conversations:29,calls:0,events:0,cost:769843,cpr:26546},
+        {campaign:"R - V",results:5,conversations:5,calls:0,events:0,cost:54643,cpr:10929},
+        {campaign:"V - MSJ - IG",results:18,conversations:18,calls:0,events:0,cost:408500,cpr:22694},
+        {campaign:"CP - FORM - FB50+",results:81,conversations:1,calls:0,events:81,cost:214646,cpr:2650},
+        {campaign:"V - MSJ - IG - #2",results:88,conversations:88,calls:0,events:0,cost:525873,cpr:5976}
       ],
       daily_raw: [
         {date:"2026-09-01",campaign:"V - MSJ - IG",impr:9340,clicks:32,cost:44081,results:2,value:0,reach:8186,leads_form:0,conv_wa:2},
@@ -847,35 +861,70 @@ const DATA = {
         {date:"2026-09-01",campaign:"I - MSJ - IG",impr:13984,clicks:36,cost:76411,results:4,value:0,reach:12477,leads_form:0,conv_wa:4},
         {date:"2026-09-01",campaign:"R - V",impr:2303,clicks:11,cost:5772,results:1,value:0,reach:2299,leads_form:0,conv_wa:1},
         {date:"2026-09-01",campaign:"V - MSJ - IG - #2",impr:6230,clicks:116,cost:57120,results:8,value:0,reach:5003,leads_form:0,conv_wa:8},
-        {date:"2026-09-02",campaign:"V - MSJ - IG - #2",impr:7027,clicks:122,cost:61856,results:6,value:0,reach:5455,leads_form:0,conv_wa:6},
-        {date:"2026-09-02",campaign:"CP - FORM - FB50+",impr:876,clicks:40,cost:22534,results:6,value:0,reach:817,leads_form:6,conv_wa:0},
         {date:"2026-09-02",campaign:"I - MSJ - IG",impr:18153,clicks:42,cost:81755,results:2,value:0,reach:15800,leads_form:0,conv_wa:2},
         {date:"2026-09-02",campaign:"V - MSJ - IG",impr:9963,clicks:40,cost:44558,results:3,value:0,reach:8873,leads_form:0,conv_wa:3},
+        {date:"2026-09-02",campaign:"CP - FORM - FB50+",impr:876,clicks:40,cost:22534,results:6,value:0,reach:817,leads_form:6,conv_wa:0},
         {date:"2026-09-02",campaign:"R - V",impr:969,clicks:3,cost:2720,results:0,value:0,reach:961,leads_form:0,conv_wa:0},
+        {date:"2026-09-02",campaign:"V - MSJ - IG - #2",impr:7027,clicks:122,cost:61856,results:6,value:0,reach:5455,leads_form:0,conv_wa:6},
         {date:"2026-09-03",campaign:"V - MSJ - IG",impr:8863,clicks:12,cost:35796,results:2,value:0,reach:7989,leads_form:0,conv_wa:2},
         {date:"2026-09-03",campaign:"I - MSJ - IG",impr:15762,clicks:40,cost:70807,results:2,value:0,reach:13676,leads_form:0,conv_wa:2},
         {date:"2026-09-03",campaign:"CP - FORM - FB50+",impr:852,clicks:35,cost:19971,results:10,value:0,reach:805,leads_form:10,conv_wa:0},
         {date:"2026-09-03",campaign:"R - V",impr:2330,clicks:8,cost:5891,results:1,value:0,reach:2315,leads_form:0,conv_wa:1},
         {date:"2026-09-03",campaign:"V - MSJ - IG - #2",impr:7151,clicks:133,cost:55861,results:6,value:0,reach:5870,leads_form:0,conv_wa:6},
-        {date:"2026-09-04",campaign:"I - MSJ - IG",impr:15083,clicks:27,cost:55736,results:2,value:0,reach:13072,leads_form:0,conv_wa:2},
-        {date:"2026-09-04",campaign:"V - MSJ - IG",impr:6643,clicks:13,cost:27190,results:1,value:0,reach:6080,leads_form:0,conv_wa:1},
+        {date:"2026-09-04",campaign:"V - MSJ - IG",impr:6662,clicks:13,cost:27241,results:1,value:0,reach:6097,leads_form:0,conv_wa:1},
+        {date:"2026-09-04",campaign:"I - MSJ - IG",impr:15115,clicks:27,cost:55826,results:2,value:0,reach:13105,leads_form:0,conv_wa:2},
         {date:"2026-09-04",campaign:"CP - FORM - FB50+",impr:710,clicks:41,cost:15721,results:6,value:0,reach:656,leads_form:6,conv_wa:0},
         {date:"2026-09-04",campaign:"R - V",impr:1743,clicks:7,cost:5118,results:0,value:0,reach:1742,leads_form:0,conv_wa:0},
-        {date:"2026-09-04",campaign:"V - MSJ - IG - #2",impr:6830,clicks:115,cost:49898,results:9,value:0,reach:5546,leads_form:0,conv_wa:9}
+        {date:"2026-09-04",campaign:"V - MSJ - IG - #2",impr:6831,clicks:115,cost:49902,results:9,value:0,reach:5547,leads_form:0,conv_wa:9},
+        {date:"2026-09-05",campaign:"I - MSJ - IG",impr:10044,clicks:30,cost:41209,results:0,value:0,reach:9206,leads_form:0,conv_wa:0},
+        {date:"2026-09-05",campaign:"V - MSJ - IG",impr:5526,clicks:19,cost:27224,results:1,value:0,reach:5118,leads_form:0,conv_wa:1},
+        {date:"2026-09-05",campaign:"CP - FORM - FB50+",impr:666,clicks:29,cost:18454,results:5,value:0,reach:637,leads_form:5,conv_wa:0},
+        {date:"2026-09-05",campaign:"V - MSJ - IG - #2",impr:4866,clicks:62,cost:47867,results:1,value:0,reach:4198,leads_form:0,conv_wa:1},
+        {date:"2026-09-05",campaign:"R - V",impr:1331,clicks:6,cost:3934,results:0,value:0,reach:1325,leads_form:0,conv_wa:0},
+        {date:"2026-09-06",campaign:"I - MSJ - IG",impr:26331,clicks:45,cost:97833,results:1,value:0,reach:23498,leads_form:0,conv_wa:1},
+        {date:"2026-09-06",campaign:"V - MSJ - IG",impr:11608,clicks:21,cost:47338,results:0,value:0,reach:10292,leads_form:0,conv_wa:0},
+        {date:"2026-09-06",campaign:"CP - FORM - FB50+",impr:1317,clicks:41,cost:27559,results:8,value:0,reach:1210,leads_form:8,conv_wa:1},
+        {date:"2026-09-06",campaign:"R - V",impr:2514,clicks:15,cost:6550,results:1,value:0,reach:2446,leads_form:0,conv_wa:1},
+        {date:"2026-09-06",campaign:"V - MSJ - IG - #2",impr:3115,clicks:43,cost:51895,results:5,value:0,reach:2508,leads_form:0,conv_wa:5},
+        {date:"2026-09-07",campaign:"V - MSJ - IG - #2",impr:2070,clicks:17,cost:39824,results:4,value:0,reach:1708,leads_form:0,conv_wa:4},
+        {date:"2026-09-07",campaign:"V - MSJ - IG",impr:13281,clicks:47,cost:52100,results:1,value:0,reach:11993,leads_form:0,conv_wa:1},
+        {date:"2026-09-07",campaign:"I - MSJ - IG",impr:25545,clicks:39,cost:90454,results:1,value:0,reach:23152,leads_form:0,conv_wa:1},
+        {date:"2026-09-07",campaign:"R - V",impr:1123,clicks:5,cost:3488,results:0,value:0,reach:1123,leads_form:0,conv_wa:0},
+        {date:"2026-09-07",campaign:"CP - FORM - FB50+",impr:947,clicks:40,cost:22288,results:8,value:0,reach:866,leads_form:8,conv_wa:0},
+        {date:"2026-09-08",campaign:"CP - FORM - FB50+",impr:814,clicks:27,cost:18924,results:5,value:0,reach:756,leads_form:5,conv_wa:0},
+        {date:"2026-09-08",campaign:"I - MSJ - IG",impr:9176,clicks:20,cost:38485,results:0,value:0,reach:8544,leads_form:0,conv_wa:0},
+        {date:"2026-09-08",campaign:"V - MSJ - IG - #2",impr:1499,clicks:24,cost:23890,results:6,value:0,reach:1432,leads_form:0,conv_wa:6},
+        {date:"2026-09-08",campaign:"R - V",impr:2097,clicks:9,cost:5493,results:1,value:0,reach:2090,leads_form:0,conv_wa:1},
+        {date:"2026-09-08",campaign:"V - MSJ - IG",impr:6386,clicks:31,cost:25374,results:0,value:0,reach:5868,leads_form:0,conv_wa:0},
+        {date:"2026-09-09",campaign:"I - MSJ - IG",impr:11390,clicks:41,cost:59609,results:3,value:0,reach:9671,leads_form:0,conv_wa:3},
+        {date:"2026-09-09",campaign:"R - V",impr:1526,clicks:3,cost:4744,results:1,value:0,reach:1524,leads_form:0,conv_wa:1},
+        {date:"2026-09-09",campaign:"CP - FORM - FB50+",impr:774,clicks:31,cost:18223,results:9,value:0,reach:730,leads_form:9,conv_wa:0},
+        {date:"2026-09-09",campaign:"V - MSJ - IG",impr:543,clicks:6,cost:9567,results:2,value:0,reach:508,leads_form:0,conv_wa:2},
+        {date:"2026-09-09",campaign:"V - MSJ - IG - #2",impr:2955,clicks:37,cost:53101,results:6,value:0,reach:2603,leads_form:0,conv_wa:6},
+        {date:"2026-09-10",campaign:"I - MSJ - IG",impr:6087,clicks:30,cost:76434,results:1,value:0,reach:5438,leads_form:0,conv_wa:1},
+        {date:"2026-09-10",campaign:"R - V",impr:1571,clicks:5,cost:4806,results:0,value:0,reach:1549,leads_form:0,conv_wa:0},
+        {date:"2026-09-10",campaign:"CP - FORM - FB50+",impr:669,clicks:27,cost:20532,results:10,value:0,reach:636,leads_form:10,conv_wa:0},
+        {date:"2026-09-10",campaign:"V - MSJ - IG",impr:4057,clicks:14,cost:55683,results:4,value:0,reach:3735,leads_form:0,conv_wa:4},
+        {date:"2026-09-10",campaign:"V - MSJ - IG - #2",impr:2948,clicks:43,cost:48428,results:21,value:0,reach:2701,leads_form:0,conv_wa:21},
+        {date:"2026-09-11",campaign:"V - MSJ - IG - #2",impr:2937,clicks:45,cost:36129,results:16,value:0,reach:2741,leads_form:0,conv_wa:16},
+        {date:"2026-09-11",campaign:"V - MSJ - IG",impr:2088,clicks:13,cost:39538,results:2,value:0,reach:1899,leads_form:0,conv_wa:2},
+        {date:"2026-09-11",campaign:"I - MSJ - IG",impr:5559,clicks:53,cost:81020,results:13,value:0,reach:4753,leads_form:0,conv_wa:13},
+        {date:"2026-09-11",campaign:"CP - FORM - FB50+",impr:505,clicks:27,cost:15078,results:6,value:0,reach:475,leads_form:6,conv_wa:0},
+        {date:"2026-09-11",campaign:"R - V",impr:2298,clicks:8,cost:6127,results:0,value:0,reach:2288,leads_form:0,conv_wa:0}
       ],
       funnel_ventas:[],
       funnel_leads:[
-        {stage:"Impresiones",   value:135317},
-        {stage:"Clics",         value:899},
-        {stage:"Conversaciones",value:49},
-        {stage:"Leads form",    value:30}
+        {stage:"Impresiones",   value:311532},
+        {stage:"Clics",         value:1852},
+        {stage:"Conversaciones",value:141},
+        {stage:"Leads form",    value:81}
       ],
       funnel_wa:[
-        {stage:"Impresiones",    value:135317},
-        {stage:"Clics",          value:899},
-        {stage:"Conv. Iniciadas",value:49},
-        {stage:"Nuevas Conv.",   value:49},
-        {stage:"Totales",        value:49}
+        {stage:"Impresiones",    value:311532},
+        {stage:"Clics",          value:1852},
+        {stage:"Conv. Iniciadas",value:141},
+        {stage:"Nuevas Conv.",   value:141},
+        {stage:"Totales",        value:141}
       ],
       ad_performance:[]
     }
