@@ -783,6 +783,22 @@ const DATA = {
       channels: {
         google: {
       active: true,
+      notifications: [
+        {
+          level: "warn",
+          title: "Semana del 10 al 17 de agosto — afectada por el terremoto",
+          text: "Colombia registró actividad sísmica durante esta semana, lo que pudo afectar la disponibilidad del equipo y la operación normal del negocio. A nivel de métricas de campaña, sin embargo, no se observa una caída significativa: impresiones 12.011 (vs 12.569 la semana previa), CTR 2.71% (vs 2.20% previo) y 7 conversiones (vs 2 la semana anterior). Se documenta el evento como contexto operativo, aunque los datos de Google Ads no muestran un impacto negativo claro en esta ventana.",
+          tags: [{label:"10–17 ago 2026"}],
+          note: "Verificar con el cliente si hubo impacto en despachos, atención al cliente o inventario durante estos días, aunque la pauta digital no lo refleje."
+        },
+        {
+          level: "good",
+          title: "Bono de Google Ads — requisitos completados, en proceso de aplicarse",
+          text: "Se completaron todos los requisitos para acceder al bono de Google Ads para cuentas nuevas. El bono está actualmente en proceso de aplicación por parte de Google y debería reflejarse en el saldo de la cuenta en los próximos días/ciclos de facturación.",
+          tags: [{label:"Agosto 2026"}],
+          recommendations: ["Confirmar con el equipo cuándo se refleja el crédito en la cuenta de Google Ads y validar el monto aplicado una vez llegue."]
+        }
+      ],
       date_min: "2026-08-01", date_max: "2026-08-31",
       benchmarks: { ctr_min:2, ctr_good:5, roas_min:0, roas_good:0, cpa_max:80000, cvr_min:0.3, cvr_good:1 },
       prev: { impr:0, clicks:0, cost:0, conv:0, value:0, ctr:0, cpa:0, roas:0 },
