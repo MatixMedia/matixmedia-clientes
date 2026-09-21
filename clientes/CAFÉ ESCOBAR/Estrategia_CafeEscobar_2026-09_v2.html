@@ -827,6 +827,9 @@ const D = {
       { tipo:"problem", tag:"🔴 Atribución rota", metrica:"Conversiones reales no llegan a Google", metrica_cls:"bad",
         titulo:"Compras confirmadas en Clarity no se registran como conversión en Google Ads",
         desc:"En agosto, sesiones grabadas (Clarity) muestran 3 personas que llegaron a 'Reservar mi colección' y 1 que completó 'Comprar colección' — pero Google Ads no registró esas conversiones. Hipótesis del equipo: la pasarela de pago no devuelve el evento de confirmación a tiempo (Google rechaza conversiones no confirmadas en 7 días). Reunión con el equipo especializado de Google: 16 Sept, 9am." },
+      { tipo:"problem", tag:"🔬🆕 Search Terms Report — 1 ago-21 sept", metrica:"9,226 impr. reales · solo 3 conversiones en 7 semanas", metrica_cls:"bad",
+        titulo:"La keyword de concordancia amplia 'coffee' está financiando marcas competidoras y búsquedas irrelevantes, no el posicionamiento de lujo/specialty",
+        desc:"El Search Terms Report real muestra que gran parte del presupuesto se fue en términos que no tienen nada que ver con Café Escobar: marcas competidoras (Starbucks 184 impr/9 clics, Lavazza, Kimbo, Davidoff, Vicafe, Henauer, Mame, Stoll), cafés de otro origen (cafe cubano, kopi luwak), café instantáneo (contradice el eje de lujo) y búsquedas de cafetería física ('coffee shop near me'). En cambio, el patrón con más clics reales fue 'specialty coffee + ciudad' (Zurich, Geneva, Basel) — no 'luxury'/'lujo', que tuvo cero clics en 7 semanas. Con ~USD 8.50/día, cada impresión desperdiciada en 'Starbucks' o 'kopi luwak' es presupuesto que no llega a alguien con intención real de comprar Café Escobar." },
       { tipo:"opportunity", tag:"🟢 Decisión de reunión", metrica:"100% presupuesto → Suiza", metrica_cls:"good",
         titulo:"Colombia se pausa en pauta paga, crece solo orgánico",
         desc:"Con $10.000 COP/día en Colombia, el costo por checkout iniciado llegó a $303.000 COP en agosto — el volumen no alcanza para generar ventas reales a ese presupuesto. El cliente decidió concentrar el 100% del presupuesto diario en Suiza, donde ve mayor potencial de rentabilidad (hasta 3x según su estimación)." },
@@ -887,61 +890,77 @@ const D = {
   },
 
   copies: {
-    titulo: "RSA <em>lujo</em> — nuevo eje de comunicación",
+    titulo: "RSA <em>ajustado con datos reales</em> — términos de búsqueda 1 ago – 21 sep 2026",
     cards: [
-      { campana:"Suiza · Café de Lujo · Audiencia alto patrimonio",
-        tipo:"Reposicionamiento — calidad como lujo, no ostentación",
+      { campana:"Suiza · Specialty Coffee · Reposicionamiento por ciudad",
+        tipo:"🆕 Ajustado con Search Terms Report — 'specialty coffee + ciudad' es el patrón con más clics reales; 'luxury'/'lujo' tuvo 0 clics en 7 semanas",
         path:"cafeescobar.shop/europe",
         titulares:[
+          "Specialty Coffee Zurich",
+          "Specialty Coffee Geneva",
+          "Specialty Coffee Basel",
           "Finest Colombian Coffee",
-          "Luxury Coffee · Traceable",
-          "For Those Who Know Quality",
+          "Colombian Specialty Coffee",
           "Premium Colombian · CHF 114",
-          "Exceptional Coffee, Executives",
-          "Corporate Gifts · Fine Coffee",
-          "Precision. Quality. Coffee.",
-          "Reserved for Discerning Tastes"
+          "Direct From Origin Farms",
+          "For Discerning Coffee Tastes"
         ],
         descripciones:[
-          "Full traceability from farm to cup. Quality that matches your standards. Shipping incl.",
-          "The coffee choice of those who value precision and quality over ostentation. Reserve now."
+          "Direct from origin. Specialty coffee loved in Zurich, Geneva & Basel. Shipping included.",
+          "The coffee choice of those who value origin and quality over ostentation. Reserve now."
         ]
       },
-      { campana:"Suiza · B2B Hoteles y Empresas",
-        tipo:"Regalo corporativo · Hoteles 5 estrellas",
+      { campana:"Suiza · B2B Oficinas, Hoteles y Empresas",
+        tipo:"🆕 Ajustado — 'office coffee service' y '360 office coffee' tuvieron clics reales; 'corporate gift' e 'hotel' solo impresiones sin clics",
         path:"cafeescobar.shop/europe",
         titulares:[
+          "Office Coffee, Colombian",
           "Coffee for 5-Star Hotels",
           "Corporate Coffee Gifts",
           "Give Your Team Finest Coffee",
-          "Colombian Coffee · B2B Supply",
-          "Premium Coffee for Your Office"
+          "Colombian Coffee · B2B Supply"
         ],
         descripciones:[
-          "Trusted by discerning hotels. Colombian specialty coffee, direct from origin. Reserve now.",
-          "Give your executives coffee that reflects your standards. Inquire for corporate pricing."
+          "Trusted by discerning hotels & offices. Colombian specialty coffee, direct from origin.",
+          "Give your team and clients coffee that reflects your standards. Inquire for B2B pricing."
         ]
       },
-      { campana:"🆕 Suiza · Alemán (Deutsch) — Lujo + B2B",
-        tipo:"Traducción del eje de lujo · 65% de Suiza busca en alemán, no en inglés",
+      { campana:"Suiza · Alemán (Deutsch) — Lujo + B2B + Abo/Regalo",
+        tipo:"🆕 Ajustado — clics reales confirmaron intención de 'Kaffeeabo' y 'Geschenkset' que no estaban en la versión anterior; 65% de Suiza busca en alemán",
         path:"cafeescobar.shop/europe",
         titulares:[
+          "Spezialitätenkaffee Zürich",
           "Kolumbianischer Kaffee",
-          "Premium Kaffee · Herkunft",
+          "Kaffeeabo Schweiz",
+          "Kaffee-Geschenkset",
           "Für Kenner von Qualität",
-          "Kaffee für Führungskräfte",
           "Geschäftsgeschenk · Kaffee",
-          "Präzision. Qualität. Kaffee.",
-          "Spezialitätenkaffee Kolumbien",
-          "Kaffee für 5-Sterne-Hotels"
+          "Kaffee für Büro & Team",
+          "Spezialitätenkaffee Basel"
         ],
         descripciones:[
           "Volle Rückverfolgbarkeit vom Ursprung bis zur Tasse. Versand inklusive. Jetzt reservieren.",
-          "Premium kolumbianischer Kaffee für anspruchsvolle Firmenkunden. Versand inklusive."
+          "Spezialitätenkaffee aus Kolumbien, beliebt in Zürich, Genf & Basel. Als Abo oder Geschenk."
         ]
       },
-      { campana:"🆕 Suiza · Español — Comunidad Latina / Evento Café y Música",
-        tipo:"Apoyo al evento con cantante colombiana · comunidad latina como punto de entrada, no eje principal",
+      { campana:"🆕 Suiza · Francés — Genève, Lausanne y Suisse Romande",
+        tipo:"🆕 NUEVO — Search Terms Report mostró volumen real en francés ('café colombien', 'magasin café lausanne/genève') sin ningún anuncio en francés activo hasta ahora",
+        path:"cafeescobar.shop/europe",
+        titulares:[
+          "Café de Spécialité Genève",
+          "Café Colombien d'Origine",
+          "Café de Spécialité Lausanne",
+          "Café Premium · Traçabilité",
+          "Abonnement Café Suisse",
+          "Cadeau Café pour Bureau"
+        ],
+        descripciones:[
+          "Café de spécialité colombien, traçable de la ferme à la tasse. Livraison incluse.",
+          "Apprécié à Genève, Lausanne et en Suisse romande. Réservez votre café dès aujourd'hui."
+        ]
+      },
+      { campana:"Suiza · Español — Comunidad Latina / Evento Café y Música",
+        tipo:"Apoyo al evento con cantante colombiana · comunidad latina como punto de entrada, no eje principal (sin señal en Search Terms — es tráfico de evento/orgánico, no de búsqueda paga)",
         path:"cafeescobar.shop/europe",
         titulares:[
           "Café Escobar en Suiza",
@@ -1129,21 +1148,37 @@ const D = {
   },
 
   terminos: {
-    titulo: "Keywords <em>por segmento</em> — lujo, B2B y las que ya funcionan",
+    titulo: "Keywords <em>ajustadas con Search Terms Report</em> — 1 ago – 21 sep 2026",
     grupos: [
-      { producto:"🆕 Segmento Lujo — Individual", color_cls:"badge-g", color_bg:"#3a2a10",
+      { producto:"✅ Validado por clics reales — Specialty + Ciudad", color_cls:"badge-a", color_bg:"#1a3a2a",
         keywords:[
-          {kw:"luxury Colombian coffee",             intent:"intent-buy",   nota:"Nuevo · Phrase"},
+          {kw:"specialty coffee Zurich",              intent:"intent-buy",   nota:"🆕 Validado · 13 impr, 2 clics reales"},
+          {kw:"specialty coffee Geneva",               intent:"intent-buy",   nota:"🆕 Validado · 10 impr, 1 clic real"},
+          {kw:"specialty coffee Basel",                intent:"intent-buy",   nota:"🆕 Validado · patrón repetido en Basel/Zürich"},
+          {kw:"café de spécialité Genève",             intent:"intent-buy",   nota:"🆕 Validado · francés, sin anuncio activo hasta ahora"},
+        ]
+      },
+      { producto:"🆕 Segmento Lujo — Individual (bajado de prioridad)", color_cls:"badge-g", color_bg:"#3a2a10",
+        keywords:[
+          {kw:"luxury Colombian coffee",             intent:"intent-buy",   nota:"⚠️ 0 clics en 7 semanas — mantener solo en RSA, no como keyword de alta puja"},
           {kw:"premium specialty coffee Switzerland", intent:"intent-buy",   nota:"Nuevo · Phrase"},
-          {kw:"finest Colombian coffee",              intent:"intent-buy",   nota:"Nuevo · Phrase"},
+          {kw:"finest Colombian coffee",              intent:"intent-buy",   nota:"⚠️ 'colombian coffee' tuvo impresiones pero 0 clics reales"},
           {kw:"exceptional coffee gift Switzerland",  intent:"intent-buy",   nota:"Nuevo · Regalo"},
         ]
       },
-      { producto:"🆕 Segmento B2B — Hoteles y Empresas", color_cls:"badge-g", color_bg:"#3a2a10",
+      { producto:"🆕 Segmento B2B — Oficina (re-enfocado con datos reales)", color_cls:"badge-g", color_bg:"#3a2a10",
         keywords:[
+          {kw:"office coffee service Switzerland",  intent:"intent-buy",  nota:"🆕 Validado · 'office coffee service' tuvo clics reales"},
           {kw:"corporate coffee gift Switzerland",  intent:"intent-buy",  nota:"Nuevo · B2B"},
           {kw:"5 star hotel coffee supplier",       intent:"intent-buy",  nota:"Nuevo · B2B hoteles"},
-          {kw:"office coffee Switzerland premium",  intent:"intent-buy",  nota:"Nuevo · B2B oficina"},
+        ]
+      },
+      { producto:"🆕 Alemán — Abo y Regalo (validado por clics)", color_cls:"badge-g", color_bg:"#3a2a10",
+        keywords:[
+          {kw:"Kaffeeabo Schweiz",           intent:"intent-buy", nota:"🆕 Validado · clic real en 'kaffee abo schweiz'"},
+          {kw:"Kaffeebohnen Geschenkset",    intent:"intent-buy", nota:"🆕 Validado · clic real"},
+          {kw:"Geschenke für Kaffeeliebhaber", intent:"intent-buy", nota:"🆕 Validado · impresiones + intención de regalo confirmada"},
+          {kw:"Spezialitätenkaffee Zürich",  intent:"intent-buy", nota:"🆕 Validado"},
         ]
       },
       { producto:"✅ Suiza · Specialty (mantener)", color_cls:"badge-a", color_bg:"#1a3a2a",
@@ -1158,10 +1193,14 @@ const D = {
           {kw:"founders collection Colombian coffee",  intent:"intent-buy",   nota:"Mantener · Phrase"},
         ]
       },
-      { producto:"🚫 Negativas ampliadas", color_cls:"badge-a", color_bg:"#3a1a1a",
+      { producto:"🚫 Negativas — confirmadas con Search Terms Report real", color_cls:"badge-a", color_bg:"#3a1a1a",
         keywords:[
-          {kw:"cheap · budget · discount coffee",  intent:"intent-info", nota:"🚫 Nuevo — contradice posicionamiento de lujo"},
-          {kw:"instant coffee",                    intent:"intent-info", nota:"🚫 Nuevo"},
+          {kw:"starbucks · lavazza · kimbo · davidoff · vicafe · mame · henauer · simons · stoll · ucc", intent:"intent-info", nota:"🚫 NUEVO — marcas competidoras captando presupuesto por concordancia amplia (184, 77, 51, 45, 29 impr c/u)"},
+          {kw:"coffee · cafe · espresso · cappuccino · arabica (términos sueltos)", intent:"intent-info", nota:"🚫 NUEVO — genéricos de una sola palabra, 0% conv., máxima causa de desperdicio de presupuesto"},
+          {kw:"instant coffee · alpine start instant coffee", intent:"intent-info", nota:"🚫 NUEVO — contradice posicionamiento specialty/origen"},
+          {kw:"cafe cubano · kopi luwak · dalgona coffee", intent:"intent-info", nota:"🚫 NUEVO — otro origen/producto, cero relación con Café Escobar"},
+          {kw:"coffee shop near me · cafés near me · coffee roaster near me", intent:"intent-info", nota:"🚫 NUEVO — buscan local físico, no e-commerce"},
+          {kw:"cheap · budget · discount coffee",  intent:"intent-info", nota:"🚫 Contradice posicionamiento de lujo"},
           {kw:"Pablo Escobar · narco · cocaine",   intent:"intent-info", nota:"🚫 Negativa crítica · mantener"},
         ]
       }
@@ -2531,7 +2570,10 @@ const KW = {
     "Nespresso", "Nescafé", "Starbucks", "decaf", "descafeinado",
     "coffee machine", "cafetera", "espresso machine", "grinder", "molino",
     "mushroom coffee", "holistic fungi", "cannabis coffee",
-    "café del año", "how to grow", "cómo cultivar"
+    "café del año", "how to grow", "cómo cultivar",
+    "Lavazza", "Kimbo", "Davidoff", "Vicafe", "mame coffee", "henauer kaffee", "simons kaffee", "stoll kaffee", "UCC coffee", "kaffeemacher",
+    "instant coffee", "alpine start", "cafe cubano", "kopi luwak", "dalgona coffee",
+    "coffee shop near me", "cafés near me", "coffee roaster near me", "coffee shops near me"
   ]
 };
 
