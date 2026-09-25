@@ -241,6 +241,49 @@
     .media-grid{grid-template-columns:1fr 1fr}
   }
 
+
+  /* ── VISTA SOLO RESULTADO (?v=r) ── */
+  #soloView{display:none}
+  body.solo > *:not(#soloView):not(script){display:none!important}
+  body.solo #soloView{display:block;padding:28px 16px 40px}
+  .solo-card{max-width:600px;margin:0 auto;background:var(--bg-3);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  .solo-bar{height:4px;background:var(--amber)}
+  .solo-in{padding:22px 28px}
+  .solo-brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .solo-brand img{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--amber)}
+  .solo-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-top:26px}
+  .solo-card h1{font-family:var(--serif);font-weight:300;font-size:clamp(24px,5.5vw,30px);line-height:1.2;margin:10px 0 12px;text-wrap:balance}
+  .solo-card h1 em{color:var(--amber)}
+  .solo-lead{font-size:14px;line-height:1.6;color:var(--ink-3)}
+  .solo-total{margin-top:22px;background:var(--bg-2);border:1px solid #3A3220;border-radius:12px;padding:24px}
+  .solo-total .lbl{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3)}
+  .solo-total .val{font-family:var(--serif);font-size:clamp(40px,11vw,52px);line-height:1.05;color:var(--gold);margin-top:8px}
+  .solo-total .val small{font-family:var(--mono);font-size:15px;color:var(--ink-3)}
+  .solo-total .sub{font-size:13px;color:var(--ink-3);margin-top:8px}
+  .solo-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+  .solo-kpi{background:var(--bg-2);border:1px solid var(--border);border-top:2px solid;border-radius:8px;padding:12px 12px}
+  .solo-kpi span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:1.2px;text-transform:uppercase;min-height:2.6em}
+  .solo-kpi b{display:block;font-family:var(--serif);font-weight:300;font-size:22px;margin-top:6px}
+  .solo-sec{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin:22px 0 4px}
+  .solo-rows{width:100%;border-collapse:collapse}
+  .solo-rows td{padding:11px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink-3);background:none}
+  .solo-rows td:last-child{text-align:right;font-family:var(--mono);color:var(--ink)}
+  .solo-rows tr.tot td{color:var(--ink);font-weight:600}
+  .solo-rows tr.tot td:last-child{color:var(--gold)}
+  .solo-rows tr:hover td{background:none}
+  .solo-tip{margin-top:18px;background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:10px;padding:16px 18px}
+  .solo-tip span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+  .solo-tip p{font-size:14px;line-height:1.6;color:var(--ink-2)}
+  .solo-cta{margin-top:22px;background:#0F2A22;border:1px solid #1D5A48;border-radius:12px;padding:24px 20px;text-align:center}
+  .solo-cta h3{font-family:var(--serif);font-weight:300;font-size:22px}
+  .solo-cta h3 em{color:var(--amber)}
+  .solo-cta p{font-size:13px;line-height:1.6;color:var(--ink-3);margin:8px 0 18px}
+  .solo-cta .again{display:block;font-size:12px;margin-top:14px;color:var(--amber);text-decoration:underline}
+  .solo-note{font-size:12px;line-height:1.6;color:#8A887E;font-style:italic;margin-top:18px}
+  .solo-foot{background:var(--bg-2);border-top:1px solid var(--border);padding:16px 28px;font-family:var(--mono);font-size:10px;color:var(--ink-muted)}
+  .solo-foot a{color:var(--ink-3)}
+  @media(max-width:480px){.solo-in{padding:20px 18px}.solo-kpis{gap:6px}.solo-kpi{padding:10px 8px}.solo-kpi b{font-size:19px}}
+
   /* MODAL */
   .modal{position:fixed;inset:0;z-index:300;background:rgba(4,5,10,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease}
   .modal[hidden]{display:none}
@@ -807,6 +850,8 @@
   </div>
 </footer>
 
+<div id="soloView" aria-live="polite"></div>
+
 <script>
 (function(){
   // ── CONFIGURACIÓN ────────────────────────────────────────────
@@ -1003,9 +1048,50 @@
     if(q.has('t')) rateEl.value=String(parseRate(q.get('t')));
     captured=true;
     lastResult=compute(); render(lastResult);
+    if(q.get('v')==='r'){ renderSolo(lastResult, (q.get('e')||'').slice(0,80)); return; }
     s2.hidden=false; setActive('s2');
     setTimeout(function(){ s2.scrollIntoView({block:'start'}); },60);
   })();
+
+  // Vista solo del resultado: mismo diseño del correo que recibe el cliente.
+  function renderSolo(r, empresa){
+    function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+    var logo=(document.querySelector('.nav-brand img')||{}).src||'';
+    var pctBill=r.total>0?Math.round(r.billable/r.total*100):0;
+    var tip = r.billable===0
+      ? 'Con tu volumen actual, todos tus mensajes de servicio quedan cubiertos por los mensajes gratis y la pauta. Si tu operación crece, vuelve a calcular: el cobro empieza desde el mensaje 1.001 del mes que no venga de pauta.'
+      : (r.adsPct<50
+        ? 'Solo el '+r.adsPct+'% de tus chats llega por pauta. Las conversaciones que empiezan en un anuncio Click-to-WhatsApp tienen 72 horas sin costo de entrega: mover más tráfico a ese formato es la forma más directa de bajar esta cifra.'
+        : 'Ya aprovechas bien la pauta. El siguiente paso es enviar menos mensajes por conversación: juntar respuestas en un solo mensaje y revisar tus bots reduce lo facturable sin afectar la atención.');
+    var wa='https://api.whatsapp.com/send?phone='+WA_PHONE+'&text='+encodeURIComponent('Hola MatixMedia, vi mi cálculo de WhatsApp ('+fmtUSD.format(r.cost)+' al mes) y quiero ver cómo reducirlo.');
+    function row(a,b,cls){ return '<tr'+(cls?' class="'+cls+'"':'')+'><td>'+a+'</td><td>'+b+'</td></tr>'; }
+    function kpi(label,val,color){ return '<div class="solo-kpi" style="border-top-color:'+color+'"><span style="color:'+color+'">'+label+'</span><b>'+val+'</b></div>'; }
+    document.getElementById('soloView').innerHTML=
+      '<article class="solo-card"><div class="solo-bar"></div><div class="solo-in">'+
+        '<div class="solo-brand">'+(logo?'<img src="'+logo+'" alt="MatixMedia">':'')+'MatixMedia · Calculadora WhatsApp</div>'+
+        '<div class="solo-eyebrow">Cambios de precios de Meta · WhatsApp</div>'+
+        '<h1>'+(empresa?'Hola '+esc(empresa)+', este es <em>tu resultado</em>':'Este es <em>tu resultado</em>')+'</h1>'+
+        '<p class="solo-lead">Desde el 1 de octubre de 2026, Meta cobra cada mensaje de servicio que tu empresa entrega por la API de WhatsApp. Con los datos que ingresaste, este es tu costo extra estimado.</p>'+
+        '<div class="solo-total"><div class="lbl">Total estimado por mes</div><div class="val">'+fmtUSD.format(r.cost)+'<small> / mes</small></div><div class="sub">de '+fmtInt.format(r.total)+' mensajes de servicio · '+esc(r.region)+'</div></div>'+
+        '<div class="solo-kpis">'+kpi('Exentos por pauta',fmtInt.format(r.exempt),'#4A9EE0')+kpi('Gratis',fmtInt.format(r.free),'#22B088')+kpi('Facturables',fmtInt.format(r.billable),'#E88080')+'</div>'+
+        '<div class="solo-sec">Cómo se calcula</div><table class="solo-rows">'+
+          row('Mensajes de servicio al mes',fmtInt.format(r.total))+
+          row('Exentos por Click-to-WhatsApp ('+r.adsPct+'%)','−'+fmtInt.format(r.exempt))+
+          row('Gratis (1.000 × '+r.phones+(r.phones===1?' número)':' números)'),'−'+fmtInt.format(r.free))+
+          row('Facturables ('+pctBill+'% del total)',fmtInt.format(r.billable))+
+          row('Tarifa por mensaje · '+esc(r.region),fmtUSD4.format(r.rate))+
+          row('Total estimado / mes',fmtUSD.format(r.cost),'tot')+
+        '</table>'+
+        '<div class="solo-tip"><span>Nuestra recomendación</span><p>'+tip+'</p></div>'+
+        '<div class="solo-cta"><h3>¿Quieres <em>bajar</em> este costo?</h3><p>Te ayudamos a mover más conversaciones a Click-to-WhatsApp y a automatizar respuestas para que pagues menos por cada venta.</p>'+
+          '<a class="btn-primary btn-wa" target="_blank" rel="noopener" href="'+wa+'">Escríbenos si tienes dudas</a>'+
+          '<a class="again" href="'+location.pathname+'">Hacer un nuevo cálculo</a></div>'+
+        '<p class="solo-note">*Este cálculo puede variar. Es una referencia para planificar; el cobro final lo define y aplica Meta directamente. No incluye plantillas de marketing, utilidad ni autenticación, ni el margen de tu proveedor.</p>'+
+      '</div><div class="solo-foot">MatixMedia · <a href="https://www.matixmedia.com.co" target="_blank" rel="noopener">matixmedia.com.co</a> · <a href="https://www.instagram.com/matixmedia/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@matixmedia" target="_blank" rel="noopener">TikTok</a></div></article>';
+    document.body.classList.add('solo');
+    document.title='Tu cálculo de WhatsApp · MatixMedia';
+    window.scrollTo(0,0);
+  }
 })();
 </script>
 </body>
