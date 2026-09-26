@@ -50,8 +50,10 @@
   .header-kpi-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
 
   /* LAYOUT */
-  .container{max-width:1040px;margin:0 auto;padding:56px 40px}
-  .section{margin-bottom:60px;scroll-margin-top:60px}
+  .container{max-width:1040px;margin:0 auto;padding:56px 40px 32px}
+  .section{scroll-margin-top:60px}
+  .section + .section{margin-top:64px}
+  #s1 + #s2{margin-top:24px}
   .section-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--amber);font-weight:500;margin-bottom:6px}
   .section-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:300;line-height:1.2;margin-bottom:20px}
   .section-title em{font-style:italic;color:var(--amber)}
@@ -130,14 +132,17 @@
   .voice-box p{font-size:13px;color:var(--ink-2);line-height:1.6}
   .voice-quote{font-family:var(--serif);font-size:18px;font-weight:300;font-style:italic;color:var(--amber);line-height:1.4;margin-bottom:6px}
 
-  .cta-card{background:linear-gradient(135deg,#0F2A22 0%,#0C0D13 70%);border:1px solid rgba(25,148,119,.35);border-radius:12px;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .cta-card{background:linear-gradient(135deg,#0F2A22 0%,#0C0D13 70%);border:1px solid rgba(25,148,119,.35);border-radius:12px;padding:28px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
   .cta-card h3{font-family:var(--serif);font-size:22px;font-weight:300;margin-bottom:4px}
   .cta-card h3 em{color:var(--amber);font-style:italic}
-  .cta-card p{font-size:13px;color:var(--ink-3);max-width:520px}
+  .cta-card p{font-size:13px;color:var(--ink-3);max-width:520px;margin:0 auto}
   .btn-wa{background:#25D366;color:#fff;border-radius:999px;padding:13px 24px;gap:9px;text-transform:none;letter-spacing:.01em;font-size:13px;font-weight:500;box-shadow:0 6px 18px -8px rgba(37,211,102,.6)}
   .btn-wa:hover{background:#2EE072;box-shadow:0 10px 26px -10px rgba(37,211,102,.8)}
   .wa-ico{width:18px;height:18px;flex-shrink:0}
 
+  .send-block{display:flex;flex-direction:column;align-items:center;gap:8px;margin:20px 0 24px;text-align:center}
+  .send-block[hidden]{display:none}
+  .send-block .hint{margin:0}
   .confirm{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-3);font-family:var(--mono);margin-bottom:16px}
   .confirm[hidden]{display:none}
   .confirm b{color:var(--green);font-weight:500}
@@ -235,6 +240,10 @@
   .checklist p{font-size:12px;color:var(--ink-3);line-height:1.5}
   .checklist code{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
   button.btn-ghost{background:none;cursor:pointer}
+  .btn-glow{position:relative;overflow:hidden;isolation:isolate;padding:14px 24px;color:var(--ink);border-color:rgba(232,192,70,.32);background:var(--bg-3)!important}
+  .btn-glow::before{content:'';position:absolute;z-index:-1;top:50%;right:-70px;width:200px;height:200px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(232,192,70,.30) 0%,rgba(232,192,70,.08) 40%,transparent 70%);transition:right .35s ease,opacity .35s ease;pointer-events:none}
+  .btn-glow:hover{color:var(--amber);border-color:rgba(232,192,70,.6)}
+  .btn-glow:hover::before{right:-40px}
   @media(max-width:768px){
     .news-hero-grid,.free-grid,.change-grid,.compare-grid,.note-grid,.rule-grid,.checklist{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr 1fr}
@@ -333,10 +342,14 @@
     .nav-inner{padding:0 16px}
     .header{padding:36px 20px 32px}
     .header-kpis{grid-template-columns:1fr}
-    .container{padding:36px 16px}
+    .container{padding:36px 16px 28px}
+    .section + .section{margin-top:48px}
+    #s1 + #s2{margin-top:20px}
     .form-grid,.result-kpis{grid-template-columns:1fr}
     .result-hero{padding:26px 22px}
     .footer-wrap{padding:0 16px;flex-direction:column;text-align:center}
+    .footer-brand{flex-direction:column;gap:8px}
+    .footer-links{justify-content:center}
     .btn-primary{width:100%}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -346,7 +359,7 @@
 
 <nav class="top-nav">
   <div class="nav-inner">
-    <div class="nav-brand"><img src="data:image/webp;base64,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" alt="">MatixMedia · Calculadora</div>
+    <div class="nav-brand"><img src="data:image/webp;base64,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" alt="">MatixMedia</div>
     <div class="nav-item" data-go="news">Novedades</div>
     <div class="nav-item active" data-go="calc">01 Calculadora</div>
     <div class="nav-item" data-go="s2">02 Resultado</div>
@@ -548,6 +561,11 @@
       <p>Es una referencia para planificar. El cálculo y el cobro final los define y aplica Meta directamente. Las plantillas de marketing, utilidad y autenticación no cambian y no están incluidas.</p>
     </div>
 
+    <div class="send-block" id="sendBlock">
+      <button class="btn-primary" id="sendResultBtn" type="button">Envíame el resultado →</button>
+      <p class="hint">Te lo enviamos por correo o WhatsApp.</p>
+    </div>
+
     <div class="cta-card">
       <div>
         <h3>¿Quieres <em>bajar</em> este costo?</h3>
@@ -694,13 +712,14 @@
 
   <section class="section" id="n4">
     <div class="section-label">Tarifas</div>
-    <h2 class="section-title">Precios de la API <em>en Latinoamérica</em></h2>
+    <h2 class="section-title">Precios de la API <em>en América</em></h2>
     <p class="section-desc">USD por mensaje entregado, vigentes desde el 1 de octubre de 2026. No incluyen el margen del proveedor (BSP), impuestos ni conversión de moneda. Un mensaje no entregado no se cobra.</p>
     <div class="table-wrap scroll-x">
       <table class="rates">
         <thead><tr><th>Mercado</th><th>Marketing</th><th>Utilidad / Auth</th><th>Servicio</th></tr></thead>
         <tbody>
           <tr><td>Colombia</td><td class="mono">0,0125</td><td class="mono">0,0008</td><td class="mono">0,0008</td></tr>
+          <tr><td>Estados Unidos / Canadá</td><td class="mono">0,0250</td><td class="mono">0,0034</td><td class="mono">0,0034</td></tr>
           <tr><td>México</td><td class="mono bad">0,0397 ↑</td><td class="mono">0,0085</td><td class="mono">0,0085</td></tr>
           <tr><td>Brasil</td><td class="mono">0,0625</td><td class="mono">0,0068</td><td class="mono">0,0068</td></tr>
           <tr><td>Argentina</td><td class="mono">0,0618</td><td class="mono">0,0260</td><td class="mono">0,0260</td></tr>
@@ -710,7 +729,7 @@
       </table>
     </div>
     <p class="hint">↑ Cambio frente a julio de 2026. México marketing: 0,0305 → 0,0397. Perú utilidad y autenticación: 0,0200 → 0,0300.</p>
-    <button class="btn-ghost" type="button" data-go="s1">Calcular mi costo →</button>
+    <button class="btn-ghost btn-glow" type="button" data-go="s1">Calcular mi costo →</button>
   </section>
 
   <section class="section" id="n5">
@@ -785,7 +804,7 @@
 <div class="modal" id="leadModal" hidden role="dialog" aria-modal="true" aria-labelledby="leadTitle">
   <div class="modal-card">
     <button class="modal-close" id="leadModalClose" type="button" aria-label="Cerrar">×</button>
-    <h3 id="leadTitle">Te lo enviamos por <em>correo o WhatsApp</em></h3>
+    <h3 id="leadTitle">¿Te lo enviamos por <em>Correo o WhatsApp</em>?</h3>
     <div class="channel-toggle" role="group" aria-label="¿Dónde quieres recibir el resultado?">
       <button type="button" data-channel="email" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5.5h18v13H3z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3.5 6 8.5 7 8.5-7"/></svg>Correo</button>
       <button type="button" data-channel="wa" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04.67C5.77.67.66 5.77.66 12.04c0 2 .52 3.96 1.52 5.69L.57 23.33l5.73-1.5a11.36 11.36 0 0 0 5.73 1.46h.01c6.27 0 11.38-5.1 11.38-11.37 0-3.04-1.18-5.9-3.34-8.05A11.3 11.3 0 0 0 12.04.67zm5.43 13.71c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>WhatsApp</button>
@@ -826,7 +845,7 @@
         </div>
       </div>
       <label class="check"><input id="leadOptIn" name="optIn" type="checkbox" checked> Quiero recibir también otros recursos de MatixMedia.</label>
-      <button class="btn-primary" id="leadSubmitBtn" type="submit">Envíame el cálculo →</button>
+      <button class="btn-primary" id="leadSubmitBtn" type="submit">Envíame el resultado →</button>
     </form>
   </div>
 </div>
@@ -860,7 +879,7 @@
   var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyNSz_5HAhswMepNAO6EyEPXt5WeEafbfJ3ij0dJomKSITxvXI2ELUw15fOuQT1EXRZ/exec';
   var WA_PHONE = '573147511941';
   var MIN_WAIT_MS = 1200;
-  var POPUP_DELAY_MS = 10000; // segundos después de ver el resultado
+  var POPUP_DELAY_MS = 2500; // milisegundos después de ver el resultado
 
   // Tarifa base "Service" (= "Utility") por mercado, rate card de Meta
   // vigente desde el 1 de julio de 2026. Sin descuentos por volumen.
@@ -970,6 +989,7 @@
   }
 
   $('calcBtn').addEventListener('click',trigger);
+  $('sendResultBtn').addEventListener('click',function(){ if(popupTimer){ clearTimeout(popupTimer); popupTimer=null; } popupShown=true; openModal(); });
   [messagesEl,phonesEl,adsPctEl,rateEl].forEach(function(el){
     el.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); trigger(); } });
     el.addEventListener('input',function(){ if(!s2.hidden){ lastResult=compute(); render(lastResult); } });
@@ -999,7 +1019,7 @@
     }).catch(function(){ /* no bloquear al usuario si falla el envío */ }) : Promise.resolve();
 
     Promise.all([wait,send]).then(function(){
-      setLoading(false); captured=true; modal.hidden=true;
+      setLoading(false); captured=true; modal.hidden=true; $('sendBlock').hidden=true;
       if(LEAD_ENDPOINT){ var cs=$('leadConfirm').querySelector('span'); cs.textContent=channel==='wa'?'Te escribiremos al WhatsApp ':'También lo enviamos a '; var cb=document.createElement('b'); cb.textContent=channel==='wa'?whatsapp:email; cs.appendChild(cb); $('leadConfirm').hidden=false; }
     });
   });
