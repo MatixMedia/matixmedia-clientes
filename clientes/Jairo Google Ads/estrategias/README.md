@@ -1,1 +1,0 @@
-# Jairo Google Ads — estrategias
