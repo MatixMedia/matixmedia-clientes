@@ -11,7 +11,12 @@
   Para agregar un renombre: "ruta vieja": "ruta nueva" (sin codificar espacios).
 */
 var CARPETAS_RENOMBRADAS = {
-  "/clientes/HUA-Naturals/": "/clientes/HUA NATURALS/"
+  "/clientes/HUA-Naturals/": "/clientes/HUA NATURALS/",
+  // Archivos puntuales primero (ganan sobre la regla de su carpeta)
+  "/clientes/HALS Liliana Jones/Informes": "/clientes/HALS LILIANA JONES/informes/Informe_HALS_LilianaJones_jun_2026_anterior.html",
+  "/clientes/HALS Liliana Jones/": "/clientes/HALS LILIANA JONES/",
+  "/clientes/THEGOATFATHER/": "/clientes/THE GOATFATHER/",
+  "/clientes/DIOSTODOLOHACENUEVO/": "/clientes/DIOS TODO LO HACE NUEVO/"
 };
 
 (function () {
