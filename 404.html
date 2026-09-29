@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MatixMedia · Página no encontrada</title>
+<script>
+/*
+  Carpetas de cliente renombradas. Si alguien abre un link viejo, se le envía
+  a la ruta nueva conservando el resto de la ruta, los parámetros y el ancla.
+  Para agregar un renombre: "ruta vieja": "ruta nueva" (sin codificar espacios).
+*/
+var CARPETAS_RENOMBRADAS = {
+  "/clientes/HUA-Naturals/": "/clientes/HUA NATURALS/"
+};
+
+(function () {
+  var ruta = decodeURIComponent(location.pathname);
+  for (var vieja in CARPETAS_RENOMBRADAS) {
+    if (ruta.indexOf(vieja) === 0) {
+      var nueva = CARPETAS_RENOMBRADAS[vieja] + ruta.slice(vieja.length);
+      location.replace(encodeURI(nueva) + location.search + location.hash);
+      return;
+    }
+  }
+})();
+</script>
+<style>
+  :root { --bg:#0f1115; --fg:#e8eaed; --muted:#9aa0a6; --accent:#14b8a6; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:var(--bg); color:var(--fg); font-family:Arial, Helvetica, sans-serif; padding:16px; }
+  .box { max-width:420px; text-align:center; }
+  h1 { font-size:20px; margin:0 0 8px; }
+  p { color:var(--muted); line-height:1.5; margin:0 0 16px; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>No encontramos este documento</h1>
+    <p>Es posible que el enlace haya cambiado. Escríbenos y te enviamos el enlace actualizado.</p>
+    <p><a href="https://wa.me/573215436967">Contactar a MatixMedia por WhatsApp</a></p>
+  </div>
+</body>
+</html>
