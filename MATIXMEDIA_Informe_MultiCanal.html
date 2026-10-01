@@ -1103,7 +1103,10 @@ function byCamp(rows){
 function byWeek(rows){
   const m={};
   rows.forEach(d=>{
-    const dt=new Date(d.date),wk=`S${Math.ceil(dt.getDate()/7)}`;
+    // FIX: new Date('YYYY-MM-DD') se interpreta como UTC y en zonas UTC- (ej. Colombia)
+    // cae en el dia anterior: el dia 1 quedaba en 'S5' y las semanas salian S5,S1,S2...
+    // Se toma el dia directo del texto de la fecha (sin zona horaria).
+    const wk=`S${Math.ceil(parseInt(String(d.date).slice(8,10),10)/7)}`;
     if(!m[wk])m[wk]={week:wk,impr:0,clicks:0,cost:0,conv:0,results:0,reach:0};
     m[wk].impr   +=(d.impr||d.impressions||0);
     m[wk].clicks +=d.clicks||0;
@@ -1112,7 +1115,7 @@ function byWeek(rows){
     m[wk].results+=(d.results||d.conv||0);
     m[wk].reach  +=(d.reach||0);
   });
-  return Object.values(m);
+  return Object.values(m).sort((a,b)=>parseInt(a.week.slice(1),10)-parseInt(b.week.slice(1),10));
 }
 function byDate(rows){
   const m={};
