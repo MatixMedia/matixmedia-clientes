@@ -6432,7 +6432,7 @@ function mkBar(id,labels,datasets,opts={}){
 }
 function mkScatter(id,data,color,labels,yLabel){
   destroyC(id);
-  CHARTS[id]=new Chart(document.getElementById(id),{type:'scatter',data:{datasets:[{data:data.map((v,i)=>({x:i,y:v})),backgroundColor:color+'99',borderColor:color,pointRadius:5,pointHoverRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>`${labels[c.raw.x]||''}: ${c.raw.y}`}}},scales:{x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},callback:(_,i)=>labels[i]?.slice(5)||''},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'},title:yLabel?{display:true,text:yLabel,color:'#A8A598',font:{size:10}}:undefined}}}});
+  CHARTS[id]=new Chart(document.getElementById(id),{type:'scatter',data:{datasets:[{data:data.map((v,i)=>({x:i,y:v})).filter(p=>p.y!==null),backgroundColor:color+'99',borderColor:color,pointRadius:5,pointHoverRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>`${labels[c.raw.x]||''}: ${c.raw.y}`}}},scales:{x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},maxTicksLimit:10,callback:(v)=>Number.isInteger(v)&&labels[v]?labels[v].slice(5):''},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'},title:yLabel?{display:true,text:yLabel,color:'#A8A598',font:{size:10}}:undefined}}}});
 }
 
 // ─── FUNNEL ──────────────────────────────────────
@@ -6996,7 +6996,7 @@ function renderGoogle(){
   // ── 06. Scatter plots ─────────────────────────
   const daily=byDate(rows); const dl=daily.map(d=>d.date);
   mkScatter('g-scatterConv',daily.map(d=>d.conv),'#199477',dl,'Conversiones');
-  mkScatter('g-scatterCPA',daily.map(d=>d.conv?Math.round(d.cost/d.conv):0),'#CF343A',dl,'CPA');
+  mkScatter('g-scatterCPA',daily.map(d=>d.conv?Math.round(d.cost/d.conv):null),'#CF343A',dl,'CPA');
   const camps=byCamp(rows);
   destroyC('g-scatterCTR');
   CHARTS['g-scatterCTR']=new Chart(document.getElementById('g-scatterCTR'),{type:'scatter',
@@ -7345,7 +7345,7 @@ function renderMeta(){
   const resTitleEl = document.getElementById('m-scatterRes-title');
   if(resTitleEl) resTitleEl.textContent = resLabel + ' en el tiempo';
   mkScatter('m-scatterRes',daily.map(d=>d.results),'#1877F2',dl,resLabel);
-  mkScatter('m-scatterCPR',daily.map(d=>d.results?Math.round(d.cost/d.results):0),'#CF343A',dl,'CPR');
+  mkScatter('m-scatterCPR',daily.map(d=>d.results?Math.round(d.cost/d.results):null),'#CF343A',dl,'CPR');
   // Scatter llamadas y eventos (si hay datos)
   const extraEl=document.getElementById('m-scatter-extra');
   const hasCalls=(ch.calls_data||[]).length>0;
@@ -7747,7 +7747,7 @@ function renderTikTok(){
   // ── 07. Scatter plots ───────────────────────────
   const daily=byDate(rows); const dl=daily.map(d=>d.date.slice(5));
   mkScatter('t-scatterRes',daily.map(d=>d.conv),tC,dl,'Resultados');
-  mkScatter('t-scatterCPA',daily.map(d=>d.conv?Math.round(d.cost/d.conv):0),'#CF343A',dl,'CPA');
+  mkScatter('t-scatterCPA',daily.map(d=>d.conv?Math.round(d.cost/d.conv):null),'#CF343A',dl,'CPA');
   // Hook Rate y Completion Rate diarios (aproximados desde video_metrics)
   const hookByDay=daily.map((_,i)=>+(VM.hook_rate*(0.85+Math.random()*.3)).toFixed(1));
   const compByDay=daily.map((_,i)=>+(VM.completion_rate*(0.85+Math.random()*.3)).toFixed(1));
