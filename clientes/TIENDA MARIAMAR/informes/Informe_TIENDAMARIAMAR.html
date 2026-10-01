@@ -764,6 +764,14 @@ const DATA = {
     meta: {
       active: true,
       objective: "VENTAS",
+      // NOTA (2026-10-01): el campo "value" de cada fila de daily_raw de este
+      // mes fue reescalado (factor 0.700635) para que el total de "Valor de
+      // conversion" cuadre con las ventas PAGADAS confirmadas por Shopify
+      // (Facebook Pagado + Instagram Pagado = $15.380.421), en vez del
+      // estimado nativo de Meta (ROAS reportado x gasto = $21.952.108).
+      // Se mantiene la distribucion relativa dia a dia / campana a campana,
+      // por lo que el ROAS y el valor de conversion siguen respondiendo al
+      // filtro de fechas. No se toco impr/clicks/cost/results/reach.
       notifications: [
         {
           level: "good",
@@ -772,6 +780,7 @@ const DATA = {
           note: "Fuente: reporte de canales de Shopify. Monto corresponde a ventas organicas de Google Search, no incluye Google Ads (canal inactivo actualmente)."
         }
       ],
+      value_calc_note: "Ajustado a ventas pagadas confirmadas por Shopify (Facebook + Instagram) · rango seleccionado",
       date_min: "2026-09-01", date_max: "2026-09-30",
       benchmarks: {
         ctr_min: 1.5, ctr_good: 3,
@@ -824,87 +833,87 @@ const DATA = {
       ],
       daily_raw: [
         {date:"2026-09-01",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3372,clicks:112,cost:32393,results:0,reach:2308,value:0},
-        {date:"2026-09-01",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3323,clicks:132,cost:35167,results:1,reach:2653,value:474300},
+        {date:"2026-09-01",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3323,clicks:132,cost:35167,results:1,reach:2653,value:332311},
         {date:"2026-09-01",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2737,clicks:79,cost:29082,results:0,reach:1913,value:0},
-        {date:"2026-09-01",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6112,clicks:110,cost:40155,results:2,reach:3418,value:293000},
+        {date:"2026-09-01",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6112,clicks:110,cost:40155,results:2,reach:3418,value:205286},
         {date:"2026-09-02",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2788,clicks:83,cost:31266,results:0,reach:1971,value:0},
         {date:"2026-09-02",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4153,clicks:145,cost:46285,results:0,reach:3214,value:0},
         {date:"2026-09-02",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2898,clicks:63,cost:31647,results:0,reach:2125,value:0},
-        {date:"2026-09-02",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5712,clicks:118,cost:44474,results:2,reach:3315,value:369100},
+        {date:"2026-09-02",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5712,clicks:118,cost:44474,results:2,reach:3315,value:258604},
         {date:"2026-09-03",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2269,clicks:75,cost:28802,results:0,reach:1660,value:0},
         {date:"2026-09-03",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3673,clicks:132,cost:38567,results:0,reach:2930,value:0},
         {date:"2026-09-03",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2773,clicks:82,cost:30122,results:0,reach:1934,value:0},
-        {date:"2026-09-03",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5934,clicks:134,cost:38956,results:1,reach:3427,value:94000},
-        {date:"2026-09-04",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3183,clicks:109,cost:34265,results:1,reach:2231,value:100000},
-        {date:"2026-09-04",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4077,clicks:169,cost:48078,results:1,reach:3225,value:251000},
-        {date:"2026-09-04",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3281,clicks:97,cost:37779,results:2,reach:2273,value:369000},
-        {date:"2026-09-04",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6742,clicks:121,cost:44252,results:2,reach:3700,value:391300},
-        {date:"2026-09-05",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2922,clicks:95,cost:32803,results:1,reach:2068,value:292000},
-        {date:"2026-09-05",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4044,clicks:149,cost:45532,results:1,reach:3280,value:167000},
+        {date:"2026-09-03",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5934,clicks:134,cost:38956,results:1,reach:3427,value:65860},
+        {date:"2026-09-04",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3183,clicks:109,cost:34265,results:1,reach:2231,value:70064},
+        {date:"2026-09-04",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4077,clicks:169,cost:48078,results:1,reach:3225,value:175859},
+        {date:"2026-09-04",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3281,clicks:97,cost:37779,results:2,reach:2273,value:258534},
+        {date:"2026-09-04",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6742,clicks:121,cost:44252,results:2,reach:3700,value:274159},
+        {date:"2026-09-05",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2922,clicks:95,cost:32803,results:1,reach:2068,value:204585},
+        {date:"2026-09-05",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4044,clicks:149,cost:45532,results:1,reach:3280,value:117006},
         {date:"2026-09-05",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3395,clicks:84,cost:33391,results:0,reach:2553,value:0},
         {date:"2026-09-05",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6731,clicks:112,cost:45188,results:0,reach:3867,value:0},
         {date:"2026-09-06",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3031,clicks:106,cost:40099,results:0,reach:2188,value:0},
-        {date:"2026-09-06",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5436,clicks:198,cost:56853,results:2,reach:4464,value:349000},
-        {date:"2026-09-06",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4482,clicks:107,cost:46285,results:1,reach:3142,value:335600},
+        {date:"2026-09-06",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5436,clicks:198,cost:56853,results:2,reach:4464,value:244522},
+        {date:"2026-09-06",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4482,clicks:107,cost:46285,results:1,reach:3142,value:235133},
         {date:"2026-09-06",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:8786,clicks:167,cost:55003,results:0,reach:5337,value:0},
         {date:"2026-09-07",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3112,clicks:90,cost:29650,results:0,reach:2283,value:0},
         {date:"2026-09-07",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4810,clicks:162,cost:49127,results:0,reach:3942,value:0},
         {date:"2026-09-07",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4167,clicks:101,cost:41294,results:0,reach:3101,value:0},
         {date:"2026-09-07",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7819,clicks:130,cost:50116,results:0,reach:5058,value:0},
-        {date:"2026-09-08",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3606,clicks:101,cost:35960,results:1,reach:2500,value:63000},
-        {date:"2026-09-08",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4555,clicks:157,cost:49663,results:2,reach:3544,value:340950},
+        {date:"2026-09-08",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3606,clicks:101,cost:35960,results:1,reach:2500,value:44140},
+        {date:"2026-09-08",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4555,clicks:157,cost:49663,results:2,reach:3544,value:238882},
         {date:"2026-09-08",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3560,clicks:96,cost:38928,results:0,reach:2567,value:0},
-        {date:"2026-09-08",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7626,clicks:142,cost:53253,results:2,reach:4554,value:312150},
+        {date:"2026-09-08",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7626,clicks:142,cost:53253,results:2,reach:4554,value:218703},
         {date:"2026-09-09",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2906,clicks:80,cost:33806,results:0,reach:2029,value:0},
         {date:"2026-09-09",campaign:"🔵 F1-RECON - BOG->BUC",impr:11233,clicks:40,cost:78003,results:0,reach:5218,value:0},
         {date:"2026-09-09",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3964,clicks:138,cost:48818,results:0,reach:3020,value:0},
-        {date:"2026-09-09",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4296,clicks:107,cost:44751,results:1,reach:2904,value:461000},
+        {date:"2026-09-09",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4296,clicks:107,cost:44751,results:1,reach:2904,value:322993},
         {date:"2026-09-09",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5838,clicks:102,cost:43130,results:0,reach:3469,value:0},
-        {date:"2026-09-10",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2940,clicks:99,cost:36368,results:2,reach:1982,value:420000},
+        {date:"2026-09-10",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2940,clicks:99,cost:36368,results:2,reach:1982,value:294267},
         {date:"2026-09-10",campaign:"🔵 F1-RECON - BOG->BUC",impr:11312,clicks:22,cost:87110,results:0,reach:3118,value:0},
         {date:"2026-09-10",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4281,clicks:119,cost:50667,results:0,reach:3331,value:0},
-        {date:"2026-09-10",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3781,clicks:104,cost:37716,results:1,reach:2699,value:115500},
-        {date:"2026-09-10",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6202,clicks:98,cost:40470,results:3,reach:3367,value:379225},
-        {date:"2026-09-11",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3115,clicks:96,cost:40626,results:2,reach:2052,value:496000},
+        {date:"2026-09-10",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3781,clicks:104,cost:37716,results:1,reach:2699,value:80923},
+        {date:"2026-09-10",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6202,clicks:98,cost:40470,results:3,reach:3367,value:265698},
+        {date:"2026-09-11",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3115,clicks:96,cost:40626,results:2,reach:2052,value:347515},
         {date:"2026-09-11",campaign:"🔵 F1-RECON - BOG->BUC",impr:12413,clicks:18,cost:86885,results:0,reach:3015,value:0},
-        {date:"2026-09-11",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4274,clicks:115,cost:57536,results:2,reach:3210,value:350000},
-        {date:"2026-09-11",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3965,clicks:114,cost:46416,results:1,reach:2762,value:280250},
-        {date:"2026-09-11",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6663,clicks:121,cost:61202,results:4,reach:3590,value:1639850},
+        {date:"2026-09-11",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4274,clicks:115,cost:57536,results:2,reach:3210,value:245222},
+        {date:"2026-09-11",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3965,clicks:114,cost:46416,results:1,reach:2762,value:196353},
+        {date:"2026-09-11",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6663,clicks:121,cost:61202,results:4,reach:3590,value:1148937},
         {date:"2026-09-12",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:1949,clicks:55,cost:28409,results:0,reach:1114,value:0},
         {date:"2026-09-12",campaign:"🔵 F1-RECON - BOG->BUC",impr:12477,clicks:27,cost:85660,results:0,reach:2497,value:0},
-        {date:"2026-09-12",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:2555,clicks:58,cost:37214,results:2,reach:1686,value:324000},
-        {date:"2026-09-12",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2379,clicks:68,cost:24543,results:2,reach:1778,value:342000},
-        {date:"2026-09-12",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:2671,clicks:46,cost:39400,results:7,reach:1608,value:1801000},
+        {date:"2026-09-12",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:2555,clicks:58,cost:37214,results:2,reach:1686,value:227006},
+        {date:"2026-09-12",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2379,clicks:68,cost:24543,results:2,reach:1778,value:239617},
+        {date:"2026-09-12",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:2671,clicks:46,cost:39400,results:7,reach:1608,value:1261847},
         {date:"2026-09-13",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3123,clicks:94,cost:43286,results:0,reach:1830,value:0},
         {date:"2026-09-13",campaign:"🔵 F1-RECON - BOG->BUC",impr:8949,clicks:12,cost:61365,results:0,reach:1952,value:0},
-        {date:"2026-09-13",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4110,clicks:132,cost:59829,results:2,reach:2891,value:625200},
+        {date:"2026-09-13",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4110,clicks:132,cost:59829,results:2,reach:2891,value:438037},
         {date:"2026-09-13",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4809,clicks:162,cost:50069,results:0,reach:3111,value:0},
-        {date:"2026-09-13",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5685,clicks:108,cost:55571,results:1,reach:2950,value:165100},
-        {date:"2026-09-14",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2612,clicks:87,cost:35493,results:2,reach:1755,value:284500},
+        {date:"2026-09-13",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5685,clicks:108,cost:55571,results:1,reach:2950,value:115675},
+        {date:"2026-09-14",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2612,clicks:87,cost:35493,results:2,reach:1755,value:199331},
         {date:"2026-09-14",campaign:"🔵 F1-RECON - BOG->BUC",impr:7366,clicks:11,cost:47167,results:0,reach:1851,value:0},
         {date:"2026-09-14",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3619,clicks:124,cost:52171,results:0,reach:2473,value:0},
-        {date:"2026-09-14",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3777,clicks:122,cost:42788,results:2,reach:2733,value:387000},
-        {date:"2026-09-14",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:4296,clicks:65,cost:38713,results:2,reach:2492,value:1097000},
-        {date:"2026-09-15",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2597,clicks:98,cost:30186,results:1,reach:1696,value:203000},
+        {date:"2026-09-14",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3777,clicks:122,cost:42788,results:2,reach:2733,value:271146},
+        {date:"2026-09-14",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:4296,clicks:65,cost:38713,results:2,reach:2492,value:768597},
+        {date:"2026-09-15",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2597,clicks:98,cost:30186,results:1,reach:1696,value:142229},
         {date:"2026-09-15",campaign:"🔵 F1-RECON - BOG->BUC",impr:7236,clicks:6,cost:47277,results:0,reach:1723,value:0},
-        {date:"2026-09-15",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3284,clicks:77,cost:44848,results:2,reach:2297,value:283000},
-        {date:"2026-09-15",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3746,clicks:83,cost:33916,results:2,reach:2578,value:506000},
-        {date:"2026-09-15",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:4207,clicks:48,cost:37197,results:5,reach:2182,value:535970},
-        {date:"2026-09-16",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2832,clicks:83,cost:37093,results:1,reach:1971,value:114000},
+        {date:"2026-09-15",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3284,clicks:77,cost:44848,results:2,reach:2297,value:198280},
+        {date:"2026-09-15",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3746,clicks:83,cost:33916,results:2,reach:2578,value:354521},
+        {date:"2026-09-15",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:4207,clicks:48,cost:37197,results:5,reach:2182,value:375519},
+        {date:"2026-09-16",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2832,clicks:83,cost:37093,results:1,reach:1971,value:79872},
         {date:"2026-09-16",campaign:"🔵 F1-RECON - BOG->BUC",impr:6632,clicks:7,cost:47616,results:0,reach:1550,value:0},
         {date:"2026-09-16",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5027,clicks:133,cost:52773,results:0,reach:3469,value:0},
         {date:"2026-09-16",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4528,clicks:106,cost:42709,results:0,reach:3267,value:0},
-        {date:"2026-09-16",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7034,clicks:76,cost:54083,results:3,reach:4154,value:748000},
+        {date:"2026-09-16",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7034,clicks:76,cost:54083,results:3,reach:4154,value:524075},
         {date:"2026-09-17",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2512,clicks:75,cost:31423,results:0,reach:1671,value:0},
         {date:"2026-09-17",campaign:"🔵 F1-RECON - BOG->BUC",impr:6730,clicks:13,cost:48472,results:0,reach:1561,value:0},
-        {date:"2026-09-17",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4002,clicks:119,cost:47407,results:1,reach:2832,value:192000},
+        {date:"2026-09-17",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4002,clicks:119,cost:47407,results:1,reach:2832,value:134522},
         {date:"2026-09-17",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3606,clicks:52,cost:33665,results:0,reach:2583,value:0},
         {date:"2026-09-17",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:8199,clicks:103,cost:57637,results:0,reach:4616,value:0},
-        {date:"2026-09-18",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2797,clicks:77,cost:32222,results:1,reach:1707,value:213000},
+        {date:"2026-09-18",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2797,clicks:77,cost:32222,results:1,reach:1707,value:149235},
         {date:"2026-09-18",campaign:"🔵 F1-RECON - BOG->BUC",impr:6056,clicks:9,cost:47649,results:0,reach:1729,value:0},
-        {date:"2026-09-18",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4498,clicks:112,cost:44237,results:1,reach:3270,value:243000},
+        {date:"2026-09-18",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4498,clicks:112,cost:44237,results:1,reach:3270,value:170254},
         {date:"2026-09-18",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3593,clicks:94,cost:34255,results:0,reach:2819,value:0},
-        {date:"2026-09-18",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6585,clicks:100,cost:45206,results:2,reach:3984,value:268650},
+        {date:"2026-09-18",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6585,clicks:100,cost:45206,results:2,reach:3984,value:188226},
         {date:"2026-09-19",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3415,clicks:111,cost:35251,results:0,reach:2273,value:0},
         {date:"2026-09-19",campaign:"🔵 F1-RECON - BOG->BUC",impr:6747,clicks:16,cost:50452,results:0,reach:1914,value:0},
         {date:"2026-09-19",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5527,clicks:130,cost:48666,results:0,reach:4168,value:0},
@@ -915,45 +924,45 @@ const DATA = {
         {date:"2026-09-20",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5218,clicks:159,cost:53113,results:0,reach:3904,value:0},
         {date:"2026-09-20",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4122,clicks:102,cost:39679,results:0,reach:2918,value:0},
         {date:"2026-09-20",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5240,clicks:72,cost:36037,results:0,reach:3099,value:0},
-        {date:"2026-09-21",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2597,clicks:85,cost:30193,results:2,reach:1687,value:365000},
-        {date:"2026-09-21",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3988,clicks:127,cost:42664,results:1,reach:3014,value:167000},
+        {date:"2026-09-21",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2597,clicks:85,cost:30193,results:2,reach:1687,value:255732},
+        {date:"2026-09-21",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3988,clicks:127,cost:42664,results:1,reach:3014,value:117006},
         {date:"2026-09-21",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4690,clicks:128,cost:46170,results:0,reach:3568,value:0},
         {date:"2026-09-21",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6793,clicks:100,cost:46013,results:0,reach:4002,value:0},
         {date:"2026-09-22",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3252,clicks:85,cost:38105,results:0,reach:2133,value:0},
-        {date:"2026-09-22",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5020,clicks:133,cost:58310,results:2,reach:3314,value:500998},
+        {date:"2026-09-22",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:5020,clicks:133,cost:58310,results:2,reach:3314,value:351017},
         {date:"2026-09-22",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3473,clicks:61,cost:39544,results:0,reach:2243,value:0},
         {date:"2026-09-22",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6910,clicks:82,cost:48139,results:0,reach:3883,value:0},
         {date:"2026-09-23",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2834,clicks:88,cost:36573,results:0,reach:1715,value:0},
-        {date:"2026-09-23",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4332,clicks:126,cost:51683,results:1,reach:3220,value:98300},
-        {date:"2026-09-23",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4122,clicks:143,cost:46262,results:3,reach:2871,value:516600},
+        {date:"2026-09-23",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4332,clicks:126,cost:51683,results:1,reach:3220,value:68872},
+        {date:"2026-09-23",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4122,clicks:143,cost:46262,results:3,reach:2871,value:361948},
         {date:"2026-09-23",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6569,clicks:81,cost:46859,results:0,reach:3497,value:0},
         {date:"2026-09-24",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2688,clicks:78,cost:34520,results:0,reach:1787,value:0},
-        {date:"2026-09-24",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3803,clicks:134,cost:47643,results:2,reach:2948,value:589365},
+        {date:"2026-09-24",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3803,clicks:134,cost:47643,results:2,reach:2948,value:412930},
         {date:"2026-09-24",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3455,clicks:119,cost:37302,results:0,reach:2532,value:0},
-        {date:"2026-09-24",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7082,clicks:117,cost:58682,results:1,reach:4483,value:154000},
+        {date:"2026-09-24",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7082,clicks:117,cost:58682,results:1,reach:4483,value:107898},
         {date:"2026-09-25",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2616,clicks:78,cost:34505,results:0,reach:1704,value:0},
         {date:"2026-09-25",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4519,clicks:154,cost:51431,results:0,reach:3553,value:0},
         {date:"2026-09-25",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3422,clicks:113,cost:35509,results:0,reach:2606,value:0},
         {date:"2026-09-25",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6152,clicks:95,cost:51724,results:0,reach:4213,value:0},
-        {date:"2026-09-26",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2576,clicks:81,cost:34076,results:1,reach:1797,value:144000},
-        {date:"2026-09-26",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3952,clicks:121,cost:45088,results:3,reach:3297,value:889900},
+        {date:"2026-09-26",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2576,clicks:81,cost:34076,results:1,reach:1797,value:100891},
+        {date:"2026-09-26",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3952,clicks:121,cost:45088,results:3,reach:3297,value:623495},
         {date:"2026-09-26",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3635,clicks:119,cost:35531,results:0,reach:2952,value:0},
-        {date:"2026-09-26",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5719,clicks:118,cost:45802,results:1,reach:3389,value:100000},
-        {date:"2026-09-27",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2694,clicks:99,cost:40038,results:1,reach:2101,value:336000},
+        {date:"2026-09-26",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5719,clicks:118,cost:45802,results:1,reach:3389,value:70064},
+        {date:"2026-09-27",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2694,clicks:99,cost:40038,results:1,reach:2101,value:235413},
         {date:"2026-09-27",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:4847,clicks:162,cost:60771,results:0,reach:4087,value:0},
-        {date:"2026-09-27",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4785,clicks:177,cost:46977,results:2,reach:3832,value:363000},
+        {date:"2026-09-27",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:4785,clicks:177,cost:46977,results:2,reach:3832,value:254331},
         {date:"2026-09-27",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:7398,clicks:157,cost:52544,results:0,reach:4341,value:0},
         {date:"2026-09-28",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:1776,clicks:58,cost:27620,results:0,reach:1197,value:0},
-        {date:"2026-09-28",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:2973,clicks:91,cost:47293,results:2,reach:2249,value:417000},
+        {date:"2026-09-28",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:2973,clicks:91,cost:47293,results:2,reach:2249,value:292165},
         {date:"2026-09-28",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3921,clicks:125,cost:43310,results:0,reach:3033,value:0},
         {date:"2026-09-28",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:5260,clicks:103,cost:40420,results:0,reach:3060,value:0},
-        {date:"2026-09-29",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2240,clicks:53,cost:30402,results:1,reach:1737,value:94000},
+        {date:"2026-09-29",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:2240,clicks:53,cost:30402,results:1,reach:1737,value:65860},
         {date:"2026-09-29",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:2430,clicks:83,cost:37895,results:0,reach:1865,value:0},
-        {date:"2026-09-29",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2741,clicks:73,cost:35362,results:1,reach:2145,value:98300},
+        {date:"2026-09-29",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:2741,clicks:73,cost:35362,results:1,reach:2145,value:68872},
         {date:"2026-09-29",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6590,clicks:114,cost:50318,results:0,reach:3532,value:0},
-        {date:"2026-09-30",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3530,clicks:92,cost:43474,results:1,reach:2594,value:154000},
-        {date:"2026-09-30",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3507,clicks:91,cost:52478,results:1,reach:2534,value:195000},
-        {date:"2026-09-30",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3617,clicks:96,cost:39062,results:1,reach:2808,value:94000},
+        {date:"2026-09-30",campaign:"🔴 F3 | STANDAR |VENTAS WEB ]  / ABO",impr:3530,clicks:92,cost:43474,results:1,reach:2594,value:107898},
+        {date:"2026-09-30",campaign:"🟠 [F3- VENTAS WEB ] [CONVERSIÓN] /  / ABO",impr:3507,clicks:91,cost:52478,results:1,reach:2534,value:136624},
+        {date:"2026-09-30",campaign:"🟡  F2 [PROMOS WEB] [CBO]",impr:3617,clicks:96,cost:39062,results:1,reach:2808,value:65860},
         {date:"2026-09-30",campaign:"🟡  F2[VENTAS WEB] [CBO]",impr:6929,clicks:102,cost:50463,results:0,reach:3613,value:0}
       ]
     },
@@ -1455,6 +1464,10 @@ function fixROASCard(){
   var totalCost = 0, totalValue = 0;
   rows.forEach(function(r){ totalCost += r.cost||0; totalValue += r.value||0; });
   var roas = totalCost ? (totalValue/totalCost) : 0;
+  // Si el mes tiene value_calc_note (valor "value" ajustado manualmente a una
+  // fuente distinta de Meta, ej. ventas pagadas confirmadas por Shopify), se
+  // usa esa nota en vez del texto generico "calculado (Meta Ads)".
+  var valueNote = (DATA.channels.meta && DATA.channels.meta.value_calc_note) || 'Retorno de inversión · calculado (Meta Ads) · rango seleccionado';
   var cards = document.querySelectorAll('#m-kpi-grid .kpi-card');
   for(var i=0;i<cards.length;i++){
     var label = cards[i].querySelector('.kpi-label');
@@ -1465,7 +1478,7 @@ function fixROASCard(){
       if(badge){ badge.style.display='none'; }
       if(totalValue>0){
         if(val) val.textContent = roas.toFixed(2)+'×';
-        if(sub) sub.innerHTML = 'Retorno de inversión · calculado (Meta Ads) · rango seleccionado';
+        if(sub) sub.innerHTML = valueNote;
         cards[i].style.borderLeftColor = 'var(--teal)';
       } else {
         if(val) val.textContent = 'N/D';
@@ -1489,10 +1502,14 @@ function addRevenueCard(){
   var grid = document.getElementById('m-kpi-grid');
   if(!grid) return;
   var fmtM4 = function(n){ return '$'+Math.round(n).toLocaleString('es-CO'); };
+  // Si el mes tiene value_calc_note (valor "value" ajustado manualmente a una
+  // fuente distinta de Meta, ej. ventas pagadas confirmadas por Shopify), se
+  // usa esa nota en vez del texto generico "ROAS reportado por Meta x gasto".
+  var revenueNote = (DATA.channels.meta && DATA.channels.meta.value_calc_note) || 'Calculado: ROAS reportado por Meta × gasto, por día — suma del rango seleccionado';
   var html = '<div class="kpi-card" style="border-left-color:var(--teal)">' +
       '<div class="kpi-label" style="color:var(--teal)">Valor de conversión total</div>' +
       '<div class="kpi-value">' + fmtM4(totalValue) + '</div>' +
-      '<div class="kpi-sub">Calculado: ROAS reportado por Meta × gasto, por día — suma del rango seleccionado</div></div>';
+      '<div class="kpi-sub">' + revenueNote + '</div></div>';
   grid.insertAdjacentHTML('beforeend', html);
 }
 
