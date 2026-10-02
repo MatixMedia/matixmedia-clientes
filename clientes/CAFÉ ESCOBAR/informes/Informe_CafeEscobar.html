@@ -776,483 +776,4057 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 // DATA — INYECTAR DATOS DEL CLIENTE AQUÍ
 // ═══════════════════════════════════════════════
 const DATA = {
-  account: "CAFÉ ESCOBAR",
-  currency: "COP",
-  months: [
+  "account": "CAFÉ ESCOBAR",
+  "currency": "COP",
+  "months": [
     {
-      channels: {
-        google: {
-      active: true,
-      notifications: [
-        {
-          level: "warn",
-          title: "Semana del 10 al 17 de agosto — afectada por el terremoto",
-          text: "Colombia registró actividad sísmica durante esta semana, lo que pudo afectar la disponibilidad del equipo y la operación normal del negocio. A nivel de métricas de campaña, sin embargo, no se observa una caída significativa: impresiones 12.011 (vs 12.569 la semana previa), CTR 2.71% (vs 2.20% previo) y 7 conversiones (vs 2 la semana anterior). Se documenta el evento como contexto operativo, aunque los datos de Google Ads no muestran un impacto negativo claro en esta ventana.",
-          tags: [{label:"10–17 ago 2026"}],
-          note: "Verificar con el cliente si hubo impacto en despachos, atención al cliente o inventario durante estos días, aunque la pauta digital no lo refleje."
+      "channels": {
+        "google": {
+          "active": true,
+          "notifications": [
+            {
+              "level": "warn",
+              "title": "Campaña de Colombia (CO-TIENDA) pausada este mes por decisión del cliente",
+              "text": "Durante septiembre 2026 no hubo inversión activa en la campaña \"CO-TIENDA · Colombia\"; el cliente decidió pausarla este mes. Toda la inversión y actividad del período se concentró en la campaña de Suiza (V-SEARCH/SUI).",
+              "tags": [
+                {
+                  "label": "Septiembre 2026"
+                }
+              ],
+              "recommendations": [
+                "Colombia sigue siendo el mercado con mayor potencial de crecimiento en compras (ya se validaron Agregar al carrito, Reserva e Inicio de checkout en meses previos); se recomienda retomar la inversión en cuanto el cliente lo autorice."
+              ]
+            },
+            {
+              "level": "good",
+              "title": "Suiza registra por primera vez conversiones en todo el embudo de compra",
+              "text": "La campaña de Suiza (V-SEARCH/SUI) generó, por primera vez, conversiones a lo largo de todo el embudo: 1 reserva (EU - RESERVE), 2 agregar al carrito (EU - AddCart), 1 inicio de checkout (EU - Initiate Checkout) y 1 pago completado (EU - Payment Info / PURCHASE). En meses anteriores la actividad se limitaba casi en su totalidad a contactos por WhatsApp. Resultado del mes: 5 conversiones totales, inversión de $917.946 COP y CPA promedio de $183.589 COP.",
+              "tags": [
+                {
+                  "label": "Septiembre 2026"
+                }
+              ],
+              "recommendations": [
+                "Monitorear si el patrón de compra en Suiza se mantiene en octubre para evaluar un incremento de presupuesto en esa campaña."
+              ]
+            },
+            {
+              "level": "good",
+              "title": "Extensiones de anuncio en idiomas nativos (francés) están funcionando",
+              "text": "Agregar extensiones de anuncios en idiomas más nativos al público suizo, como francés, ha funcionado bien este mes. Por recomendación, se agregarán también anuncios en alemán para ampliar la cobertura de idiomas nativos del mercado suizo.",
+              "tags": [
+                {
+                  "label": "Septiembre 2026"
+                }
+              ],
+              "recommendations": [
+                "Agregar anuncios y extensiones en alemán, siguiendo el mismo enfoque que funcionó con francés."
+              ]
+            },
+            {
+              "level": "good",
+              "title": "Centrar mejor la pauta mejoró la distribución del presupuesto",
+              "text": "Concentrar la pauta (menos dispersión de campañas/segmentación) ha mejorado en gran medida la forma en que se distribuye el presupuesto este mes, permitiendo que la inversión se concentre donde realmente genera resultados.",
+              "tags": [
+                {
+                  "label": "Septiembre 2026"
+                }
+              ]
+            },
+            {
+              "level": "warn",
+              "title": "Recomendación para noviembre: creativos de temporada navideña",
+              "text": "Para noviembre se recomienda crear anuncios de video e imagen enfocados en \"regalo de Navidad\", dirigidos al público nativo que consume café (más allá de expats/turistas), aprovechando la temporada de compras de fin de año.",
+              "tags": [
+                {
+                  "label": "Recomendación Noviembre 2026"
+                }
+              ],
+              "recommendations": [
+                "Producir creativos de video e imagen con el ángulo de 'café como regalo de Navidad'.",
+                "Segmentar hacia el público suizo nativo consumidor de café (no solo expats/turistas)."
+              ]
+            },
+            {
+              "level": "good",
+              "title": "El CTR muestra un interés creciente por Café Escobar",
+              "text": "El CTR de la campaña de Suiza (V-SEARCH/SUI) subió a 3.52% en septiembre, frente a ~2.55% en agosto y julio. Esto indica que más personas que ven el anuncio se sienten atraídas a hacer clic — un interés creciente y genuino por Café Escobar, no solo más impresiones.",
+              "tags": [
+                {
+                  "label": "Septiembre 2026"
+                }
+              ]
+            }
+          ],
+          "date_min": "2026-09-01",
+          "date_max": "2026-09-30",
+          "benchmarks": {
+            "ctr_min": 2,
+            "ctr_good": 5,
+            "roas_min": 0,
+            "roas_good": 0,
+            "cpa_max": 80000,
+            "cvr_min": 0.3,
+            "cvr_good": 1
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "value": 0,
+            "ctr": 0,
+            "cpa": 0,
+            "roas": 0
+          },
+          "daily_raw": [
+            {
+              "date": "2026-09-01",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 8,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-01",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 137,
+              "clicks": 8,
+              "cost": 26916,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-01",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 1,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-02",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 8,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-02",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 132,
+              "clicks": 2,
+              "cost": 6773,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-02",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-03",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 11,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-03",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 178,
+              "clicks": 2,
+              "cost": 6630,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-03",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 4,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-04",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 15,
+              "clicks": 1,
+              "cost": 4028,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-04",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 246,
+              "clicks": 13,
+              "cost": 45964,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-05",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 9,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-05",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 343,
+              "clicks": 4,
+              "cost": 12201,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-05",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-06",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 16,
+              "clicks": 1,
+              "cost": 4324,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-06",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 363,
+              "clicks": 10,
+              "cost": 41830,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-09-06",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 5,
+              "clicks": 1,
+              "cost": 3784,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-07",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 13,
+              "clicks": 2,
+              "cost": 6713,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-09-07",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 219,
+              "clicks": 6,
+              "cost": 25265,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-08",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 12,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-08",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 224,
+              "clicks": 5,
+              "cost": 19131,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-09",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 14,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-09",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 201,
+              "clicks": 11,
+              "cost": 33195,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-09",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-10",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 9,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-10",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 196,
+              "clicks": 7,
+              "cost": 18073,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-10",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 4,
+              "clicks": 1,
+              "cost": 1226,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-11",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 14,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-11",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 245,
+              "clicks": 10,
+              "cost": 23902,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-11",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-12",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 11,
+              "clicks": 2,
+              "cost": 9296,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-12",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 367,
+              "clicks": 11,
+              "cost": 36662,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-12",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-13",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 15,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-13",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 388,
+              "clicks": 8,
+              "cost": 29589,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-13",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-14",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 12,
+              "clicks": 1,
+              "cost": 2655,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-14",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 147,
+              "clicks": 6,
+              "cost": 18382,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-15",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 25,
+              "clicks": 1,
+              "cost": 3762,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-15",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 253,
+              "clicks": 7,
+              "cost": 24491,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-15",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 6,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-16",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 25,
+              "clicks": 2,
+              "cost": 8587,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-16",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 327,
+              "clicks": 9,
+              "cost": 33358,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-16",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 1,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-17",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 10,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-17",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 279,
+              "clicks": 9,
+              "cost": 36908,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-17",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 4,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-18",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 16,
+              "clicks": 2,
+              "cost": 7748,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-18",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 207,
+              "clicks": 11,
+              "cost": 30592,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-18",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 1,
+              "clicks": 1,
+              "cost": 2575,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-19",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 11,
+              "clicks": 2,
+              "cost": 4640,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-19",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 310,
+              "clicks": 13,
+              "cost": 33110,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-19",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-20",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 17,
+              "clicks": 1,
+              "cost": 3210,
+              "conv": 3,
+              "value": 0
+            },
+            {
+              "date": "2026-09-20",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 310,
+              "clicks": 6,
+              "cost": 12191,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-20",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 1,
+              "cost": 387,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-21",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 22,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-21",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 342,
+              "clicks": 15,
+              "cost": 44119,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-21",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-22",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 14,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-22",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 316,
+              "clicks": 12,
+              "cost": 34855,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-22",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 4,
+              "clicks": 1,
+              "cost": 1758,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-23",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 24,
+              "clicks": 1,
+              "cost": 3630,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-23",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 310,
+              "clicks": 10,
+              "cost": 35629,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-23",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 6,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-24",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 24,
+              "clicks": 1,
+              "cost": 3588,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-24",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 284,
+              "clicks": 11,
+              "cost": 34645,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-25",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 19,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-25",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 246,
+              "clicks": 14,
+              "cost": 40390,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-25",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-26",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 16,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-26",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 371,
+              "clicks": 12,
+              "cost": 34158,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-26",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 7,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-27",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 11,
+              "clicks": 3,
+              "cost": 11111,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-27",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 189,
+              "clicks": 9,
+              "cost": 20248,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-27",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 6,
+              "clicks": 1,
+              "cost": 1719,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-28",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 34,
+              "clicks": 1,
+              "cost": 3824,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-28",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 275,
+              "clicks": 8,
+              "cost": 26748,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-28",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 2,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-29",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 18,
+              "clicks": 1,
+              "cost": 3672,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-29",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 178,
+              "clicks": 10,
+              "cost": 28051,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-29",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 1,
+              "cost": 1161,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-30",
+              "campaign": "V-SEARCH/SUI",
+              "device": "DESKTOP",
+              "impr": 25,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-30",
+              "campaign": "V-SEARCH/SUI",
+              "device": "MOBILE",
+              "impr": 218,
+              "clicks": 6,
+              "cost": 10542,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-09-30",
+              "campaign": "V-SEARCH/SUI",
+              "device": "TABLET",
+              "impr": 3,
+              "clicks": 0,
+              "cost": 0,
+              "conv": 0,
+              "value": 0
+            }
+          ],
+          "funnel": [],
+          "conv_actions": [
+            {
+              "action": "EU - Initiate Checkout",
+              "conv": 2,
+              "value": 0,
+              "cpa": 458973,
+              "pct_total": 6
+            },
+            {
+              "action": "CO - BOLD",
+              "conv": 0,
+              "value": 0,
+              "cpa": 0,
+              "pct_total": 0
+            },
+            {
+              "action": "CO - Inicio de confirmación de compra",
+              "conv": 0,
+              "value": 0,
+              "cpa": 0,
+              "pct_total": 0
+            },
+            {
+              "action": "EU - WA",
+              "conv": 0,
+              "value": 0,
+              "cpa": 0,
+              "pct_total": 0
+            },
+            {
+              "action": "EU - WA Pay",
+              "conv": 0,
+              "value": 0,
+              "cpa": 0,
+              "pct_total": 0
+            },
+            {
+              "action": "CO - WA",
+              "conv": 10,
+              "value": 0,
+              "cpa": 91795,
+              "pct_total": 32
+            },
+            {
+              "action": "EU - RESERVE",
+              "conv": 3,
+              "value": 0,
+              "cpa": 305982,
+              "pct_total": 10
+            },
+            {
+              "action": "EU - BT - Buy collection",
+              "conv": 8,
+              "value": 8,
+              "cpa": 114743,
+              "pct_total": 26
+            },
+            {
+              "action": "EU - BT - Reserve my collection",
+              "conv": 4,
+              "value": 4,
+              "cpa": 229486,
+              "pct_total": 13
+            },
+            {
+              "action": "EU - View Item",
+              "conv": 4,
+              "value": 0,
+              "cpa": 229486,
+              "pct_total": 13
+            }
+          ],
+          "extensions": [
+            {
+              "name": "Roasted And Grains Coffee (sitelink)",
+              "clicks": 28,
+              "conv": 0
+            },
+            {
+              "name": "Cultiva Tu Árbol de Café (sitelink)",
+              "clicks": 168,
+              "conv": 0
+            },
+            {
+              "name": "Award-Winning Coffee (sitelink)",
+              "clicks": 24,
+              "conv": 0
+            },
+            {
+              "name": "Session Colombienne Café a Bâle (disclaimer)",
+              "clicks": 95,
+              "conv": 10
+            },
+            {
+              "name": "Speciality Coffee (sitelink)",
+              "clicks": 15,
+              "conv": 4
+            },
+            {
+              "name": "Café · Nuestros Orígenes (sitelink)",
+              "clicks": 179,
+              "conv": 0
+            },
+            {
+              "name": "Colombian Coffee (promoción)",
+              "clicks": 11,
+              "conv": 0
+            },
+            {
+              "name": "Café Premium Colombiano (sitelink)",
+              "clicks": 196,
+              "conv": 0
+            },
+            {
+              "name": "Compra café Escobar (sitelink)",
+              "clicks": 62,
+              "conv": 0
+            },
+            {
+              "name": "Premium Colombian Coffee (sitelink)",
+              "clicks": 29,
+              "conv": 4
+            },
+            {
+              "name": "Café Escobar (nombre de la empresa)",
+              "clicks": 26,
+              "conv": 0
+            },
+            {
+              "name": "Café de Especialidad (sitelink)",
+              "clicks": 201,
+              "conv": 0
+            }
+          ],
+          "ad_performance": [
+            {
+              "ad": "RSA · V-SEARCH/SUI",
+              "campaign": "V-SEARCH/SUI",
+              "impr": 8361,
+              "clicks": 294,
+              "ctr": 3.52,
+              "conv": 5,
+              "cpa": 183589
+            }
+          ]
         },
-        {
-          level: "good",
-          title: "Bono de Google Ads — requisitos completados, en proceso de aplicarse",
-          text: "Se completaron todos los requisitos para acceder al bono de Google Ads para cuentas nuevas. El bono está actualmente en proceso de aplicación por parte de Google y debería reflejarse en el saldo de la cuenta en los próximos días/ciclos de facturación.",
-          tags: [{label:"Agosto 2026"}],
-          recommendations: ["Confirmar con el equipo cuándo se refleja el crédito en la cuenta de Google Ads y validar el monto aplicado una vez llegue."]
+        "meta": {
+          "active": false,
+          "objective": "LEADS",
+          "date_min": "2026-09-01",
+          "date_max": "2026-09-30",
+          "benchmarks": {
+            "ctr_min": 1,
+            "ctr_good": 3,
+            "cvr_min": 0.01,
+            "cvr_good": 0.05,
+            "cpr_max": 300,
+            "roas_min": 0,
+            "roas_good": 0,
+            "leads_evento": {
+              "malo": 500,
+              "promedio_min": 1000,
+              "promedio_max": 2000,
+              "bueno_min": 2500,
+              "bueno_max": 3500,
+              "excelente": 4000
+            },
+            "conversaciones_wa": {
+              "malo": 1,
+              "promedio_min": 2,
+              "promedio_max": 4,
+              "bueno_min": 5,
+              "bueno_max": 8,
+              "excelente": 10
+            }
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "results": 0,
+            "cpr": 0,
+            "ctr": 0,
+            "roas": 0,
+            "reach": 0,
+            "leads_form": 0,
+            "conversations": 0,
+            "followers_gained": 0,
+            "page_likes": 0
+          },
+          "followers_gained": 0,
+          "page_likes": 0,
+          "daily_raw": [],
+          "funnel_leads_detail": [],
+          "funnel_leads": [],
+          "funnel_ventas": [],
+          "funnel_wa": [],
+          "conv_detail": [],
+          "campaigns_conv": [],
+          "calls_data": [],
+          "pageview_data": [],
+          "ad_performance": []
+        },
+        "tiktok": {
+          "active": false,
+          "date_min": "2026-09-01",
+          "date_max": "2026-09-30",
+          "benchmarks": {
+            "hook_rate_min": 20,
+            "hook_rate_good": 30,
+            "completion_min": 20,
+            "ctr_min": 1.5,
+            "ctr_good": 3,
+            "cpa_max": 60000
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "cpa": 0,
+            "ctr": 0,
+            "hook_rate": 0,
+            "completion": 0
+          },
+          "video_metrics": {
+            "hook_rate": 0,
+            "completion_rate": 0,
+            "ctr": 0,
+            "cpv": 0
+          },
+          "daily_raw": []
         }
-      ],
-      date_min: "2026-08-01", date_max: "2026-08-31",
-      benchmarks: { ctr_min:2, ctr_good:5, roas_min:0, roas_good:0, cpa_max:80000, cvr_min:0.3, cvr_good:1 },
-      prev: { impr:0, clicks:0, cost:0, conv:0, value:0, ctr:0, cpa:0, roas:0 },
-      daily_raw: [
-        {date:"2026-08-01",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1439, clicks:30, cost:9822, conv:0,value:0},
-        {date:"2026-08-02",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:2142, clicks:49, cost:12429, conv:0,value:0},
-        {date:"2026-08-03",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1391, clicks:32, cost:9254, conv:1,value:0},
-        {date:"2026-08-04",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1225, clicks:35, cost:10268, conv:0,value:0},
-        {date:"2026-08-05",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1590, clicks:40, cost:10210, conv:0,value:0},
-        {date:"2026-08-06",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1513, clicks:29, cost:8901, conv:1,value:0},
-        {date:"2026-08-07",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1249, clicks:14, cost:4124, conv:0,value:0},
-        {date:"2026-08-10",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:281, clicks:16, cost:5996, conv:0,value:0},
-        {date:"2026-08-11",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1102, clicks:31, cost:9621, conv:1,value:0},
-        {date:"2026-08-12",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1217, clicks:42, cost:19997, conv:1,value:0},
-        {date:"2026-08-13",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1425, clicks:49, cost:19547, conv:0,value:0},
-        {date:"2026-08-14",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1742, clicks:50, cost:19828, conv:1,value:0},
-        {date:"2026-08-15",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1097, clicks:25, cost:10728, conv:0,value:0},
-        {date:"2026-08-16",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1471, clicks:27, cost:10662, conv:0,value:0},
-        {date:"2026-08-17",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1627, clicks:33, cost:10895, conv:2,value:0},
-        {date:"2026-08-18",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1422, clicks:35, cost:9822, conv:4,value:0},
-        {date:"2026-08-19",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1851, clicks:33, cost:9840, conv:0,value:0},
-        {date:"2026-08-20",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1509, clicks:36, cost:10266, conv:4,value:0},
-        {date:"2026-08-21",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:2029, clicks:42, cost:10613, conv:0,value:0},
-        {date:"2026-08-22",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1981, clicks:32, cost:9166, conv:0,value:0},
-        {date:"2026-08-23",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1823, clicks:38, cost:9377, conv:1,value:0},
-        {date:"2026-08-24",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1699, clicks:37, cost:9836, conv:2,value:0},
-        {date:"2026-08-25",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1568, clicks:40, cost:11545, conv:0,value:0},
-        {date:"2026-08-26",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1324, clicks:32, cost:8195, conv:0,value:0},
-        {date:"2026-08-27",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1250, clicks:31, cost:8593, conv:1,value:0},
-        {date:"2026-08-28",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1633, clicks:36, cost:7858, conv:0,value:0},
-        {date:"2026-08-29",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1848, clicks:32, cost:8276, conv:0,value:0},
-        {date:"2026-08-30",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:2126, clicks:38, cost:11180, conv:0,value:0},
-        {date:"2026-08-31",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1225, clicks:25, cost:6923, conv:1,value:0},
-        {date:"2026-08-01",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:197, clicks:5, cost:17928, conv:0,value:0},
-        {date:"2026-08-02",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:222, clicks:6, cost:22161, conv:0,value:0},
-        {date:"2026-08-03",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:252, clicks:7, cost:30936, conv:0,value:0},
-        {date:"2026-08-04",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:240, clicks:4, cost:15603, conv:0,value:0},
-        {date:"2026-08-05",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:392, clicks:11, cost:30651, conv:0,value:0},
-        {date:"2026-08-06",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:419, clicks:6, cost:32185, conv:0,value:0},
-        {date:"2026-08-07",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:298, clicks:8, cost:33093, conv:0,value:0},
-        {date:"2026-08-10",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:51, clicks:3, cost:10932, conv:0,value:0},
-        {date:"2026-08-11",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:260, clicks:7, cost:23153, conv:0,value:0},
-        {date:"2026-08-12",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:333, clicks:10, cost:47581, conv:0,value:0},
-        {date:"2026-08-13",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:442, clicks:6, cost:29005, conv:0,value:0},
-        {date:"2026-08-14",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:183, clicks:9, cost:46774, conv:0,value:0},
-        {date:"2026-08-15",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:195, clicks:7, cost:33812, conv:1,value:0},
-        {date:"2026-08-16",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:299, clicks:3, cost:15151, conv:1,value:0},
-        {date:"2026-08-17",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:286, clicks:8, cost:39487, conv:0,value:0},
-        {date:"2026-08-18",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:236, clicks:6, cost:24871, conv:0,value:0},
-        {date:"2026-08-19",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:404, clicks:6, cost:25876, conv:0,value:0},
-        {date:"2026-08-20",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:243, clicks:8, cost:22263, conv:0,value:0},
-        {date:"2026-08-21",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:216, clicks:6, cost:22337, conv:0,value:0},
-        {date:"2026-08-22",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:217, clicks:6, cost:21180, conv:0,value:0},
-        {date:"2026-08-23",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:217, clicks:7, cost:17079, conv:0,value:0},
-        {date:"2026-08-24",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:146, clicks:1, cost:2658, conv:0,value:0},
-        {date:"2026-08-25",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:372, clicks:11, cost:48819, conv:0,value:0},
-        {date:"2026-08-26",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:372, clicks:10, cost:37957, conv:0,value:0},
-        {date:"2026-08-27",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:183, clicks:4, cost:18403, conv:0,value:0},
-        {date:"2026-08-28",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:355, clicks:10, cost:31900, conv:1,value:0},
-        {date:"2026-08-29",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:233, clicks:8, cost:26692, conv:0,value:0},
-        {date:"2026-08-30",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:184, clicks:3, cost:10100, conv:0,value:0},
-        {date:"2026-08-31",campaign:"SUI-PRE · Suiza",device:"MOBILE",impr:124, clicks:7, cost:19501, conv:0,value:0}
-      ],
-      funnel: [],
-      conv_actions: [
-        {action:"CO - Agregar al carrito", conv:8, value:0, cpa:37972, pct_total:40},
-        {action:"CO - Inicio de checkout", conv:1, value:0, cpa:303772, pct_total:5},
-        {action:"CO - WA · WhatsApp Colombia", conv:11, value:0, cpa:27616, pct_total:55}
-      ],
-      extensions: [],
-      ad_performance: [
-        {ad:"RSA · CO-TIENDA · Colombia", campaign:"CO-TIENDA · Colombia", impr:43799, clicks:989, ctr:2.26, conv:20, cpa:15189},
-        {ad:"RSA · SUI-PRE · Suiza", campaign:"SUI-PRE · Suiza", impr:7571, clicks:193, ctr:2.55, conv:3, cpa:0},
-      ]
-    },
-        meta: {
-      active: true,
-      objective: "LEADS",
-      date_min: "2026-06-18", date_max: "2026-07-18",
-      benchmarks: {
-        ctr_min:1, ctr_good:3, cvr_min:0.01, cvr_good:0.05,
-        cpr_max:300, roas_min:0, roas_good:0,
-        leads_evento:      {malo:500, promedio_min:1000, promedio_max:2000, bueno_min:2500, bueno_max:3500, excelente:4000},
-        conversaciones_wa: {malo:1,   promedio_min:2,    promedio_max:4,    bueno_min:5,    bueno_max:8,    excelente:10}
-      },
-      prev: { impr:0, clicks:0, cost:0, results:0, cpr:0, ctr:0, roas:0, reach:0, leads_form:0, conversations:0, followers_gained:0, page_likes:0 },
-      followers_gained: 36,
-      page_likes: null,
-      daily_raw: [
-        {date:"2026-06-18",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-06-19",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-06-20",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-06-21",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-06-22",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-06-23",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-06-24",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-06-25",campaign:"META · Consolidado",impr:9621,clicks:309,cost:22370,results:130,value:0,reach:6479,leads_form:0,conv_wa:0},
-        {date:"2026-06-26",campaign:"META · Consolidado",impr:10361,clicks:332,cost:24091,results:140,value:0,reach:6978,leads_form:0,conv_wa:0},
-        {date:"2026-06-27",campaign:"META · Consolidado",impr:10361,clicks:332,cost:24091,results:140,value:0,reach:6978,leads_form:0,conv_wa:0},
-        {date:"2026-06-28",campaign:"META · Consolidado",impr:9621,clicks:309,cost:22370,results:130,value:0,reach:6479,leads_form:0,conv_wa:0},
-        {date:"2026-06-29",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-06-30",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-07-01",campaign:"META · Consolidado",impr:8133,clicks:260,cost:18929,results:113,value:0,reach:5474,leads_form:0,conv_wa:0},
-        {date:"2026-07-02",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-03",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-04",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-05",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-06",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-07",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-08",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-09",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-10",campaign:"META · Consolidado",impr:4440,clicks:142,cost:10325,results:60,value:0,reach:2990,leads_form:0,conv_wa:0},
-        {date:"2026-07-11",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-12",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-13",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-14",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-15",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-07-16",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-07-17",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-18",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0}
-      ],
-      funnel_leads_detail: [
-        {stage:"Impresiones",    value:225722},
-        {stage:"Alcance",        value:152013},
-        {stage:"Clics",          value:7239},
-        {stage:"CTR",            value:3.21, isRate:true, rateLabel:"3.21%"},
-        {stage:"Seguidores IG",  value:36},
-        {stage:"Conversaciones", value:4},
-      ],
-      funnel_leads: [
-        {stage:"Impresiones",    value:225722},
-        {stage:"Alcance",        value:152013},
-        {stage:"Clics",          value:7239},
-        {stage:"Seguidores IG",  value:36},
-        {stage:"Conversaciones", value:4},
-      ],
-      funnel_ventas: [], funnel_wa: [],
-      conv_detail: [
-        {date:"2026-06-20",results:280,conversations:0},
-        {date:"2026-06-24",results:340,conversations:1},
-        {date:"2026-06-28",results:390,conversations:0},
-        {date:"2026-07-02",results:420,conversations:1},
-        {date:"2026-07-05",results:450,conversations:0},
-        {date:"2026-07-08",results:430,conversations:1},
-        {date:"2026-07-11",results:380,conversations:0},
-        {date:"2026-07-15",results:363,conversations:1},
-      ],
-      campaigns_conv: [
-        {campaign:"T-PRF/RECON · Perfil Instagram",  results:3053,   conversations:4, calls:0, events:7023,  cost:418261, cpr:137},
-        {campaign:"R-POST-IG · Reconocimiento",       results:100072, conversations:0, calls:0, events:216,   cost:106576, cpr:1},
-      ],
-      calls_data: [
-        {date:"2026-06-18",calls_made:1},
-        {date:"2026-06-19",calls_made:1},
-        {date:"2026-06-20",calls_made:1},
-        {date:"2026-06-21",calls_made:1},
-        {date:"2026-06-22",calls_made:1},
-        {date:"2026-06-23",calls_made:2},
-        {date:"2026-06-24",calls_made:1},
-        {date:"2026-06-25",calls_made:1},
-        {date:"2026-06-26",calls_made:1},
-        {date:"2026-06-27",calls_made:1},
-        {date:"2026-06-28",calls_made:2},
-        {date:"2026-06-29",calls_made:2},
-        {date:"2026-06-30",calls_made:1},
-        {date:"2026-07-01",calls_made:2},
-        {date:"2026-07-02",calls_made:1},
-        {date:"2026-07-03",calls_made:2},
-        {date:"2026-07-04",calls_made:1},
-        {date:"2026-07-05",calls_made:2},
-        {date:"2026-07-06",calls_made:1},
-        {date:"2026-07-07",calls_made:0},
-        {date:"2026-07-08",calls_made:1},
-        {date:"2026-07-09",calls_made:1},
-        {date:"2026-07-10",calls_made:1},
-        {date:"2026-07-11",calls_made:1},
-        {date:"2026-07-12",calls_made:1},
-        {date:"2026-07-13",calls_made:1},
-        {date:"2026-07-14",calls_made:1},
-        {date:"2026-07-15",calls_made:1},
-        {date:"2026-07-16",calls_made:1},
-        {date:"2026-07-17",calls_made:1},
-        {date:"2026-07-18",calls_made:1}
-      ], pageview_data: [
-        {date:"2026-06-18",custom_events:5938},
-        {date:"2026-06-19",custom_events:5938},
-        {date:"2026-06-20",custom_events:6680},
-        {date:"2026-06-21",custom_events:6680},
-        {date:"2026-06-22",custom_events:7422},
-        {date:"2026-06-23",custom_events:8165},
-        {date:"2026-06-24",custom_events:8907},
-        {date:"2026-06-25",custom_events:9649},
-        {date:"2026-06-26",custom_events:10391},
-        {date:"2026-06-27",custom_events:10391},
-        {date:"2026-06-28",custom_events:9649},
-        {date:"2026-06-29",custom_events:8907},
-        {date:"2026-06-30",custom_events:8165},
-        {date:"2026-07-01",custom_events:8158},
-        {date:"2026-07-02",custom_events:7422},
-        {date:"2026-07-03",custom_events:7422},
-        {date:"2026-07-04",custom_events:6680},
-        {date:"2026-07-05",custom_events:6680},
-        {date:"2026-07-06",custom_events:5938},
-        {date:"2026-07-07",custom_events:5938},
-        {date:"2026-07-08",custom_events:5196},
-        {date:"2026-07-09",custom_events:5196},
-        {date:"2026-07-10",custom_events:4453},
-        {date:"2026-07-11",custom_events:5196},
-        {date:"2026-07-12",custom_events:5938},
-        {date:"2026-07-13",custom_events:6680},
-        {date:"2026-07-14",custom_events:7422},
-        {date:"2026-07-15",custom_events:8165},
-        {date:"2026-07-16",custom_events:8907},
-        {date:"2026-07-17",custom_events:7422},
-        {date:"2026-07-18",custom_events:6680}
-      ],
-      ad_performance: [
-        {ad:"IMG1 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:45000,  clicks:4210, ctr:9.36, results:1800, cpa:137},
-        {ad:"IMG2 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:18000,  clicks:1480, ctr:8.22, results:620,  cpa:144},
-        {ad:"VD-9 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:12000,  clicks:890,  ctr:7.42, results:410,  cpa:151},
-        {ad:"Otros · T-PRF/RECON",        campaign:"T-PRF/RECON · IG", impr:11053,  clicks:443,  ctr:4.01, results:223,  cpa:165},
-        {ad:"R-POST-IG · Reconocimiento", campaign:"R-POST-IG",             impr:139669, clicks:216,  ctr:0.15, results:0,    cpa:0},
-      ]
-    },
-        tiktok: {
-      active: false,
-      date_min: "2026-07-01", date_max: "2026-07-18",
-      benchmarks: {hook_rate_min:20,hook_rate_good:30,completion_min:20,ctr_min:1.5,ctr_good:3,cpa_max:60000},
-      prev: {impr:0,clicks:0,cost:0,conv:0,cpa:0,ctr:0,hook_rate:0,completion:0},
-      video_metrics: {hook_rate:0,completion_rate:0,ctr:0,cpv:0},
-      daily_raw: []
-    }
       }
     },
     {
-      channels: {
-    google: {
-      active: true,
-      date_min: "2026-07-01", date_max: "2026-07-18",
-      benchmarks: { ctr_min:2, ctr_good:5, roas_min:0, roas_good:0, cpa_max:80000, cvr_min:0.3, cvr_good:1 },
-      prev: { impr:0, clicks:0, cost:0, conv:0, value:0, ctr:0, cpa:0, roas:0 },
-      daily_raw: [
-        {date:"2026-07-01",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:119,  clicks:8,  cost:10163, conv:0,value:0},
-        {date:"2026-07-02",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:348,  clicks:13, cost:10245, conv:0,value:0},
-        {date:"2026-07-03",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:788,  clicks:21, cost:9498,  conv:0,value:0},
-        {date:"2026-07-04",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1807, clicks:38, cost:9602,  conv:0,value:0},
-        {date:"2026-07-05",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:2071, clicks:39, cost:11098, conv:0,value:0},
-        {date:"2026-07-06",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:943,  clicks:22, cost:9963,  conv:0,value:0},
-        {date:"2026-07-07",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1641, clicks:36, cost:9810,  conv:0,value:0},
-        {date:"2026-07-08",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1771, clicks:30, cost:10198, conv:0,value:0},
-        {date:"2026-07-09",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:979,  clicks:25, cost:11133, conv:0,value:0},
-        {date:"2026-07-10",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1111, clicks:29, cost:10432, conv:0,value:0},
-        {date:"2026-07-11",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1262, clicks:27, cost:11080, conv:0,value:0},
-        {date:"2026-07-12",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1917, clicks:44, cost:12128, conv:0,value:0},
-        {date:"2026-07-13",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1888, clicks:46, cost:9588,  conv:0,value:0},
-        {date:"2026-07-14",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:2000, clicks:50, cost:9286,  conv:0,value:0},
-        {date:"2026-07-15",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1645, clicks:34, cost:5856,  conv:0,value:0},
-        {date:"2026-07-16",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1734, clicks:36, cost:5604,  conv:0,value:0},
-        {date:"2026-07-17",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:1869, clicks:35, cost:4902,  conv:3,value:0},
-        {date:"2026-07-18",campaign:"CO-TIENDA · Colombia",device:"MOBILE",impr:158,  clicks:1,  cost:56,    conv:0,value:0},
-        {date:"2026-07-01",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:87,  clicks:6,  cost:14650, conv:0,value:0},
-        {date:"2026-07-02",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:83,  clicks:5,  cost:33836, conv:0,value:0},
-        {date:"2026-07-03",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:111, clicks:3,  cost:27162, conv:0,value:0},
-        {date:"2026-07-04",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:111, clicks:3,  cost:26821, conv:0,value:0},
-        {date:"2026-07-05",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:148, clicks:5,  cost:24330, conv:0,value:0},
-        {date:"2026-07-06",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:100, clicks:4,  cost:25411, conv:0,value:0},
-        {date:"2026-07-07",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:175, clicks:3,  cost:13519, conv:0,value:0},
-        {date:"2026-07-08",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:214, clicks:7,  cost:34579, conv:0,value:0},
-        {date:"2026-07-09",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:247, clicks:3,  cost:15228, conv:0,value:0},
-        {date:"2026-07-10",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:312, clicks:7,  cost:26546, conv:0,value:0},
-        {date:"2026-07-11",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:238, clicks:8,  cost:43891, conv:0,value:0},
-        {date:"2026-07-12",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:324, clicks:7,  cost:22706, conv:0,value:0},
-        {date:"2026-07-13",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:533, clicks:9,  cost:19760, conv:0,value:0},
-        {date:"2026-07-14",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:335, clicks:9,  cost:25233, conv:0,value:0},
-        {date:"2026-07-15",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:410, clicks:8,  cost:13703, conv:0,value:0},
-        {date:"2026-07-16",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:496, clicks:9,  cost:12400, conv:0,value:0},
-        {date:"2026-07-17",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:303, clicks:13, cost:26794, conv:0,value:0},
-        {date:"2026-07-18",campaign:"SUI-PRE · Suiza",device:"MOBILE", impr:353, clicks:8,  cost:46343, conv:0,value:0},
-      ],
-      funnel: [],
-      conv_actions: [
-        {action:"CO-WA · WhatsApp Colombia", conv:3, value:0, cpa:53547, pct_total:100}
-      ],
-      extensions: [
-        {name:"café de especialidad precio (CO)",   clicks:131, conv:1},
-        {name:"café de especialidad (CO)",          clicks:77,  conv:0},
-        {name:"café especial colombiano (CO)",      clicks:57,  conv:1},
-        {name:"specialty coffee (SUI)",                  clicks:35,  conv:0},
-        {name:"Colombian coffee Switzerland (SUI)",      clicks:17,  conv:0},
-        {name:"comprar café especial online (CO)",  clicks:44,  conv:1},
-      ],
-      ad_performance: [
-        {ad:"RSA · CO-TIENDA · Colombia", campaign:"CO-TIENDA · Colombia", impr:24752, clicks:534, ctr:2.16, conv:3, cpa:53547},
-        {ad:"RSA · SUI-PRE · Suiza",     campaign:"SUI-PRE · Suiza",      impr:5110,  clicks:112, ctr:2.19, conv:0, cpa:0},
-      ]
+      "channels": {
+        "google": {
+          "active": true,
+          "notifications": [
+            {
+              "level": "warn",
+              "title": "Semana del 10 al 17 de agosto — afectada por el terremoto",
+              "text": "Colombia registró actividad sísmica durante esta semana, lo que pudo afectar la disponibilidad del equipo y la operación normal del negocio. A nivel de métricas de campaña, sin embargo, no se observa una caída significativa: impresiones 12.011 (vs 12.569 la semana previa), CTR 2.71% (vs 2.20% previo) y 7 conversiones (vs 2 la semana anterior). Se documenta el evento como contexto operativo, aunque los datos de Google Ads no muestran un impacto negativo claro en esta ventana.",
+              "tags": [
+                {
+                  "label": "10–17 ago 2026"
+                }
+              ],
+              "note": "Verificar con el cliente si hubo impacto en despachos, atención al cliente o inventario durante estos días, aunque la pauta digital no lo refleje."
+            },
+            {
+              "level": "good",
+              "title": "Bono de Google Ads — requisitos completados, en proceso de aplicarse",
+              "text": "Se completaron todos los requisitos para acceder al bono de Google Ads para cuentas nuevas. El bono está actualmente en proceso de aplicación por parte de Google y debería reflejarse en el saldo de la cuenta en los próximos días/ciclos de facturación.",
+              "tags": [
+                {
+                  "label": "Agosto 2026"
+                }
+              ],
+              "recommendations": [
+                "Confirmar con el equipo cuándo se refleja el crédito en la cuenta de Google Ads y validar el monto aplicado una vez llegue."
+              ]
+            }
+          ],
+          "date_min": "2026-08-01",
+          "date_max": "2026-08-31",
+          "benchmarks": {
+            "ctr_min": 2,
+            "ctr_good": 5,
+            "roas_min": 0,
+            "roas_good": 0,
+            "cpa_max": 80000,
+            "cvr_min": 0.3,
+            "cvr_good": 1
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "value": 0,
+            "ctr": 0,
+            "cpa": 0,
+            "roas": 0
+          },
+          "daily_raw": [
+            {
+              "date": "2026-08-01",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1439,
+              "clicks": 30,
+              "cost": 9822,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-02",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 2142,
+              "clicks": 49,
+              "cost": 12429,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-03",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1391,
+              "clicks": 32,
+              "cost": 9254,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-04",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1225,
+              "clicks": 35,
+              "cost": 10268,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-05",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1590,
+              "clicks": 40,
+              "cost": 10210,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-06",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1513,
+              "clicks": 29,
+              "cost": 8901,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-07",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1249,
+              "clicks": 14,
+              "cost": 4124,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-10",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 281,
+              "clicks": 16,
+              "cost": 5996,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-11",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1102,
+              "clicks": 31,
+              "cost": 9621,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-12",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1217,
+              "clicks": 42,
+              "cost": 19997,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-13",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1425,
+              "clicks": 49,
+              "cost": 19547,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-14",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1742,
+              "clicks": 50,
+              "cost": 19828,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-15",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1097,
+              "clicks": 25,
+              "cost": 10728,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-16",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1471,
+              "clicks": 27,
+              "cost": 10662,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-17",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1627,
+              "clicks": 33,
+              "cost": 10895,
+              "conv": 2,
+              "value": 0
+            },
+            {
+              "date": "2026-08-18",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1422,
+              "clicks": 35,
+              "cost": 9822,
+              "conv": 4,
+              "value": 0
+            },
+            {
+              "date": "2026-08-19",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1851,
+              "clicks": 33,
+              "cost": 9840,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-20",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1509,
+              "clicks": 36,
+              "cost": 10266,
+              "conv": 4,
+              "value": 0
+            },
+            {
+              "date": "2026-08-21",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 2029,
+              "clicks": 42,
+              "cost": 10613,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-22",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1981,
+              "clicks": 32,
+              "cost": 9166,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-23",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1823,
+              "clicks": 38,
+              "cost": 9377,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-24",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1699,
+              "clicks": 37,
+              "cost": 9836,
+              "conv": 2,
+              "value": 0
+            },
+            {
+              "date": "2026-08-25",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1568,
+              "clicks": 40,
+              "cost": 11545,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-26",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1324,
+              "clicks": 32,
+              "cost": 8195,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-27",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1250,
+              "clicks": 31,
+              "cost": 8593,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-28",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1633,
+              "clicks": 36,
+              "cost": 7858,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-29",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1848,
+              "clicks": 32,
+              "cost": 8276,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-30",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 2126,
+              "clicks": 38,
+              "cost": 11180,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-31",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1225,
+              "clicks": 25,
+              "cost": 6923,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-01",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 197,
+              "clicks": 5,
+              "cost": 17928,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-02",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 222,
+              "clicks": 6,
+              "cost": 22161,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-03",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 252,
+              "clicks": 7,
+              "cost": 30936,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-04",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 240,
+              "clicks": 4,
+              "cost": 15603,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-05",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 392,
+              "clicks": 11,
+              "cost": 30651,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-06",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 419,
+              "clicks": 6,
+              "cost": 32185,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-07",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 298,
+              "clicks": 8,
+              "cost": 33093,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-10",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 51,
+              "clicks": 3,
+              "cost": 10932,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-11",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 260,
+              "clicks": 7,
+              "cost": 23153,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-12",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 333,
+              "clicks": 10,
+              "cost": 47581,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-13",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 442,
+              "clicks": 6,
+              "cost": 29005,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-14",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 183,
+              "clicks": 9,
+              "cost": 46774,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-15",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 195,
+              "clicks": 7,
+              "cost": 33812,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-16",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 299,
+              "clicks": 3,
+              "cost": 15151,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-17",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 286,
+              "clicks": 8,
+              "cost": 39487,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-18",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 236,
+              "clicks": 6,
+              "cost": 24871,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-19",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 404,
+              "clicks": 6,
+              "cost": 25876,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-20",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 243,
+              "clicks": 8,
+              "cost": 22263,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-21",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 216,
+              "clicks": 6,
+              "cost": 22337,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-22",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 217,
+              "clicks": 6,
+              "cost": 21180,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-23",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 217,
+              "clicks": 7,
+              "cost": 17079,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-24",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 146,
+              "clicks": 1,
+              "cost": 2658,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-25",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 372,
+              "clicks": 11,
+              "cost": 48819,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-26",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 372,
+              "clicks": 10,
+              "cost": 37957,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-27",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 183,
+              "clicks": 4,
+              "cost": 18403,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-28",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 355,
+              "clicks": 10,
+              "cost": 31900,
+              "conv": 1,
+              "value": 0
+            },
+            {
+              "date": "2026-08-29",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 233,
+              "clicks": 8,
+              "cost": 26692,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-30",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 184,
+              "clicks": 3,
+              "cost": 10100,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-08-31",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 124,
+              "clicks": 7,
+              "cost": 19501,
+              "conv": 0,
+              "value": 0
+            }
+          ],
+          "funnel": [],
+          "conv_actions": [
+            {
+              "action": "CO - Agregar al carrito",
+              "conv": 8,
+              "value": 0,
+              "cpa": 37972,
+              "pct_total": 40
+            },
+            {
+              "action": "CO - Inicio de checkout",
+              "conv": 1,
+              "value": 0,
+              "cpa": 303772,
+              "pct_total": 5
+            },
+            {
+              "action": "CO - WA · WhatsApp Colombia",
+              "conv": 11,
+              "value": 0,
+              "cpa": 27616,
+              "pct_total": 55
+            }
+          ],
+          "extensions": [],
+          "ad_performance": [
+            {
+              "ad": "RSA · CO-TIENDA · Colombia",
+              "campaign": "CO-TIENDA · Colombia",
+              "impr": 43799,
+              "clicks": 989,
+              "ctr": 2.26,
+              "conv": 20,
+              "cpa": 15189
+            },
+            {
+              "ad": "RSA · SUI-PRE · Suiza",
+              "campaign": "SUI-PRE · Suiza",
+              "impr": 7571,
+              "clicks": 193,
+              "ctr": 2.55,
+              "conv": 3,
+              "cpa": 0
+            }
+          ]
+        },
+        "meta": {
+          "active": true,
+          "objective": "LEADS",
+          "date_min": "2026-06-18",
+          "date_max": "2026-07-18",
+          "benchmarks": {
+            "ctr_min": 1,
+            "ctr_good": 3,
+            "cvr_min": 0.01,
+            "cvr_good": 0.05,
+            "cpr_max": 300,
+            "roas_min": 0,
+            "roas_good": 0,
+            "leads_evento": {
+              "malo": 500,
+              "promedio_min": 1000,
+              "promedio_max": 2000,
+              "bueno_min": 2500,
+              "bueno_max": 3500,
+              "excelente": 4000
+            },
+            "conversaciones_wa": {
+              "malo": 1,
+              "promedio_min": 2,
+              "promedio_max": 4,
+              "bueno_min": 5,
+              "bueno_max": 8,
+              "excelente": 10
+            }
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "results": 0,
+            "cpr": 0,
+            "ctr": 0,
+            "roas": 0,
+            "reach": 0,
+            "leads_form": 0,
+            "conversations": 0,
+            "followers_gained": 0,
+            "page_likes": 0
+          },
+          "followers_gained": 36,
+          "page_likes": null,
+          "daily_raw": [
+            {
+              "date": "2026-06-18",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-19",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-20",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-21",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-22",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-23",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-24",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-25",
+              "campaign": "META · Consolidado",
+              "impr": 9621,
+              "clicks": 309,
+              "cost": 22370,
+              "results": 130,
+              "value": 0,
+              "reach": 6479,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-26",
+              "campaign": "META · Consolidado",
+              "impr": 10361,
+              "clicks": 332,
+              "cost": 24091,
+              "results": 140,
+              "value": 0,
+              "reach": 6978,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-27",
+              "campaign": "META · Consolidado",
+              "impr": 10361,
+              "clicks": 332,
+              "cost": 24091,
+              "results": 140,
+              "value": 0,
+              "reach": 6978,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-28",
+              "campaign": "META · Consolidado",
+              "impr": 9621,
+              "clicks": 309,
+              "cost": 22370,
+              "results": 130,
+              "value": 0,
+              "reach": 6479,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-29",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-30",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-01",
+              "campaign": "META · Consolidado",
+              "impr": 8133,
+              "clicks": 260,
+              "cost": 18929,
+              "results": 113,
+              "value": 0,
+              "reach": 5474,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-02",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-03",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-04",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-05",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-06",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-07",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-08",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-09",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-10",
+              "campaign": "META · Consolidado",
+              "impr": 4440,
+              "clicks": 142,
+              "cost": 10325,
+              "results": 60,
+              "value": 0,
+              "reach": 2990,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-11",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-12",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-13",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-14",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-15",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-16",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-17",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-18",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            }
+          ],
+          "funnel_leads_detail": [
+            {
+              "stage": "Impresiones",
+              "value": 225722
+            },
+            {
+              "stage": "Alcance",
+              "value": 152013
+            },
+            {
+              "stage": "Clics",
+              "value": 7239
+            },
+            {
+              "stage": "CTR",
+              "value": 3.21,
+              "isRate": true,
+              "rateLabel": "3.21%"
+            },
+            {
+              "stage": "Seguidores IG",
+              "value": 36
+            },
+            {
+              "stage": "Conversaciones",
+              "value": 4
+            }
+          ],
+          "funnel_leads": [
+            {
+              "stage": "Impresiones",
+              "value": 225722
+            },
+            {
+              "stage": "Alcance",
+              "value": 152013
+            },
+            {
+              "stage": "Clics",
+              "value": 7239
+            },
+            {
+              "stage": "Seguidores IG",
+              "value": 36
+            },
+            {
+              "stage": "Conversaciones",
+              "value": 4
+            }
+          ],
+          "funnel_ventas": [],
+          "funnel_wa": [],
+          "conv_detail": [
+            {
+              "date": "2026-06-20",
+              "results": 280,
+              "conversations": 0
+            },
+            {
+              "date": "2026-06-24",
+              "results": 340,
+              "conversations": 1
+            },
+            {
+              "date": "2026-06-28",
+              "results": 390,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-02",
+              "results": 420,
+              "conversations": 1
+            },
+            {
+              "date": "2026-07-05",
+              "results": 450,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-08",
+              "results": 430,
+              "conversations": 1
+            },
+            {
+              "date": "2026-07-11",
+              "results": 380,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-15",
+              "results": 363,
+              "conversations": 1
+            }
+          ],
+          "campaigns_conv": [
+            {
+              "campaign": "T-PRF/RECON · Perfil Instagram",
+              "results": 3053,
+              "conversations": 4,
+              "calls": 0,
+              "events": 7023,
+              "cost": 418261,
+              "cpr": 137
+            },
+            {
+              "campaign": "R-POST-IG · Reconocimiento",
+              "results": 100072,
+              "conversations": 0,
+              "calls": 0,
+              "events": 216,
+              "cost": 106576,
+              "cpr": 1
+            }
+          ],
+          "calls_data": [
+            {
+              "date": "2026-06-18",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-19",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-20",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-21",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-22",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-23",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-24",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-25",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-26",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-27",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-28",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-29",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-30",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-01",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-02",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-03",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-04",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-05",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-06",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-07",
+              "calls_made": 0
+            },
+            {
+              "date": "2026-07-08",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-09",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-10",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-11",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-12",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-13",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-14",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-15",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-16",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-17",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-18",
+              "calls_made": 1
+            }
+          ],
+          "pageview_data": [
+            {
+              "date": "2026-06-18",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-06-19",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-06-20",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-06-21",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-06-22",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-06-23",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-06-24",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-06-25",
+              "custom_events": 9649
+            },
+            {
+              "date": "2026-06-26",
+              "custom_events": 10391
+            },
+            {
+              "date": "2026-06-27",
+              "custom_events": 10391
+            },
+            {
+              "date": "2026-06-28",
+              "custom_events": 9649
+            },
+            {
+              "date": "2026-06-29",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-06-30",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-07-01",
+              "custom_events": 8158
+            },
+            {
+              "date": "2026-07-02",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-03",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-04",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-05",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-06",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-07",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-08",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-09",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-10",
+              "custom_events": 4453
+            },
+            {
+              "date": "2026-07-11",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-12",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-13",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-14",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-15",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-07-16",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-07-17",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-18",
+              "custom_events": 6680
+            }
+          ],
+          "ad_performance": [
+            {
+              "ad": "IMG1 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 45000,
+              "clicks": 4210,
+              "ctr": 9.36,
+              "results": 1800,
+              "cpa": 137
+            },
+            {
+              "ad": "IMG2 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 18000,
+              "clicks": 1480,
+              "ctr": 8.22,
+              "results": 620,
+              "cpa": 144
+            },
+            {
+              "ad": "VD-9 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 12000,
+              "clicks": 890,
+              "ctr": 7.42,
+              "results": 410,
+              "cpa": 151
+            },
+            {
+              "ad": "Otros · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 11053,
+              "clicks": 443,
+              "ctr": 4.01,
+              "results": 223,
+              "cpa": 165
+            },
+            {
+              "ad": "R-POST-IG · Reconocimiento",
+              "campaign": "R-POST-IG",
+              "impr": 139669,
+              "clicks": 216,
+              "ctr": 0.15,
+              "results": 0,
+              "cpa": 0
+            }
+          ]
+        },
+        "tiktok": {
+          "active": false,
+          "date_min": "2026-07-01",
+          "date_max": "2026-07-18",
+          "benchmarks": {
+            "hook_rate_min": 20,
+            "hook_rate_good": 30,
+            "completion_min": 20,
+            "ctr_min": 1.5,
+            "ctr_good": 3,
+            "cpa_max": 60000
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "cpa": 0,
+            "ctr": 0,
+            "hook_rate": 0,
+            "completion": 0
+          },
+          "video_metrics": {
+            "hook_rate": 0,
+            "completion_rate": 0,
+            "ctr": 0,
+            "cpv": 0
+          },
+          "daily_raw": []
+        }
+      }
     },
-    meta: {
-      active: true,
-      objective: "LEADS",
-      date_min: "2026-06-18", date_max: "2026-07-18",
-      benchmarks: {
-        ctr_min:1, ctr_good:3, cvr_min:0.01, cvr_good:0.05,
-        cpr_max:300, roas_min:0, roas_good:0,
-        leads_evento:      {malo:500, promedio_min:1000, promedio_max:2000, bueno_min:2500, bueno_max:3500, excelente:4000},
-        conversaciones_wa: {malo:1,   promedio_min:2,    promedio_max:4,    bueno_min:5,    bueno_max:8,    excelente:10}
-      },
-      prev: { impr:0, clicks:0, cost:0, results:0, cpr:0, ctr:0, roas:0, reach:0, leads_form:0, conversations:0, followers_gained:0, page_likes:0 },
-      followers_gained: 36,
-      page_likes: null,
-      daily_raw: [
-        {date:"2026-06-18",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-06-19",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-06-20",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-06-21",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-06-22",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-06-23",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-06-24",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-06-25",campaign:"META · Consolidado",impr:9621,clicks:309,cost:22370,results:130,value:0,reach:6479,leads_form:0,conv_wa:0},
-        {date:"2026-06-26",campaign:"META · Consolidado",impr:10361,clicks:332,cost:24091,results:140,value:0,reach:6978,leads_form:0,conv_wa:0},
-        {date:"2026-06-27",campaign:"META · Consolidado",impr:10361,clicks:332,cost:24091,results:140,value:0,reach:6978,leads_form:0,conv_wa:0},
-        {date:"2026-06-28",campaign:"META · Consolidado",impr:9621,clicks:309,cost:22370,results:130,value:0,reach:6479,leads_form:0,conv_wa:0},
-        {date:"2026-06-29",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-06-30",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-07-01",campaign:"META · Consolidado",impr:8133,clicks:260,cost:18929,results:113,value:0,reach:5474,leads_form:0,conv_wa:0},
-        {date:"2026-07-02",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-03",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-04",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-05",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-06",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-07",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-08",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-09",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-10",campaign:"META · Consolidado",impr:4440,clicks:142,cost:10325,results:60,value:0,reach:2990,leads_form:0,conv_wa:0},
-        {date:"2026-07-11",campaign:"META · Consolidado",impr:5181,clicks:166,cost:12045,results:70,value:0,reach:3489,leads_form:0,conv_wa:0},
-        {date:"2026-07-12",campaign:"META · Consolidado",impr:5921,clicks:190,cost:13766,results:80,value:0,reach:3988,leads_form:0,conv_wa:0},
-        {date:"2026-07-13",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0},
-        {date:"2026-07-14",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-15",campaign:"META · Consolidado",impr:8141,clicks:261,cost:18929,results:110,value:0,reach:5483,leads_form:0,conv_wa:0},
-        {date:"2026-07-16",campaign:"META · Consolidado",impr:8881,clicks:285,cost:20649,results:120,value:0,reach:5981,leads_form:0,conv_wa:0},
-        {date:"2026-07-17",campaign:"META · Consolidado",impr:7401,clicks:237,cost:17208,results:100,value:0,reach:4984,leads_form:0,conv_wa:0},
-        {date:"2026-07-18",campaign:"META · Consolidado",impr:6661,clicks:214,cost:15487,results:90,value:0,reach:4486,leads_form:0,conv_wa:0}
-      ],
-      funnel_leads_detail: [
-        {stage:"Impresiones",    value:225722},
-        {stage:"Alcance",        value:152013},
-        {stage:"Clics",          value:7239},
-        {stage:"CTR",            value:3.21, isRate:true, rateLabel:"3.21%"},
-        {stage:"Seguidores IG",  value:36},
-        {stage:"Conversaciones", value:4},
-      ],
-      funnel_leads: [
-        {stage:"Impresiones",    value:225722},
-        {stage:"Alcance",        value:152013},
-        {stage:"Clics",          value:7239},
-        {stage:"Seguidores IG",  value:36},
-        {stage:"Conversaciones", value:4},
-      ],
-      funnel_ventas: [], funnel_wa: [],
-      conv_detail: [
-        {date:"2026-06-20",results:280,conversations:0},
-        {date:"2026-06-24",results:340,conversations:1},
-        {date:"2026-06-28",results:390,conversations:0},
-        {date:"2026-07-02",results:420,conversations:1},
-        {date:"2026-07-05",results:450,conversations:0},
-        {date:"2026-07-08",results:430,conversations:1},
-        {date:"2026-07-11",results:380,conversations:0},
-        {date:"2026-07-15",results:363,conversations:1},
-      ],
-      campaigns_conv: [
-        {campaign:"T-PRF/RECON · Perfil Instagram",  results:3053,   conversations:4, calls:0, events:7023,  cost:418261, cpr:137},
-        {campaign:"R-POST-IG · Reconocimiento",       results:100072, conversations:0, calls:0, events:216,   cost:106576, cpr:1},
-      ],
-      calls_data: [
-        {date:"2026-06-18",calls_made:1},
-        {date:"2026-06-19",calls_made:1},
-        {date:"2026-06-20",calls_made:1},
-        {date:"2026-06-21",calls_made:1},
-        {date:"2026-06-22",calls_made:1},
-        {date:"2026-06-23",calls_made:2},
-        {date:"2026-06-24",calls_made:1},
-        {date:"2026-06-25",calls_made:1},
-        {date:"2026-06-26",calls_made:1},
-        {date:"2026-06-27",calls_made:1},
-        {date:"2026-06-28",calls_made:2},
-        {date:"2026-06-29",calls_made:2},
-        {date:"2026-06-30",calls_made:1},
-        {date:"2026-07-01",calls_made:2},
-        {date:"2026-07-02",calls_made:1},
-        {date:"2026-07-03",calls_made:2},
-        {date:"2026-07-04",calls_made:1},
-        {date:"2026-07-05",calls_made:2},
-        {date:"2026-07-06",calls_made:1},
-        {date:"2026-07-07",calls_made:0},
-        {date:"2026-07-08",calls_made:1},
-        {date:"2026-07-09",calls_made:1},
-        {date:"2026-07-10",calls_made:1},
-        {date:"2026-07-11",calls_made:1},
-        {date:"2026-07-12",calls_made:1},
-        {date:"2026-07-13",calls_made:1},
-        {date:"2026-07-14",calls_made:1},
-        {date:"2026-07-15",calls_made:1},
-        {date:"2026-07-16",calls_made:1},
-        {date:"2026-07-17",calls_made:1},
-        {date:"2026-07-18",calls_made:1}
-      ], pageview_data: [
-        {date:"2026-06-18",custom_events:5938},
-        {date:"2026-06-19",custom_events:5938},
-        {date:"2026-06-20",custom_events:6680},
-        {date:"2026-06-21",custom_events:6680},
-        {date:"2026-06-22",custom_events:7422},
-        {date:"2026-06-23",custom_events:8165},
-        {date:"2026-06-24",custom_events:8907},
-        {date:"2026-06-25",custom_events:9649},
-        {date:"2026-06-26",custom_events:10391},
-        {date:"2026-06-27",custom_events:10391},
-        {date:"2026-06-28",custom_events:9649},
-        {date:"2026-06-29",custom_events:8907},
-        {date:"2026-06-30",custom_events:8165},
-        {date:"2026-07-01",custom_events:8158},
-        {date:"2026-07-02",custom_events:7422},
-        {date:"2026-07-03",custom_events:7422},
-        {date:"2026-07-04",custom_events:6680},
-        {date:"2026-07-05",custom_events:6680},
-        {date:"2026-07-06",custom_events:5938},
-        {date:"2026-07-07",custom_events:5938},
-        {date:"2026-07-08",custom_events:5196},
-        {date:"2026-07-09",custom_events:5196},
-        {date:"2026-07-10",custom_events:4453},
-        {date:"2026-07-11",custom_events:5196},
-        {date:"2026-07-12",custom_events:5938},
-        {date:"2026-07-13",custom_events:6680},
-        {date:"2026-07-14",custom_events:7422},
-        {date:"2026-07-15",custom_events:8165},
-        {date:"2026-07-16",custom_events:8907},
-        {date:"2026-07-17",custom_events:7422},
-        {date:"2026-07-18",custom_events:6680}
-      ],
-      ad_performance: [
-        {ad:"IMG1 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:45000,  clicks:4210, ctr:9.36, results:1800, cpa:137},
-        {ad:"IMG2 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:18000,  clicks:1480, ctr:8.22, results:620,  cpa:144},
-        {ad:"VD-9 · T-PRF/RECON",         campaign:"T-PRF/RECON · IG", impr:12000,  clicks:890,  ctr:7.42, results:410,  cpa:151},
-        {ad:"Otros · T-PRF/RECON",        campaign:"T-PRF/RECON · IG", impr:11053,  clicks:443,  ctr:4.01, results:223,  cpa:165},
-        {ad:"R-POST-IG · Reconocimiento", campaign:"R-POST-IG",             impr:139669, clicks:216,  ctr:0.15, results:0,    cpa:0},
-      ]
-    },
-    tiktok: {
-      active: false,
-      date_min: "2026-07-01", date_max: "2026-07-18",
-      benchmarks: {hook_rate_min:20,hook_rate_good:30,completion_min:20,ctr_min:1.5,ctr_good:3,cpa_max:60000},
-      prev: {impr:0,clicks:0,cost:0,conv:0,cpa:0,ctr:0,hook_rate:0,completion:0},
-      video_metrics: {hook_rate:0,completion_rate:0,ctr:0,cpv:0},
-      daily_raw: []
-    }
-  }
+    {
+      "channels": {
+        "google": {
+          "active": true,
+          "date_min": "2026-07-01",
+          "date_max": "2026-07-18",
+          "benchmarks": {
+            "ctr_min": 2,
+            "ctr_good": 5,
+            "roas_min": 0,
+            "roas_good": 0,
+            "cpa_max": 80000,
+            "cvr_min": 0.3,
+            "cvr_good": 1
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "value": 0,
+            "ctr": 0,
+            "cpa": 0,
+            "roas": 0
+          },
+          "daily_raw": [
+            {
+              "date": "2026-07-01",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 119,
+              "clicks": 8,
+              "cost": 10163,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 348,
+              "clicks": 13,
+              "cost": 10245,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-03",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 788,
+              "clicks": 21,
+              "cost": 9498,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-04",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1807,
+              "clicks": 38,
+              "cost": 9602,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-05",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 2071,
+              "clicks": 39,
+              "cost": 11098,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-06",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 943,
+              "clicks": 22,
+              "cost": 9963,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-07",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1641,
+              "clicks": 36,
+              "cost": 9810,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1771,
+              "clicks": 30,
+              "cost": 10198,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-09",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 979,
+              "clicks": 25,
+              "cost": 11133,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-10",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1111,
+              "clicks": 29,
+              "cost": 10432,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-11",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1262,
+              "clicks": 27,
+              "cost": 11080,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-12",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1917,
+              "clicks": 44,
+              "cost": 12128,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-13",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1888,
+              "clicks": 46,
+              "cost": 9588,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-14",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 2000,
+              "clicks": 50,
+              "cost": 9286,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-15",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1645,
+              "clicks": 34,
+              "cost": 5856,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-16",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1734,
+              "clicks": 36,
+              "cost": 5604,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-17",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 1869,
+              "clicks": 35,
+              "cost": 4902,
+              "conv": 3,
+              "value": 0
+            },
+            {
+              "date": "2026-07-18",
+              "campaign": "CO-TIENDA · Colombia",
+              "device": "MOBILE",
+              "impr": 158,
+              "clicks": 1,
+              "cost": 56,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-01",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 87,
+              "clicks": 6,
+              "cost": 14650,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 83,
+              "clicks": 5,
+              "cost": 33836,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-03",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 111,
+              "clicks": 3,
+              "cost": 27162,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-04",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 111,
+              "clicks": 3,
+              "cost": 26821,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-05",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 148,
+              "clicks": 5,
+              "cost": 24330,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-06",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 100,
+              "clicks": 4,
+              "cost": 25411,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-07",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 175,
+              "clicks": 3,
+              "cost": 13519,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 214,
+              "clicks": 7,
+              "cost": 34579,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-09",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 247,
+              "clicks": 3,
+              "cost": 15228,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-10",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 312,
+              "clicks": 7,
+              "cost": 26546,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-11",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 238,
+              "clicks": 8,
+              "cost": 43891,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-12",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 324,
+              "clicks": 7,
+              "cost": 22706,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-13",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 533,
+              "clicks": 9,
+              "cost": 19760,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-14",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 335,
+              "clicks": 9,
+              "cost": 25233,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-15",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 410,
+              "clicks": 8,
+              "cost": 13703,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-16",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 496,
+              "clicks": 9,
+              "cost": 12400,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-17",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 303,
+              "clicks": 13,
+              "cost": 26794,
+              "conv": 0,
+              "value": 0
+            },
+            {
+              "date": "2026-07-18",
+              "campaign": "SUI-PRE · Suiza",
+              "device": "MOBILE",
+              "impr": 353,
+              "clicks": 8,
+              "cost": 46343,
+              "conv": 0,
+              "value": 0
+            }
+          ],
+          "funnel": [],
+          "conv_actions": [
+            {
+              "action": "CO-WA · WhatsApp Colombia",
+              "conv": 3,
+              "value": 0,
+              "cpa": 53547,
+              "pct_total": 100
+            }
+          ],
+          "extensions": [
+            {
+              "name": "café de especialidad precio (CO)",
+              "clicks": 131,
+              "conv": 1
+            },
+            {
+              "name": "café de especialidad (CO)",
+              "clicks": 77,
+              "conv": 0
+            },
+            {
+              "name": "café especial colombiano (CO)",
+              "clicks": 57,
+              "conv": 1
+            },
+            {
+              "name": "specialty coffee (SUI)",
+              "clicks": 35,
+              "conv": 0
+            },
+            {
+              "name": "Colombian coffee Switzerland (SUI)",
+              "clicks": 17,
+              "conv": 0
+            },
+            {
+              "name": "comprar café especial online (CO)",
+              "clicks": 44,
+              "conv": 1
+            }
+          ],
+          "ad_performance": [
+            {
+              "ad": "RSA · CO-TIENDA · Colombia",
+              "campaign": "CO-TIENDA · Colombia",
+              "impr": 24752,
+              "clicks": 534,
+              "ctr": 2.16,
+              "conv": 3,
+              "cpa": 53547
+            },
+            {
+              "ad": "RSA · SUI-PRE · Suiza",
+              "campaign": "SUI-PRE · Suiza",
+              "impr": 5110,
+              "clicks": 112,
+              "ctr": 2.19,
+              "conv": 0,
+              "cpa": 0
+            }
+          ]
+        },
+        "meta": {
+          "active": true,
+          "objective": "LEADS",
+          "date_min": "2026-06-18",
+          "date_max": "2026-07-18",
+          "benchmarks": {
+            "ctr_min": 1,
+            "ctr_good": 3,
+            "cvr_min": 0.01,
+            "cvr_good": 0.05,
+            "cpr_max": 300,
+            "roas_min": 0,
+            "roas_good": 0,
+            "leads_evento": {
+              "malo": 500,
+              "promedio_min": 1000,
+              "promedio_max": 2000,
+              "bueno_min": 2500,
+              "bueno_max": 3500,
+              "excelente": 4000
+            },
+            "conversaciones_wa": {
+              "malo": 1,
+              "promedio_min": 2,
+              "promedio_max": 4,
+              "bueno_min": 5,
+              "bueno_max": 8,
+              "excelente": 10
+            }
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "results": 0,
+            "cpr": 0,
+            "ctr": 0,
+            "roas": 0,
+            "reach": 0,
+            "leads_form": 0,
+            "conversations": 0,
+            "followers_gained": 0,
+            "page_likes": 0
+          },
+          "followers_gained": 36,
+          "page_likes": null,
+          "daily_raw": [
+            {
+              "date": "2026-06-18",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-19",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-20",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-21",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-22",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-23",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-24",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-25",
+              "campaign": "META · Consolidado",
+              "impr": 9621,
+              "clicks": 309,
+              "cost": 22370,
+              "results": 130,
+              "value": 0,
+              "reach": 6479,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-26",
+              "campaign": "META · Consolidado",
+              "impr": 10361,
+              "clicks": 332,
+              "cost": 24091,
+              "results": 140,
+              "value": 0,
+              "reach": 6978,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-27",
+              "campaign": "META · Consolidado",
+              "impr": 10361,
+              "clicks": 332,
+              "cost": 24091,
+              "results": 140,
+              "value": 0,
+              "reach": 6978,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-28",
+              "campaign": "META · Consolidado",
+              "impr": 9621,
+              "clicks": 309,
+              "cost": 22370,
+              "results": 130,
+              "value": 0,
+              "reach": 6479,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-29",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-06-30",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-01",
+              "campaign": "META · Consolidado",
+              "impr": 8133,
+              "clicks": 260,
+              "cost": 18929,
+              "results": 113,
+              "value": 0,
+              "reach": 5474,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-02",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-03",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-04",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-05",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-06",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-07",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-08",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-09",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-10",
+              "campaign": "META · Consolidado",
+              "impr": 4440,
+              "clicks": 142,
+              "cost": 10325,
+              "results": 60,
+              "value": 0,
+              "reach": 2990,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-11",
+              "campaign": "META · Consolidado",
+              "impr": 5181,
+              "clicks": 166,
+              "cost": 12045,
+              "results": 70,
+              "value": 0,
+              "reach": 3489,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-12",
+              "campaign": "META · Consolidado",
+              "impr": 5921,
+              "clicks": 190,
+              "cost": 13766,
+              "results": 80,
+              "value": 0,
+              "reach": 3988,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-13",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-14",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-15",
+              "campaign": "META · Consolidado",
+              "impr": 8141,
+              "clicks": 261,
+              "cost": 18929,
+              "results": 110,
+              "value": 0,
+              "reach": 5483,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-16",
+              "campaign": "META · Consolidado",
+              "impr": 8881,
+              "clicks": 285,
+              "cost": 20649,
+              "results": 120,
+              "value": 0,
+              "reach": 5981,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-17",
+              "campaign": "META · Consolidado",
+              "impr": 7401,
+              "clicks": 237,
+              "cost": 17208,
+              "results": 100,
+              "value": 0,
+              "reach": 4984,
+              "leads_form": 0,
+              "conv_wa": 0
+            },
+            {
+              "date": "2026-07-18",
+              "campaign": "META · Consolidado",
+              "impr": 6661,
+              "clicks": 214,
+              "cost": 15487,
+              "results": 90,
+              "value": 0,
+              "reach": 4486,
+              "leads_form": 0,
+              "conv_wa": 0
+            }
+          ],
+          "funnel_leads_detail": [
+            {
+              "stage": "Impresiones",
+              "value": 225722
+            },
+            {
+              "stage": "Alcance",
+              "value": 152013
+            },
+            {
+              "stage": "Clics",
+              "value": 7239
+            },
+            {
+              "stage": "CTR",
+              "value": 3.21,
+              "isRate": true,
+              "rateLabel": "3.21%"
+            },
+            {
+              "stage": "Seguidores IG",
+              "value": 36
+            },
+            {
+              "stage": "Conversaciones",
+              "value": 4
+            }
+          ],
+          "funnel_leads": [
+            {
+              "stage": "Impresiones",
+              "value": 225722
+            },
+            {
+              "stage": "Alcance",
+              "value": 152013
+            },
+            {
+              "stage": "Clics",
+              "value": 7239
+            },
+            {
+              "stage": "Seguidores IG",
+              "value": 36
+            },
+            {
+              "stage": "Conversaciones",
+              "value": 4
+            }
+          ],
+          "funnel_ventas": [],
+          "funnel_wa": [],
+          "conv_detail": [
+            {
+              "date": "2026-06-20",
+              "results": 280,
+              "conversations": 0
+            },
+            {
+              "date": "2026-06-24",
+              "results": 340,
+              "conversations": 1
+            },
+            {
+              "date": "2026-06-28",
+              "results": 390,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-02",
+              "results": 420,
+              "conversations": 1
+            },
+            {
+              "date": "2026-07-05",
+              "results": 450,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-08",
+              "results": 430,
+              "conversations": 1
+            },
+            {
+              "date": "2026-07-11",
+              "results": 380,
+              "conversations": 0
+            },
+            {
+              "date": "2026-07-15",
+              "results": 363,
+              "conversations": 1
+            }
+          ],
+          "campaigns_conv": [
+            {
+              "campaign": "T-PRF/RECON · Perfil Instagram",
+              "results": 3053,
+              "conversations": 4,
+              "calls": 0,
+              "events": 7023,
+              "cost": 418261,
+              "cpr": 137
+            },
+            {
+              "campaign": "R-POST-IG · Reconocimiento",
+              "results": 100072,
+              "conversations": 0,
+              "calls": 0,
+              "events": 216,
+              "cost": 106576,
+              "cpr": 1
+            }
+          ],
+          "calls_data": [
+            {
+              "date": "2026-06-18",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-19",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-20",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-21",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-22",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-23",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-24",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-25",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-26",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-27",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-06-28",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-29",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-06-30",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-01",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-02",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-03",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-04",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-05",
+              "calls_made": 2
+            },
+            {
+              "date": "2026-07-06",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-07",
+              "calls_made": 0
+            },
+            {
+              "date": "2026-07-08",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-09",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-10",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-11",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-12",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-13",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-14",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-15",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-16",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-17",
+              "calls_made": 1
+            },
+            {
+              "date": "2026-07-18",
+              "calls_made": 1
+            }
+          ],
+          "pageview_data": [
+            {
+              "date": "2026-06-18",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-06-19",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-06-20",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-06-21",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-06-22",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-06-23",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-06-24",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-06-25",
+              "custom_events": 9649
+            },
+            {
+              "date": "2026-06-26",
+              "custom_events": 10391
+            },
+            {
+              "date": "2026-06-27",
+              "custom_events": 10391
+            },
+            {
+              "date": "2026-06-28",
+              "custom_events": 9649
+            },
+            {
+              "date": "2026-06-29",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-06-30",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-07-01",
+              "custom_events": 8158
+            },
+            {
+              "date": "2026-07-02",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-03",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-04",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-05",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-06",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-07",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-08",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-09",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-10",
+              "custom_events": 4453
+            },
+            {
+              "date": "2026-07-11",
+              "custom_events": 5196
+            },
+            {
+              "date": "2026-07-12",
+              "custom_events": 5938
+            },
+            {
+              "date": "2026-07-13",
+              "custom_events": 6680
+            },
+            {
+              "date": "2026-07-14",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-15",
+              "custom_events": 8165
+            },
+            {
+              "date": "2026-07-16",
+              "custom_events": 8907
+            },
+            {
+              "date": "2026-07-17",
+              "custom_events": 7422
+            },
+            {
+              "date": "2026-07-18",
+              "custom_events": 6680
+            }
+          ],
+          "ad_performance": [
+            {
+              "ad": "IMG1 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 45000,
+              "clicks": 4210,
+              "ctr": 9.36,
+              "results": 1800,
+              "cpa": 137
+            },
+            {
+              "ad": "IMG2 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 18000,
+              "clicks": 1480,
+              "ctr": 8.22,
+              "results": 620,
+              "cpa": 144
+            },
+            {
+              "ad": "VD-9 · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 12000,
+              "clicks": 890,
+              "ctr": 7.42,
+              "results": 410,
+              "cpa": 151
+            },
+            {
+              "ad": "Otros · T-PRF/RECON",
+              "campaign": "T-PRF/RECON · IG",
+              "impr": 11053,
+              "clicks": 443,
+              "ctr": 4.01,
+              "results": 223,
+              "cpa": 165
+            },
+            {
+              "ad": "R-POST-IG · Reconocimiento",
+              "campaign": "R-POST-IG",
+              "impr": 139669,
+              "clicks": 216,
+              "ctr": 0.15,
+              "results": 0,
+              "cpa": 0
+            }
+          ]
+        },
+        "tiktok": {
+          "active": false,
+          "date_min": "2026-07-01",
+          "date_max": "2026-07-18",
+          "benchmarks": {
+            "hook_rate_min": 20,
+            "hook_rate_good": 30,
+            "completion_min": 20,
+            "ctr_min": 1.5,
+            "ctr_good": 3,
+            "cpa_max": 60000
+          },
+          "prev": {
+            "impr": 0,
+            "clicks": 0,
+            "cost": 0,
+            "conv": 0,
+            "cpa": 0,
+            "ctr": 0,
+            "hook_rate": 0,
+            "completion": 0
+          },
+          "video_metrics": {
+            "hook_rate": 0,
+            "completion_rate": 0,
+            "ctr": 0,
+            "cpv": 0
+          },
+          "daily_raw": []
+        }
+      }
     }
   ]
 };
