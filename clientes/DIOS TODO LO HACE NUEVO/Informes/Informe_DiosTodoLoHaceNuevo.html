@@ -1429,7 +1429,7 @@ function loadMonth(idx){
   }
   window._currMonthName=getMonthName(m.channels.google?.date_min||m.channels.meta?.date_min||m.channels.tiktok?.date_min);
   // Actualizar fechas
-  const ch=DATA.channels.google||DATA.channels.meta||DATA.channels.tiktok;
+  const ch=Object.values(DATA.channels).find(c=>c&&c.active&&c.date_min)||Object.values(DATA.channels).find(c=>c&&c.date_min)||DATA.channels.google||DATA.channels.meta||DATA.channels.tiktok;
   if(ch){
     currentFrom=ch.date_min||'';
     currentTo=ch.date_max||'';
