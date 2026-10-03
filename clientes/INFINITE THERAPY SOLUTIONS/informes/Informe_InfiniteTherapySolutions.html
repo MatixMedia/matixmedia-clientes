@@ -2278,7 +2278,7 @@ function renderMeta(){
 
   // Badge objetivo
   const badge=document.getElementById('m-obj-badge');
-  if(badge){const cls=obj==='VENTAS'?'obj-ventas':obj==='LEADS'?'obj-leads':'obj-wa';badge.innerHTML=`<span class="obj-badge ${cls}">${obj}</span>`;}
+  if(badge){const cls=obj==='VENTAS'?'obj-ventas':obj==='LEADS'?'obj-leads':'obj-wa';badge.innerHTML=`<span class="obj-badge ${cls}">${obj==='LLAMADAS'?'Reconocimiento geolocalizado':obj}</span>`;}
 
   // ── 01. KPIs (seguidores + me gusta para todos) ──
   const kpis=[
