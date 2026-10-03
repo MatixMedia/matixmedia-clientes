@@ -1396,7 +1396,7 @@ function renderKPIs(gridId,items){
     <div class="kpi-card ${k.cls||''}">
       <div class="kpi-label">${k.label}</div>
       <div class="kpi-value">${k.val}</div>
-      <div class="kpi-badge ${k.dir}">${k.arrow||(k.dir==='up'?'▲':k.dir==='down'?'▼':'→')} ${k.pct}%</div>
+      <div class="kpi-badge ${k.dir}">${k.na?'sin dato':(k.arrow||(k.dir==='up'?'▲':k.dir==='down'?'▼':'→'))+' '+k.pct+'%'}</div>
       <div class="kpi-sub">${k.sub}</div>
     </div>`).join('');
 }
@@ -2207,15 +2207,17 @@ function renderMeta(){
   if(ch.llamadas_realizadas!=null&&obj!=='LLAMADAS') kpis.push(mkKpi('Llamadas realizadas',ch.llamadas_realizadas,P.llamadas_realizadas||0,fmt,'Meta ADS · campañas de llamada','meta-accent'));
   if(ch.visitas_web!=null) kpis.push(mkKpi('Visitas web desde redes',ch.visitas_web,P.visitas_web||0,fmt,'Sesiones desde social','meta-accent'));
   if(ch.profile_visits!=null) kpis.push(mkKpi('Visitas al perfil',ch.profile_visits,P.profile_visits||0,fmt,ch.profile_cost?('Inversión ~'+fmtM(ch.profile_cost)):'Instagram','meta-accent'));
-  if(ch.summary_only&&totals.reach>0) kpis.push(mkKpi('Alcance',totals.reach,0,fmt,'Personas alcanzadas','meta-accent'));
   if(ch.interacciones!=null) kpis.push(mkKpi('Interacciones IG/FB',ch.interacciones,P.interacciones||0,fmt,'Reacciones + comentarios + compartidos','meta-accent'));
   if(ch.summary_only){
-    const drop=[];
-    if(!totals.impr)drop.push('Impresiones');
-    if(!totals.clicks)drop.push('Clics','CTR');
-    if(!totals.cost)drop.push('Inversión','CPR');
-    for(let k=kpis.length-1;k>=0;k--) if(drop.includes(kpis[k].label)) kpis.splice(k,1);
+    // Mismas tarjetas que un mes con export completo; lo que no se midió se marca N/D
+    const na=[];
+    if(!totals.impr)na.push('Impresiones');
+    if(!totals.clicks)na.push('Clics','CTR');
+    if(!totals.cost)na.push('Inversión','CPR');
+    kpis.forEach(k=>{ if(na.includes(k.label)){k.val='N/D';k.na=true;k.dir='flat';k.sub='Sin dato del período';} });
+    if(ch.interacciones==null) kpis.push({label:'Interacciones IG/FB',val:'N/D',na:true,dir:'flat',pct:'0',sub:'Sin dato del período',cls:'meta-accent'});
   }
+  if(totals.reach>0&&!kpis.some(k=>k.label==='Alcance')) kpis.push(mkKpi('Alcance',totals.reach,0,fmt,'Personas alcanzadas','meta-accent'));
   renderKPIs('m-kpi-grid',kpis);
   renderMetaHist();
 
