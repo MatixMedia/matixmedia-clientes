@@ -478,6 +478,10 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <div class="chart-host"><div class="chart-title">Costo por Conversión en el tiempo</div><div style="height:220px"><canvas id="g-scatterCPA"></canvas></div></div>
     </div>
     <div class="chart-host"><div class="chart-title">CTR vs Clics por campaña</div><div style="height:220px"><canvas id="g-scatterCTR"></canvas></div></div>
+    <div class="charts-2col" id="g-geo" style="margin-top:10px;display:none">
+      <div class="chart-host"><div class="chart-title">Conversiones por país · todos los dispositivos</div><div style="height:260px"><canvas id="g-geoConv"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title">% de inversión vs % de conversiones por país</div><div style="height:260px"><canvas id="g-geoShare"></canvas></div></div>
+    </div>
   </div>
 
   <!-- 07A. TABLA CONVERSIONES CON RETENCIÓN POR TIPO -->
@@ -652,6 +656,10 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <div class="chart-host"><div class="chart-title">Llamadas en el tiempo</div><div style="height:200px"><canvas id="m-scatterCalls"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Eventos en el sitio web en el tiempo</div><div style="height:200px"><canvas id="m-scatterEvents"></canvas></div></div>
     </div>
+    <div class="charts-2col" id="m-geo" style="margin-top:10px;display:none">
+      <div class="chart-host"><div class="chart-title">Resultados por país · conversaciones + leads form</div><div style="height:340px"><canvas id="m-geoRes"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title">% de inversión vs % de resultados por país</div><div style="height:340px"><canvas id="m-geoShare"></canvas></div></div>
+    </div>
   </div>
 
   <!-- 07. TABLAS RETENCIÓN CONVERSIONES (Leads) + campañas por resultados (Ventas/Leads) -->
@@ -785,43 +793,43 @@ const DATA = {
     google: {
       active: true,
       objective: "LEADS",
-      date_min: "2026-09-01", date_max: "2026-09-25",
+      date_min: "2026-09-01", date_max: "2026-09-29",
       benchmarks: { ctr_min:2, ctr_good:5, roas_min:3, roas_good:5, cpa_max:50000, cvr_min:3, cvr_good:8 },
       daily_raw: [
         {date:"2026-09-02",campaign:"LEADS-US",device:"MOBILE",impr:44,clicks:5,cost:3430,conv:1,value:1},
-        {date:"2026-09-03",campaign:"LEADS-US",device:"MOBILE",impr:63,clicks:7,cost:3641,conv:0,value:0},
-        {date:"2026-09-04",campaign:"LEADS-US",device:"MOBILE",impr:130,clicks:26,cost:29356,conv:5,value:5},
-        {date:"2026-09-05",campaign:"LEADS-US",device:"MOBILE",impr:158,clicks:34,cost:29967,conv:4,value:4},
-        {date:"2026-09-06",campaign:"LEADS-US",device:"MOBILE",impr:154,clicks:9,cost:11690,conv:2,value:2},
-        {date:"2026-09-07",campaign:"LEADS-US",device:"MOBILE",impr:297,clicks:26,cost:28267,conv:3,value:3},
-        {date:"2026-09-08",campaign:"LEADS-US",device:"MOBILE",impr:1999,clicks:18,cost:17028,conv:0,value:0},
-        {date:"2026-09-09",campaign:"LEADS-US",device:"MOBILE",impr:312,clicks:20,cost:15866,conv:1,value:1},
-        {date:"2026-09-10",campaign:"LEADS-US",device:"MOBILE",impr:117,clicks:12,cost:14748,conv:2,value:2},
-        {date:"2026-09-11",campaign:"LEADS-US",device:"MOBILE",impr:80,clicks:16,cost:15667,conv:0,value:0},
-        {date:"2026-09-12",campaign:"LEADS-US",device:"MOBILE",impr:104,clicks:11,cost:10874,conv:2,value:2},
-        {date:"2026-09-13",campaign:"LEADS-US",device:"MOBILE",impr:116,clicks:17,cost:16777,conv:2,value:2},
-        {date:"2026-09-14",campaign:"LEADS-US",device:"MOBILE",impr:71,clicks:5,cost:7453,conv:1,value:1},
-        {date:"2026-09-15",campaign:"LEADS-US",device:"MOBILE",impr:184,clicks:31,cost:26430,conv:8,value:8},
-        {date:"2026-09-16",campaign:"LEADS-US",device:"MOBILE",impr:149,clicks:15,cost:13751,conv:0,value:0},
-        {date:"2026-09-17",campaign:"LEADS-US",device:"MOBILE",impr:146,clicks:15,cost:16656,conv:2,value:2},
-        {date:"2026-09-18",campaign:"LEADS-US",device:"MOBILE",impr:127,clicks:14,cost:17942,conv:1,value:1},
         {date:"2026-09-02",campaign:"PMAX-USA",device:"MOBILE",impr:1978,clicks:143,cost:18903,conv:7,value:7},
+        {date:"2026-09-03",campaign:"LEADS-US",device:"MOBILE",impr:63,clicks:7,cost:3641,conv:0,value:0},
         {date:"2026-09-03",campaign:"PMAX-USA",device:"MOBILE",impr:2013,clicks:138,cost:10660,conv:3,value:3},
+        {date:"2026-09-04",campaign:"LEADS-US",device:"MOBILE",impr:130,clicks:26,cost:29356,conv:5,value:5},
         {date:"2026-09-04",campaign:"PMAX-USA",device:"MOBILE",impr:1596,clicks:130,cost:10272,conv:6,value:6},
+        {date:"2026-09-05",campaign:"LEADS-US",device:"MOBILE",impr:158,clicks:34,cost:29967,conv:4,value:4},
         {date:"2026-09-05",campaign:"PMAX-USA",device:"MOBILE",impr:2188,clicks:131,cost:9117,conv:5,value:5},
+        {date:"2026-09-06",campaign:"LEADS-US",device:"MOBILE",impr:154,clicks:9,cost:11690,conv:2,value:2},
         {date:"2026-09-06",campaign:"PMAX-USA",device:"MOBILE",impr:2855,clicks:187,cost:13467,conv:12,value:12},
+        {date:"2026-09-07",campaign:"LEADS-US",device:"MOBILE",impr:297,clicks:26,cost:28267,conv:3,value:3},
         {date:"2026-09-07",campaign:"PMAX-USA",device:"MOBILE",impr:1361,clicks:86,cost:5461,conv:6,value:6},
+        {date:"2026-09-08",campaign:"LEADS-US",device:"MOBILE",impr:1999,clicks:18,cost:17028,conv:0,value:0},
         {date:"2026-09-08",campaign:"PMAX-USA",device:"MOBILE",impr:3668,clicks:188,cost:14984,conv:7,value:7},
+        {date:"2026-09-09",campaign:"LEADS-US",device:"MOBILE",impr:312,clicks:20,cost:15866,conv:1,value:1},
         {date:"2026-09-09",campaign:"PMAX-USA",device:"MOBILE",impr:1137,clicks:63,cost:11962,conv:2,value:2},
+        {date:"2026-09-10",campaign:"LEADS-US",device:"MOBILE",impr:117,clicks:12,cost:14748,conv:2,value:2},
         {date:"2026-09-10",campaign:"PMAX-USA",device:"MOBILE",impr:1950,clicks:108,cost:8659,conv:10,value:10},
+        {date:"2026-09-11",campaign:"LEADS-US",device:"MOBILE",impr:80,clicks:16,cost:15667,conv:0,value:0},
         {date:"2026-09-11",campaign:"PMAX-USA",device:"MOBILE",impr:1383,clicks:119,cost:8960,conv:6,value:6},
+        {date:"2026-09-12",campaign:"LEADS-US",device:"MOBILE",impr:104,clicks:11,cost:10874,conv:2,value:2},
         {date:"2026-09-12",campaign:"PMAX-USA",device:"MOBILE",impr:1815,clicks:131,cost:9929,conv:11,value:11},
+        {date:"2026-09-13",campaign:"LEADS-US",device:"MOBILE",impr:116,clicks:17,cost:16777,conv:2,value:2},
         {date:"2026-09-13",campaign:"PMAX-USA",device:"MOBILE",impr:1811,clicks:144,cost:10191,conv:8,value:8},
+        {date:"2026-09-14",campaign:"LEADS-US",device:"MOBILE",impr:71,clicks:5,cost:7453,conv:1,value:1},
         {date:"2026-09-14",campaign:"PMAX-USA",device:"MOBILE",impr:2247,clicks:150,cost:10654,conv:7,value:7},
-        {date:"2026-09-15",campaign:"PMAX-USA",device:"MOBILE",impr:1908,clicks:142,cost:9993,conv:6,value:6},
+        {date:"2026-09-15",campaign:"LEADS-US",device:"MOBILE",impr:184,clicks:31,cost:26430,conv:8,value:8},
+        {date:"2026-09-15",campaign:"PMAX-USA",device:"MOBILE",impr:1908,clicks:142,cost:9993,conv:7,value:7},
+        {date:"2026-09-16",campaign:"LEADS-US",device:"MOBILE",impr:149,clicks:15,cost:13751,conv:0,value:0},
         {date:"2026-09-16",campaign:"PMAX-USA",device:"MOBILE",impr:1880,clicks:153,cost:10031,conv:8,value:8},
-        {date:"2026-09-17",campaign:"PMAX-USA",device:"MOBILE",impr:1077,clicks:92,cost:8850,conv:5,value:5},
-        {date:"2026-09-18",campaign:"PMAX-USA",device:"MOBILE",impr:2315,clicks:152,cost:10221,conv:8,value:8},
+        {date:"2026-09-17",campaign:"LEADS-US",device:"MOBILE",impr:146,clicks:15,cost:16656,conv:2,value:2},
+        {date:"2026-09-17",campaign:"PMAX-USA",device:"MOBILE",impr:1077,clicks:91,cost:8838,conv:6,value:6},
+        {date:"2026-09-18",campaign:"LEADS-US",device:"MOBILE",impr:127,clicks:14,cost:17942,conv:1,value:1},
+        {date:"2026-09-18",campaign:"PMAX-USA",device:"MOBILE",impr:2315,clicks:150,cost:10204,conv:10,value:10},
         {date:"2026-09-19",campaign:"LEADS-US",device:"MOBILE",impr:63,clicks:14,cost:16986,conv:3,value:3},
         {date:"2026-09-19",campaign:"PMAX-USA",device:"MOBILE",impr:2599,clicks:156,cost:9950,conv:8,value:8},
         {date:"2026-09-20",campaign:"LEADS-US",device:"MOBILE",impr:128,clicks:15,cost:20047,conv:3,value:3},
@@ -831,31 +839,58 @@ const DATA = {
         {date:"2026-09-22",campaign:"LEADS-US",device:"MOBILE",impr:110,clicks:16,cost:18416,conv:0,value:0},
         {date:"2026-09-22",campaign:"PMAX-USA",device:"MOBILE",impr:2585,clicks:143,cost:9215,conv:6,value:6},
         {date:"2026-09-23",campaign:"LEADS-US",device:"MOBILE",impr:127,clicks:14,cost:15470,conv:1,value:1},
-        {date:"2026-09-23",campaign:"PMAX-USA",device:"MOBILE",impr:2492,clicks:153,cost:10415,conv:8,value:8},
+        {date:"2026-09-23",campaign:"PMAX-USA",device:"MOBILE",impr:2549,clicks:153,cost:10415,conv:9,value:9},
         {date:"2026-09-24",campaign:"LEADS-US",device:"MOBILE",impr:49,clicks:8,cost:7758,conv:1,value:1},
-        {date:"2026-09-24",campaign:"PMAX-USA",device:"MOBILE",impr:2215,clicks:137,cost:9398,conv:6,value:6},
+        {date:"2026-09-24",campaign:"PMAX-USA",device:"MOBILE",impr:2271,clicks:137,cost:9398,conv:6,value:6},
         {date:"2026-09-25",campaign:"LEADS-US",device:"MOBILE",impr:59,clicks:10,cost:12259,conv:0,value:0},
-        {date:"2026-09-25",campaign:"PMAX-USA",device:"MOBILE",impr:1815,clicks:140,cost:9766,conv:7,value:7}
+        {date:"2026-09-25",campaign:"PMAX-USA",device:"MOBILE",impr:1854,clicks:141,cost:9860,conv:8,value:8},
+        {date:"2026-09-26",campaign:"LEADS-US",device:"MOBILE",impr:89,clicks:11,cost:9853,conv:0,value:0},
+        {date:"2026-09-26",campaign:"PMAX-USA",device:"MOBILE",impr:1870,clicks:135,cost:8792,conv:8,value:8},
+        {date:"2026-09-27",campaign:"LEADS-US",device:"MOBILE",impr:78,clicks:7,cost:7791,conv:0,value:0},
+        {date:"2026-09-27",campaign:"PMAX-USA",device:"MOBILE",impr:2963,clicks:174,cost:11040,conv:11,value:11},
+        {date:"2026-09-28",campaign:"LEADS-US",device:"MOBILE",impr:54,clicks:5,cost:5485,conv:0,value:0},
+        {date:"2026-09-28",campaign:"PMAX-USA",device:"MOBILE",impr:1319,clicks:88,cost:5757,conv:3,value:3},
+        {date:"2026-09-29",campaign:"PMAX-USA",device:"MOBILE",impr:40,clicks:4,cost:192,conv:0,value:0}
       ],
       funnel:[
-        {stage:"Impresiones",value:53802},
-        {stage:"Clics",value:3676},
-        {stage:"Conv. WA",value:223}
+        {stage:"Impresiones",value:60367},
+        {stage:"Clics",value:4101},
+        {stage:"Conv. WA",value:246}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:223, value:0, cpa:2819, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:246, value:0, cpa:2805, pct_total:73.4},
+        {action:"Chat · Secundaria", conv:89, value:0, cpa:0, pct_total:26.6}
       ],
       conv_by_campaign:[
-        {campaign:"LEADS-US",clicks:373,conv:44,cpa:8567,value:0,roas:0,conv_rate:11.80},
-        {campaign:"PMAX-USA",clicks:3303,conv:179,cpa:1408,value:0,roas:0,conv_rate:5.42}
+        {campaign:"LEADS-US",clicks:396,conv:44,cpa:9374,value:0,roas:0,conv_rate:11.11},
+        {campaign:"PMAX-USA",clicks:3705,conv:202,cpa:1374,value:0,roas:0,conv_rate:5.45}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:256, conv:24.0},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:118, conv:15.0},
+        {name:"Callouts · LEADS-US (8)", clicks:258, conv:14.0},
+        {name:"Fragmento estructurado · LEADS-US", clicks:1, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:382, conv:51.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:3764, conv:275.7},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:13, conv:5.0},
+        {name:"Logo del negocio · LEADS-US", clicks:393, conv:49.0},
+        {name:"Logo · PMAX-USA", clicks:3719, conv:266.7},
+        {name:"Imágenes de anuncio · LEADS-US (7)", clicks:57, conv:3.0}
+      ],
+      countries:[
+        {country:"España", impr:39166, clicks:2644, cost:322202, conv:151.7},
+        {country:"Italia", impr:16632, clicks:1098, cost:134797, conv:56.0},
+        {country:"Estados Unidos", impr:1465, clicks:185, cost:163051, conv:20.0},
+        {country:"Francia", impr:4517, clicks:233, cost:44780, conv:18.0},
+        {country:"Canadá", impr:326, clicks:27, cost:35947, conv:1.0},
+        {country:"Alemania", impr:218, clicks:11, cost:3729, conv:1.0}
+      ],
       ad_performance:[]
     },
     meta: {
       active: true,
       objective: "LEADS",
-      date_min: "2026-09-01", date_max: "2026-09-25",
+      date_min: "2026-09-01", date_max: "2026-09-30",
       benchmarks: { ctr_min:1, ctr_good:3, cvr_min:1, cvr_good:3, cpr_max:80000,
         leads_evento:{malo:2,promedio_min:3,promedio_max:7,bueno_min:8,bueno_max:12,excelente:15},
         conversaciones_wa:{malo:5,promedio_min:8,promedio_max:13,bueno_min:15,bueno_max:20,excelente:25},
@@ -866,22 +901,38 @@ const DATA = {
       followers_gained: null,
       page_likes: null,
       funnel_leads_detail:[
-        {stage:"Impresiones",   value:488852},
-        {stage:"Clics",         value:3705},
-        {stage:"CTR",           value:0.76, isRate:true, rateLabel:"0.76%"},
-        {stage:"Conversaciones",value:594},
-        {stage:"Leads form",    value:146},
-        {stage:"CPL form",      value:30929, isRate:true, rateLabel:"$30.9K"}
+        {stage:"Impresiones",   value:547631},
+        {stage:"Clics",         value:4411},
+        {stage:"CTR",           value:0.81, isRate:true, rateLabel:"0.81%"},
+        {stage:"Conversaciones",value:791},
+        {stage:"Leads form",    value:180},
+        {stage:"CPL form",      value:30065, isRate:true, rateLabel:"$30.1K"}
       ],
       conv_detail:[],
       calls_data:[],
       pageview_data:[],
       campaigns_conv:[
-        {campaign:"I - MSJ - IG",results:171,conversations:171,calls:0,events:0,cost:1830174,cpr:10703},
-        {campaign:"R - V",results:9,conversations:9,calls:0,events:0,cost:123793,cpr:13755},
-        {campaign:"V - MSJ - IG",results:165,conversations:165,calls:0,events:0,cost:986086,cpr:5976},
-        {campaign:"CP - FORM - FB50+",results:146,conversations:8,calls:0,events:146,cost:497646,cpr:3409},
-        {campaign:"V - MSJ - IG - #2",results:241,conversations:241,calls:0,events:0,cost:1077922,cpr:4473}
+        {campaign:"I - MSJ - IG",results:291,conversations:291,calls:0,events:0,cost:2213736,cpr:7607},
+        {campaign:"R - V",results:10,conversations:10,calls:0,events:0,cost:148473,cpr:14847},
+        {campaign:"V - MSJ - IG",results:204,conversations:204,calls:0,events:0,cost:1180232,cpr:5785},
+        {campaign:"CP - FORM - FB50+",results:180,conversations:15,calls:0,events:180,cost:599400,cpr:3330},
+        {campaign:"V - MSJ - IG - #2",results:271,conversations:271,calls:0,events:0,cost:1269917,cpr:4686}
+      ],
+      countries:[
+        {country:"México", impr:303469, clicks:1815, cost:2269991, results:367},
+        {country:"Brasil", impr:14287, clicks:428, cost:400103, results:163},
+        {country:"Panamá", impr:11642, clicks:210, cost:211122, results:95},
+        {country:"Costa Rica", impr:49619, clicks:398, cost:437910, results:81},
+        {country:"Rep. Dominicana", impr:11112, clicks:159, cost:156511, results:78},
+        {country:"Estados Unidos", impr:2555, clicks:143, cost:194457, results:58},
+        {country:"Puerto Rico", impr:1816, clicks:44, cost:52018, results:27},
+        {country:"Canadá", impr:1522, clicks:58, cost:67342, results:18},
+        {country:"Italia", impr:14510, clicks:137, cost:248803, results:13},
+        {country:"Francia", impr:4753, clicks:72, cost:98276, results:11},
+        {country:"Colombia", impr:51228, clicks:177, cost:148473, results:10},
+        {country:"España", impr:36556, clicks:344, cost:544842, results:9},
+        {country:"Portugal", impr:42111, clicks:347, cost:481604, results:5},
+        {country:"Otros (7 países)", impr:2451, clicks:79, cost:100306, results:21}
       ],
       daily_raw: [
         {date:"2026-09-01",campaign:"I - MSJ - IG",impr:13984,clicks:36,cost:76411,results:4,value:0,reach:12477,leads_form:0,conv_wa:4},
@@ -969,7 +1020,7 @@ const DATA = {
         {date:"2026-09-17",campaign:"V - MSJ - IG",impr:2272,clicks:22,cost:35793,results:8,value:0,reach:2121,leads_form:0,conv_wa:8},
         {date:"2026-09-17",campaign:"CP - FORM - FB50+",impr:605,clicks:22,cost:15630,results:5,value:0,reach:572,leads_form:4,conv_wa:1},
         {date:"2026-09-17",campaign:"V - MSJ - IG - #2",impr:2062,clicks:24,cost:35910,results:12,value:0,reach:1969,leads_form:0,conv_wa:12},
-        {date:"2026-09-18",campaign:"I - MSJ - IG",impr:4959,clicks:45,cost:72170,results:12,value:0,reach:4110,leads_form:0,conv_wa:12},
+        {date:"2026-09-18",campaign:"I - MSJ - IG",impr:4992,clicks:45,cost:72468,results:12,value:0,reach:4130,leads_form:0,conv_wa:12},
         {date:"2026-09-18",campaign:"R - V",impr:1706,clicks:3,cost:5098,results:0,value:0,reach:1706,leads_form:0,conv_wa:0},
         {date:"2026-09-18",campaign:"V - MSJ - IG",impr:2597,clicks:25,cost:42045,results:8,value:0,reach:2456,leads_form:0,conv_wa:8},
         {date:"2026-09-18",campaign:"CP - FORM - FB50+",impr:504,clicks:13,cost:19834,results:2,value:0,reach:476,leads_form:2,conv_wa:0},
@@ -1004,25 +1055,50 @@ const DATA = {
         {date:"2026-09-24",campaign:"V - MSJ - IG",impr:2058,clicks:18,cost:42866,results:7,value:0,reach:1947,leads_form:0,conv_wa:7},
         {date:"2026-09-24",campaign:"CP - FORM - FB50+",impr:559,clicks:15,cost:17062,results:1,value:0,reach:530,leads_form:1,conv_wa:0},
         {date:"2026-09-24",campaign:"V - MSJ - IG - #2",impr:2397,clicks:37,cost:45315,results:11,value:0,reach:2229,leads_form:0,conv_wa:11},
-        {date:"2026-09-25",campaign:"I - MSJ - IG",impr:6262,clicks:34,cost:66015,results:8,value:0,reach:5690,leads_form:0,conv_wa:8},
+        {date:"2026-09-25",campaign:"I - MSJ - IG",impr:6274,clicks:34,cost:66099,results:8,value:0,reach:5702,leads_form:0,conv_wa:8},
         {date:"2026-09-25",campaign:"R - V",impr:1193,clicks:2,cost:3897,results:0,value:0,reach:1192,leads_form:0,conv_wa:0},
         {date:"2026-09-25",campaign:"V - MSJ - IG",impr:1970,clicks:27,cost:41987,results:11,value:0,reach:1847,leads_form:0,conv_wa:11},
         {date:"2026-09-25",campaign:"CP - FORM - FB50+",impr:531,clicks:23,cost:20386,results:4,value:0,reach:505,leads_form:4,conv_wa:0},
         {date:"2026-09-25",campaign:"V - MSJ - IG - #2",impr:1942,clicks:26,cost:41063,results:10,value:0,reach:1804,leads_form:0,conv_wa:10},
+        {date:"2026-09-26",campaign:"I - MSJ - IG",impr:4963,clicks:32,cost:57871,results:12,value:0,reach:4611,leads_form:0,conv_wa:12},
+        {date:"2026-09-26",campaign:"R - V",impr:1212,clicks:4,cost:4508,results:1,value:0,reach:1199,leads_form:0,conv_wa:1},
+        {date:"2026-09-26",campaign:"V - MSJ - IG",impr:1284,clicks:18,cost:24739,results:9,value:0,reach:1199,leads_form:0,conv_wa:9},
+        {date:"2026-09-26",campaign:"CP - FORM - FB50+",impr:304,clicks:10,cost:12131,results:1,value:0,reach:289,leads_form:1,conv_wa:0},
+        {date:"2026-09-26",campaign:"V - MSJ - IG - #2",impr:955,clicks:10,cost:22037,results:1,value:0,reach:901,leads_form:0,conv_wa:1},
+        {date:"2026-09-27",campaign:"I - MSJ - IG",impr:7629,clicks:65,cost:88952,results:14,value:0,reach:7406,leads_form:0,conv_wa:14},
+        {date:"2026-09-27",campaign:"R - V",impr:1091,clicks:2,cost:4315,results:0,value:0,reach:1088,leads_form:0,conv_wa:0},
+        {date:"2026-09-27",campaign:"V - MSJ - IG",impr:2237,clicks:27,cost:50098,results:8,value:0,reach:2048,leads_form:0,conv_wa:8},
+        {date:"2026-09-27",campaign:"CP - FORM - FB50+",impr:742,clicks:45,cost:24461,results:11,value:0,reach:692,leads_form:11,conv_wa:0},
+        {date:"2026-09-27",campaign:"V - MSJ - IG - #2",impr:1733,clicks:25,cost:45320,results:6,value:0,reach:1557,leads_form:0,conv_wa:6},
+        {date:"2026-09-28",campaign:"I - MSJ - IG",impr:8427,clicks:103,cost:109956,results:44,value:0,reach:7796,leads_form:0,conv_wa:44},
+        {date:"2026-09-28",campaign:"R - V",impr:2118,clicks:4,cost:5712,results:0,value:0,reach:2081,leads_form:0,conv_wa:0},
+        {date:"2026-09-28",campaign:"V - MSJ - IG",impr:2260,clicks:34,cost:48498,results:12,value:0,reach:2103,leads_form:0,conv_wa:12},
+        {date:"2026-09-28",campaign:"CP - FORM - FB50+",impr:437,clicks:25,cost:18904,results:5,value:0,reach:409,leads_form:5,conv_wa:0},
+        {date:"2026-09-28",campaign:"V - MSJ - IG - #2",impr:2455,clicks:40,cost:55391,results:8,value:0,reach:2241,leads_form:0,conv_wa:8},
+        {date:"2026-09-29",campaign:"I - MSJ - IG",impr:6144,clicks:66,cost:73839,results:33,value:0,reach:5732,leads_form:0,conv_wa:33},
+        {date:"2026-09-29",campaign:"R - V",impr:1942,clicks:8,cost:5947,results:0,value:0,reach:1929,leads_form:0,conv_wa:0},
+        {date:"2026-09-29",campaign:"V - MSJ - IG",impr:1572,clicks:24,cost:35045,results:4,value:0,reach:1459,leads_form:0,conv_wa:4},
+        {date:"2026-09-29",campaign:"CP - FORM - FB50+",impr:456,clicks:27,cost:20407,results:10,value:0,reach:426,leads_form:10,conv_wa:0},
+        {date:"2026-09-29",campaign:"V - MSJ - IG - #2",impr:1777,clicks:24,cost:37187,results:6,value:0,reach:1653,leads_form:0,conv_wa:6},
+        {date:"2026-09-30",campaign:"I - MSJ - IG",impr:4176,clicks:35,cost:52860,results:17,value:0,reach:4064,leads_form:0,conv_wa:17},
+        {date:"2026-09-30",campaign:"R - V",impr:1255,clicks:6,cost:4198,results:0,value:0,reach:1238,leads_form:0,conv_wa:0},
+        {date:"2026-09-30",campaign:"V - MSJ - IG",impr:1491,clicks:16,cost:35766,results:6,value:0,reach:1410,leads_form:0,conv_wa:6},
+        {date:"2026-09-30",campaign:"CP - FORM - FB50+",impr:687,clicks:27,cost:25851,results:7,value:0,reach:657,leads_form:7,conv_wa:0},
+        {date:"2026-09-30",campaign:"V - MSJ - IG - #2",impr:1420,clicks:29,cost:32060,results:9,value:0,reach:1333,leads_form:0,conv_wa:9},
       ],
       funnel_ventas:[],
       funnel_leads:[
-        {stage:"Impresiones",   value:488852},
-        {stage:"Clics",         value:3705},
-        {stage:"Conversaciones",value:594},
-        {stage:"Leads form",    value:146}
+        {stage:"Impresiones",   value:547631},
+        {stage:"Clics",         value:4411},
+        {stage:"Conversaciones",value:791},
+        {stage:"Leads form",    value:180}
       ],
       funnel_wa:[
-        {stage:"Impresiones",    value:488852},
-        {stage:"Clics",          value:3705},
-        {stage:"Conv. Iniciadas",value:594},
-        {stage:"Nuevas Conv.",   value:594},
-        {stage:"Totales",        value:594}
+        {stage:"Impresiones",    value:547631},
+        {stage:"Clics",          value:4411},
+        {stage:"Conv. Iniciadas",value:791},
+        {stage:"Nuevas Conv.",   value:791},
+        {stage:"Totales",        value:791}
       ],
       ad_performance:[]
     }
@@ -1105,13 +1181,33 @@ const DATA = {
         {stage:"Conv. WA",value:218}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:218, value:0, cpa:3318, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:218, value:0, cpa:3318, pct_total:71.2},
+        {action:"Chat · Secundaria", conv:88, value:0, cpa:0, pct_total:28.8}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:365,conv:39,cpa:10941,value:0,roas:0,conv_rate:10.68},
         {campaign:"PMAX-USA",clicks:3765,conv:179,cpa:1657,value:0,roas:0,conv_rate:4.75}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:233, conv:38.2},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:109, conv:6.0},
+        {name:"Callouts · LEADS-US (8)", clicks:238, conv:22.5},
+        {name:"Fragmento estructurado · LEADS-US", clicks:2, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:243, conv:36.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:3791, conv:264.3},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:4, conv:1.0},
+        {name:"Logo del negocio · LEADS-US", clicks:266, conv:37.0},
+        {name:"Logo · PMAX-USA", clicks:3770, conv:262.3},
+        {name:"Imágenes de anuncio · LEADS-US (8)", clicks:83, conv:5.0}
+      ],
+      countries:[
+        {country:"España", impr:36979, clicks:1897, cost:270643, conv:113.3},
+        {country:"Italia", impr:36017, clicks:1573, cost:196658, conv:72.0},
+        {country:"Francia", impr:13813, clicks:504, cost:95491, conv:26.0},
+        {country:"Estados Unidos", impr:2450, clicks:124, cost:129428, conv:11.0},
+        {country:"Alemania", impr:1171, clicks:33, cost:14615, conv:1.0},
+        {country:"Canadá", impr:935, clicks:36, cost:20057, conv:0.0}
+      ],
       ad_performance:[]
     },
     meta: {
@@ -1167,6 +1263,19 @@ const DATA = {
         {campaign:"V - MSJ - IG",results:1,conversations:28,calls:0,events:1,cost:1147414,cpr:1147414},
         {campaign:"CP - FORM - FB50+",results:269,conversations:6,calls:0,events:269,cost:616818,cpr:2293},
         {campaign:"V - MSJ - IG - #2",results:119,conversations:119,calls:0,events:0,cost:1061589,cpr:8921}
+      ],
+      countries:[
+        {country:"México", impr:640937, clicks:2030, cost:3330288, results:259},
+        {country:"Estados Unidos", impr:3280, clicks:211, cost:197848, results:79},
+        {country:"Colombia", impr:76564, clicks:249, cost:199469, results:41},
+        {country:"Costa Rica", impr:79609, clicks:293, cost:454913, results:36},
+        {country:"Canadá", impr:1550, clicks:85, cost:53588, results:29},
+        {country:"Reino Unido", impr:1022, clicks:61, cost:33861, results:20},
+        {country:"Italia", impr:3300, clicks:80, cost:41403, results:15},
+        {country:"España", impr:62547, clicks:1361, cost:480908, results:14},
+        {country:"Portugal", impr:55424, clicks:1419, cost:372552, results:11},
+        {country:"Francia", impr:7098, clicks:210, cost:81197, results:10},
+        {country:"Otros (11 países)", impr:4564, clicks:125, cost:74273, results:27}
       ],
       daily_raw: [
         {date:"2026-08-01",campaign:"INT-MSJ-RTR-IG",impr:1497,clicks:9,cost:11468,results:3,value:0,reach:1479,leads_form:0,conv_wa:3},
@@ -1417,13 +1526,33 @@ const DATA = {
         {stage:"Conv. WA",value:182}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:182, value:0, cpa:3863, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:182, value:0, cpa:3863, pct_total:71.9},
+        {action:"Chat · Secundaria", conv:71, value:0, cpa:0, pct_total:28.1}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:306,conv:33,cpa:12877,value:0,roas:0,conv_rate:10.78},
         {campaign:"PMAX-USA",clicks:3270,conv:149,cpa:1866,value:0,roas:0,conv_rate:4.56}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:216, conv:14.0},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:67, conv:10.0},
+        {name:"Callouts · LEADS-US (8)", clicks:173, conv:19.0},
+        {name:"Fragmento estructurado · LEADS-US", clicks:4, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:270, conv:34.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:3501, conv:234.0},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:16, conv:3.0},
+        {name:"Logo del negocio · LEADS-US", clicks:290, conv:37.0},
+        {name:"Logo · PMAX-USA", clicks:3499, conv:234.0},
+        {name:"Imágenes de anuncio · LEADS-US (8)", clicks:93, conv:8.5}
+      ],
+      countries:[
+        {country:"España", impr:30894, clicks:1774, cost:299691, conv:83.0},
+        {country:"Italia", impr:24377, clicks:1047, cost:146036, conv:52.0},
+        {country:"Francia", impr:18616, clicks:815, cost:117389, conv:40.0},
+        {country:"Alemania", impr:1666, clicks:67, cost:19474, conv:7.0},
+        {country:"Estados Unidos", impr:1369, clicks:101, cost:100599, conv:7.0},
+        {country:"Canadá", impr:951, clicks:35, cost:19005, conv:3.0}
+      ],
       ad_performance:[]
     },
     meta: {
@@ -1599,13 +1728,33 @@ const DATA = {
         {stage:"Conv. WA",value:115}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:115, value:0, cpa:5972, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:115, value:0, cpa:5972, pct_total:68.5},
+        {action:"Chat · Secundaria", conv:53, value:0, cpa:0, pct_total:31.5}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:290,conv:27,cpa:15157,value:0,roas:0,conv_rate:9.31},
         {campaign:"PMAX-USA",clicks:2137,conv:88,cpa:3154,value:0,roas:0,conv_rate:4.12}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:256, conv:25.5},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:53, conv:0.0},
+        {name:"Callouts · LEADS-US (8)", clicks:161, conv:10.2},
+        {name:"Fragmento estructurado · LEADS-US", clicks:3, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:257, conv:30.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:2164, conv:143.0},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:17, conv:2.0},
+        {name:"Logo del negocio · LEADS-US", clicks:283, conv:31.0},
+        {name:"Logo · PMAX-USA", clicks:2160, conv:143.0},
+        {name:"Imágenes de anuncio · LEADS-US (8)", clicks:81, conv:4.5}
+      ],
+      countries:[
+        {country:"España", impr:26371, clicks:1214, cost:359214, conv:56.0},
+        {country:"Italia", impr:16389, clicks:596, cost:152770, conv:33.0},
+        {country:"Francia", impr:12687, clicks:531, cost:89476, conv:20.0},
+        {country:"Alemania", impr:1188, clicks:46, cost:30960, conv:3.0},
+        {country:"Canadá", impr:840, clicks:23, cost:9473, conv:2.0},
+        {country:"Estados Unidos", impr:1541, clicks:78, cost:68703, conv:2.0}
+      ],
       ad_performance:[]
     },
     meta: {
@@ -1743,13 +1892,33 @@ const DATA = {
         {stage:"Conv. WA",value:99}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:99, value:0, cpa:7235, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:99, value:0, cpa:7235, pct_total:73.3},
+        {action:"Chat · Secundaria", conv:36, value:0, cpa:0, pct_total:26.7}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:247,conv:12,cpa:36213,value:0,roas:0,conv_rate:4.86},
         {campaign:"PMAX-USA",clicks:2079,conv:87,cpa:3238,value:0,roas:0,conv_rate:4.18}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:213, conv:20.5},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:46, conv:5.0},
+        {name:"Callouts · LEADS-US (8)", clicks:69, conv:20.0},
+        {name:"Fragmento estructurado · LEADS-US", clicks:0, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:209, conv:22.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:2061, conv:132.0},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:16, conv:2.0},
+        {name:"Logo del negocio · LEADS-US", clicks:223, conv:22.0},
+        {name:"Logo · PMAX-USA", clicks:2057, conv:132.0},
+        {name:"Imágenes de anuncio · LEADS-US (8)", clicks:63, conv:0.0}
+      ],
+      countries:[
+        {country:"España", impr:18516, clicks:1054, cost:286640, conv:43.0},
+        {country:"Italia", impr:21358, clicks:814, cost:185507, conv:42.0},
+        {country:"Francia", impr:7503, clicks:299, cost:74992, conv:11.0},
+        {country:"Estados Unidos", impr:1524, clicks:94, cost:131835, conv:3.0},
+        {country:"Canadá", impr:1018, clicks:34, cost:31617, conv:2.0},
+        {country:"Alemania", impr:1016, clicks:30, cost:5772, conv:1.0}
+      ],
       ad_performance:[]
     },
     meta: {
@@ -1817,13 +1986,33 @@ const DATA = {
         {stage:"Conv. WA",value:105}
       ],
       conv_actions:[
-        {action:"WA (WhatsApp)", conv:105, value:0, cpa:6412, pct_total:100}
+        {action:"WA (WhatsApp) · Principal", conv:105, value:0, cpa:6412, pct_total:70.0},
+        {action:"Chat · Secundaria", conv:45, value:0, cpa:0, pct_total:30.0}
       ],
       conv_by_campaign:[
         {campaign:"LEADS-US",clicks:307,conv:18,cpa:21974,value:0,roas:0,conv_rate:5.86},
         {campaign:"PMAX-USA",clicks:2104,conv:87,cpa:3192,value:0,roas:0,conv_rate:4.13}
       ],
-      extensions:[],
+      extensions:[
+        {name:"Sitelinks · LEADS-US (3)", clicks:309, conv:33.5},
+        {name:"Sitelinks · PMAX-USA (3)", clicks:31, conv:6.0},
+        {name:"Callouts · LEADS-US (8)", clicks:171, conv:17.0},
+        {name:"Fragmento estructurado · LEADS-US", clicks:1, conv:0.0},
+        {name:"Nombre del negocio \"BANANA TRAVEL\" · LEADS-US", clicks:269, conv:26.0},
+        {name:"Nombre del negocio \"Bana Travel\" · PMAX-USA", clicks:2090, conv:135.0},
+        {name:"Nombre del negocio \"bananatravelco.com\" · PMAX-USA", clicks:12, conv:0.0},
+        {name:"Logo del negocio · LEADS-US", clicks:287, conv:26.0},
+        {name:"Logo · PMAX-USA", clicks:2085, conv:135.0},
+        {name:"Imágenes de anuncio · LEADS-US (8)", clicks:69, conv:1.0}
+      ],
+      countries:[
+        {country:"Italia", impr:21860, clicks:800, cost:175211, conv:34.0},
+        {country:"Francia", impr:21940, clicks:699, cost:133880, conv:33.0},
+        {country:"España", impr:15081, clicks:706, cost:223284, conv:27.0},
+        {country:"Alemania", impr:2581, clicks:78, cost:18387, conv:6.0},
+        {country:"Estados Unidos", impr:1590, clicks:100, cost:102927, conv:4.0},
+        {country:"Canadá", impr:957, clicks:28, cost:19861, conv:1.0}
+      ],
       ad_performance:[]
     },
     meta: {
@@ -2038,7 +2227,7 @@ function mkBar(id,labels,datasets,opts={}){
 }
 function mkScatter(id,data,color,labels,yLabel){
   destroyC(id);
-  CHARTS[id]=new Chart(document.getElementById(id),{type:'scatter',data:{datasets:[{data:data.map((v,i)=>({x:i,y:v})),backgroundColor:color+'99',borderColor:color,pointRadius:5,pointHoverRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>`${labels[c.raw.x]||''}: ${c.raw.y}`}}},scales:{x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},callback:(_,i)=>labels[i]?.slice(5)||''},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'},title:yLabel?{display:true,text:yLabel,color:'#A8A598',font:{size:10}}:undefined}}}});
+  CHARTS[id]=new Chart(document.getElementById(id),{type:'scatter',data:{datasets:[{data:data.map((v,i)=>({x:i,y:v})),backgroundColor:color+'99',borderColor:color,pointRadius:5,pointHoverRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>`${labels[c.raw.x]||''}: ${c.raw.y}`}}},scales:{x:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},stepSize:Math.max(1,Math.ceil(labels.length/8)),callback:v=>{const l=labels[Math.round(v)];return l?(l.length>5?l.slice(5):l):''}},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'},title:yLabel?{display:true,text:yLabel,color:'#A8A598',font:{size:10}}:undefined}}}});
 }
 
 // ─── FUNNEL ──────────────────────────────────────
@@ -2664,7 +2853,9 @@ function renderGoogle(){
       borderColor:['#E8C046','#199477','#CF343A','#7B9CCC'][i%4],pointRadius:8,pointHoverRadius:11}))},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}}},tooltip:TP()},
     scales:{x:{title:{display:true,text:'Clics',color:'#A8A598',font:{size:10}},ticks:{color:'#A8A598',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}},
-    y:{title:{display:true,text:'CTR %',color:'#A8A598',font:{size:10}},ticks:{color:'#A8A598',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}}); 
+    y:{title:{display:true,text:'CTR %',color:'#A8A598',font:{size:10}},ticks:{color:'#A8A598',font:{size:10},callback:v=>(+(+v).toFixed(2))+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}}); 
+
+  renderGeoGoogle(ch);
 
   // ── 07. Tablas conversiones + extensiones ─────
   // Ocultar secciones vacías
@@ -2834,6 +3025,35 @@ function renderDiagnosisGoogle(containerId, stages){
     <div class="diag-text">${proto.b}</div></div>
     <div class="diag-box ok"><div class="diag-title">✓ ETAPAS SALUDABLES</div>
     <div class="diag-text">Las etapas con retención superior al 60% están funcionando. Enfoca la optimización en la fuga principal antes de ajustar lo que ya funciona.</div></div>`;
+}
+
+// ── PAÍSES (Google y Meta) ────────────────────────
+function renderGeoGoogle(ch){ renderGeoBars(ch,{box:'g-geo',a:'g-geoConv',b:'g-geoShare',key:'conv',label:'Conversiones',cpaLabel:'CPA'}); }
+function renderGeoMeta(ch){ renderGeoBars(ch,{box:'m-geo',a:'m-geoRes',b:'m-geoShare',key:'results',label:'Resultados',cpaLabel:'CPR'}); }
+function renderGeoBars(ch,o){
+  const box=document.getElementById(o.box); if(!box) return;
+  const all=(ch.countries||[]).slice();
+  const cs=all.filter(c=>!/^Otros/.test(c.country)).sort((a,b)=>b[o.key]-a[o.key]).concat(all.filter(c=>/^Otros/.test(c.country)));
+  destroyC(o.a); destroyC(o.b);
+  if(!cs.length){ box.style.display='none'; return; }
+  box.style.display='';
+  const K=o.key, totV=cs.reduce((a,c)=>a+c[K],0)||1, totI=cs.reduce((a,c)=>a+c.cost,0)||1;
+  const names=cs.map(c=>c.country);
+  const axis={ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}},grid:{color:'rgba(255,255,255,0.04)'}};
+  const legend={labels:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}}};
+  const cpaOf=c=>c[K]>0?fmtM(c.cost/c[K]):'—';
+  CHARTS[o.a]=new Chart(document.getElementById(o.a),{type:'bar',
+    data:{labels:names,datasets:[{label:o.label,data:cs.map(c=>c[K]),backgroundColor:'#199477AA',borderColor:'#199477',borderWidth:1,borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:x=>{const c=cs[x.dataIndex];return[`${o.label}: ${c[K]} (${(c[K]/totV*100).toFixed(1)}%)`,`Clics: ${fmt(c.clicks)} · Impr: ${fmt(c.impr)}`,`Inversión: ${fmtM(c.cost)} · ${o.cpaLabel}: ${cpaOf(c)}`];}}}},
+      scales:{x:{...axis,beginAtZero:true,title:{display:true,text:o.label,color:'#A8A598',font:{size:10}}},y:{...axis,grid:{display:false}}}}});
+  CHARTS[o.b]=new Chart(document.getElementById(o.b),{type:'bar',
+    data:{labels:names,datasets:[
+      {label:'% inversión',data:cs.map(c=>+(c.cost/totI*100).toFixed(1)),backgroundColor:'#E8C046AA',borderColor:'#E8C046',borderWidth:1,borderRadius:3},
+      {label:'% '+o.label.toLowerCase(),data:cs.map(c=>+(c[K]/totV*100).toFixed(1)),backgroundColor:'#199477AA',borderColor:'#199477',borderWidth:1,borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend,tooltip:{...TP(),callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.x}%`}}},
+      scales:{x:{...axis,beginAtZero:true,ticks:{...axis.ticks,callback:v=>v+'%'}},y:{...axis,grid:{display:false}}}}});
 }
 
 // ── TABLAS CONVERSIONES + EXTENSIONES ─────────────
@@ -3050,6 +3270,8 @@ function renderMeta(){
     const datesC=Object.keys(byDateC).sort();
     mkScatter('m-scatterEvents',datesC.map(d=>byDateC[d]),'#199477',datesC,'Conversaciones WA');
   }
+
+  renderGeoMeta(ch);
 
   // ── 07. Tablas retención + MoM ───────────────────
   renderMetaConvTables(ch,obj);
@@ -3846,6 +4068,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 }
 
 /* CHARTS */
+.charts-2col[style*="display: none"],.charts-3col[style*="display: none"],.charts-2col[style*="display:none"]{display:none!important}
 .charts-2col,.charts-3col{
   display:grid!important;
   grid-template-columns:repeat(auto-fit,minmax(clamp(240px,45%,400px),1fr))!important;
