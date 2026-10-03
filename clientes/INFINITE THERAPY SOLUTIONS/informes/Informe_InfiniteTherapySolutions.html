@@ -614,6 +614,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <div class="chart-host"><div class="chart-title">Llamadas realizadas</div><div style="height:200px"><canvas id="m-histCalls"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Visitas web desde redes</div><div style="height:200px"><canvas id="m-histVisits"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Costo por llamada (USD)</div><div style="height:200px"><canvas id="m-histCpr"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title">Alcance en Meta (personas alcanzadas)</div><div style="height:200px"><canvas id="m-histReach"></canvas></div></div>
     </div>
     <div style="font-size:11px;color:var(--ink-dim);margin-top:10px;font-family:var(--mono)" id="m-hist-note"></div>
   </div>
@@ -2199,8 +2200,10 @@ function renderMetaHist(){
   mkBar('m-histCalls',names,[{label:'Llamadas',data:calls,backgroundColor:col,borderColor:bd,borderWidth:1.5,borderRadius:3}]);
   mkBar('m-histVisits',names,[{label:'Visitas web',data:vis,backgroundColor:'rgba(25,148,119,.5)',borderColor:'#199477',borderWidth:1.5,borderRadius:3}]);
   mkBar('m-histCpr',names,[{label:'Costo por llamada',data:cpr,backgroundColor:'rgba(207,52,58,.45)',borderColor:'#CF343A',borderWidth:1.5,borderRadius:3}]);
+  const reach=mc.map(c=>{const t=c.totals&&c.totals.reach;if(t)return t;return (c.daily_raw||[]).reduce((x,r)=>x+(r.reach||0),0);});
+  mkBar('m-histReach',names,[{label:'Alcance',data:reach,backgroundColor:'rgba(232,192,70,.45)',borderColor:'#E8C046',borderWidth:1.5,borderRadius:3}]);
   const n=document.getElementById('m-hist-note');
-  if(n) n.textContent='Costo por llamada = inversión de la campaña CP - CALL - DIRECT ÷ llamadas. Fuente: export diario de Meta Ads; llamadas y visitas web de informes TheGreyBee y Notion.';
+  if(n) n.textContent='Costo por llamada = inversión de la campaña CP - CALL - DIRECT ÷ llamadas. Fuente: export diario de Meta Ads; llamadas y visitas web de informes TheGreyBee y Notion. Alcance = suma del alcance diario (mayor al alcance único).';
 }
 
 // ── Meta · objetivo LLAMADAS: reemplaza las tarjetas que dependían de "resultados" diarios por métricas funcionales ──
