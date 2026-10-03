@@ -2182,6 +2182,62 @@ function renderMetaHist(){
   if(n) n.textContent='Costo por llamada = inversión de la campaña CP - CALL - DIRECT ÷ llamadas. Fuente: export diario de Meta Ads; llamadas y visitas web de informes TheGreyBee y Notion.';
 }
 
+// ── Meta · objetivo LLAMADAS: reemplaza las tarjetas que dependían de "resultados" diarios por métricas funcionales ──
+function renderMetaLlamadas(ch,rows){
+  const B=ch.benchmarks||{};
+  const sec=n=>[...document.querySelectorAll('#panel-meta .section')].find(s=>((s.querySelector('.section-num')||{}).textContent||'').trim()===n);
+  const setTitle=(id,t)=>{const el=document.getElementById(id);const ti=el&&el.closest('.chart-host')&&el.closest('.chart-host').querySelector('.chart-title');if(ti)ti.textContent=t;};
+  const sub=(r,k)=>r.reduce((s,x)=>s+(x[k]||0),0);
+  const num=v=>(v||0);
+  // semanas
+  const wk={};
+  rows.forEach(d=>{const w='S'+Math.ceil(parseInt(String(d.date).slice(8,10),10)/7);const a=wk[w]||(wk[w]={w,impr:0,clicks:0,reach:0,inter:0,cost:0});a.impr+=num(d.impr);a.clicks+=num(d.clicks);a.reach+=num(d.reach);a.inter+=num(d.interacciones);a.cost+=num(d.cost);});
+  const W=Object.values(wk).sort((a,b)=>parseInt(a.w.slice(1),10)-parseInt(b.w.slice(1),10));
+  const wl=W.map(x=>x.w);
+  const bar=(id,label,data,color)=>mkBar(id,wl,[{label,data,backgroundColor:color+'8C',borderColor:color,borderWidth:1.5,borderRadius:3}]);
+  const line=(id,labels,datasets,yFmt)=>{destroyC(id);const el=document.getElementById(id);if(!el)return;CHARTS[id]=new Chart(el,{type:'line',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:datasets.length>1,labels:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10}}},tooltip:TP()},scales:{x:AXES().x,y:{beginAtZero:true,ticks:{color:'#A8A598',font:{family:"'JetBrains Mono'",size:10},callback:yFmt||undefined},grid:{color:'rgba(255,255,255,0.04)'}}}}});};
+  const ds=(label,data,color,fill)=>({label,data,borderColor:color,backgroundColor:color+(fill?'22':'00'),fill:!!fill,tension:.35,pointRadius:2.5,pointHoverRadius:5,borderWidth:2});
+  // 02 · semanal
+  setTitle('m-chartWk2','Alcance por semana');            bar('m-chartWk2','Alcance',W.map(x=>x.reach),'#1877F2');
+  setTitle('m-chartWk3','Interacciones por semana');       bar('m-chartWk3','Interacciones',W.map(x=>x.inter),'#E8C046');
+  const t4=document.getElementById('m-chartWk4-title'); if(t4)t4.textContent='CTR por semana (%)';
+  line('m-chartWk4',wl,[ds('CTR %',W.map(x=>x.impr?+(x.clicks/x.impr*100).toFixed(2):0),'#199477',true)],v=>v+'%');
+  // 06 · diario
+  const days={};
+  rows.forEach(d=>{const a=days[d.date]||(days[d.date]={d:d.date,impr:0,clicks:0,reach:0,inter:0,cost:0});a.impr+=num(d.impr);a.clicks+=num(d.clicks);a.reach+=num(d.reach);a.inter+=num(d.interacciones);a.cost+=num(d.cost);});
+  const D=Object.values(days).sort((a,b)=>a.d<b.d?-1:1); const dl=D.map(x=>x.d.slice(5));
+  const s6=sec('06'); if(s6){const t=s6.querySelector('.section-title'); if(t)t.textContent='Métricas diarias · Interacciones, alcance y CTR'; const ex=document.getElementById('m-scatter-extra'); if(ex)ex.style.display='';}
+  setTitle('m-scatterRes','Interacciones en el tiempo');   line('m-scatterRes',dl,[ds('Interacciones',D.map(x=>x.inter),'#E8C046',true)]);
+  setTitle('m-scatterCPR','CTR en el tiempo (%)');         line('m-scatterCPR',dl,[ds('CTR %',D.map(x=>x.impr?+(x.clicks/x.impr*100).toFixed(2):0),'#199477',true)],v=>v+'%');
+  setTitle('m-scatterCalls','Alcance en el tiempo');       line('m-scatterCalls',dl,[ds('Alcance',D.map(x=>x.reach),'#1877F2',true)]);
+  setTitle('m-scatterEvents','Inversión diaria (USD)');    line('m-scatterEvents',dl,[ds('Inversión',D.map(x=>+x.cost.toFixed(2)),'#CF343A',true)],v=>'$'+v);
+  // 08 · tabla de campañas
+  const cm={};
+  rows.forEach(d=>{const a=cm[d.campaign]||(cm[d.campaign]={name:d.campaign,impr:0,clicks:0,reach:0,inter:0,cost:0});a.impr+=num(d.impr);a.clicks+=num(d.clicks);a.reach+=num(d.reach);a.inter+=num(d.interacciones);a.cost+=num(d.cost);});
+  const C=Object.values(cm).sort((a,b)=>b.cost-a.cost);
+  const s8=sec('08'); if(s8){const t=s8.querySelector('.section-title'); if(t)t.textContent='Campañas · Alcance, CTR e interacciones';}
+  const th=document.querySelector('#m-campTable thead tr');
+  if(th) th.innerHTML=['Campaña','Inversión','Alcance','Impres.','CTR','Clics','Interacciones','Costo/interacción'].map((n,i)=>`<th onclick="sortTable('m-campTable',${i})">${n} ⇅</th>`).join('');
+  const ctrCls=v=>v>=(B.ctr_good||3)?'var(--teal)':v>=(B.ctr_min||1.5)?'var(--accent)':'var(--red)';
+  const tb=document.getElementById('m-campBody');
+  if(tb) tb.innerHTML=C.map(c=>{const ctr=c.impr?c.clicks/c.impr*100:0;return `<tr><td>${c.name}</td><td>${fmtM(c.cost)}</td><td>${fmt(c.reach)}</td><td>${fmt(c.impr)}</td><td style="color:${ctrCls(ctr)}">${fmtP(ctr)}</td><td>${fmt(c.clicks)}</td><td>${fmt(c.inter)}</td><td>${c.inter?'$'+(c.cost/c.inter).toFixed(3):'—'}</td></tr>`;}).join('');
+  const xe=document.getElementById('m-camp-extra'); if(xe)xe.innerHTML='';
+  // 09 · interacciones por campaña en el tiempo
+  const s9=sec('09'); if(s9){const t=s9.querySelector('.section-title'); if(t)t.textContent='Interacciones por campaña · Serie temporal';}
+  setTitle('m-cprSeries','Interacciones diarias por campaña');
+  const cn=C.map(c=>c.name); const pal=['#1877F2','#199477','#E8C046','#CF343A'];
+  const byDay={}; rows.forEach(d=>{(byDay[d.date]||(byDay[d.date]={}))[d.campaign]=(byDay[d.date][d.campaign]||0)+num(d.interacciones);});
+  const days2=Object.keys(byDay).sort();
+  line('m-cprSeries',days2.map(x=>x.slice(5)),cn.map((n,i)=>ds(n,days2.map(x=>byDay[x][n]||0),pal[i%4],false)));
+  // 11 · recomendaciones por CTR / costo por interacción
+  const rc=document.getElementById('m-reco'); const rb=document.getElementById('m-benchmarks'); if(rb)rb.style.display='none';
+  if(rc){rc.style.display='';rc.innerHTML=C.map(c=>{
+    const ctr=c.impr?c.clicks/c.impr*100:0, cpi=c.inter?c.cost/c.inter:0;
+    const st=ctr>=(B.ctr_good||3)?'escalar':ctr>=(B.ctr_min||1.5)?'monitorear':'pausar';
+    const why={escalar:`CTR ${fmtP(ctr)} supera el objetivo (${B.ctr_good||3}%). Buen candidato para más presupuesto.`,monitorear:`CTR ${fmtP(ctr)} entre ${B.ctr_min||1.5}% y ${B.ctr_good||3}%. Probar nuevos creativos antes de escalar.`,pausar:`CTR ${fmtP(ctr)} por debajo de ${B.ctr_min||1.5}%. Revisar creativo y audiencia.`}[st];
+    return `<div class="reco-card ${st}"><div class="reco-tag">⬤ ${st.toUpperCase()}</div><div class="reco-name">${c.name}</div><div class="reco-reason">${why}</div><div class="reco-metrics"><div class="reco-metric">CTR <span>${fmtP(ctr)}</span></div><div class="reco-metric">Alcance <span>${fmt(c.reach)}</span></div><div class="reco-metric">Interacciones <span>${fmt(c.inter)}</span></div><div class="reco-metric">$/interacción <span>${cpi?'$'+cpi.toFixed(3):'—'}</span></div></div></div>`;}).join('');}
+}
+
 function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
   renderNotifications('m',ch.notifications||[]);
@@ -2352,6 +2408,7 @@ function renderMeta(){
   const _nz=a=>ch.summary_only?a.filter(x=>x.curr):a;
   renderMoM('m-mom',_nz(_momItems));
   renderMoMCost('m-mom-cost',_nz(_momCost));
+  if(obj==='LLAMADAS') renderMetaLlamadas(ch,rows);
 }
 
 // ── FUNNEL LEADS (con etapas de ratio) ───────────────
@@ -3003,7 +3060,7 @@ function renderChannel(key){
     document.querySelectorAll('#panel-meta .section').forEach(s=>{
       const n=(s.querySelector('.section-num')||{}).textContent;
       if(so&&n&&!keep.includes(n.trim())) s.style.display='none';
-      else if(noFun&&n&&['03','04','05'].includes(n.trim())) s.style.display='none';
+      else if(noFun&&n&&['03','04','05','07','10'].includes(n.trim())) s.style.display='none';
       else if(s.dataset.soHidden!==undefined||s.style.display==='none'&&!so) s.style.display='';
     });
   }
