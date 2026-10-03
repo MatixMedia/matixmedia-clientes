@@ -2140,7 +2140,13 @@ function renderMeta(){
   const ch=DATA.channels.meta; if(!ch)return;
   renderNotifications('m',ch.notifications||[]);
   const rows=getFiltered('meta');
-  const totals=agg(rows);
+  // Si no hay daily_raw, usar ch.totals como fallback (datos de seguimiento Notion)
+  const _agg=agg(rows);
+  const totals=(rows.length===0&&ch.totals)?Object.assign({},_agg,ch.totals):_agg;
+  // Inyectar métricas custom al objeto totals para que renderKPIs las tenga
+  if(ch.llamadas_realizadas!=null) totals.llamadas_realizadas=ch.llamadas_realizadas;
+  if(ch.visitas_web!=null) totals.visitas_web=ch.visitas_web;
+  if(ch.interacciones!=null) totals.interacciones=ch.interacciones;
   const P=ch.prev||{};
   const B=ch.benchmarks||{};
   const obj=ch.objective||'VENTAS';
