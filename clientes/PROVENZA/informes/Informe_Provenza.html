@@ -790,6 +790,93 @@ const DATA = {
     },
     "meta": {
      "active": true,
+     "daily_extra": [
+      {
+       "date": "2026-09-14",
+       "interactions": 497,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-15",
+       "interactions": 785,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-16",
+       "interactions": 746,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-17",
+       "interactions": 549,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-18",
+       "interactions": 580,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-19",
+       "interactions": 786,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-20",
+       "interactions": 905,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-21",
+       "interactions": 560,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-22",
+       "interactions": 506,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-23",
+       "interactions": 632,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-24",
+       "interactions": 787,
+       "checkout_starts": 5
+      },
+      {
+       "date": "2026-09-25",
+       "interactions": 1050,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-26",
+       "interactions": 921,
+       "checkout_starts": 3
+      },
+      {
+       "date": "2026-09-27",
+       "interactions": 1270,
+       "checkout_starts": 2
+      },
+      {
+       "date": "2026-09-28",
+       "interactions": 1115,
+       "checkout_starts": 0
+      },
+      {
+       "date": "2026-09-29",
+       "interactions": 1089,
+       "checkout_starts": 2
+      },
+      {
+       "date": "2026-09-30",
+       "interactions": 1162,
+       "checkout_starts": 3
+      }
+     ],
      "objective": "LEADS",
      "date_min": "2026-09-14",
      "date_max": "2026-09-30",
@@ -1215,8 +1302,26 @@ const DATA = {
   }
  ]
 };
-// FIRST-TAB FIX — abre en el primer canal activo cuando google está desactivado
-document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){try{var k=Object.keys(DATA.channels).find(function(x){return DATA.channels[x]&&DATA.channels[x].active});if(k)switchChannel(k);}catch(e){console.error(e)}},0)});
+// FIRST-TAB FIX + gráficos de interacciones y finalizaciones de compra en el tiempo
+document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){try{
+  var _rm=window.renderMeta;
+  window.renderMeta=function(){
+    _rm.apply(this,arguments);
+    try{
+      var ch=DATA.channels.meta,de=(ch&&ch.daily_extra)||[];if(!de.length)return;
+      de=de.filter(function(d){return (!currentFrom||d.date>=currentFrom)&&(!currentTo||d.date<=currentTo)});
+      var ex=document.getElementById('m-scatter-extra');if(ex)ex.style.display='grid';
+      var tt=document.querySelectorAll('#m-scatterCalls,#m-scatterEvents');
+      var t1=document.getElementById('m-scatterCalls').closest('.chart-host').querySelector('.chart-title');
+      var t2=document.getElementById('m-scatterEvents').closest('.chart-host').querySelector('.chart-title');
+      t1.textContent='Interacciones con la publicación en el tiempo';t2.textContent='Inicio de finalización de compra en el tiempo';
+      var lb=de.map(function(d){return d.date.slice(5)});
+      mkScatter('m-scatterCalls',de.map(function(d){return d.interactions}),'#A78BFA',lb,'Interacciones');
+      mkScatter('m-scatterEvents',de.map(function(d){return d.checkout_starts}),'#69C9D0',lb,'Inicio de finalización de compra');
+    }catch(e){console.error(e)}
+  };
+  var k=Object.keys(DATA.channels).find(function(x){return DATA.channels[x]&&DATA.channels[x].active});if(k)switchChannel(k);
+}catch(e){console.error(e)}},0)});
 // ═══════════════════════════════════════════════
 // FIN DATA
 // ═══════════════════════════════════════════════
