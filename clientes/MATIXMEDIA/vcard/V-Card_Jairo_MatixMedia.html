@@ -177,6 +177,12 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
   var ENDPOINT='https://script.google.com/macros/s/AKfycbz_lxflYGsH_o4S1jdhftGCuyCeopPCDN98WCnxFPm1V7Wo8-Yy6V9lfXqFOvLY6uHs/exec'; /* URL de la app web de Apps Script (solo versión en tu dominio) */
   var WA='573104982100';
   function v(id){return (document.getElementById(id).value||'').trim()}
+  function post(d){if(ENDPOINT){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)})['catch'](function(){})}catch(e){}}}
+  var leadId=Date.now().toString(36)+Math.random().toString(36).slice(2,7), waMarcado=false;
+  function marcarWA(){ if(waMarcado) return; waMarcado=true; post({accion:'wa',id:leadId}); }
+  var waForm=document.getElementById('lead-wa'); if(waForm) waForm.addEventListener('click',marcarWA);
+  var waTop=document.getElementById('top-wa');
+  if(waTop) waTop.addEventListener('click',function(){ if(!waMarcado&&!v('lead-nombre')) post({accion:'clic',id:'c'+leadId,origen:'Botón Escríbeme (sin formulario)'}); else marcarWA(); });
   var tog=document.getElementById('lead-toggle'), bodyEl=document.getElementById('lead-body');
   tog.addEventListener('click',function(){
     var open=tog.getAttribute('aria-expanded')==='true';
@@ -192,8 +198,8 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo)){err.textContent='Revisa el correo, parece incompleto.';return}
     if(tel.replace(/\D/g,'').length<7){err.textContent='Revisa el teléfono, parece incompleto.';return}
     if(!document.getElementById('lead-ok').checked){err.textContent='Marca la autorización para que pueda contactarte.';return}
-    var data={nombre:nombre,telefono:tel,correo:correo,empresa:empresa,cargo:cargo,interes:interes,origen:'Tarjeta virtual',fecha:new Date().toISOString()};
-    if(ENDPOINT){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})['catch'](function(){})}catch(e){}}
+    var data={id:leadId,nombre:nombre,telefono:tel,correo:correo,empresa:empresa,cargo:cargo,interes:interes,origen:'Tarjeta virtual',fecha:new Date().toISOString()};
+    post(data);
     var first=nombre.split(/\s+/)[0];
     document.getElementById('lead-saludo').textContent='Hola '+first+', gracias por escribirme. Te contactaré luego para hablar de '+interes+'.';
     var msg='Hola Jairo, soy '+nombre+(cargo?', '+cargo:'')+(empresa?' de '+empresa:'')+'. Me interesa '+interes+'. Mi correo es '+correo+' y mi teléfono '+tel+'.';
@@ -201,7 +207,7 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
     form.hidden=true; document.getElementById('lead-sub').hidden=true; document.getElementById('lead-title').textContent='Gracias, '+first;
     var t=document.getElementById('lead-thanks'); t.hidden=false;
     try{t.scrollIntoView({block:'nearest'})}catch(e){}
-    try{window.open(a.href,'_blank')}catch(e){}
+    try{var w=window.open(a.href,'_blank'); if(w) marcarWA();}catch(e){}
   });
 })();
 </script>
