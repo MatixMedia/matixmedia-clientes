@@ -6,7 +6,7 @@
 :root{--bg:#04050A;--card:#0C0D13;--line:#1E1F28;--ink:#FDFCF7;--ink-2:#C8C7C0;--muted:#8D8B80;--gold:#E8C046;--green:#22B088;--red:#CF343A;--paper:#FDFCF7;
   --glow:radial-gradient(520px 420px at 100% 0%,rgba(25,148,119,.36),transparent 70%),radial-gradient(520px 420px at 0% 100%,rgba(207,52,58,.32),transparent 70%);--display:'Fraunces',Georgia,serif;--body:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace;color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;margin:0;padding-inline:16px;padding-block:12px 32px;
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;margin:0;padding-inline:16px;padding-block:40px 32px;
   background-image:var(--glow)}
 .sheet{max-width:440px;margin-inline:auto;display:flex;flex-direction:column;gap:18px}
 .top{display:flex;align-items:center;justify-content:center;gap:12px}
@@ -52,7 +52,7 @@ box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 1px 0 0 rgba(255,255,255,.0
 .qr p{margin:0;white-space:nowrap;font-size:clamp(10px,4cqw,15px);color:var(--ink-2)}
 .qr p b{display:block;font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 @media (max-height:760px){
-body{padding-block:clamp(8px,1.4svh,12px) 32px}
+body{padding-block:clamp(22px,4.2svh,40px) 32px}
 .sheet{gap:clamp(10px,2.2svh,18px)}
 .photo{width:clamp(112px,19svh,172px);height:clamp(112px,19svh,172px);margin-block:clamp(14px,2.6svh,24px) clamp(6px,1.4svh,12px)}
 h1{font-size:clamp(36px,min(13vw,6.4svh),54px)}
