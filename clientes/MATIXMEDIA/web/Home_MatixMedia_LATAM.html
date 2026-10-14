@@ -205,7 +205,12 @@ p{margin:0}
 .offer .note{color:var(--muted);font-size:12px;line-height:1.5}
 @media (max-width:920px){
   .slide{grid-template-columns:1fr;gap:36px}
-  .offer{max-width:520px}
+}
+/* Tablet: la tarjeta ocupa todo el ancho (como en celular) y los 4 puntos van en 2 columnas */
+@media (min-width:641px) and (max-width:920px){
+  .offer{max-width:none}
+  .offer .vals{grid-template-columns:1fr 1fr;column-gap:24px;row-gap:14px}
+  .offer .vals li{align-content:start}
 }
 
 /* Marcas */
