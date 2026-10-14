@@ -452,6 +452,14 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .slide.head{grid-template-columns:minmax(0,1fr);padding-block:clamp(40px,6vw,84px) var(--gap-sep)}
 .slide.head h1.h1-svc{max-width:22ch}
 .slide.head .lede{max-width:68ch;font-size:clamp(15px,1.2vw,17px)}
+/* Cabezote centrado */
+.slide.head>div,.hero-s .wrap{text-align:center}
+.slide.head .crumbs,.hero-s .crumbs{justify-content:center}
+.slide.head .kicker,.hero-s .kicker{justify-content:center}
+.slide.head .kicker::after{content:'';width:22px;height:1px;flex:none;background:currentColor;border-radius:2px}
+.slide.head h1.h1-svc,.hero-s .wrap h1{margin-inline:auto}
+.slide.head .lede{margin-inline:auto}
+.slide.head .ctas,.slide.head .chips{justify-content:center}
 .offer .offer-logo{display:flex;align-items:center;gap:12px;margin-bottom:2px}
 .offer .offer-logo svg{width:30px;height:30px;flex:none}
 .offer .offer-logo svg.gi{fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
