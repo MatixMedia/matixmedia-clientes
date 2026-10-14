@@ -16,7 +16,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"MatixMedia","url":"https://matixmedia.com.co/","email":"info@matixmedia.com.co","telephone":"+57 314 751 1941","address":{"@type":"PostalAddress","addressLocality":"Medellín","addressRegion":"Antioquia","addressCountry":"CO"},"areaServed":["CO","Latinoamérica"],"sameAs":["https://matixmedia.us/","https://www.instagram.com/matixmedia/","https://www.facebook.com/MatixMedia"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"MatixMedia","url":"https://matixmedia.com.co/","email":"info@matixmedia.com.co","telephone":"+57 314 751 1941","address":{"@type":"PostalAddress","addressLocality":"Medellín","addressRegion":"Antioquia","addressCountry":"CO"},"areaServed":["Medellín","Bogotá","Manizales","Cali","Barranquilla","Colombia","Estados Unidos","México","Costa Rica","Panamá","Europa"],"sameAs":["https://matixmedia.us/","https://www.instagram.com/matixmedia/","https://www.facebook.com/MatixMedia"]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuánto cuesta trabajar con MatixMedia?", "acceptedAnswer": {"@type": "Answer", "text": "Nuestro fee de honorarios depende de la cantidad de canales que manejemos y de la inversión total en pauta. Tenemos costos base para cada servicio, pero creamos una propuesta ajustada a cada cliente."}}, {"@type": "Question", "name": "¿Cuánto debo invertir en pauta como mínimo?", "acceptedAnswer": {"@type": "Answer", "text": "No existe un presupuesto mínimo para que la pauta sea rentable. Lo que sí debes tener en cuenta es que el presupuesto se mantenga en el tiempo para que sea efectivo."}}, {"@type": "Question", "name": "¿Hay contrato de permanencia?", "acceptedAnswer": {"@type": "Answer", "text": "No, no hay contrato de permanencia. Todos nuestros servicios incluyen un contrato de servicios que se ajusta en tiempo y costo según el alcance de cada servicio."}}, {"@type": "Question", "name": "¿Las cuentas publicitarias quedan a nombre de mi negocio?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Todos los activos son propiedad del cliente. La única excepción es cuando aclaramos que un activo específico no se puede transferir, por ejemplo, porque es prestado o tiene una verificación que debe correr sobre nuestras cuentas principales."}}, {"@type": "Question", "name": "¿En cuánto tiempo se ven resultados?", "acceptedAnswer": {"@type": "Answer", "text": "Depende del estado actual de cada negocio. Puedes ver resultados desde el primer mes o construirlos en el tiempo. Esto se define en una estrategia guía de inicio."}}, {"@type": "Question", "name": "¿Qué incluye la auditoría y qué recibo?", "acceptedAnswer": {"@type": "Answer", "text": "Cuando inicias un servicio con nosotros hacemos una auditoría inicial para revisar el estado de todos tus activos digitales. Ese diagnóstico es la base de la estrategia guía de inicio."}}, {"@type": "Question", "name": "¿Atienden negocios fuera de Medellín y Bogotá?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Estamos ubicados en Medellín, Colombia, y atendemos negocios en Bogotá, Manizales, Cali y Barranquilla. También trabajamos con negocios en Estados Unidos, México, Costa Rica, Panamá y Europa."}}]}
 </script>
 <style>
 /* MatixMedia · Home LATAM. Identidad tomada de la vCard: negro, dorado, triple anillo (dorado, rojo, verde). */
@@ -370,6 +373,34 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 .ch-hint .more{margin:0;padding:0;text-decoration:none;color:var(--green);font-size:13px;transition:transform .25s ease}
 .ch-hint .more:hover,.ch-hint .more:focus-visible{transform:scale(1.05)}
 @media (prefers-reduced-motion:reduce){.ch-hint .more{transition:none}}
+/* Preguntas frecuentes */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,80px);align-items:start}
+.faq-side{position:sticky;top:110px}
+.faq-side .lede{margin-top:16px}
+.faq-more{margin:22px 0 0;color:var(--ink-2);font-size:15px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.faq-more .more{margin:0;padding:0;text-decoration:none;color:var(--green);font-size:13px}
+.faq-list{display:grid;gap:12px}
+.faq-item{border-radius:18px;border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(255,255,255,.03)),rgba(10,11,16,.55);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);transition:border-color .25s,background-color .25s}
+.faq-item:hover{border-color:rgba(255,255,255,.22)}
+.faq-item[open]{border-color:rgba(34,176,136,.45)}
+.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;cursor:pointer;font-weight:600;font-size:16.5px;color:var(--ink);border-radius:18px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.faq-item summary i{position:relative;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.18);transition:background .25s,border-color .25s,transform .3s}
+.faq-item summary i::before,.faq-item summary i::after{content:'';position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:var(--ink-2);border-radius:2px;transform:translate(-50%,-50%)}
+.faq-item summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.faq-item[open] summary i{background:var(--green);border-color:var(--green)}
+.faq-item[open] summary i::before,.faq-item[open] summary i::after{background:var(--bg)}
+.faq-item[open] summary i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.faq-a{padding:0 22px 20px}
+.faq-a p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.65;max-width:62ch}
+.faq-item[open] .faq-a{animation:faqin .3s ease}
+@keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}}
+@media (prefers-reduced-motion:reduce){.faq-item[open] .faq-a{animation:none}.faq-item summary i,.faq-item summary i::after{transition:none}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
@@ -823,6 +854,26 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
   </div>
 </section>
 
+<!-- 8b · PREGUNTAS FRECUENTES (con schema FAQPage en el <head>) -->
+<section class="sec sec-faq" aria-labelledby="faq-t" data-section="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <h2 class="h-line" id="faq-t">Preguntas frecuentes</h2>
+      <p class="lede">Lo que más nos preguntan antes de empezar a trabajar juntos.</p>
+      <p class="faq-more">¿Tienes otra pregunta? <a class="more" href="https://wa.me/573147511941?text=Hola%20MatixMedia%2C%20vengo%20de%20su%20web%20y%20tengo%20una%20pregunta%20sobre%20sus%20servicios." target="_blank" rel="noopener" data-wa="faq">Escríbenos por WhatsApp.</a></p>
+    </div>
+    <div class="faq-list">
+        <details class="faq-item"><summary><span>¿Cuánto cuesta trabajar con MatixMedia?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>Nuestro fee de honorarios depende de la cantidad de canales que manejemos y de la inversión total en pauta. Tenemos costos base para cada servicio, pero creamos una propuesta ajustada a cada cliente.</p></div></details>
+        <details class="faq-item"><summary><span>¿Cuánto debo invertir en pauta como mínimo?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>No existe un presupuesto mínimo para que la pauta sea rentable. Lo que sí debes tener en cuenta es que el presupuesto se mantenga en el tiempo para que sea efectivo.</p></div></details>
+        <details class="faq-item"><summary><span>¿Hay contrato de permanencia?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>No, no hay contrato de permanencia. Todos nuestros servicios incluyen un contrato de servicios que se ajusta en tiempo y costo según el alcance de cada servicio.</p></div></details>
+        <details class="faq-item"><summary><span>¿Las cuentas publicitarias quedan a nombre de mi negocio?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>Sí. Todos los activos son propiedad del cliente. La única excepción es cuando aclaramos que un activo específico no se puede transferir, por ejemplo, porque es prestado o tiene una verificación que debe correr sobre nuestras cuentas principales.</p></div></details>
+        <details class="faq-item"><summary><span>¿En cuánto tiempo se ven resultados?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>Depende del estado actual de cada negocio. Puedes ver resultados desde el primer mes o construirlos en el tiempo. Esto se define en una estrategia guía de inicio.</p></div></details>
+        <details class="faq-item"><summary><span>¿Qué incluye la auditoría y qué recibo?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>Cuando inicias un servicio con nosotros hacemos una auditoría inicial para revisar el estado de todos tus activos digitales. Ese diagnóstico es la base de la estrategia guía de inicio.</p></div></details>
+        <details class="faq-item"><summary><span>¿Atienden negocios fuera de Medellín y Bogotá?</span><i aria-hidden="true"></i></summary><div class="faq-a"><p>Sí. Estamos ubicados en Medellín, Colombia, y atendemos negocios en Bogotá, Manizales, Cali y Barranquilla. También trabajamos con negocios en Estados Unidos, México, Costa Rica, Panamá y Europa.</p></div></details>
+    </div>
+  </div>
+</section>
+
 <!-- 9 · CONTACTO -->
 <section class="sec contact sep-1" id="contacto" aria-labelledby="cont-t" data-section="contacto">
   <div class="wrap grid">
@@ -1036,6 +1087,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
     w.addEventListener('pagehide',leave);
 
     /* --- Errores de JavaScript (para detectar fallas que cuesten leads) --- */
+    /* --- Preguntas frecuentes: qué pregunta abren --- */
+    d.addEventListener('toggle',function(e){var t=e.target;if(t.classList&&t.classList.contains('faq-item')&&t.open){var qs=[].indexOf.call(t.parentNode.children,t)+1;T('faq_open',{question:t.querySelector('summary span').textContent,position:qs});}},true);
     w.addEventListener('error',function(e){T('js_error',{message:String(e.message).slice(0,120),source:String(e.filename||'').split('/').pop()+':'+e.lineno});});
   });
 })();
