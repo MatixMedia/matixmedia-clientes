@@ -160,6 +160,10 @@ p{margin:0}
 .kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:300;color:var(--gold);margin-bottom:14px;letter-spacing:.02em}
 .kicker::before{content:'';width:22px;height:1px;flex:none;background:currentColor;border-radius:2px}
 .slide h1,.slide .h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,5.6vw,70px);line-height:1.02;letter-spacing:-.025em;margin:0 0 20px;text-wrap:balance;max-width:16ch}
+/* Titular en 2 líneas fijas: cada línea no se parte y el tamaño se ajusta al ancho de la columna */
+.slide>div{container-type:inline-size}
+.slide h1.h1-2l{max-width:none;text-wrap:nowrap;font-size:clamp(22px,5.4cqi,64px);line-height:1.08}
+.h1-2l span{display:block;white-space:nowrap}
 .slide .lede{margin-bottom:30px;max-width:56ch}
 .slide .lede strong{color:var(--ink);font-weight:600}
 .slide .ctas{display:flex;flex-wrap:wrap;gap:12px}
@@ -671,7 +675,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     <div class="slide">
       <div>
         <p class="kicker">Agencia de Pauta en Medellín y Bogotá</p>
-        <h1>Escalamos negocios con anuncios que convierten clics en clientes.</h1>
+        <h1 class="h1-2l"><span>Escalamos negocios con anuncios</span> <span>que convierten clics en clientes.</span></h1>
         <p class="lede">Gestionamos <strong>Google Ads, Meta Ads, TikTok Ads</strong> y los nuevos canales de pauta para negocios que <strong>ya invierten en publicidad</strong> y quieren que cada peso rinda más.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="/auditoria-gratis/">Audita tu cuenta gratis</a>
@@ -1142,6 +1146,11 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     [].forEach.call(c.querySelectorAll('img'),function(i){i.alt='';});w.appendChild(c);
     function speed(){w.style.setProperty('--lm-dur',Math.max(30,t.scrollWidth/40)+'s');}speed();window.addEventListener('load',speed);
   });
+  // Titular de 2 líneas: si una línea no cabe en la columna, reduce la letra hasta que quepa
+  (function(){var h=document.querySelector('.h1-2l');if(!h)return;
+    function fit(){h.style.fontSize='';var w=h.parentNode.clientWidth,max=0;[].forEach.call(h.children,function(s){max=Math.max(max,s.scrollWidth);});
+      if(max>w){var fs=parseFloat(getComputedStyle(h).fontSize);h.style.fontSize=Math.floor(fs*w/max*0.98)+'px';}}
+    fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);})();
   var mb=document.querySelector('.menu-btn'),nav=document.getElementById('mnav');
   function setMenu(o){nav.hidden=!o;nav.classList.toggle('open',o);nav.classList.toggle('in',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');}
   mb.addEventListener('click',function(){setMenu(nav.hidden);});
