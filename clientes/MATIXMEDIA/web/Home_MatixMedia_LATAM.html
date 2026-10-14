@@ -385,28 +385,26 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 .faq-side .lede{margin-top:16px}
 .faq-more{margin:22px 0 0;color:var(--ink-2);font-size:15px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
 .faq-more .more{margin:0;padding:0;text-decoration:none;color:var(--green);font-size:13px}
-.faq-list{display:grid;gap:12px}
-.faq-item{border-radius:18px;border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(255,255,255,.03)),rgba(10,11,16,.55);
-  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);transition:border-color .25s,background-color .25s}
-.faq-item:hover{border-color:rgba(255,255,255,.22)}
-.faq-item[open]{border-color:rgba(34,176,136,.45)}
-.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;cursor:pointer;font-weight:600;font-size:16.5px;color:var(--ink);border-radius:18px}
+.faq-list{display:block;border-top:1px solid rgba(255,255,255,.1)}
+/* Lista limpia: sin tarjetas, solo líneas finas; la pregunta abierta se marca en verde */
+.faq-item{border-bottom:1px solid rgba(255,255,255,.1);transition:border-color .25s}
+.faq-item[open]{border-bottom-color:rgba(34,176,136,.4)}
+.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 2px;cursor:pointer;font-weight:500;font-size:16px;color:var(--ink-2);transition:color .2s}
+.faq-item summary:hover,.faq-item[open] summary{color:var(--ink)}
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.faq-item summary i{position:relative;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.18);transition:background .25s,border-color .25s,transform .3s}
-.faq-item summary i::before,.faq-item summary i::after{content:'';position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:var(--ink-2);border-radius:2px;transform:translate(-50%,-50%)}
-.faq-item summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
-.faq-item[open] summary i{background:var(--green);border-color:var(--green)}
-.faq-item[open] summary i::before,.faq-item[open] summary i::after{background:var(--bg)}
+.faq-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+.faq-item summary i{position:relative;flex:none;width:14px;height:14px}
+.faq-item summary i::before,.faq-item summary i::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--muted);border-radius:2px;transform:translate(-50%,-50%);transition:transform .3s,background .2s}
+.faq-item summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item summary:hover i::before,.faq-item summary:hover i::after{background:var(--ink)}
+.faq-item[open] summary i::before,.faq-item[open] summary i::after{background:var(--green)}
 .faq-item[open] summary i::after{transform:translate(-50%,-50%) rotate(0deg)}
-.faq-a{padding:0 22px 20px}
-.faq-a p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.65;max-width:62ch}
+.faq-a{padding:0 40px 22px 2px}
+.faq-a p{margin:0;color:var(--muted);font-size:15px;line-height:1.7;max-width:62ch}
 .faq-item[open] .faq-a{animation:faqin .3s ease}
 @keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (max-width:860px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}}
-@media (prefers-reduced-motion:reduce){.faq-item[open] .faq-a{animation:none}.faq-item summary i,.faq-item summary i::after{transition:none}}
+@media (prefers-reduced-motion:reduce){.faq-item[open] .faq-a{animation:none}.faq-item summary i::before,.faq-item summary i::after{transition:none}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
