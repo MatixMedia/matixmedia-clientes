@@ -64,6 +64,12 @@ p{margin:0}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04)}
 .btn-outline:hover{border-color:var(--gold);background:linear-gradient(180deg,rgba(232,192,70,.18),rgba(232,192,70,.06))}
 /* Botones de WhatsApp: al pasar el cursor toman el verde de WhatsApp */
+/* Botón neutro en vidrio (sin color): para acciones secundarias que no deben competir con los CTA */
+.btn-glass{color:var(--ink);border-color:rgba(255,255,255,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  -webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04);transition:border-color .2s,background .2s}
+.btn-glass:hover,.btn-glass:focus-visible{border-color:rgba(255,255,255,.34);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
 .btn-wa{transition:background .25s,color .25s,border-color .25s,box-shadow .25s}
 .btn-wa:hover,.btn-wa:focus-visible{background:#25D366;border-color:#25D366;color:#fff;box-shadow:0 0 0 6px rgba(37,211,102,.22)}
 .link{color:var(--gold);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(232,192,70,.35);padding-bottom:2px}
@@ -667,7 +673,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
           <li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Informe mensual</b><span>Qué vendió y cuánto costó, en claro.</span></li>
           <li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Partners oficiales</b><span>Google, Meta y TikTok.</span></li>
         </ul>
-        <div class="btns"><a class="btn btn-primary" href="/agencia/">Conoce la agencia</a><a class="btn btn-outline" href="/casos-de-exito/">Casos de éxito</a></div>
+        <div class="btns"><a class="btn btn-glass" href="/agencia/">Conoce la agencia</a><a class="btn btn-glass" href="/casos-de-exito/">Casos de éxito</a></div>
         <p class="note">Atendemos negocios en Colombia, Latinoamérica y Estados Unidos.</p>
       </aside></div>
     </div>
