@@ -944,6 +944,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     <input class="waf-hp" type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="vh" for="waf-name">Tu nombre</label><input id="waf-name" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
     <label class="vh" for="waf-biz">Tu negocio</label><input id="waf-biz" name="negocio" placeholder="Negocio, web o @instagram" autocomplete="organization" required>
+    <label class="vh" for="waf-tel">Tu WhatsApp</label><input id="waf-tel" name="whatsapp" type="tel" inputmode="tel" placeholder="Tu WhatsApp (ej. 300 123 4567)" autocomplete="tel" required>
     <p class="waf-err" role="alert"></p>
     <button class="btn btn-primary waf-send" type="submit">Enviar mensaje<svg class="send" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10.1 15 12 3.4 13.9z"/></svg></button>
     <button class="waf-link" type="button" data-edit>Editar respuestas</button>
@@ -1215,33 +1216,36 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     body.appendChild(w);body.scrollTop=body.scrollHeight;
     var f=w.querySelector('button');if(f)f.focus({preventScroll:true});
   }
-  function askContact(){prog(2);msg('Último paso: ¿cómo te llamas y cuál es tu negocio?','bot');form.hidden=false;document.getElementById('waf-name').focus({preventScroll:true});}
+  function askContact(){prog(2);msg('Último paso: tu nombre, tu negocio y tu WhatsApp para responderte.','bot');form.hidden=false;document.getElementById('waf-name').focus({preventScroll:true});}
+  // WhatsApp: deja solo dígitos; 10 dígitos que empiezan por 3 = celular de Colombia (+57)
+  function tel(v){var d=String(v).replace(/\D/g,'');if(d.length===10&&d.charAt(0)==='3')d='57'+d;return d.length>=8&&d.length<=15?'+'+d:'';}
   function waUrl(){
     var m='Hola MatixMedia, vengo de la web.\nNecesito: '+ans.necesidad+'\nInversión mensual: '+ans.inversion+'\nNombre: '+ans.nombre+'\nNegocio: '+ans.negocio;
     return 'https://wa.me/'+NUM+'?text='+encodeURIComponent(m);
   }
   // Editar respuestas: vuelve a empezar y conserva nombre y negocio ya escritos
-  form.querySelector('[data-edit]').addEventListener('click',function(){var n=form.nombre.value,g=form.negocio.value;reset();form.nombre.value=n;form.negocio.value=g;track('wa_flow_edit',{});});
+  form.querySelector('[data-edit]').addEventListener('click',function(){var n=form.nombre.value,g=form.negocio.value,t=form.whatsapp.value;reset();form.nombre.value=n;form.negocio.value=g;form.whatsapp.value=t;track('wa_flow_edit',{});});
   form.addEventListener('submit',function(e){
     e.preventDefault();err.textContent='';
-    var n=form.nombre.value.trim(),g=form.negocio.value.trim();
+    var n=form.nombre.value.trim(),g=form.negocio.value.trim(),t=tel(form.whatsapp.value);
     if(n.length<2||g.length<2){err.textContent='Escribe tu nombre y tu negocio para continuar.';(n.length<2?form.nombre:form.negocio).focus();return;}
+    if(!t){err.textContent='Escribe un número de WhatsApp válido.';form.whatsapp.focus();track('form_error',{form:'wa_chat',field:'whatsapp'});return;}
     // Bot: llenó el campo oculto o respondió todo en menos de 4 segundos
     if(form.web.value||Date.now()-t0<4000){track('wa_flow_blocked',{});err.textContent='No pudimos validar tu solicitud. Intenta de nuevo.';return;}
-    ans.nombre=n;ans.negocio=g;
+    ans.nombre=n;ans.negocio=g;ans.whatsapp=t;
     var url=waUrl();
     // 1. Abre WhatsApp en el mismo clic (si no, el navegador lo bloquea)
     var win=window.open(url,'_blank','noopener');
     // 2. Guarda el lead en Google Sheets
-    if(window.mmSaveLead)mmSaveLead({origen:'chat_whatsapp',nombre:n,negocio:g,necesidad:ans.necesidad,inversion:ans.inversion});
+    if(window.mmSaveLead)mmSaveLead({origen:'chat_whatsapp',nombre:n,whatsapp:t,negocio:g,necesidad:ans.necesidad,inversion:ans.inversion});
     track('wa_flow_step',{step:3,step_name:'contacto',value:'completo'});
     track('wa_flow_complete',{necesidad:ans.necesidad,inversion:ans.inversion});
-    form.hidden=true;prog(3);msg(n+' · '+g,'me');
+    form.whatsapp.dataset.v=form.whatsapp.value;form.hidden=true;prog(3);msg(n+' · '+g+' · '+t,'me');
     msg('¡Listo, '+n.split(' ')[0]+'! Te abrimos WhatsApp con tu mensaje. Solo tienes que tocar enviar.','bot');
     var done=document.createElement('div');done.className='waf-done';
     done.innerHTML='<a class="waf-link" target="_blank" rel="noopener">¿No se abrió WhatsApp? Ábrelo aquí</a><button class="waf-link" type="button">Editar respuestas</button>';
     done.querySelector('a').href=url;
-    done.querySelector('button').addEventListener('click',function(){reset();form.nombre.value=n;form.negocio.value=g;track('wa_flow_edit',{after_send:true});});
+    done.querySelector('button').addEventListener('click',function(){reset();form.nombre.value=n;form.negocio.value=g;form.whatsapp.value=form.whatsapp.dataset.v||'';track('wa_flow_edit',{after_send:true});});
     body.appendChild(done);body.scrollTop=body.scrollHeight;
   });
   function reset(){ans={};body.innerHTML='';form.reset();form.hidden=true;err.textContent='';t0=Date.now();ask(0);}
