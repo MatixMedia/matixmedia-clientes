@@ -571,6 +571,11 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
 .waf-foot input{min-height:44px;padding:0 13px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(4,5,10,.6);color:var(--ink);font:400 15px var(--body)}
 .waf-foot input:focus-visible{outline:2px solid #25D366;outline-offset:1px}
 .waf-foot .btn{min-height:46px;width:100%}
+.waf-send{gap:10px}
+.waf-send .send{width:18px;height:18px;fill:currentColor;transition:transform .2s}
+.waf-send:hover .send,.waf-send:focus-visible .send{transform:translateX(3px)}
+.waf-foot .waf-link{justify-self:center}
+.waf-done{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:2px}
 .waf-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 .waf-err{margin:0;color:#FF8A8F;font-size:13px}.waf-err:empty{display:none}
 .waf-go{display:flex;flex-direction:column;gap:8px;margin-top:4px}
@@ -972,7 +977,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
     <label class="vh" for="waf-name">Tu nombre</label><input id="waf-name" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
     <label class="vh" for="waf-biz">Tu negocio</label><input id="waf-biz" name="negocio" placeholder="Negocio, web o @instagram" autocomplete="organization" required>
     <p class="waf-err" role="alert"></p>
-    <button class="btn btn-primary" type="submit">Continuar</button>
+    <button class="btn btn-primary waf-send" type="submit">Enviar mensaje<svg class="send" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10.1 15 12 3.4 13.9z"/></svg></button>
+    <button class="waf-link" type="button" data-edit>Editar respuestas</button>
   </form>
 </div>
 <a class="wa" aria-controls="waf" aria-expanded="false" href="https://wa.me/573147511941" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 0 1 2.16 11.9c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></svg></a>
@@ -1001,6 +1007,23 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
   if(!sess||Object.keys(now).length){sess={};for(var k in now)sess[k]=now[k];sess.landing_page=location.pathname;sess.referrer=ref;if(!sess.utm_source)sess.utm_source=ref?(new URL(ref)).hostname.replace(/^www\./,''):'directo',sess.utm_medium=sess.utm_medium||(ref?'referral':'none');ss('mm_attr',sess);}
   var first=ls('mm_first');if(!first||Date.now()-first.t>7776e6){first={t:Date.now(),source:sess.utm_source,medium:sess.utm_medium,campaign:sess.utm_campaign||'',landing:sess.landing_page};ls('mm_first',first);}
   w.mmAttribution=sess;
+
+  /* --- Leads a Google Sheets ---
+     Pegar en MM_SHEETS_URL la URL de la aplicación web de Apps Script (termina en /exec).
+     Se envía en segundo plano: si falla, el usuario igual llega a WhatsApp. */
+  var MM_SHEETS_URL='';
+  w.mmSaveLead=function(data){
+    var p=new URLSearchParams();
+    var row={fecha:new Date().toISOString(),pagina:location.href.split('#')[0],dispositivo:(w.innerWidth<641?'movil':w.innerWidth<1081?'tablet':'computador'),
+      utm_source:sess.utm_source||'',utm_medium:sess.utm_medium||'',utm_campaign:sess.utm_campaign||'',utm_term:sess.utm_term||'',utm_content:sess.utm_content||'',
+      gclid:sess.gclid||'',fbclid:sess.fbclid||'',ttclid:sess.ttclid||'',landing_page:sess.landing_page||'',referrer:sess.referrer||'',
+      primer_origen:(first.source||'')+' / '+(first.medium||'')};
+    for(var k in data)row[k]=data[k];
+    for(var r in row)p.append(r,String(row[r]==null?'':row[r]).slice(0,500));
+    if(!MM_SHEETS_URL){if(DEBUG&&w.console)console.log('%c[mm] lead (sin URL de Sheets)','color:#E8C046',row);return;}
+    try{fetch(MM_SHEETS_URL,{method:'POST',mode:'no-cors',keepalive:true,body:p});}
+    catch(e){try{navigator.sendBeacon(MM_SHEETS_URL,p);}catch(_){}}
+  };
 
   /* --- Envío central: todos los eventos llevan página, dispositivo y atribución --- */
   var vw=w.innerWidth,device=vw<641?'movil':vw<1081?'tablet':'computador';
@@ -1149,6 +1172,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
     if(!check(steps[1]))return;
     var d=new FormData(f);
     // Conversión: sin datos personales, solo la calificación del lead
+    window.mmSaveLead&&mmSaveLead({origen:'formulario_contacto',nombre:d.get('nombre')||'',correo:d.get('correo')||'',whatsapp:d.get('whatsapp')||'',negocio:d.get('empresa')||'',tipo_negocio:d.get('tipo')||'',inversion:d.get('inversion')||'',necesidad:d.get('servicio')||''});
     window.mmTrack&&mmTrack('form_submit',{form:'contacto',step:2,step_name:'datos_negocio',tipo_negocio:d.get('tipo')||'',inversion:d.get('inversion')||'',servicio:d.get('servicio')||''});
     var msg='Hola MatixMedia, quiero una auditoría.%0A'+[['nombre','Nombre'],['correo','Correo'],['whatsapp','WhatsApp'],['empresa','Negocio'],['tipo','Tipo de negocio'],['inversion','Inversión'],['servicio','Servicio']].map(function(k){return k[1]+': '+encodeURIComponent(d.get(k[0])||'-');}).join('%0A');
     window.open('https://wa.me/573147511941?text='+msg,'_blank','noopener');
@@ -1200,20 +1224,29 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(
     var m='Hola MatixMedia, vengo de la web.\nNecesito: '+ans.necesidad+'\nInversión mensual: '+ans.inversion+'\nNombre: '+ans.nombre+'\nNegocio: '+ans.negocio;
     return 'https://wa.me/'+NUM+'?text='+encodeURIComponent(m);
   }
+  // Editar respuestas: vuelve a empezar y conserva nombre y negocio ya escritos
+  form.querySelector('[data-edit]').addEventListener('click',function(){var n=form.nombre.value,g=form.negocio.value;reset();form.nombre.value=n;form.negocio.value=g;track('wa_flow_edit',{});});
   form.addEventListener('submit',function(e){
     e.preventDefault();err.textContent='';
     var n=form.nombre.value.trim(),g=form.negocio.value.trim();
     if(n.length<2||g.length<2){err.textContent='Escribe tu nombre y tu negocio para continuar.';(n.length<2?form.nombre:form.negocio).focus();return;}
     // Bot: llenó el campo oculto o respondió todo en menos de 4 segundos
     if(form.web.value||Date.now()-t0<4000){track('wa_flow_blocked',{});err.textContent='No pudimos validar tu solicitud. Intenta de nuevo.';return;}
-    track('wa_flow_step',{step:3,step_name:'contacto',value:'completo'});ans.nombre=n;ans.negocio=g;form.hidden=true;prog(3);msg(n+' · '+g,'me');
-    msg('¡Gracias, '+n.split(' ')[0]+'! Tu mensaje ya está listo.','bot');
-    var go=document.createElement('div');go.className='waf-go';
-    go.innerHTML='<a class="btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>Abrir WhatsApp</a><button class="waf-link" type="button">Editar respuestas</button>';
-    var a=go.querySelector('a');a.href=waUrl();
-    a.addEventListener('click',function(){track('wa_flow_complete',{necesidad:ans.necesidad,inversion:ans.inversion});});
-    go.querySelector('.waf-link').addEventListener('click',reset);
-    body.appendChild(go);body.scrollTop=body.scrollHeight;a.focus({preventScroll:true});
+    ans.nombre=n;ans.negocio=g;
+    var url=waUrl();
+    // 1. Abre WhatsApp en el mismo clic (si no, el navegador lo bloquea)
+    var win=window.open(url,'_blank','noopener');
+    // 2. Guarda el lead en Google Sheets
+    if(window.mmSaveLead)mmSaveLead({origen:'chat_whatsapp',nombre:n,negocio:g,necesidad:ans.necesidad,inversion:ans.inversion});
+    track('wa_flow_step',{step:3,step_name:'contacto',value:'completo'});
+    track('wa_flow_complete',{necesidad:ans.necesidad,inversion:ans.inversion});
+    form.hidden=true;prog(3);msg(n+' · '+g,'me');
+    msg('¡Listo, '+n.split(' ')[0]+'! Te abrimos WhatsApp con tu mensaje. Solo tienes que tocar enviar.','bot');
+    var done=document.createElement('div');done.className='waf-done';
+    done.innerHTML='<a class="waf-link" target="_blank" rel="noopener">¿No se abrió WhatsApp? Ábrelo aquí</a><button class="waf-link" type="button">Editar respuestas</button>';
+    done.querySelector('a').href=url;
+    done.querySelector('button').addEventListener('click',function(){reset();form.nombre.value=n;form.negocio.value=g;track('wa_flow_edit',{after_send:true});});
+    body.appendChild(done);body.scrollTop=body.scrollHeight;
   });
   function reset(){ans={};body.innerHTML='';form.reset();form.hidden=true;err.textContent='';t0=Date.now();ask(0);}
   function open(){if(!box.hidden)return;lastFocus=document.activeElement;box.hidden=false;box.classList.add('in');fab.setAttribute('aria-expanded','true');track('wa_flow_open',{});if(!body.children.length)reset();}
