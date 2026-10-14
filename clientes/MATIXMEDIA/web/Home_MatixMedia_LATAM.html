@@ -156,13 +156,13 @@ p{margin:0}
 .hero{position:relative;overflow:hidden;
   background:radial-gradient(640px 520px at 92% 8%,rgba(34,176,136,.22),transparent 70%),radial-gradient(640px 520px at 0% 100%,rgba(207,52,58,.18),transparent 70%)}
 .slides{display:grid}
-.slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);align-items:center;gap:clamp(32px,5vw,72px);padding-block:clamp(48px,7vw,96px) var(--gap-sep)}
+.slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.85fr);align-items:center;gap:clamp(28px,4vw,56px);padding-block:clamp(48px,7vw,96px) var(--gap-sep)}
 .kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:300;color:var(--gold);margin-bottom:14px;letter-spacing:.02em}
 .kicker::before{content:'';width:22px;height:1px;flex:none;background:currentColor;border-radius:2px}
 .slide h1,.slide .h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,5.6vw,70px);line-height:1.02;letter-spacing:-.025em;margin:0 0 20px;text-wrap:balance;max-width:16ch}
 /* Titular en 2 líneas fijas: cada línea no se parte y el tamaño se ajusta al ancho de la columna */
 .slide>div{container-type:inline-size}
-.slide h1.h1-2l{max-width:none;text-wrap:nowrap;font-size:clamp(22px,5.4cqi,64px);line-height:1.08}
+.slide h1.h1-2l{max-width:none;text-wrap:nowrap;font-size:clamp(24px,6.2cqi,64px);line-height:1.08}
 .h1-2l span{display:block;white-space:nowrap}
 .slide .lede{margin-bottom:30px;max-width:none;font-size:clamp(14px,1.08vw,15px);line-height:1.6}
 .slide .lede strong{color:var(--ink);font-weight:600}
@@ -209,11 +209,11 @@ p{margin:0}
 .offer li::before{margin-top:4px}
 .offer .btn{width:100%}
 .offer .note{color:var(--muted);font-size:12px;line-height:1.5}
-@media (max-width:920px){
+@media (max-width:1080px){
   .slide{grid-template-columns:1fr;gap:36px}
 }
 /* Tablet: la tarjeta ocupa todo el ancho (como en celular) y los 4 puntos van en 2 columnas */
-@media (min-width:641px) and (max-width:920px){
+@media (min-width:641px) and (max-width:1080px){
   .offer{max-width:none}
   .offer .vals{grid-template-columns:1fr 1fr;column-gap:24px;row-gap:14px}
   .offer .vals li{align-content:start}
