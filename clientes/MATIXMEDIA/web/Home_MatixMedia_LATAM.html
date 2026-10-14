@@ -20,12 +20,12 @@
 </script>
 <style>
 /* MatixMedia · Home LATAM. Identidad tomada de la vCard: negro, dorado, triple anillo (dorado, rojo, verde). */
-:root{--gap:clamp(48px,7vw,104px);
+:root{--gap:clamp(56px,8.5vw,136px);--gap-in:clamp(36px,3.6vw,60px);
   --bg:#04050A;--surface:#0C0D13;--line:#1E1F28;--line-2:#2B2D38;
   --ink:#FDFCF7;--ink-2:#C8C7C0;--muted:#8D8B80;
   --gold:#E8C046;--green:#22B088;--red:#CF343A;
   --display:'Fraunces',Georgia,serif;--body:'DM Sans',system-ui,sans-serif;
-  --wrap:1180px;--gut:clamp(16px,4vw,40px);
+  --wrap:1280px;--gut:clamp(16px,4vw,40px);
   color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -220,13 +220,13 @@ p{margin:0}
 @media (max-width:860px){.logo-row{grid-template-columns:repeat(2,minmax(0,1fr))}.logo-row li:last-child{grid-column:1/-1}.logo-row li img{width:140px}.brands p{font-size:11.5px;letter-spacing:.08em}}
 
 /* Secciones */
-/* Espacio único entre módulos: --gap (≈96px en computador, 72px en tablet, 48px en celular) */
+/* Espacio entre módulos: --gap (≈120px en portátil, 136px en monitor grande, 56px en celular). Dentro de cada módulo: --gap-in */
 .sec{padding-block:var(--gap)}
 /* Compensación óptica: el título grande tiene aire interno arriba; así el espacio bajo la barra de sectores se ve igual al de arriba */
 .sec-extra{padding-top:calc(var(--gap) - 6px)}
 /* Línea verde corta sobre los títulos que no van debajo del separador 1 */
 .h-line::before{content:'';display:block;width:56px;height:3px;border-radius:2px;margin-bottom:22px;background:linear-gradient(90deg,var(--green),#4FB89C)}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:48px}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 72px;align-items:end;margin-bottom:var(--gap-in)}
 @media (max-width:860px){.sec-head{grid-template-columns:1fr}}
 
 .head-side{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
@@ -242,7 +242,7 @@ p{margin:0}
   background:radial-gradient(520px 420px at 12% 70%,rgba(232,192,70,.20),transparent 70%),
              radial-gradient(560px 460px at 88% 440px,rgba(34,176,136,.32),transparent 70%),
              radial-gradient(360px 220px at right 8% bottom 0,rgba(207,52,58,.30),transparent 70%)}
-.channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
 .ch{position:relative;border-radius:26px;padding:30px 28px 28px;display:flex;flex-direction:column;gap:12px;text-decoration:none;
   border:1px solid rgba(255,255,255,.18);
   background-color:rgba(6,7,11,.66);background-image:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01) 45%,rgba(255,255,255,.03));
@@ -282,7 +282,7 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 @media (prefers-reduced-motion:reduce){.ticker-track{animation:none;width:auto}.ticker-track ul+ul{display:none}.ticker ul{flex-wrap:wrap;justify-content:center;padding-inline:var(--gut)}}
 
 /* Servicios adicionales: título centrado entre dos líneas verdes */
-.extra-title{display:flex;align-items:center;justify-content:center;gap:20px;text-align:center;margin:0 auto 48px}
+.extra-title{display:flex;align-items:center;justify-content:center;gap:20px;text-align:center;margin:0 auto var(--gap-in)}
 .extra-title::before,.extra-title::after{content:'';flex:0 0 64px;height:2px;background:var(--green);border-radius:2px}
 .extra-title h2{flex:0 1 auto;font-size:clamp(28px,4vw,50px);line-height:1.1;white-space:nowrap}
 .extra-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
@@ -326,7 +326,7 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 @media (max-width:860px){.full .grid{grid-template-columns:1fr}}
 
 /* Testimonios */
-.quotes{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px}
+.quotes{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(16px,1.8vw,28px)}
 /* Testimonios en vidrio: cada tarjeta con su color de marca (--c en RGB) */
 .q{--c:34,176,136;position:relative;isolation:isolate;overflow:hidden;margin:0;border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
   border:1px solid rgba(255,255,255,.16);
@@ -347,7 +347,7 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 .q.big .result b{color:var(--green);font-weight:600}
 .q figcaption{color:var(--ink-2);font-size:15px}
 .q figcaption b{color:var(--ink);font-weight:600;display:block}
-.side-q{display:grid;grid-template-rows:1fr 1fr;gap:20px}
+.side-q{display:grid;grid-template-rows:1fr 1fr;gap:clamp(16px,1.8vw,28px)}
 .side-q .q{justify-content:center}
 /* CTA intermedio después del contador */
 .cta-band{position:relative;isolation:isolate;overflow:hidden;margin-top:var(--gap);padding:clamp(26px,3.4vw,40px);border-radius:24px;
@@ -380,7 +380,7 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 @media (max-width:860px){.quotes{grid-template-columns:1fr}.q.big{grid-row:auto}}
 
 /* Recursos */
-.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
 /* Recursos: tarjetas de vidrio con portada ilustrada, cada una con su color de marca (--c en RGB) */
 .card{--c:34,176,136;position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:0 26px 26px;display:flex;flex-direction:column;gap:12px;text-decoration:none;
   border:1px solid rgba(255,255,255,.14);background-color:rgba(10,11,16,.6);
