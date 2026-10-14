@@ -454,6 +454,10 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .crumbs a{color:var(--ink-2);text-decoration:none}.crumbs a:hover{color:var(--gold)}
 .crumbs [aria-current]{color:var(--ink-2)}
 .slide h1.h1-svc{max-width:14ch}
+/* Cabezote de subpáginas: una columna, sin tarjeta lateral */
+.slide.head{grid-template-columns:minmax(0,1fr);padding-block:clamp(40px,6vw,84px) var(--gap-sep)}
+.slide.head h1.h1-svc{max-width:22ch}
+.slide.head .lede{max-width:68ch;font-size:clamp(15px,1.2vw,17px)}
 .offer .offer-logo{display:flex;align-items:center;gap:12px;margin-bottom:2px}
 .offer .offer-logo svg{width:30px;height:30px;flex:none}
 .offer .offer-logo svg.gi{fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -830,7 +834,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 <!-- 1 · PORTADA DEL SERVICIO -->
 <section class="hero" aria-label="TikTok Ads" data-section="hero">
   <div class="wrap slides">
-    <div class="slide">
+    <div class="slide head">
       <div>
         <ol class="crumbs" aria-label="Ruta"><li><a href="/">Inicio</a></li><li><a href="/servicios/">Lo que hacemos</a></li><li><span aria-current="page">TikTok Ads</span></li></ol>
         <p class="kicker">TikTok Agency Partner · Medellín y Bogotá</p>
@@ -842,13 +846,6 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         </div>
         <ul class="chips"><li>In-Feed Ads</li><li>Spark Ads</li><li>Ventas</li><li>Leads</li><li>Video vertical</li><li>Remarketing</li><li>Píxel de TikTok</li></ul>
       </div>
-      <div class="offer-wrap"><aside class="offer">
-        <div class="offer-logo"><img src="data:image/webp;base64,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" alt="" width="30" height="30" style="width:30px;height:auto"><span>Qué incluye</span></div>
-        <h3 class="offer-h">Tus campañas de TikTok Ads, de punta a punta</h3>
-        <ul class="vals"><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Auditoría de la cuenta y del píxel</b></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Estrategia de audiencias y presupuesto</b></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Guiones y creatividades para TikTok</b></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Píxel y eventos de conversión</b></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Optimización semanal</b></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Informe mensual y reunión de resultados</b></li></ul>
-        <div class="btns"><a class="btn btn-glass" href="/casos-de-exito/">Casos de éxito</a><a class="btn btn-glass" href="#preguntas-frecuentes">Preguntas</a></div>
-        <p class="note">Sin contrato de permanencia. Las cuentas y los activos siempre son tuyos.</p>
-      </aside></div>
     </div>
   </div>
 </section>

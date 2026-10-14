@@ -451,6 +451,10 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .crumbs a{color:var(--ink-2);text-decoration:none}.crumbs a:hover{color:var(--gold)}
 .crumbs [aria-current]{color:var(--ink-2)}
 .slide h1.h1-svc{max-width:14ch}
+/* Cabezote de subpáginas: una columna, sin tarjeta lateral */
+.slide.head{grid-template-columns:minmax(0,1fr);padding-block:clamp(40px,6vw,84px) var(--gap-sep)}
+.slide.head h1.h1-svc{max-width:22ch}
+.slide.head .lede{max-width:68ch;font-size:clamp(15px,1.2vw,17px)}
 .offer .offer-logo{display:flex;align-items:center;gap:12px;margin-bottom:2px}
 .offer .offer-logo svg{width:30px;height:30px;flex:none}
 .offer .offer-logo svg.gi{fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -827,11 +831,11 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 <!-- 1 · PORTADA -->
 <section class="hero" aria-label="La agencia" data-section="hero">
   <div class="wrap slides">
-    <div class="slide">
+    <div class="slide head">
       <div>
         <ol class="crumbs" aria-label="Ruta"><li><a href="/">Inicio</a></li><li><span aria-current="page">Agencia</span></li></ol>
         <p class="kicker">Agencia de pauta · Medellín, Colombia</p>
-        <h1 class="h1-svc" style="max-width:19ch">Agencia de publicidad digital desde 2013</h1>
+        <h1 class="h1-svc">Agencia de publicidad digital desde 2013</h1>
         <p class="lede">Desde 2013 ayudamos a negocios a <strong>vender más con anuncios</strong>. Somos un equipo de pauta, contenido y desarrollo web que ha trabajado con <strong>más de 250 empresas en 14 países</strong>.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="/auditoria-gratis/">Audita tu cuenta gratis</a>
@@ -839,13 +843,6 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         </div>
         <ul class="chips"><li>Medellín</li><li>Bogotá</li><li>Latinoamérica</li><li>Estados Unidos</li><li>Google Partner</li><li>Meta Business Partner</li><li>TikTok Agency Partner</li></ul>
       </div>
-      <div class="offer-wrap"><aside class="offer">
-        <div class="offer-logo"><svg class="gi" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-10.5A6 6 0 0 1 18 10.5C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg><span>Quiénes somos</span></div>
-        <h3 class="offer-h">MatixMedia en datos</h3>
-        <ul class="vals"><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.5.7-4 3.8 1 5.5-4.9-2.7-4.9 2.7 1-5.5-4-3.8 5.5-.7z"/></svg></span><b>+13 años</b><span>Creando estrategias de pauta desde 2013.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14c2.5.2 4.4 1.8 5 4.6"/></svg></span><b>+250 empresas</b><span>En 14 países, de Colombia a Estados Unidos.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><b>+13M USD</b><span>Invertidos en campañas de nuestros clientes.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></span><b>Partners oficiales</b><span>Google, Meta y TikTok.</span></li></ul>
-        <div class="btns"><a class="btn btn-glass" href="/servicios/">Lo que hacemos</a><a class="btn btn-glass" href="/casos-de-exito/">Casos de éxito</a></div>
-        <p class="note">Atendemos negocios en Colombia, Latinoamérica y Estados Unidos.</p>
-      </aside></div>
     </div>
   </div>
 </section>

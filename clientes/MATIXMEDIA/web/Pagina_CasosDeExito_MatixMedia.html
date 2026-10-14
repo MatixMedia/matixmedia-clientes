@@ -451,6 +451,10 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .crumbs a{color:var(--ink-2);text-decoration:none}.crumbs a:hover{color:var(--gold)}
 .crumbs [aria-current]{color:var(--ink-2)}
 .slide h1.h1-svc{max-width:14ch}
+/* Cabezote de subpáginas: una columna, sin tarjeta lateral */
+.slide.head{grid-template-columns:minmax(0,1fr);padding-block:clamp(40px,6vw,84px) var(--gap-sep)}
+.slide.head h1.h1-svc{max-width:22ch}
+.slide.head .lede{max-width:68ch;font-size:clamp(15px,1.2vw,17px)}
 .offer .offer-logo{display:flex;align-items:center;gap:12px;margin-bottom:2px}
 .offer .offer-logo svg{width:30px;height:30px;flex:none}
 .offer .offer-logo svg.gi{fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -827,7 +831,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 <!-- 1 · PORTADA -->
 <section class="hero" aria-label="Casos de éxito" data-section="hero">
   <div class="wrap slides">
-    <div class="slide">
+    <div class="slide head">
       <div>
         <ol class="crumbs" aria-label="Ruta"><li><a href="/">Inicio</a></li><li><span aria-current="page">Casos de éxito</span></li></ol>
         <p class="kicker">Resultados reales de clientes reales</p>
@@ -839,13 +843,6 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         </div>
         <ul class="chips"><li>Google Ads</li><li>YouTube Ads</li><li>Meta Ads</li><li>Ecommerce</li><li>Sitios web</li><li>Salud</li><li>Eventos</li></ul>
       </div>
-      <div class="offer-wrap"><aside class="offer">
-        <div class="offer-logo"><svg class="gi" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.5.7-4 3.8 1 5.5-4.9-2.7-4.9 2.7 1-5.5-4-3.8 5.5-.7z"/></svg><span>Resultados</span></div>
-        <h3 class="offer-h">Algunos resultados</h3>
-        <ul class="vals"><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><b>600 % de retorno</b><span>Con Google Ads, después de radio y BTL.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 7h13l-1.5 8h-10z"/><path d="M6 7L5 4H3"/><circle cx="9" cy="19" r="1.3"/><circle cx="16" cy="19" r="1.3"/></svg></span><b>Más de 4x desde el primer mes</b><span>Tienda en línea con pauta digital.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14c2.5.2 4.4 1.8 5 4.6"/></svg></span><b>+6.000 personas en 15 días</b><span>Convocatoria para un evento municipal.</span></li><li><span class="vi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-10.5A6 6 0 0 1 18 10.5C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg></span><b>3 sedes más</b><span>La campaña creció con el negocio.</span></li></ul>
-        <div class="btns"><a class="btn btn-glass" href="/servicios/">Lo que hacemos</a><a class="btn btn-glass" href="/agencia/">Conoce la agencia</a></div>
-        
-      </aside></div>
     </div>
   </div>
 </section>
