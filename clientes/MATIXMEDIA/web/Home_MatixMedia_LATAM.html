@@ -23,7 +23,7 @@
 </script>
 <style>
 /* MatixMedia · Home LATAM. Identidad tomada de la vCard: negro, dorado, triple anillo (dorado, rojo, verde). */
-:root{--gap:clamp(56px,8.5vw,136px);--gap-in:clamp(36px,3.6vw,60px);
+:root{--gap:clamp(48px,6vw,88px);--gap-sep:max(40px,calc(var(--gap) * .7));--gap-in:clamp(36px,3.6vw,60px);
   --bg:#04050A;--surface:#0C0D13;--line:#1E1F28;--line-2:#2B2D38;
   --ink:#FDFCF7;--ink-2:#C8C7C0;--muted:#8D8B80;
   --gold:#E8C046;--green:#22B088;--red:#CF343A;
@@ -154,7 +154,7 @@ p{margin:0}
 .hero{position:relative;overflow:hidden;
   background:radial-gradient(640px 520px at 92% 8%,rgba(34,176,136,.22),transparent 70%),radial-gradient(640px 520px at 0% 100%,rgba(207,52,58,.18),transparent 70%)}
 .slides{display:grid}
-.slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);align-items:center;gap:clamp(32px,5vw,72px);padding-block:clamp(48px,7vw,96px) var(--gap)}
+.slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);align-items:center;gap:clamp(32px,5vw,72px);padding-block:clamp(48px,7vw,96px) var(--gap-sep)}
 .kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:300;color:var(--gold);margin-bottom:14px;letter-spacing:.02em}
 .kicker::before{content:'';width:22px;height:1px;flex:none;background:currentColor;border-radius:2px}
 .slide h1,.slide .h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,5.6vw,70px);line-height:1.02;letter-spacing:-.025em;margin:0 0 20px;text-wrap:balance;max-width:16ch}
@@ -250,8 +250,8 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){.head-side .more{transition:none}}
 
 /* Paid Ads: canales en tarjetas de vidrio (mismo tratamiento que el QR de la vCard) */
-#servicios{position:relative;isolation:isolate;overflow:hidden;padding-top:var(--gap)}
-#servicios .sep-2{margin-bottom:var(--gap)}
+#servicios{position:relative;isolation:isolate;overflow:hidden;padding-top:var(--gap-sep)}
+#servicios .sep-2{margin-bottom:var(--gap-sep)}
 #servicios::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(520px 420px at 12% 70%,rgba(232,192,70,.20),transparent 70%),
              radial-gradient(560px 460px at 88% 440px,rgba(34,176,136,.32),transparent 70%),
@@ -327,6 +327,10 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 .partner-row a{display:block;border-radius:8px}
 @media (max-width:640px){.partner-row{flex-wrap:nowrap;gap:18px}.partner-row li{flex:0 1 auto;min-width:0}.partner-row img{max-width:100%}}
 /* Separador: línea punteada fina con una barra verde vertical al centro */
+/* Alrededor de un separador el espacio de cada lado es menor (--gap-sep) para que el corte no deje un hueco doble */
+.sep-1{padding-top:var(--gap-sep)!important}
+section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
+.sec-res,.contact{padding-bottom:var(--gap-sep)}
 /* SEPARADOR 1 · personalizado: línea punteada + barra verde vertical al centro (clase .sep-1 en la sección) */
 .sep-1{position:relative}
 .sep-1::before{content:'';position:absolute;left:0;right:0;top:0;border-top:1px dashed rgba(253,252,247,.22);pointer-events:none}
@@ -456,7 +460,7 @@ a:hover .more::before,a.more:hover::before,a.more:focus-visible::before{width:22
 @media (prefers-reduced-motion:reduce){.card,.card .art svg,.card .art .glyph{transition:none}.card:hover{transform:none}}
 
 /* SEPARADOR 2 · sutil: línea fina que se desvanece en los extremos (<hr class="sep-2">) */
-.sep-2{position:relative;border:0;height:1px;margin:0 0 var(--gap);overflow:visible;
+.sep-2{position:relative;border:0;height:1px;margin:0 0 var(--gap-sep);overflow:visible;
   background:linear-gradient(90deg,transparent,rgba(253,252,247,.16) 30%,rgba(253,252,247,.16) 70%,transparent)}
 .res-foot{margin-top:28px;display:flex;justify-content:flex-end}
 /* Alineado a la derecha: la línea se estira y el texto avanza hacia la derecha */
@@ -520,7 +524,7 @@ form.lead{display:block}
 @media (max-width:520px){.step{grid-template-columns:1fr}.stepper .lbl{font-size:13px}.step-nav{flex-direction:column-reverse}.step-nav .btn,.step-nav [data-back]{flex:none;width:100%}}
 
 /* Footer */
-footer{border-top:1px solid var(--line);padding-block:var(--gap) 34px;color:var(--ink-2);font-size:15px}
+footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:var(--ink-2);font-size:15px}
 .f-grid{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px}
 .f-grid h4{margin:0 0 14px;font:600 15px var(--body);color:var(--ink)}
 .f-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
