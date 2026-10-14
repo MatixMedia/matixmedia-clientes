@@ -420,6 +420,29 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 @keyframes faqin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (max-width:860px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}}
 @media (prefers-reduced-motion:reduce){.faq-item[open] .faq-a{animation:none}.faq-item summary i::before,.faq-item summary i::after{transition:none}}
+/* Carrusel de testimonios */
+.tcar-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*var(--tg))/3);gap:var(--tg);--tg:clamp(16px,1.8vw,28px);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px 0;outline:none}
+.tcar-track::-webkit-scrollbar{display:none}
+.tcar-track:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:24px}
+.tcar .q{scroll-snap-align:start;justify-content:space-between}
+.tcar .q blockquote{font-size:clamp(17px,1.35vw,19px);line-height:1.5}
+.q-foot{display:grid;gap:14px}
+.tcar .q .result{font-family:var(--display);font-weight:600;font-size:clamp(19px,1.6vw,22px);line-height:1.25;color:var(--ink);margin:0}
+.tcar .q .result b{color:var(--green);font-weight:600}
+.tcar-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
+.tcar-dots{display:flex;gap:8px}
+.tcar-dots span{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.18);transition:width .3s,background .3s}
+.tcar-dots span.on{width:24px;background:var(--green)}
+.tcar-arrows{display:flex;gap:10px}
+.tcar-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.2);transition:border-color .2s,background .2s,opacity .2s}
+.tcar-btn:hover,.tcar-btn:focus-visible{border-color:rgba(255,255,255,.34);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+.tcar-btn[disabled]{opacity:.35;cursor:default}
+.tcar-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:1080px){.tcar-track{grid-auto-columns:calc((100% - var(--tg))/2)}}
+@media (max-width:640px){.tcar-track{grid-auto-columns:86%}}
+@media (prefers-reduced-motion:reduce){.tcar-track{scroll-behavior:auto}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
@@ -810,23 +833,54 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       <h2 class="h-line" id="test-t">Lo que dicen nuestros clientes</h2>
       <div class="head-side"><a class="more" href="/casos-de-exito/">Ver más casos de éxito</a></div>
     </div>
-    <div class="quotes">
-      <figure class="q big c-green">
-        <blockquote>“Hemos usado los medios de publicidad tradicionales como Radio, BTL, y Perifoneo.”</blockquote>
-        <div>
-          <p class="result">Después pasaron a Google Ads: <b>retorno de 600 %</b> sobre la inversión.</p>
-          <figcaption><b>Nathaly López</b>Cliente de Google Ads</figcaption>
-        </div>
-      </figure>
-      <div class="side-q">
+    <!-- Testimonios en carrusel: para agregar uno, sumar otro <figure class="q c-green|c-gold|c-red"> -->
+    <div class="tcar" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
+      <div class="tcar-track" tabindex="0">
+        <figure class="q c-green">
+          <blockquote>“Hemos usado los medios de publicidad tradicionales como Radio, BTL, y Perifoneo.”</blockquote>
+          <div class="q-foot">
+            <p class="result">Después pasaron a Google Ads: <b>retorno de 600 %</b> sobre la inversión.</p>
+            <figcaption><b>Nathaly López</b>Cliente de Google Ads</figcaption>
+          </div>
+        </figure>
         <figure class="q c-gold">
-          <blockquote>“En solo 15 días logramos convocar más 6.000 personas en un evento que nunca se había visto en nuestro municipio.”</blockquote>
-          <figcaption><b>Miguel Ángel Ospina</b>Aliado de Matix Media</figcaption>
+          <blockquote>“Estamos muy contentos y sorprendidos, desde el primer mes vimos resultados que hace mucho tiempo no veíamos con retornos superiores a 4x; queremos ver qué más tendremos de ahora en adelante.”</blockquote>
+          <div class="q-foot">
+            <p class="result">Desde el primer mes: <b>retornos superiores a 4x</b>.</p>
+            <figcaption><b>Julián</b>Tienda Mariamar</figcaption>
+          </div>
         </figure>
         <figure class="q c-red">
           <blockquote>“A inicios de 2019 conocimos a Matix Media, quien hizo un estudio de nuestro Sitio Web, Redes Sociales y Campañas de Marketing Digital, y hoy, con más de un año trabajando juntos hemos visto un aumento en las Llamadas y eso nos ha dado la confianza de que estamos haciendo las cosas muy bien.”</blockquote>
-          <figcaption><b>Nelson Zuluaga</b>Dentiplan Plus</figcaption>
+          <div class="q-foot">
+            <figcaption><b>Nelson Zuluaga</b>Dentiplan Plus</figcaption>
+          </div>
         </figure>
+        <figure class="q c-green">
+          <blockquote>“En solo 15 días logramos convocar más 6.000 personas en un evento que nunca se había visto en nuestro municipio.”</blockquote>
+          <div class="q-foot">
+            <figcaption><b>Miguel Ángel Ospina</b>Aliado de Matix Media</figcaption>
+          </div>
+        </figure>
+        <figure class="q c-gold">
+          <blockquote>“Conocí la agencia por referencia, hicimos nuestro Sitio Web y una campaña en Google Ads con resultados favorables.”</blockquote>
+          <div class="q-foot">
+            <figcaption><b>Dr. Alejandro Calvo</b>Sitio web y Google Ads</figcaption>
+          </div>
+        </figure>
+        <figure class="q c-red">
+          <blockquote>“En el 2015, adquirimos el servicio con Matix Media para renovar nuestro sitio web y hemos tenido un buen resultado y acompañamiento constante de su parte; hoy queremos felicitarlos en su aniversario y esperamos trabajar mucho tiempo más juntos.”</blockquote>
+          <div class="q-foot">
+            <figcaption><b>Martha García</b>Club 25 de Agosto Ecopetrol</figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="tcar-nav">
+        <div class="tcar-dots" aria-hidden="true"></div>
+        <div class="tcar-arrows">
+          <button type="button" class="tcar-btn" data-dir="-1" aria-label="Testimonio anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="tcar-btn" data-dir="1" aria-label="Testimonio siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
       </div>
     </div>
     <ul class="counters" data-section="contador" aria-label="MatixMedia en cifras">
@@ -1156,6 +1210,24 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       while(l.getBoundingClientRect().height>fs*lh*2.5&&fs>12){fs-=.25;l.style.fontSize=fs+'px';}}
     function all(){fit();fitL();}
     all();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(all);window.addEventListener('resize',all);})();
+  // Carrusel de testimonios: flechas, puntos y avance automático lento (se pausa al pasar el cursor o al tocar)
+  [].forEach.call(document.querySelectorAll('.tcar'),function(c){
+    var t=c.querySelector('.tcar-track'),cards=t.children,dots=c.querySelector('.tcar-dots'),btns=c.querySelectorAll('.tcar-btn'),timer=null,paused=false;
+    function perView(){return Math.max(1,Math.round(t.clientWidth/cards[0].getBoundingClientRect().width));}
+    function pages(){return Math.max(1,cards.length-perView()+1);}
+    function idx(){var w=cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||0);return Math.round(t.scrollLeft/w);}
+    function go(i){var w=cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||0);t.scrollTo({left:Math.max(0,Math.min(i,pages()-1))*w});}
+    function draw(){var n=pages(),k=Math.min(idx(),n-1);dots.innerHTML='';for(var i=0;i<n;i++){var d=document.createElement('span');if(i===k)d.className='on';dots.appendChild(d);}
+      btns[0].disabled=k<=0;btns[1].disabled=k>=n-1;c.classList.toggle('single',n<=1);}
+    [].forEach.call(btns,function(b){b.addEventListener('click',function(){go(idx()+(+b.getAttribute('data-dir')));if(window.mmTrack)mmTrack('testimonial_nav',{dir:b.getAttribute('data-dir')});});});
+    t.addEventListener('scroll',function(){window.requestAnimationFrame(draw);},{passive:true});
+    window.addEventListener('resize',draw);draw();
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function tick(){if(paused||document.hidden)return;var k=idx();go(k>=pages()-1?0:k+1);}
+    if(!still){timer=setInterval(tick,7000);}
+    ['mouseenter','focusin','touchstart','pointerdown'].forEach(function(e){c.addEventListener(e,function(){paused=true;},{passive:true});});
+    ['mouseleave','focusout'].forEach(function(e){c.addEventListener(e,function(){paused=false;});});
+  });
   var mb=document.querySelector('.menu-btn'),nav=document.getElementById('mnav');
   function setMenu(o){nav.hidden=!o;nav.classList.toggle('open',o);nav.classList.toggle('in',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');}
   mb.addEventListener('click',function(){setMenu(nav.hidden);});
