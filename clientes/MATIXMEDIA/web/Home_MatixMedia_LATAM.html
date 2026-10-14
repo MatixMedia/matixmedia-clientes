@@ -422,8 +422,15 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 @media (prefers-reduced-motion:reduce){.faq-item[open] .faq-a{animation:none}.faq-item summary i::before,.faq-item summary i::after{transition:none}}
 /* Testimonios por grupos de 3: los grupos se apilan en la misma celda y se cruzan con un fundido */
 .tset-pages{display:grid}
-.tset-page{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.tset-page{grid-area:1/1;align-self:start;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
 .tset-page.on{opacity:1;visibility:visible;transition:opacity .6s ease}
+/* La altura de la sección sigue al grupo visible (sin huecos) y las tarjetas pequeñas usan texto más compacto */
+.tset-pages{transition:height .5s ease}
+.tset .side-q .q{padding:26px 28px;gap:14px}
+.tset .side-q .q blockquote{font-size:clamp(16px,1.25vw,18px);line-height:1.5}
+.tset .q.big{justify-content:center;gap:24px}
+.tset .q.big blockquote{font-size:clamp(24px,2.6vw,36px);line-height:1.28}
+.tset .q.big .result{font-size:clamp(24px,2.5vw,34px);margin-bottom:18px}
 @media (max-width:860px){.tset-page{align-content:start}.tset-page .side-q{grid-template-rows:auto}}
 .tcar-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
 .tcar-dots{display:flex;gap:8px}
@@ -842,8 +849,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
             <figcaption><b>Miguel Ángel Ospina</b>Aliado de Matix Media</figcaption>
           </figure>
           <figure class="q c-red">
-            <blockquote>“A inicios de 2019 conocimos a Matix Media, quien hizo un estudio de nuestro Sitio Web, Redes Sociales y Campañas de Marketing Digital, y hoy, con más de un año trabajando juntos hemos visto un aumento en las Llamadas y eso nos ha dado la confianza de que estamos haciendo las cosas muy bien.”</blockquote>
-            <figcaption><b>Nelson Zuluaga</b>Dentiplan Plus</figcaption>
+            <blockquote>“Conocí la agencia por referencia, hicimos nuestro Sitio Web y una campaña en Google Ads con resultados favorables.”</blockquote>
+            <figcaption><b>Dr. Alejandro Calvo</b>Sitio web y Google Ads</figcaption>
           </figure>
         </div>
       </div>
@@ -857,8 +864,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         </figure>
         <div class="side-q">
           <figure class="q c-green">
-            <blockquote>“Conocí la agencia por referencia, hicimos nuestro Sitio Web y una campaña en Google Ads con resultados favorables.”</blockquote>
-            <figcaption><b>Dr. Alejandro Calvo</b>Sitio web y Google Ads</figcaption>
+            <blockquote>“A inicios de 2019 conocimos a Matix Media, quien hizo un estudio de nuestro Sitio Web, Redes Sociales y Campañas de Marketing Digital, y hoy, con más de un año trabajando juntos hemos visto un aumento en las Llamadas y eso nos ha dado la confianza de que estamos haciendo las cosas muy bien.”</blockquote>
+            <figcaption><b>Nelson Zuluaga</b>Dentiplan Plus</figcaption>
           </figure>
           <figure class="q c-red">
             <blockquote>“En el 2015, adquirimos el servicio con Matix Media para renovar nuestro sitio web y hemos tenido un buen resultado y acompañamiento constante de su parte; hoy queremos felicitarlos en su aniversario y esperamos trabajar mucho tiempo más juntos.”</blockquote>
@@ -1210,6 +1217,10 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     function show(n){k=(n+pages.length)%pages.length;[].forEach.call(pages,function(p,i){p.classList.toggle('on',i===k);p.setAttribute('aria-hidden',i===k?'false':'true');});
       [].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===k);});}
     [].forEach.call(btns,function(b){b.addEventListener('click',function(){show(k+(+b.getAttribute('data-dir')));if(window.mmTrack)mmTrack('testimonial_nav',{dir:b.getAttribute('data-dir'),group:k+1});});});
+    var box=c.querySelector('.tset-pages');
+    function fitH(){box.style.height=pages[k].offsetHeight+'px';}
+    var _show=show;show=function(n){_show(n);fitH();};
+    window.addEventListener('resize',fitH);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitH);
     show(0);
     var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!still)setInterval(function(){if(!paused&&!document.hidden)show(k+1);},9000);
