@@ -676,7 +676,11 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-bar span{display:block;height:100%;width:0;background:#fff}
 .rl.on .rl-bar span{animation:rlbar 6s linear forwards}
 @keyframes rlbar{to{width:100%}}
-.rl-nav{justify-content:center;margin-top:clamp(48px,6vw,80px)}
+.rl-nav{position:absolute;left:0;right:0;top:calc(clamp(20px,3vw,40px) + clamp(200px,20vw,270px)*.889);transform:translateY(-50%);margin:0;z-index:20;pointer-events:none;justify-content:center}
+.rl-nav .tcar-arrows{width:100%;max-width:1280px;justify-content:space-between;padding:0 clamp(10px,3vw,40px)}
+.rl-nav .tcar-btn{pointer-events:auto;width:52px;height:52px;background:rgba(4,5,10,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.reels{padding-bottom:clamp(36px,5vw,64px)}
+@media (max-width:640px){.rl-nav .tcar-btn{width:42px;height:42px}}
 .reels-sec .ch-hint{margin-top:18px}
 @media (prefers-reduced-motion:reduce){.rl{transition:none}.rl.on .rl-bar span{animation:none;width:100%}}
 /* Partners tecnológicos (Lo que hacemos) */
