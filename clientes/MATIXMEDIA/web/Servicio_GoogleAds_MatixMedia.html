@@ -96,6 +96,8 @@ p{margin:0}
 /* Menú: cursor encima = dorado; página actual o al hacer clic = verde */
 .nav a{transition:color .2s}
 .nav a:hover,.nav a:focus-visible{color:var(--gold)}
+.contact .ways-more{display:inline-flex;margin-top:22px;font-size:14px;text-decoration:none}
+#contacto{scroll-margin-top:84px}
 .nav a[aria-current="page"],.nav a:active{color:var(--green)}
 .nav-dd{position:relative;display:flex;align-items:center;gap:2px}
 .nav-dd-btn{display:grid;place-items:center;width:22px;height:22px;padding:0;border:0;background:none;color:var(--ink-2);cursor:pointer;border-radius:6px}
@@ -993,7 +995,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       </div>
       <a href="/casos-de-exito/">¡Casos de Éxito!</a>
       <a href="/blog/">Blog</a>
-      <a href="#contacto">Contacto</a>
+      <a href="/#contacto">Contacto</a>
     </nav>
     <a class="btn btn-primary" href="/auditoria-gratis/">Audita tu cuenta gratis</a>
     <div class="top-ico">
@@ -1012,7 +1014,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         <li><a href="/agencia/">Agencia</a></li>
         <li><a href="/casos-de-exito/">¡Casos de Éxito!</a></li>
         <li><a href="/blog/">Blog</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
       </ul></div>
       <div class="m-col"><p class="m-lbl">Lo que hacemos</p>
       <div class="m-serv2"><div><p class="m-lbl2">Paid Ads</p><ul class="m-sub">
@@ -1032,7 +1034,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         <li><a href="https://wa.me/573147511941?text=Hola%20MatixMedia%2C%20vengo%20de%20su%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="menu_contacto">+57 314 751 1941</a></li>
         <li><a href="mailto:info@matixmedia.com.co">info@matixmedia.com.co</a></li>
       </ul>
-      <a class="btn btn-glass m-contact" href="#contacto">¡Contáctanos!</a></div>
+      <a class="btn btn-glass m-contact" href="/#contacto">¡Contáctanos!</a></div>
       </div>
       <a class="btn btn-primary m-cta" href="/auditoria-gratis/">Audita tu cuenta gratis</a>
     </div>
@@ -1244,6 +1246,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         <li><span>Correo</span><a href="mailto:info@matixmedia.com.co">info@matixmedia.com.co</a></li>
         <li><span>Oficina</span><span style="color:var(--ink)">Medellín, Antioquia</span></li>
       </ul>
+      <a class="more ways-more" href="https://wa.me/573147511941?text=Hola%20MatixMedia%2C%20quiero%20hablar%20sobre%20mi%20pauta." target="_blank" rel="noopener" data-wa="contacto_cta">O escríbenos por WhatsApp</a>
     </div>
     <!-- En WordPress este formulario se reemplaza por el plugin de formularios; aquí abre WhatsApp con los datos -->
     <form class="lead" novalidate>
@@ -1300,7 +1303,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       </div>
       <div><h4>Paid Ads</h4><ul><li><a href="/servicios/google-ads/">Google Ads</a></li><li><a href="/servicios/meta-ads/">Meta Ads</a></li><li><a href="/servicios/tiktok-ads/">TikTok Ads</a></li><li><a href="/servicios/chatgpt-ads/">ChatGPT Ads</a></li><li><a href="/servicios/pinterest-ads/">Pinterest Ads</a></li><li><a href="/servicios/amazon-ads/">Amazon Ads</a></li></ul></div>
       <div><h4>Más servicios</h4><ul><li><a href="/servicios/desarrollo-web/">Desarrollo web</a></li><li><a href="/servicios/creacion-de-contenido/">Creación de contenido</a></li><li><a href="/servicios/seo-ia/">SEO, LLMs o IAs</a></li></ul></div>
-      <div><h4>Agencia</h4><ul><li><a href="/agencia/">Nosotros</a></li><li><a href="/casos-de-exito/">Casos de éxito</a></li><li hidden><a href="/planes/">Planes</a></li><li><a href="/blog/">Blog</a></li><li><a href="/#preguntas-frecuentes">Preguntas frecuentes</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+      <div><h4>Agencia</h4><ul><li><a href="/agencia/">Nosotros</a></li><li><a href="/casos-de-exito/">Casos de éxito</a></li><li hidden><a href="/planes/">Planes</a></li><li><a href="/blog/">Blog</a></li><li><a href="/#preguntas-frecuentes">Preguntas frecuentes</a></li><li><a href="/#contacto">Contacto</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="/politica-de-privacidad/">Política de privacidad</a></li><li><a href="/tratamiento-de-datos/">Tratamiento de datos</a></li><li><a href="/terminos-y-condiciones/">Términos y condiciones</a></li><li><a href="https://matixmedia.us/" hreflang="en-US">English · USA</a></li></ul></div>
     </div>
     <div class="f-bottom"><span>© <span id="yr">2026</span> MatixMedia · Medellín, Colombia</span><span><a href="https://www.instagram.com/matixmedia/">Instagram</a> · <a href="https://www.facebook.com/MatixMedia">Facebook</a> · <a href="https://www.tiktok.com/@matixmedia">TikTok</a> · <a href="https://www.youtube.com/user/matixmedia1">YouTube</a></span></div>
@@ -1514,6 +1517,16 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
   mb.addEventListener('click',function(){setMenu(nav.hidden);});
   nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);mb.focus();}});
+  // "Contacto": si la página tiene el formulario, baja hasta él; si no, va al de la home
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href="/#contacto"],a[href="#contacto"]');if(!a)return;
+    var t=document.getElementById('contacto');if(!t)return;
+    e.preventDefault();setMenu(false);
+    var quieto=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    t.scrollIntoView({behavior:quieto?'auto':'smooth',block:'start'});
+    if(history.replaceState)history.replaceState(null,'','#contacto');
+    if(window.mmTrack)mmTrack('ir_contacto',{desde:a.textContent.trim().slice(0,40)});
+  });
 
   // Año del pie
   document.getElementById('yr').textContent=new Date().getFullYear();
