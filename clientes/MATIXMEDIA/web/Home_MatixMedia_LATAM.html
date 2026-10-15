@@ -598,6 +598,18 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .study .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
 .study .tags li{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:var(--ink-2);background:rgba(4,5,10,.35)}
 @media (max-width:860px){.studies{grid-template-columns:1fr}}
+/* Somos Google Partners (página de Google Ads) */
+.gp{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);gap:clamp(28px,5vw,80px);align-items:center}
+.gp h2{margin-bottom:18px}
+.gp-kick{font-style:italic;color:var(--ink);font-size:clamp(17px,1.6vw,19px);margin:0 0 18px}
+.gp .lede+.lede{margin-top:16px}
+.gp .lede strong{color:var(--ink);font-weight:600}
+.gp .lede strong.g{color:var(--green)}
+.gp-badges{display:flex;flex-direction:column;align-items:center;gap:28px}
+.gp-badges img{display:block;width:150px;height:auto;border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.45);transition:transform .25s}
+.gp-badges img[alt^="Google Ads"]{border-radius:50%}
+.gp-badges a:hover img{transform:translateY(-3px)}
+@media (max-width:860px){.gp{grid-template-columns:1fr}.gp-badges{flex-direction:row;justify-content:center}.gp-badges img{width:120px}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
