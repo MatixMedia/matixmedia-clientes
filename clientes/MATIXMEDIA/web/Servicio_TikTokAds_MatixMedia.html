@@ -602,6 +602,11 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .study p b{color:var(--ink);font-weight:600}
 .study .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
 .study .tags li{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:var(--ink-2);background:rgba(4,5,10,.35)}
+.study.soon .metric{display:flex;align-items:center;gap:14px}
+.study .live{width:12px;height:12px;border-radius:50%;background:rgb(var(--c));box-shadow:0 0 0 0 rgba(var(--c),.6);animation:livep 2s infinite;flex:none}
+@keyframes livep{0%{box-shadow:0 0 0 0 rgba(var(--c),.55)}70%{box-shadow:0 0 0 12px rgba(var(--c),0)}100%{box-shadow:0 0 0 0 rgba(var(--c),0)}}
+@media (prefers-reduced-motion:reduce){.study .live{animation:none}}
+.study .soon-tag{margin-top:auto;padding-top:14px;border-top:1px dashed rgba(255,255,255,.16);font-size:12.5px!important;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--c))!important}
 @media (max-width:860px){.studies{grid-template-columns:1fr}}
 /* Somos Google Partners (página de Google Ads) */
 .gp{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);gap:clamp(28px,5vw,80px);align-items:center}
@@ -1001,34 +1006,24 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 <section class="sec full sep-1" aria-labelledby="casos-t" data-section="casos_estudio">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="h-line" id="casos-t">Resultados de nuestros clientes</h2>
+      <h2 class="h-line" id="casos-t">Casos de estudio con TikTok Ads</h2>
       <div class="head-side"><a class="more" href="/casos-de-exito/">Ver más casos de éxito</a>
-        <p class="lede">Negocios que confiaron en nuestro equipo para crecer con pauta digital.</p></div>
+        <p class="lede">Dos marcas creciendo hoy con TikTok Ads. Publicaremos sus resultados con los datos reales del cierre de Q4.</p></div>
     </div>
     <div class="studies">
-      <article class="q study c-gold">
-        <ul class="tags"><li>Ecommerce</li><li>Colombia</li><li>Pauta digital</li></ul>
-        <h3>Tienda Mariamar</h3>
-        <div><p class="metric">+4x</p><p class="metric-l">de retorno desde el primer mes</p></div>
-        <p>“Estamos muy contentos y sorprendidos, desde el primer mes vimos resultados que hace mucho tiempo no veíamos con <b>retornos superiores a 4x</b>; queremos ver qué más tendremos de ahora en adelante.” — Julián</p>
+      <article class="q study soon c-green">
+        <ul class="tags"><li>TikTok Ads</li><li>En curso</li></ul>
+        <h3>Qasa House</h3>
+        <div><p class="metric"><span class="live" aria-hidden="true"></span>Q4 2026</p><p class="metric-l">resultados con datos de cierre reales</p></div>
+        <p>Campañas activas en TikTok Ads. Estamos midiendo cada venta y cada lead para publicar este caso con <b>los datos reales del cierre del cuarto trimestre</b>, sin estimaciones.</p>
+        <p class="soon-tag">Caso completo disponible pronto</p>
       </article>
-      <article class="q study c-red">
-        <ul class="tags"><li>Eventos</li><li>Colombia</li><li>Convocatoria</li></ul>
-        <h3>Campaña de evento</h3>
-        <div><p class="metric">+6.000</p><p class="metric-l">personas en 15 días</p></div>
-        <p>“En solo 15 días logramos <b>convocar más de 6.000 personas</b> en un evento que nunca se había visto en nuestro municipio.” — Miguel Ángel Ospina</p>
-      </article>
-      <article class="q study c-red">
-        <ul class="tags"><li>Inmobiliario</li><li>Estados Unidos</li><li>Google Ads + Meta Ads</li></ul>
-        <h3>307BERGEN</h3>
-        <div><p class="metric">+100</p><p class="metric-l">registros en 1 mes</p></div>
-        <p>Ubicado en Estados Unidos y en alianza con theGreybee, logró con Google Ads <b>más de 100 registros en solo 1 mes</b> para su proyecto inmobiliario. Hoy <b>amplió su inversión a Meta Ads</b> para impactar en todos los canales.</p>
-      </article>
-      <article class="q study c-green">
-        <ul class="tags"><li>Negocio local</li><li>Colombia</li><li>Leads</li></ul>
-        <h3>Elefun</h3>
-        <div><p class="metric">+50.000 USD</p><p class="metric-l">facturados con menos de 10.000 USD de inversión</p></div>
-        <p>En alianza con Juan Ulloa, este cliente local <b>ha facturado más de 50.000 USD</b> con una <b>inversión de menos de 10.000 USD</b>, con campañas locales y generación de leads <b>a clientes extranjeros en Colombia</b>.</p>
+      <article class="q study soon c-gold">
+        <ul class="tags"><li>Turismo</li><li>Colombia</li><li>TikTok Ads</li></ul>
+        <h3>Banana Travel</h3>
+        <div><p class="metric"><span class="live" aria-hidden="true"></span>Q4 2026</p><p class="metric-l">resultados con datos de cierre reales</p></div>
+        <p>Campañas activas en TikTok Ads. Estamos midiendo cada venta y cada lead para publicar este caso con <b>los datos reales del cierre del cuarto trimestre</b>, sin estimaciones.</p>
+        <p class="soon-tag">Caso completo disponible pronto</p>
       </article>
     </div>
   </div>
