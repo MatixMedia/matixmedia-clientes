@@ -607,6 +607,8 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 @keyframes livep{0%{box-shadow:0 0 0 0 rgba(var(--c),.55)}70%{box-shadow:0 0 0 12px rgba(var(--c),0)}100%{box-shadow:0 0 0 0 rgba(var(--c),0)}}
 @media (prefers-reduced-motion:reduce){.study .live{animation:none}}
 .study .soon-tag{margin-top:auto;padding-top:14px;border-top:1px dashed rgba(255,255,255,.16);font-size:12.5px!important;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--c))!important}
+.study.nda .nda-ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(var(--c),.14);border:1px solid rgba(var(--c),.45)}
+.study.nda .nda-ico svg{width:24px;height:24px;fill:none;stroke:rgb(var(--c));stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .studies:has(> .study:only-child){grid-template-columns:minmax(0,760px);justify-content:center}
 @media (max-width:860px){.studies{grid-template-columns:1fr}}
 /* Somos Google Partners (página de Google Ads) */
@@ -1005,34 +1007,18 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 <section class="sec full sep-1" aria-labelledby="casos-t" data-section="casos_estudio">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="h-line" id="casos-t">Resultados de nuestros clientes</h2>
+      <h2 class="h-line" id="casos-t">Casos de estudio con Amazon Ads</h2>
       <div class="head-side"><a class="more" href="/casos-de-exito/">Ver más casos de éxito</a>
-        <p class="lede">Negocios que confiaron en nuestro equipo para vender más con pauta digital.</p></div>
+        <p class="lede">Trabajamos con marcas que venden en Amazon Estados Unidos y otros mercados.</p></div>
     </div>
     <div class="studies">
-      <article class="q study c-gold">
-        <ul class="tags"><li>Ecommerce</li><li>Colombia</li><li>Pauta digital</li></ul>
-        <h3>Tienda Mariamar</h3>
-        <div><p class="metric">+4x</p><p class="metric-l">de retorno desde el primer mes</p></div>
-        <p>“Estamos muy contentos y sorprendidos, desde el primer mes vimos resultados que hace mucho tiempo no veíamos con <b>retornos superiores a 4x</b>; queremos ver qué más tendremos de ahora en adelante.” — Julián</p>
-      </article>
-      <article class="q study c-green">
-        <ul class="tags"><li>Negocio local</li><li>Colombia</li><li>Leads</li></ul>
-        <h3>Elefun</h3>
-        <div><p class="metric">+50.000 USD</p><p class="metric-l">facturados con menos de 10.000 USD de inversión</p></div>
-        <p>En alianza con Juan Ulloa, este cliente local <b>ha facturado más de 50.000 USD</b> con una <b>inversión de menos de 10.000 USD</b>, con campañas locales y generación de leads <b>a clientes extranjeros en Colombia</b>.</p>
-      </article>
-      <article class="q study c-red">
-        <ul class="tags"><li>Inmobiliario</li><li>Estados Unidos</li><li>Google Ads + Meta Ads</li></ul>
-        <h3>307BERGEN</h3>
-        <div><p class="metric">+100</p><p class="metric-l">registros en 1 mes</p></div>
-        <p>Ubicado en Estados Unidos y en alianza con theGreybee, logró con Google Ads <b>más de 100 registros en solo 1 mes</b> para su proyecto inmobiliario. Hoy <b>amplió su inversión a Meta Ads</b> para impactar en todos los canales.</p>
-      </article>
-      <article class="q study c-green">
-        <ul class="tags"><li>Salud</li><li>México</li><li>Google Ads</li></ul>
-        <h3>Hospital Punta Médica</h3>
-        <div><p class="metric">+2.000</p><p class="metric-l">conversiones medibles en 3 meses</p></div>
-        <p>Ubicado en México, ha logrado <b>más de 2.000 conversiones medibles</b> en su sitio web con Google Ads <b>en solo 3 meses</b>, mejorando su alcance y reconocimiento <b>en la zona más exclusiva del país</b>.</p>
+      <article class="q study nda c-gold">
+        <ul class="tags"><li>Amazon Ads</li><li>Estados Unidos</li><li>Confidencial</li></ul>
+        <div class="nda-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5v2.5"/></svg></div>
+        <h3>Resultados protegidos por contrato</h3>
+        <p>Las marcas con las que trabajamos en Amazon Ads nos piden, por contrato, <b>no publicar sus datos de ventas, ACoS ni inversión</b>. Lamentablemente no podemos mostrarlos aquí, y cuidamos esa confidencialidad igual que cuidaremos la tuya.</p>
+        <p>En una reunión podemos contarte <b>cómo trabajamos esas cuentas</b> y qué resultados puedes esperar para tus productos.</p>
+        <p class="soon-tag">Datos confidenciales por acuerdo con el cliente</p>
       </article>
     </div>
   </div>
