@@ -650,6 +650,20 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-h .rl-top svg{width:22px;height:22px;fill:#fff;stroke:none}
 .rl-h .rl-top svg .ytp{fill:#04050A}
 .rl-h iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rl-igf{position:absolute;left:0;top:0;width:326px;height:634px;border:0;transform-origin:0 0;background:transparent;pointer-events:none}
+.rl-shield{position:absolute;inset:0;z-index:3;padding:0;border:0;background:transparent;cursor:pointer}
+.rl-ig.play .rl-shield{display:none}.rl-ig.play .rl-igf{pointer-events:auto}
+.rl-ig-out{display:none;left:0;right:0;text-align:center;bottom:-28px}.rl-ig.on .rl-ig-out{display:block}
+.rl-pic .rl-v{opacity:1}.rl-pic .rl-phone{background:#0b0d14;cursor:zoom-in}.rl:not(.on).rl-pic .rl-phone{cursor:pointer}.rl .rl-tag{position:absolute;left:12px;bottom:12px;z-index:2;opacity:1;transform:none;padding:5px 11px;border-radius:999px;font:500 12px/1 'DM Sans',sans-serif;color:#fff;background:rgba(4,5,10,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+.rl-ig .rl-phone{overflow:hidden}
+.rl-vid .rl-v{object-fit:cover;background:#0b0d14}
+.rl-vid .rl-top b{font-size:12px;max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rl-snd{position:absolute;right:12px;bottom:46px;z-index:4;width:36px;height:36px;border-radius:50%;display:none;place-items:center;padding:0;cursor:pointer;color:#fff;border:1px solid rgba(255,255,255,.25);background:rgba(4,5,10,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.rl.on .rl-snd{display:grid}
+.rl-snd svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rl-snd .snd-on,.rl-snd[aria-pressed=true] .snd-off{display:none}.rl-snd[aria-pressed=true] .snd-on{display:inline}
+.rl-go{justify-self:start;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);opacity:0;transition:opacity .3s}
+.rl.on .rl-go{opacity:1}.rl-vid.on .rl-shield:hover~.rl-bot .rl-go{background:#E8C046;color:#04050A;border-color:#E8C046}.rl-ig .rl-phone{-webkit-box-reflect:none}
 .rl-yt-out{position:absolute;right:10px;bottom:-30px;font-size:12px;color:var(--ink-2);text-decoration:none}
 .rl-yt-out:hover{color:var(--gold)}
 .rl-v,.rl-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -674,7 +688,11 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-bar span{display:block;height:100%;width:0;background:#fff}
 .rl.on .rl-bar span{animation:rlbar 6s linear forwards}
 @keyframes rlbar{to{width:100%}}
-.rl-nav{justify-content:center;margin-top:clamp(48px,6vw,80px)}
+.rl-nav{position:absolute;left:0;right:0;top:calc(clamp(20px,3vw,40px) + clamp(200px,20vw,270px)*.889);transform:translateY(-50%);margin:0;z-index:20;pointer-events:none;justify-content:center}
+.rl-nav .tcar-arrows{width:100%;max-width:1280px;justify-content:space-between;padding:0 clamp(10px,3vw,40px)}
+.rl-nav .tcar-btn{pointer-events:auto;width:52px;height:52px;background:rgba(4,5,10,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.reels{padding-bottom:clamp(36px,5vw,64px)}
+@media (max-width:640px){.rl-nav .tcar-btn{width:42px;height:42px}}
 .reels-sec .ch-hint{margin-top:18px}
 @media (prefers-reduced-motion:reduce){.rl{transition:none}.rl.on .rl-bar span{animation:none;width:100%}}
 /* Partners tecnológicos (Lo que hacemos) */
@@ -1252,7 +1270,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         <div class="f-partners"><ul aria-label="Somos partners oficiales"><li>Google Partner</li><li>Meta Business Partner</li><li>TikTok Agency Partner</li></ul></div>
       </div>
       <div><h4>Paid Ads</h4><ul><li><a href="/servicios/google-ads/">Google Ads</a></li><li><a href="/servicios/meta-ads/">Meta Ads</a></li><li><a href="/servicios/tiktok-ads/">TikTok Ads</a></li><li><a href="/servicios/chatgpt-ads/">ChatGPT Ads</a></li><li><a href="/servicios/pinterest-ads/">Pinterest Ads</a></li><li><a href="/servicios/amazon-ads/">Amazon Ads</a></li></ul></div>
-      <div><h4>Adicionales</h4><ul><li><a href="/servicios/desarrollo-web/">Desarrollo web</a></li><li><a href="/servicios/creacion-de-contenido/">Creación de contenido</a></li><li><a href="/servicios/seo/">SEO</a></li></ul></div>
+      <div><h4>Más servicios</h4><ul><li><a href="/servicios/desarrollo-web/">Desarrollo web</a></li><li><a href="/servicios/creacion-de-contenido/">Creación de contenido</a></li><li><a href="/servicios/seo/">SEO</a></li></ul></div>
       <div><h4>Agencia</h4><ul><li><a href="/agencia/">Nosotros</a></li><li><a href="/casos-de-exito/">Casos de éxito</a></li><li><a href="/planes/">Planes</a></li><li><a href="/blog/">Blog</a></li><li><a href="/#preguntas-frecuentes">Preguntas frecuentes</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="/politica-de-privacidad/">Privacidad</a></li><li><a href="/tratamiento-de-datos/">Tratamiento de datos</a></li><li><a href="/terminos/">Términos</a></li><li><a href="https://matixmedia.us/" hreflang="en-US">English · USA</a></li></ul></div>
     </div>
@@ -1516,6 +1534,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     [].forEach.call(document.querySelectorAll('.reels'),function(box){
       var items=[].slice.call(box.querySelectorAll('.rl')),n=items.length,k=Math.floor(n/2),paused=false,hold=false,t;
       if(!n)return;
+      var gal=document.querySelectorAll('.ph-it');
+      [].forEach.call(box.querySelectorAll('img[data-ph]'),function(im){var g=gal[+im.getAttribute('data-ph')];if(g)im.src=g.querySelector('img').src;});
       function lay(){
         var narrow=window.innerWidth<700,K=narrow?.66:.9,S=[1,.82,.66,.6],H=items[0].classList.contains('rl-h')?0:0;
         var vh=0;items.forEach(function(el){if(!el.classList.contains('rl-h'))vh=Math.max(vh,el.offsetHeight);});
@@ -1529,19 +1549,27 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
           el.style.transform='translateX(calc(-50% + '+x+'px)) translateY('+(a*vh*.05)+'px) scale('+s+') rotateY('+ry+'deg)';
           el.style.zIndex=10-a;el.style.opacity=a>2?0:(a===2?.55:(a===1?.85:1));el.style.filter=a===0?'none':'brightness('+(a===1?.75:.55)+')';
           el.classList.toggle('on',a===0);el.setAttribute('aria-hidden',a>2?'true':'false');
+          var f=el.querySelector('.rl-igf');
+          if(f){var ph=el.querySelector('.rl-phone'),sc=ph.clientWidth/326;f.style.transform='translateY('+(-54*sc)+'px) scale('+sc+')';f.style.height=(ph.clientHeight/sc+54)+'px';
+            if(a<=2&&!f.src)f.src=f.dataset.src;if(a!==0&&el.classList.contains('play')){el.classList.remove('play');f.src=f.dataset.src;}}
           var v=el.querySelector('video');
+          if(v&&a!==0&&!v.muted){v.muted=true;var sb=el.querySelector('.rl-snd');if(sb){sb.setAttribute('aria-pressed','false');sb.setAttribute('aria-label','Activar sonido');}}
           if(v){if(a===0){if(!v.src&&v.dataset.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();}
           if(a!==0&&el.dataset.html){el.innerHTML=el.dataset.html;delete el.dataset.html;bind(el,i);}
           var bar=el.querySelector('.rl-bar span');if(bar&&a===0){bar.style.animation='none';bar.offsetWidth;bar.style.animation='';}
         });
       }
       function go(d,src){k=(k+d+n)%n;lay();if(src&&window.mmTrack)mmTrack('reel_nav',{dir:d,reel:k+1,via:src});}
-      function bind(el,i){el.querySelector('.rl-phone').addEventListener('click',function(){
+      function bind(el,i){(el.querySelector('.rl-shield')||el.querySelector('.rl-phone')).addEventListener('click',function(){
         if(i===k){
+          if(el.dataset.href){window.open(el.dataset.href,'_blank','noopener');if(window.mmTrack)mmTrack('reel_instagram',{reel:i+1,url:el.dataset.href});return;}
+          if(el.dataset.ph!=null){var g=gal[+el.dataset.ph];if(g)g.click();return;}
+          if(el.dataset.ig){el.classList.add('play');paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.ig,section:'contenidos',source:'instagram'});return;}
           if(el.dataset.yt){el.dataset.html=el.innerHTML;el.innerHTML='<div class="rl-phone"><iframe src="https://www.youtube.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0&playsinline=1" title="Video de MatixMedia" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><a class="rl-yt-out" href="https://www.youtube.com/watch?v='+el.dataset.yt+'" target="_blank" rel="noopener">Ver en YouTube ↗</a></div>';paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.yt,section:'contenidos'});return;}
           var v=el.querySelector('video');if(v){v.muted=!v.muted;if(window.mmTrack)mmTrack('reel_sound',{reel:i+1,on:!v.muted});}return;}
         var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;hold=false;go(d,'click');});}
       items.forEach(bind);
+      [].forEach.call(box.querySelectorAll('.rl-snd'),function(sb){sb.addEventListener('click',function(e){e.stopPropagation();var v=sb.parentNode.querySelector('video');if(!v)return;v.muted=!v.muted;sb.setAttribute('aria-pressed',String(!v.muted));sb.setAttribute('aria-label',v.muted?'Activar sonido':'Silenciar');if(!v.muted){var p=v.play();if(p&&p.catch)p.catch(function(){});}if(window.mmTrack)mmTrack('reel_sound',{on:!v.muted});});});
       [].forEach.call(box.querySelectorAll('[data-rl]'),function(b){b.addEventListener('click',function(){hold=false;go(+b.getAttribute('data-rl'),'flecha');});});
       var x0=null;box.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;paused=true;},{passive:true});
       box.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(dx<0?1:-1,'deslizar');x0=null;},{passive:true});
