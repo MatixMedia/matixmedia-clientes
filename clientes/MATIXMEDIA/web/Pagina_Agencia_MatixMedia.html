@@ -607,6 +607,7 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 @keyframes livep{0%{box-shadow:0 0 0 0 rgba(var(--c),.55)}70%{box-shadow:0 0 0 12px rgba(var(--c),0)}100%{box-shadow:0 0 0 0 rgba(var(--c),0)}}
 @media (prefers-reduced-motion:reduce){.study .live{animation:none}}
 .study .soon-tag{margin-top:auto;padding-top:14px;border-top:1px dashed rgba(255,255,255,.16);font-size:12.5px!important;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--c))!important}
+.studies:has(> .study:only-child){grid-template-columns:minmax(0,760px);justify-content:center}
 @media (max-width:860px){.studies{grid-template-columns:1fr}}
 /* Somos Google Partners (página de Google Ads) */
 .gp{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);gap:clamp(28px,5vw,80px);align-items:center}
