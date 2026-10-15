@@ -587,6 +587,17 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .badges img[alt^="Google Ads"]{border-radius:50%}
 .badges a:hover img{transform:translateY(-2px)}
 @media (max-width:640px){.badges img{height:64px}}
+/* Casos de estudio en tarjetas (páginas de servicio) */
+.studies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
+.q.study{gap:14px;padding:clamp(26px,2.6vw,36px)}
+.study h3{font-size:clamp(24px,2.2vw,30px);margin:0}
+.study .metric{font-family:var(--display);font-weight:600;font-size:clamp(40px,4vw,54px);line-height:1;letter-spacing:-.02em;margin:0;color:rgb(var(--c))}
+.study .metric-l{color:var(--ink-2);font-size:15px;margin:6px 0 0}
+.study p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
+.study p b{color:var(--ink);font-weight:600}
+.study .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.study .tags li{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:var(--ink-2);background:rgba(4,5,10,.35)}
+@media (max-width:860px){.studies{grid-template-columns:1fr}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
