@@ -97,6 +97,27 @@ p{margin:0}
 .nav a{transition:color .2s}
 .nav a:hover,.nav a:focus-visible{color:var(--gold)}
 .nav a[aria-current="page"],.nav a:active{color:var(--green)}
+.nav-dd{position:relative;display:flex;align-items:center;gap:2px}
+.nav-dd-btn{display:grid;place-items:center;width:22px;height:22px;padding:0;border:0;background:none;color:var(--ink-2);cursor:pointer;border-radius:6px}
+.nav-dd-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.nav-dd:hover .nav-dd-btn svg,.nav-dd.open .nav-dd-btn svg{transform:rotate(180deg)}
+.nav-dd-p{position:absolute;top:100%;left:50%;transform:translate(-50%,8px);padding-top:18px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+.nav-dd:hover .nav-dd-p,.nav-dd:focus-within .nav-dd-p,.nav-dd.open .nav-dd-p{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.nav-dd.cerrado .nav-dd-p{opacity:0!important;visibility:hidden!important}
+.nav-dd-in{display:grid;grid-template-columns:repeat(2,minmax(250px,1fr));gap:6px 28px;padding:22px 24px 16px;border:1px solid var(--line-2);border-radius:20px;background:#0A0B11;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.nav-dd-lbl{margin:0 0 8px;padding-left:12px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.nav-dd-col{display:flex;flex-direction:column;gap:2px}
+.nav .nav-dd-col a{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:12px;white-space:normal;transition:background .2s}
+.nav .nav-dd-col a b{font-weight:600;font-size:14.5px;color:var(--ink)}
+.nav .nav-dd-col a span{font-size:12.5px;font-weight:400;color:var(--muted);line-height:1.35}
+.nav .nav-dd-col a:hover,.nav .nav-dd-col a:focus-visible{background:rgba(255,255,255,.05)}
+.nav .nav-dd-col a:hover b{color:var(--gold)}
+.nav .nav-dd-col a[aria-current="page"] b{color:var(--green)}
+.nav-dd-foot{grid-column:1/-1;display:flex;justify-content:space-between;gap:16px;margin-top:8px;padding:12px 12px 2px;border-top:1px solid var(--line)}
+.nav .nav-dd-foot a{font-size:13px;color:var(--gold)}
+.nav .nav-dd-foot a:last-child{color:var(--ink-2)}
+.m-serv2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.m-lbl2{margin:0 0 9px;padding-left:14px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .top .btn{min-height:44px;padding:0 20px;font-size:14px}
 /* Íconos y hamburguesa: solo cuando el menú se colapsa */
 .top-ico{display:none;flex-direction:column;align-items:center;gap:2px}
@@ -962,7 +983,14 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="/">Inicio</a>
       <a href="/agencia/">Agencia</a>
-      <a href="/servicios/" aria-current="page">Lo que hacemos</a>
+      <div class="nav-dd">
+        <a href="/servicios/" aria-current="page">Lo que hacemos</a><button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="nav-dd-p" aria-label="Ver servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dd-p" id="nav-dd-p"><div class="nav-dd-in">
+          <div class="nav-dd-col"><p class="nav-dd-lbl">Paid Ads</p><a href="/servicios/google-ads/"><b>Google Ads</b><span>Búsqueda, Performance Max y Shopping</span></a><a href="/servicios/meta-ads/"><b>Meta Ads</b><span>Facebook e Instagram</span></a><a href="/servicios/tiktok-ads/"><b>TikTok Ads</b><span>Anuncios en video que venden</span></a><a href="/servicios/chatgpt-ads/"><b>ChatGPT Ads</b><span>Publicidad dentro de ChatGPT</span></a><a href="/servicios/pinterest-ads/"><b>Pinterest Ads</b><span>Ideas que se vuelven compras</span></a><a href="/servicios/amazon-ads/"><b>Amazon Ads</b><span>Ventas en el marketplace</span></a></div>
+          <div class="nav-dd-col"><p class="nav-dd-lbl">Más servicios</p><a href="/servicios/desarrollo-web/"><b>Desarrollo web</b><span>Sitios y landing pages que convierten</span></a><a href="/servicios/creacion-de-contenido/"><b>Creación de contenido</b><span>Videos, reels y fotografía</span></a><a href="/servicios/seo-ia/"><b>SEO, LLMs o IAs</b><span>Google, Maps y buscadores con IA</span></a></div>
+          <div class="nav-dd-foot"><a href="/servicios/" aria-current="page">Ver todo lo que hacemos →</a><a href="/auditoria-gratis/">Auditoría gratis de tu cuenta</a></div>
+        </div></div>
+      </div>
       <a href="/casos-de-exito/">¡Casos de Éxito!</a>
       <a href="/blog/">Blog</a>
       <a href="#contacto">Contacto</a>
@@ -987,17 +1015,18 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
         <li><a href="#contacto">Contacto</a></li>
       </ul></div>
       <div class="m-col"><p class="m-lbl">Lo que hacemos</p>
-      <ul class="m-sub m-serv">
-        <li><a href="/servicios/google-ads/">Google Ads</a></li>
-        <li><a href="/servicios/meta-ads/">Meta Ads</a></li>
-        <li><a href="/servicios/tiktok-ads/">TikTok Ads</a></li>
-        <li><a href="/servicios/chatgpt-ads/">ChatGPT Ads</a></li>
-        <li><a href="/servicios/pinterest-ads/">Pinterest Ads</a></li>
-        <li><a href="/servicios/amazon-ads/">Amazon Ads</a></li>
-        <li><a href="/servicios/desarrollo-web/">Desarrollo web</a></li>
-        <li><a href="/servicios/creacion-de-contenido/">Creación de contenido</a></li>
-        <li><a href="/servicios/seo-ia/">SEO</a></li>
-      </ul></div>
+      <div class="m-serv2"><div><p class="m-lbl2">Paid Ads</p><ul class="m-sub">
+          <li><a href="/servicios/google-ads/">Google Ads</a></li>
+          <li><a href="/servicios/meta-ads/">Meta Ads</a></li>
+          <li><a href="/servicios/tiktok-ads/">TikTok Ads</a></li>
+          <li><a href="/servicios/chatgpt-ads/">ChatGPT Ads</a></li>
+          <li><a href="/servicios/pinterest-ads/">Pinterest Ads</a></li>
+          <li><a href="/servicios/amazon-ads/">Amazon Ads</a></li>
+        </ul></div><div><p class="m-lbl2">Más servicios</p><ul class="m-sub">
+          <li><a href="/servicios/desarrollo-web/">Desarrollo web</a></li>
+          <li><a href="/servicios/creacion-de-contenido/">Creación de contenido</a></li>
+          <li><a href="/servicios/seo-ia/">SEO, LLMs o IAs</a></li>
+        </ul></div></div></div>
       <div class="m-col"><p class="m-lbl">Contacto</p>
       <ul class="m-sub">
         <li><a href="https://wa.me/573147511941?text=Hola%20MatixMedia%2C%20vengo%20de%20su%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="menu_contacto">+57 314 751 1941</a></li>
@@ -1526,6 +1555,14 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
     var msg='Hola MatixMedia, quiero una auditoría.%0A'+[['nombre','Nombre'],['correo','Correo'],['whatsapp','WhatsApp'],['empresa','Negocio'],['tipo','Tipo de negocio'],['inversion','Inversión'],['servicio','Servicio']].map(function(k){return k[1]+': '+encodeURIComponent(d.get(k[0])||'-');}).join('%0A');
     window.open('https://wa.me/573147511941?text='+msg,'_blank','noopener');
   });
+  })();
+
+  /* Menú: desplegable de servicios (flecha en táctil, Escape cierra) */
+  (function(){var dd=document.querySelector('.nav-dd');if(!dd)return;var b=dd.querySelector('.nav-dd-btn');
+    b.addEventListener('click',function(e){e.stopPropagation();var o=!dd.classList.contains('open');dd.classList.toggle('open',o);dd.classList.remove('cerrado');b.setAttribute('aria-expanded',o);});
+    document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){dd.classList.remove('open');dd.classList.add('cerrado');b.setAttribute('aria-expanded','false');}});
+    dd.addEventListener('mouseleave',function(){dd.classList.remove('cerrado');});
   })();
 
   /* Contenidos tipo reels: coverflow (el del centro grande), autoavance lento, flechas, clic y deslizar.
