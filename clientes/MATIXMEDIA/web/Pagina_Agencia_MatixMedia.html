@@ -642,6 +642,16 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-phone{position:relative;display:block;width:100%;aspect-ratio:9/16;padding:0;border:1px solid rgba(255,255,255,.16);border-radius:22px;overflow:hidden;cursor:pointer;color:#fff;font:inherit;text-align:left;
   background:#0C0D13;box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.18);-webkit-box-reflect:below 14px linear-gradient(transparent 72%,rgba(255,255,255,.12))}
 .rl.on .rl-phone{border-color:rgba(232,192,70,.45)}
+.rl-h{width:min(clamp(380px,38vw,500px),86vw)}
+.rl-h .rl-phone{aspect-ratio:16/9;border-radius:18px}
+.rl-h .rl-v{opacity:.85}
+.rl-h .rl-ph-h{background:none}
+.rl-h .rl-top b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80%}
+.rl-h .rl-top svg{width:22px;height:22px;fill:#fff;stroke:none}
+.rl-h .rl-top svg .ytp{fill:#04050A}
+.rl-h iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rl-yt-out{position:absolute;right:10px;bottom:-30px;font-size:12px;color:var(--ink-2);text-decoration:none}
+.rl-yt-out:hover{color:var(--gold)}
 .rl-v,.rl-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rl-ph{display:grid;place-content:center;justify-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .rl:nth-child(5n+1) .rl-ph{background:radial-gradient(120% 80% at 30% 20%,rgba(207,52,58,.55),transparent 60%),linear-gradient(160deg,#2a0d10,#0b0c12)}
@@ -1538,31 +1548,40 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
      Si la tarjeta tiene <video data-src>, solo se carga y reproduce el del centro. */
   (function(){
     [].forEach.call(document.querySelectorAll('.reels'),function(box){
-      var items=[].slice.call(box.querySelectorAll('.rl')),n=items.length,k=Math.floor(n/2),paused=false,t;
+      var items=[].slice.call(box.querySelectorAll('.rl')),n=items.length,k=Math.floor(n/2),paused=false,hold=false,t;
       if(!n)return;
       function lay(){
-        var w=items[0].offsetWidth,narrow=window.innerWidth<700;
+        var narrow=window.innerWidth<700,K=narrow?.66:.9,S=[1,.82,.66,.6],H=items[0].classList.contains('rl-h')?0:0;
+        var vh=0;items.forEach(function(el){if(!el.classList.contains('rl-h'))vh=Math.max(vh,el.offsetHeight);});
+        var D=items.map(function(el,i){var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;return d;});
+        var X={};X[k]=0;
+        function vis(i){return items[i].offsetWidth*S[Math.min(Math.abs(D[i]),3)];}
+        [1,-1].forEach(function(sg){var prev=k;for(var step=1;step<=Math.ceil(n/2);step++){var i=items.findIndex(function(_,j){return D[j]===sg*step;});if(i<0)break;X[i]=X[prev]+sg*(vis(prev)+vis(i))/2*K;prev=i;}});
         items.forEach(function(el,i){
-          var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;var a=Math.abs(d);
-          var x=d*w*(narrow?.62:.86),s=a===0?1:(a===1?.82:.66),ry=narrow?0:-d*6;
-          el.style.transform='translateX(calc(-50% + '+x+'px)) translateY('+(a*w*.09)+'px) scale('+s+') rotateY('+ry+'deg)';
+          var d=D[i],a=Math.abs(d),s=S[Math.min(a,3)],ry=narrow?0:-d*6,x=X[i]||0;
+          var top=el.classList.contains('rl-h')?Math.max(0,(vh-el.offsetHeight)/2):0;el.style.top=top+'px';
+          el.style.transform='translateX(calc(-50% + '+x+'px)) translateY('+(a*vh*.05)+'px) scale('+s+') rotateY('+ry+'deg)';
           el.style.zIndex=10-a;el.style.opacity=a>2?0:(a===2?.55:(a===1?.85:1));el.style.filter=a===0?'none':'brightness('+(a===1?.75:.55)+')';
           el.classList.toggle('on',a===0);el.setAttribute('aria-hidden',a>2?'true':'false');
           var v=el.querySelector('video');
           if(v){if(a===0){if(!v.src&&v.dataset.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();}
+          if(a!==0&&el.dataset.html){el.innerHTML=el.dataset.html;delete el.dataset.html;bind(el,i);}
           var bar=el.querySelector('.rl-bar span');if(bar&&a===0){bar.style.animation='none';bar.offsetWidth;bar.style.animation='';}
         });
       }
       function go(d,src){k=(k+d+n)%n;lay();if(src&&window.mmTrack)mmTrack('reel_nav',{dir:d,reel:k+1,via:src});}
-      items.forEach(function(el,i){el.querySelector('.rl-phone').addEventListener('click',function(){
-        if(i===k){var v=el.querySelector('video');if(v){v.muted=!v.muted;if(window.mmTrack)mmTrack('reel_sound',{reel:i+1,on:!v.muted});}return;}
-        var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;go(d,'click');});});
-      [].forEach.call(box.querySelectorAll('[data-rl]'),function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-rl'),'flecha');});});
+      function bind(el,i){el.querySelector('.rl-phone').addEventListener('click',function(){
+        if(i===k){
+          if(el.dataset.yt){el.dataset.html=el.innerHTML;el.innerHTML='<div class="rl-phone"><iframe src="https://www.youtube.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0&playsinline=1" title="Video de MatixMedia" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><a class="rl-yt-out" href="https://www.youtube.com/watch?v='+el.dataset.yt+'" target="_blank" rel="noopener">Ver en YouTube ↗</a></div>';paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.yt,section:'contenidos'});return;}
+          var v=el.querySelector('video');if(v){v.muted=!v.muted;if(window.mmTrack)mmTrack('reel_sound',{reel:i+1,on:!v.muted});}return;}
+        var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;hold=false;go(d,'click');});}
+      items.forEach(bind);
+      [].forEach.call(box.querySelectorAll('[data-rl]'),function(b){b.addEventListener('click',function(){hold=false;go(+b.getAttribute('data-rl'),'flecha');});});
       var x0=null;box.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;paused=true;},{passive:true});
       box.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(dx<0?1:-1,'deslizar');x0=null;},{passive:true});
       box.addEventListener('mouseenter',function(){paused=true;});box.addEventListener('mouseleave',function(){paused=false;});
       var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(!still)t=setInterval(function(){if(!paused&&!document.hidden)go(1);},6000);
+      if(!still)t=setInterval(function(){if(!paused&&!hold&&!document.hidden)go(1);},6000);
       window.addEventListener('resize',lay);lay();
     });
   })();

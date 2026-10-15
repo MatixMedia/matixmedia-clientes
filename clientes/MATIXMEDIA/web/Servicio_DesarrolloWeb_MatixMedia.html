@@ -650,6 +650,8 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-h .rl-top svg{width:22px;height:22px;fill:#fff;stroke:none}
 .rl-h .rl-top svg .ytp{fill:#04050A}
 .rl-h iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rl-yt-out{position:absolute;right:10px;bottom:-30px;font-size:12px;color:var(--ink-2);text-decoration:none}
+.rl-yt-out:hover{color:var(--gold)}
 .rl-v,.rl-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rl-ph{display:grid;place-content:center;justify-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .rl:nth-child(5n+1) .rl-ph{background:radial-gradient(120% 80% at 30% 20%,rgba(207,52,58,.55),transparent 60%),linear-gradient(160deg,#2a0d10,#0b0c12)}
@@ -1538,7 +1540,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       function go(d,src){k=(k+d+n)%n;lay();if(src&&window.mmTrack)mmTrack('reel_nav',{dir:d,reel:k+1,via:src});}
       function bind(el,i){el.querySelector('.rl-phone').addEventListener('click',function(){
         if(i===k){
-          if(el.dataset.yt){el.dataset.html=el.innerHTML;el.innerHTML='<div class="rl-phone"><iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0" title="Video de MatixMedia" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>';paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.yt,section:'contenidos'});return;}
+          if(el.dataset.yt){el.dataset.html=el.innerHTML;el.innerHTML='<div class="rl-phone"><iframe src="https://www.youtube.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0&playsinline=1" title="Video de MatixMedia" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><a class="rl-yt-out" href="https://www.youtube.com/watch?v='+el.dataset.yt+'" target="_blank" rel="noopener">Ver en YouTube ↗</a></div>';paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.yt,section:'contenidos'});return;}
           var v=el.querySelector('video');if(v){v.muted=!v.muted;if(window.mmTrack)mmTrack('reel_sound',{reel:i+1,on:!v.muted});}return;}
         var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;hold=false;go(d,'click');});}
       items.forEach(bind);
