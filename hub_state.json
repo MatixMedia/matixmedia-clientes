@@ -776,6 +776,98 @@
     ],
     "jairo_2026-10": [
       {
+        "id": "nyc-evento-tiktok",
+        "titulo": "2 Días en NYC en un Evento Exclusivo de TikTok para Agencias",
+        "formato": "Reel",
+        "plataformas": [
+          "Instagram",
+          "TikTok"
+        ],
+        "estado": "En producción",
+        "duracion": "58s",
+        "objetivo": "Awareness · autoridad y cercanía (vlog) · evento TikTok para agencias en NYC · CTA seguir para el anuncio que viene",
+        "blocks": [
+          {
+            "label": "HOOK",
+            "tiempo": "0:00-0:05",
+            "color": "#E8C046",
+            "icon": "🗽",
+            "audio": "\"Así se ven 2 días en Nueva York… en un evento de TikTok exclusivo para agencias. Acompáñame, que te muestro cómo fue.\"",
+            "visual": "Tú a cámara en modo vlog (selfie, energía alta) con NYC de fondo · corte rápido a la entrada del evento",
+            "pantalla": "2 días en NYC 🗽 · Evento TikTok para agencias",
+            "tip": "Hook de vlog: acceso exclusivo + lugar que todos reconocen. El espectador se sube al viaje desde el segundo 1."
+          },
+          {
+            "label": "DÍA 1 · EL MEET",
+            "tiempo": "0:05-0:15",
+            "color": "#4A9EE0",
+            "icon": "🤝",
+            "audio": "\"El día 1 arrancó con un meet de invitados y agencias. Ahí conectamos, conversamos y conocimos a todo el mundo. Qué buena energía.\"",
+            "visual": "Planos rápidos del meet: saludos, gente conversando, tú saludando a cámara · música arriba",
+            "pantalla": "Día 1 · El Meet 🤝",
+            "tip": "Mostrar gente real y conexiones es prueba social: dice 'estoy en ese círculo' sin tener que decirlo."
+          },
+          {
+            "label": "DÍA 1 · LA PRESENTACIÓN",
+            "tiempo": "0:15-0:26",
+            "color": "#7C3AED",
+            "icon": "🎤",
+            "audio": "\"Luego pasamos a la presentación… y aquí viene lo bueno: TikTok nos reveló cosas nuevas. Todavía no puedo contarte. Pero espero hacerlo muy pronto.\"",
+            "visual": "Plano de la sala y la pantalla de la presentación (sin mostrar material reservado) · vuelves a cámara con gesto de 'shhh'",
+            "pantalla": "TikTok nos reveló cosas nuevas 👀 · Pronto te cuento 🤫",
+            "tip": "Curiosidad abierta: prometer algo que aún no se cuenta hace que la gente se quede y vuelva."
+          },
+          {
+            "label": "DÍA 1 · TIMES SQUARE",
+            "tiempo": "0:26-0:33",
+            "color": "#4A9EE0",
+            "icon": "📸",
+            "audio": "\"Ese mismo día nos dimos una vuelta por Times Square. Foticos y a aprovechar el día.\"",
+            "visual": "Tomas en Times Square: pantallas gigantes, caminando con cámara en mano, selfie y fotos con el equipo · ritmo ágil",
+            "pantalla": "Times Square 📸",
+            "tip": "Respiro visual y emocional: baja la tensión del bloque anterior y muestra el lado humano del viaje."
+          },
+          {
+            "label": "DÍA 2 · REUNIÓN PRIVADA",
+            "tiempo": "0:33-0:43",
+            "color": "#199477",
+            "icon": "🌎",
+            "audio": "\"El día 2 fue todavía más interesante. Tuvimos una reunión privada con solo 6 agencias de LATAM… y nosotros éramos una de las 2 agencias de Colombia invitadas. Increíble.\"",
+            "visual": "Tú a cámara con más intensidad · b-roll de la sala de la reunión · número 6 y número 2 aparecen en pantalla",
+            "pantalla": "Solo 6 agencias de LATAM · 2 de Colombia 🇨🇴",
+            "tip": "Dos números concretos (6 y 2) dan autoridad sin presumir: la exclusividad la cuenta el dato, no el adjetivo."
+          },
+          {
+            "label": "DÍA 2 · LO QUE NOS MOSTRARON",
+            "tiempo": "0:43-0:51",
+            "color": "#E8C046",
+            "icon": "🚀",
+            "audio": "\"Ahí nos mostraron todo lo que TikTok está haciendo para ayudar a los negocios a vender más.\"",
+            "visual": "Primer plano, tono de 'esto es importante' · b-roll de la sala y de las presentaciones",
+            "pantalla": "TikTok → negocios venden más 🚀",
+            "tip": "Aquí el vlog se conecta con lo que le importa al cliente: vender más. El viaje se vuelve valor para quien mira."
+          },
+          {
+            "label": "CIERRE + CTA",
+            "tiempo": "0:51-0:58",
+            "color": "#CF343A",
+            "icon": "🍽️",
+            "audio": "\"Cerramos con un almuerzo, compartiendo con todos estos cracks del marketing. Fueron dos días buenísimos. Sígueme para enterarte cuando te cuente lo que viene.\"",
+            "visual": "Plano de la mesa del almuerzo, brindis o risas · cierras a cámara con sonrisa y señalas el botón de seguir",
+            "pantalla": "Sígueme para lo que viene 👀",
+            "tip": "El CTA se apoya en la curiosidad del bloque 3: seguir = enterarte primero de lo que TikTok reveló."
+          }
+        ],
+        "copy": "2 días en NYC en un evento de TikTok exclusivo para agencias 🗽🔥\n\nDía 1: meet con invitados y agencias, presentación de TikTok con novedades (que pronto les cuento 🤫) y vuelta por Times Square.\nDía 2: reunión privada con solo 6 agencias de LATAM — fuimos una de las 2 agencias de Colombia invitadas 🇨🇴 — y todo lo que TikTok está haciendo para ayudar a los negocios a vender más.\n\nCerramos con almuerzo y mucho marketing con los cracks de la industria 🍽️\n\nSígueme para enterarte primero 👀\n\n#TikTok #TikTokAds #NYC #MarketingDigital #Agencias #LATAM #PublicidadDigital",
+        "produccion": [
+          "Grabar en estilo vlog: vertical 9:16, selfie y b-roll, cortes cada 2–3 segundos para mantener el ritmo",
+          "B-roll a conseguir: el meet, la sala de la presentación, Times Square, la sala de la reunión privada y el almuerzo",
+          "Confirmar qué se puede mostrar de la presentación y de la reunión privada antes de publicar (hay novedades todavía reservadas)",
+          "Música: tema ligero tipo vlog/viaje, que baje de volumen en los bloques donde hablas",
+          "Dejar el CTA de seguir listo para retomarlo cuando se puedan contar las novedades de TikTok"
+        ]
+      },
+      {
         "id": "google-ads-resultados",
         "titulo": "No Deberías Hacer Google Ads Si...",
         "formato": "Reel",
