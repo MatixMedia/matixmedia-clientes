@@ -650,6 +650,11 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .rl-h .rl-top svg{width:22px;height:22px;fill:#fff;stroke:none}
 .rl-h .rl-top svg .ytp{fill:#04050A}
 .rl-h iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rl-igf{position:absolute;left:0;top:0;width:326px;height:634px;border:0;transform-origin:0 0;background:transparent;pointer-events:none}
+.rl-shield{position:absolute;inset:0;z-index:3;padding:0;border:0;background:transparent;cursor:pointer}
+.rl-ig.play .rl-shield{display:none}.rl-ig.play .rl-igf{pointer-events:auto}
+.rl-ig-out{display:none;left:0;right:0;text-align:center;bottom:-28px}.rl-ig.on .rl-ig-out{display:block}
+.rl-ig .rl-phone{overflow:hidden}.rl-ig .rl-phone{-webkit-box-reflect:none}
 .rl-yt-out{position:absolute;right:10px;bottom:-30px;font-size:12px;color:var(--ink-2);text-decoration:none}
 .rl-yt-out:hover{color:var(--gold)}
 .rl-v,.rl-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -1123,49 +1128,69 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
 
   <div class="reels" id="panel-reels" role="tabpanel" aria-roledescription="carrusel" aria-label="Contenidos creados por MatixMedia">
     <ul class="rl-track">
-        <li class="rl" data-i="0"><button class="rl-phone" type="button" aria-label="Ver reel: Detrás de cámaras · producción.">
-          <span class="rl-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></svg></span>
+        <li class="rl rl-ig" data-i="0" data-ig="DJsEffmSuyI"><div class="rl-phone">
           <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 1</span></div>
-          <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Seguir</em></span><span class="rl-cap">Detrás de cámaras · producción.</span><span class="rl-bar"><span></span></span></span>
-        </button></li>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DJsEffmSuyI/embed/" title="Reel de Instagram 1 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 1"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DJsEffmSuyI/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
         <li class="rl rl-h" data-i="1" data-yt="gmaAZM65oHo"><button class="rl-phone" type="button" aria-label="Ver video: Video para marca · MatixMedia">
           <span class="rl-top"><b>Video para marca · MatixMedia</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 15l5-3-5-3z" class="ytp"/></svg></span>
           <img class="rl-v" src="https://i.ytimg.com/vi/gmaAZM65oHo/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
           <span class="rl-ph rl-ph-h" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
           <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Suscribirse</em></span><span class="rl-bar"><span></span></span></span>
         </button></li>
-        <li class="rl" data-i="2"><button class="rl-phone" type="button" aria-label="Ver reel: Dirección creativa en set.">
-          <span class="rl-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></svg></span>
+        <li class="rl rl-ig" data-i="2" data-ig="DIPV6YYSpLT"><div class="rl-phone">
           <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 2</span></div>
-          <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Seguir</em></span><span class="rl-cap">Dirección creativa en set.</span><span class="rl-bar"><span></span></span></span>
-        </button></li>
-        <li class="rl" data-i="3"><button class="rl-phone" type="button" aria-label="Ver reel: Contenido que hace que tu marca se vea y se recuerde.">
-          <span class="rl-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></svg></span>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DIPV6YYSpLT/embed/" title="Reel de Instagram 2 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 2"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DIPV6YYSpLT/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-ig" data-i="3" data-ig="C_l4Rx0R1gg"><div class="rl-phone">
           <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 3</span></div>
-          <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Seguir</em></span><span class="rl-cap">Contenido que hace que tu marca se vea y se recuerde.</span><span class="rl-bar"><span></span></span></span>
-        </button></li>
-        <li class="rl rl-h" data-i="4" data-yt="b_09Yxa3Wtk"><button class="rl-phone" type="button" aria-label="Ver video: Video para marca · MatixMedia">
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/C_l4Rx0R1gg/embed/" title="Reel de Instagram 3 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 3"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/C_l4Rx0R1gg/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-ig" data-i="4" data-ig="DMLvTwERiW2"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 4</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DMLvTwERiW2/embed/" title="Reel de Instagram 4 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 4"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DMLvTwERiW2/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-h" data-i="5" data-yt="b_09Yxa3Wtk"><button class="rl-phone" type="button" aria-label="Ver video: Video para marca · MatixMedia">
           <span class="rl-top"><b>Video para marca · MatixMedia</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 15l5-3-5-3z" class="ytp"/></svg></span>
           <img class="rl-v" src="https://i.ytimg.com/vi/b_09Yxa3Wtk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
           <span class="rl-ph rl-ph-h" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
           <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Suscribirse</em></span><span class="rl-bar"><span></span></span></span>
         </button></li>
-        <li class="rl" data-i="5"><button class="rl-phone" type="button" aria-label="Ver reel: Edición para redes.">
-          <span class="rl-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></svg></span>
-          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 4</span></div>
-          <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Seguir</em></span><span class="rl-cap">Edición para redes.</span><span class="rl-bar"><span></span></span></span>
-        </button></li>
-        <li class="rl rl-h" data-i="6" data-yt="8oUuUAUuEMc"><button class="rl-phone" type="button" aria-label="Ver video: Video para marca · MatixMedia">
+        <li class="rl rl-ig" data-i="6" data-ig="DKkjL2MxD0y"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 5</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DKkjL2MxD0y/embed/" title="Reel de Instagram 5 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 5"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DKkjL2MxD0y/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-ig" data-i="7" data-ig="C9f3xk4x1Et"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 6</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/C9f3xk4x1Et/embed/" title="Reel de Instagram 6 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 6"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/C9f3xk4x1Et/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-ig" data-i="8" data-ig="DL5L4b9R6Uw"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 7</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DL5L4b9R6Uw/embed/" title="Reel de Instagram 7 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 7"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DL5L4b9R6Uw/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-h" data-i="9" data-yt="8oUuUAUuEMc"><button class="rl-phone" type="button" aria-label="Ver video: Video para marca · MatixMedia">
           <span class="rl-top"><b>Video para marca · MatixMedia</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 15l5-3-5-3z" class="ytp"/></svg></span>
           <img class="rl-v" src="https://i.ytimg.com/vi/8oUuUAUuEMc/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
           <span class="rl-ph rl-ph-h" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
           <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Suscribirse</em></span><span class="rl-bar"><span></span></span></span>
         </button></li>
-        <li class="rl" data-i="7"><button class="rl-phone" type="button" aria-label="Ver reel: Campaña de marca.">
-          <span class="rl-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></svg></span>
-          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 5</span></div>
-          <span class="rl-bot"><span class="rl-user"><i>M</i>matixmedia <em>Seguir</em></span><span class="rl-cap">Campaña de marca.</span><span class="rl-bar"><span></span></span></span>
-        </button></li>
+        <li class="rl rl-ig" data-i="10" data-ig="DKQInC1x87S"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 8</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DKQInC1x87S/embed/" title="Reel de Instagram 8 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 8"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DKQInC1x87S/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
+        <li class="rl rl-ig" data-i="11" data-ig="DNRNMeBRF9K"><div class="rl-phone">
+          <div class="rl-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg><span>Reel 9</span></div>
+          <iframe class="rl-igf" data-src="https://www.instagram.com/reel/DNRNMeBRF9K/embed/" title="Reel de Instagram 9 creado por MatixMedia" scrolling="no" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture; web-share"></iframe>
+          <button type="button" class="rl-shield" aria-label="Ver reel 9"></button>
+        </div><a class="rl-yt-out rl-ig-out" href="https://www.instagram.com/reel/DNRNMeBRF9K/" target="_blank" rel="noopener">Ver en Instagram ↗</a></li>
     </ul>
     <div class="tcar-nav rl-nav"><div class="tcar-arrows">
       <button type="button" class="tcar-btn" data-rl="-1" aria-label="Reel anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -1617,6 +1642,9 @@ var x0=null;d.addEventListener('touchstart',function(e){x0=e.touches[0].clientX}
           el.style.transform='translateX(calc(-50% + '+x+'px)) translateY('+(a*vh*.05)+'px) scale('+s+') rotateY('+ry+'deg)';
           el.style.zIndex=10-a;el.style.opacity=a>2?0:(a===2?.55:(a===1?.85:1));el.style.filter=a===0?'none':'brightness('+(a===1?.75:.55)+')';
           el.classList.toggle('on',a===0);el.setAttribute('aria-hidden',a>2?'true':'false');
+          var f=el.querySelector('.rl-igf');
+          if(f){var ph=el.querySelector('.rl-phone'),sc=ph.clientWidth/326;f.style.transform='translateY('+(-54*sc)+'px) scale('+sc+')';f.style.height=(ph.clientHeight/sc+54)+'px';
+            if(a<=2&&!f.src)f.src=f.dataset.src;if(a!==0&&el.classList.contains('play')){el.classList.remove('play');f.src=f.dataset.src;}}
           var v=el.querySelector('video');
           if(v){if(a===0){if(!v.src&&v.dataset.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();}
           if(a!==0&&el.dataset.html){el.innerHTML=el.dataset.html;delete el.dataset.html;bind(el,i);}
@@ -1624,8 +1652,9 @@ var x0=null;d.addEventListener('touchstart',function(e){x0=e.touches[0].clientX}
         });
       }
       function go(d,src){k=(k+d+n)%n;lay();if(src&&window.mmTrack)mmTrack('reel_nav',{dir:d,reel:k+1,via:src});}
-      function bind(el,i){el.querySelector('.rl-phone').addEventListener('click',function(){
+      function bind(el,i){(el.querySelector('.rl-shield')||el.querySelector('.rl-phone')).addEventListener('click',function(){
         if(i===k){
+          if(el.dataset.ig){el.classList.add('play');paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.ig,section:'contenidos',source:'instagram'});return;}
           if(el.dataset.yt){el.dataset.html=el.innerHTML;el.innerHTML='<div class="rl-phone"><iframe src="https://www.youtube.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0&playsinline=1" title="Video de MatixMedia" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><a class="rl-yt-out" href="https://www.youtube.com/watch?v='+el.dataset.yt+'" target="_blank" rel="noopener">Ver en YouTube ↗</a></div>';paused=true;hold=true;if(window.mmTrack)mmTrack('video_play',{video:el.dataset.yt,section:'contenidos'});return;}
           var v=el.querySelector('video');if(v){v.muted=!v.muted;if(window.mmTrack)mmTrack('reel_sound',{reel:i+1,on:!v.muted});}return;}
         var d=i-k;if(d>n/2)d-=n;if(d<-n/2)d+=n;hold=false;go(d,'click');});}
