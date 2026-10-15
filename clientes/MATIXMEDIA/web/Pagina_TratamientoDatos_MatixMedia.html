@@ -685,6 +685,28 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .vcase-tx .vcase-k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .vcase-tx .more{display:inline-block;margin-top:8px;font-size:12px}
 @media (max-width:520px){.vcase{flex-direction:column;align-items:stretch}.vcase-th{width:100%}}
+/* Pestañas Reels | Videos y reproductor horizontal */
+.ct-tabs{display:flex;justify-content:center;gap:6px;width:max-content;margin:0 auto;padding:5px;border:1px solid var(--line-2);border-radius:999px;background:rgba(12,13,19,.6)}
+.ct-tabs button{padding:9px 22px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);font:500 14px var(--body);cursor:pointer;transition:background .2s,color .2s}
+.ct-tabs button[aria-selected="true"]{background:rgba(232,192,70,.14);color:var(--gold);box-shadow:inset 0 0 0 1px rgba(232,192,70,.4)}
+.reels[hidden],.yt-panel[hidden]{display:none}
+.yt-panel{max-width:960px;padding-top:clamp(28px,3vw,44px)}
+.yt-main{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#000;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.yt-play{position:absolute;inset:0;padding:0;border:0;background:#000;cursor:pointer}
+.yt-play img,.yt-main iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.yt-play img{opacity:.85;transition:opacity .25s}
+.yt-play:hover img{opacity:1}
+.yt-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:rgba(4,5,10,.6);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .25s}
+.yt-play:hover .yt-btn{transform:translate(-50%,-50%) scale(1.06)}
+.yt-btn svg{width:30px;height:30px;fill:#fff;margin-left:3px}
+.yt-meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;margin-top:16px}
+.yt-meta b{font-family:var(--display);font-weight:600;font-size:20px}
+.yt-meta span{color:var(--ink-2);font-size:14px}
+.yt-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:22px}
+.yt-th{display:grid;gap:8px;padding:0;border:0;background:none;color:var(--ink-2);font:400 13px var(--body);text-align:left;cursor:pointer}
+.yt-th img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--line-2);opacity:.7;transition:opacity .2s,border-color .2s}
+.yt-th:hover img,.yt-th.on img{opacity:1;border-color:rgba(232,192,70,.6)}
+.yt-th.on{color:var(--gold)}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
@@ -1304,6 +1326,21 @@ footer{border-top:1px solid var(--line);padding-block:var(--gap-sep) 34px;color:
       b.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.getAttribute('data-yt')+'?autoplay=1&rel=0" title="Caso en video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
       if(window.mmTrack)mmTrack('video_play',{video:v.getAttribute('data-yt'),section:'casos'});
     });
+  });
+
+  /* Contenidos: pestañas Reels | Videos y reproductor de YouTube que carga al hacer clic */
+  [].forEach.call(document.querySelectorAll('.reels-sec'),function(sec){
+    var tabs=[].slice.call(sec.querySelectorAll('.ct-tabs [role="tab"]'));if(!tabs.length)return;
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);var p=document.getElementById(x.getAttribute('aria-controls'));if(p)p.hidden=!on;});
+      if(t.dataset.ct==='reels')window.dispatchEvent(new Event('resize'));
+      if(window.mmTrack)mmTrack('content_tab',{tab:t.dataset.ct});});});
+    var main=sec.querySelector('.yt-main'),meta=sec.querySelector('.yt-meta');if(!main)return;
+    function load(id){main.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Video de MatixMedia" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';if(window.mmTrack)mmTrack('video_play',{video:id,section:'contenidos'});}
+    main.addEventListener('click',function(e){if(e.target.closest('.yt-play'))load(main.getAttribute('data-yt'));});
+    [].forEach.call(sec.querySelectorAll('.yt-th'),function(b){b.addEventListener('click',function(){
+      [].forEach.call(sec.querySelectorAll('.yt-th'),function(x){x.classList.toggle('on',x===b);});
+      main.setAttribute('data-yt',b.dataset.yt);if(meta)meta.innerHTML='<b>'+b.dataset.t+'</b><span>'+b.dataset.c+'</span>';load(b.dataset.yt);});});
   });
   // Contadores: cuentan desde 0 al entrar en pantalla
   var nums=[].slice.call(document.querySelectorAll('.counters .num'));
