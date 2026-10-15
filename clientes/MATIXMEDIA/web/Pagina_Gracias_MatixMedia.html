@@ -569,6 +569,13 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 @media (max-width:1080px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:860px){.story,.founder,.fit,.legal{grid-template-columns:1fr}.founder-ph{max-width:460px;margin-inline:auto}.legal-toc{position:static}}
 @media (max-width:640px){.cases{grid-template-columns:1fr}}
+/* Agencias partners (subpáginas, debajo de la tira de sectores) */
+.agencies{padding-block:clamp(40px,4.5vw,64px) 0}
+.agencies p{color:var(--muted);margin:0 0 30px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.agency-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px clamp(48px,8vw,110px)}
+.agency-row img{display:block;max-width:100%;height:auto;opacity:.75;transition:opacity .25s}
+.agency-row li:hover img{opacity:1}
+@media (max-width:640px){.agency-row{gap:22px 36px}.agency-row img{max-height:36px;width:auto}}
 /* Contadores */
 .counters{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
 .counters li{padding:6px 24px;border-right:1px solid var(--line-2)}
