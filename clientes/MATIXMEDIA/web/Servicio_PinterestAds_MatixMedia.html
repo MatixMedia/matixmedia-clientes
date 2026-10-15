@@ -609,6 +609,9 @@ section:has(+ .sep-1){padding-bottom:var(--gap-sep)}
 .study .soon-tag{margin-top:auto;padding-top:14px;border-top:1px dashed rgba(255,255,255,.16);font-size:12.5px!important;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--c))!important}
 .study.nda .nda-ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(var(--c),.14);border:1px solid rgba(var(--c),.45)}
 .study.nda .nda-ico svg{width:24px;height:24px;fill:none;stroke:rgb(var(--c));stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.studies:has(> .study:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}
+.study .metric.txt{font-size:clamp(26px,2.4vw,32px)}
+.study .study-btn{align-self:flex-start;margin-top:auto}
 .studies:has(> .study:only-child){grid-template-columns:minmax(0,760px);justify-content:center}
 @media (max-width:860px){.studies{grid-template-columns:1fr}}
 /* Somos Google Partners (página de Google Ads) */
