@@ -4,7 +4,9 @@ N:Rodríguez;Jairo;;;
 FN:Jairo Rodríguez
 ORG:MatixMedia
 TITLE:CEO & Head of Paid Ads
-TEL;TYPE=CELL,VOICE:+573104982100
-EMAIL;TYPE=INTERNET,WORK:jairo@matixmedia.com.co
+TEL;TYPE=CELL,PREF:+573104982100
+TEL;TYPE=WORK:+18573567445
+EMAIL;TYPE=WORK:jairo@matixmedia.com.co
 URL:https://www.matixmedia.com.co
+URL:https://www.matixmedia.us
 END:VCARD
