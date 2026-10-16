@@ -452,7 +452,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <!-- 02. SERIE SEMANAL -->
   <div class="section">
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Serie semanal</span></div>
-    <div class="charts-3col">
+    <div class="charts-3col charts-wk">
       <div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="g-chartWk1"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Clics → Conversiones</div><div style="height:200px"><canvas id="g-chartWk2"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Conversiones → Costo</div><div style="height:200px"><canvas id="g-chartWk3"></canvas></div></div>
@@ -646,7 +646,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <!-- 02. SERIE SEMANAL -->
   <div class="section">
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Serie semanal</span></div>
-    <div class="charts-3col">
+    <div class="charts-3col charts-wk">
       <div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:200px"><canvas id="m-chartWk1"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Clics → Resultados</div><div style="height:200px"><canvas id="m-chartWk2"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Resultados → Costo</div><div style="height:200px"><canvas id="m-chartWk3"></canvas></div></div>
@@ -805,7 +805,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
 
   <div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Resumen del período · ChatGPT Ads</span></div><div class="kpi-grid" id="cg-kpi-grid"></div></div>
   <div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">Serie semanal</span></div>
-    <div class="charts-3col">
+    <div class="charts-3col charts-wk">
       <div class="chart-host"><div class="chart-title">Impresiones → Clics</div><div style="height:240px"><canvas id="cg-chartWk1"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Páginas vistas → Conversaciones WA</div><div style="height:240px"><canvas id="cg-chartWk2"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Inversión por semana</div><div style="height:240px"><canvas id="cg-chartWk3"></canvas></div></div>
@@ -9182,6 +9182,8 @@ table{min-width:400px!important}
 .notif-page-dot{width:6px;height:6px;border-radius:50%;background:var(--line);cursor:pointer;padding:0;border:none;transition:.15s}
 .notif-page-dot.active{background:var(--accent)}
 @media(max-width:640px){.notif-cards{grid-template-columns:1fr!important}}
+.charts-wk{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(max-width:860px){.charts-wk{grid-template-columns:1fr!important}}
 </style>
 
 </body>
