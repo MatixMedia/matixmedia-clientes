@@ -11,10 +11,14 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16p
 .sheet{max-width:440px;margin-inline:auto;display:flex;flex-direction:column;gap:18px}
 .top{display:flex;align-items:center;justify-content:center;gap:12px}
 .top{position:relative;z-index:2}
-.lang{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:rgba(12,13,19,.7)}
-.lang button{font:500 11px var(--mono);letter-spacing:.08em;min-width:34px;min-height:34px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer;padding:0 6px}
-.lang button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+.lang{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;border-radius:999px;padding:3px;border:1px solid rgba(255,255,255,.18);
+background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 50%,rgba(255,255,255,.07)),rgba(8,9,14,.45);
+-webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);
+box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.4)}
+.lang button{font:500 11px var(--mono);letter-spacing:.08em;min-width:34px;min-height:34px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer;padding:0 6px;transition:background .2s ease,color .2s ease}
+.lang button[aria-pressed="true"]{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.1));border-color:rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 2px 8px rgba(0,0,0,.35)}
 .lang button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.lang button{transition:none}}
 @media (max-width:370px){.wm{font-size:21px} .top img{width:36px;height:36px} .top{gap:8px;justify-content:flex-start}}
 .top img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px var(--line);image-rendering:auto}
 .wm{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
