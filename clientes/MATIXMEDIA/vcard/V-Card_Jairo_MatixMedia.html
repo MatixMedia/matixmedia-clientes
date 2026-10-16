@@ -122,10 +122,8 @@ h1{font-size:clamp(36px,min(13vw,6.4svh),54px)}
   </section>
 
   <section class="list" data-i-aria="list_aria" aria-label="Datos de contacto">
-    <div class="row"><span class="lab"><i style="background:var(--green)"></i><span data-i="tel_co">Teléfono · Colombia</span></span>
+    <div class="row"><span class="lab"><i style="background:var(--green)"></i><span data-i="tel">Teléfono</span></span>
       <span class="val" id="v-tel">+57 310 498 2100</span><button class="mini" type="button" data-copy="+573104982100" data-target="v-tel" data-i="copy">Copiar</button></div>
-    <div class="row"><span class="lab"><i style="background:var(--green)"></i><span data-i="tel_us">Teléfono · USA</span></span>
-      <span class="val" id="v-tel2">+1 857 356 7445</span><button class="mini" type="button" data-copy="+18573567445" data-target="v-tel2" data-i="copy">Copiar</button></div>
     <div class="row"><span class="lab"><i style="background:var(--gold)"></i><span data-i="mail">Correo</span></span>
       <span class="val" id="v-mail">jairo@matixmedia.com.co</span><button class="mini" type="button" data-copy="jairo@matixmedia.com.co" data-target="v-mail" data-i="copy">Copiar</button></div>
     <div class="row"><span class="lab"><i style="background:var(--red)"></i><span data-i="web">Web</span></span>
@@ -167,7 +165,7 @@ h1{font-size:clamp(36px,min(13vw,6.4svh),54px)}
 (function(){
 var D={
 es:{save:'Guardar',wa:'Escríbeme',qrh:'Guarda mi contacto',qrc:'Escanea este código con la cámara de tu celular.',
-tel_co:'Teléfono · Colombia',tel_us:'Teléfono · USA',mail:'Correo',web:'Web',copy:'Copiar',open:'Abrir',copied:'Copiado',select:'Selecciónalo',list_aria:'Datos de contacto',
+tel:'Teléfono',tel_show:'+57 310 498 2100',tel_raw:'+573104982100',wa:'573104982100',mail:'Correo',web:'Web',copy:'Copiar',open:'Abrir',copied:'Copiado',select:'Selecciónalo',list_aria:'Datos de contacto',
 lead_t:'¿Te contacto?',lead_s:'Déjame tus datos y te escribo para hablar de lo que necesitas.',f_nombre:'Nombre',f_tel:'Teléfono',f_correo:'Correo',f_empresa:'Empresa',f_cargo:'Cargo',opt:'(opcional)',
 f_serv:'Servicio de interés',f_elige:'Elige un servicio',s_ppc:'PPC Ads',s_social:'Paid Social',s_web:'Desarrollo Web',s_cont:'Contenido',s_net:'Networking',f_hp:'No llenar',
 f_ok:'Autorizo a MatixMedia a usar mis datos para contactarme.',f_enviar:'Enviar',f_wa:'Enviar por WhatsApp',
@@ -177,7 +175,7 @@ lead_msg:function(n,c,e,s,m,t){return 'Hola Jairo, soy '+n+(c?', '+c:'')+(e?' de
 top_msg:'¡Hola Jairo! Te escribo para ponernos en contacto, un saludo',
 web_show:'www.matixmedia.com.co',web_url:'https://www.matixmedia.com.co'},
 en:{save:'Save',wa:'Message me',qrh:'Save my contact',qrc:'Scan this code with your phone camera.',
-tel_co:'Phone · Colombia',tel_us:'Phone · USA',mail:'Email',web:'Web',copy:'Copy',open:'Open',copied:'Copied',select:'Select it',list_aria:'Contact details',
+tel:'Phone',tel_show:'+1 857 356 7445',tel_raw:'+18573567445',wa:'18573567445',mail:'Email',web:'Web',copy:'Copy',open:'Open',copied:'Copied',select:'Select it',list_aria:'Contact details',
 lead_t:'Want me to reach out?',lead_s:'Leave your details and I’ll message you to talk about what you need.',f_nombre:'Name',f_tel:'Phone',f_correo:'Email',f_empresa:'Company',f_cargo:'Job title',opt:'(optional)',
 f_serv:'Service of interest',f_elige:'Choose a service',s_ppc:'PPC Ads',s_social:'Paid Social',s_web:'Web Development',s_cont:'Content',s_net:'Networking',f_hp:'Do not fill',
 f_ok:'I authorize MatixMedia to use my details to contact me.',f_enviar:'Send',f_wa:'Send via WhatsApp',
@@ -189,13 +187,15 @@ web_show:'www.matixmedia.us',web_url:'https://www.matixmedia.us'}};
 var cur='es', WAN='573104982100';
 try{var sv=localStorage.getItem('mm_lang'); if(sv==='es'||sv==='en') cur=sv; else if((navigator.language||'').toLowerCase().indexOf('en')===0) cur='en'}catch(e){ if((navigator.language||'').toLowerCase().indexOf('en')===0) cur='en' }
 window.MM_LANG=function(){return cur};
+window.MM_WA=function(){return D[cur].wa};
 window.MM_T=function(k){var v=D[cur][k]; if(typeof v==='function') return v.apply(null,[].slice.call(arguments,1)); return v};
 function topWa(){var a=document.getElementById('top-wa'); if(!a) return; var n=document.getElementById('lead-nombre'); var v=n&&n.value.trim();
-  a.href='https://wa.me/'+WAN+'?text='+encodeURIComponent(D[cur].top_msg+(v?', '+v:'.'))}
+  a.href='https://wa.me/'+D[cur].wa+'?text='+encodeURIComponent(D[cur].top_msg+(v?', '+v:'.'))}
 function apply(){
   document.documentElement.setAttribute('lang',cur);
   [].forEach.call(document.querySelectorAll('[data-i]'),function(el){var v=D[cur][el.getAttribute('data-i')]; if(typeof v==='string') el.textContent=v});
   [].forEach.call(document.querySelectorAll('[data-i-aria]'),function(el){el.setAttribute('aria-label',D[cur][el.getAttribute('data-i-aria')])});
+  var tv=document.getElementById('v-tel'); if(tv){tv.textContent=D[cur].tel_show; var tb=document.querySelector('[data-target=v-tel]'); if(tb) tb.setAttribute('data-copy',D[cur].tel_raw)}
   var w=document.getElementById('v-web'), o=document.getElementById('v-web-open'); if(w) w.textContent=D[cur].web_show; if(o) o.setAttribute('href',D[cur].web_url);
   [].forEach.call(document.querySelectorAll('[data-lang]'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-lang')===cur?'true':'false')});
   if(window.MM_THANKS){var t=window.MM_THANKS, sel=document.getElementById('lead-interes'), txt=t.serv; for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===t.serv) txt=sel.options[i].text}
@@ -255,7 +255,7 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
     window.MM_THANKS={first:first,serv:interes};
     document.getElementById('lead-saludo').textContent=MM_T('greet',first,servTxt);
     var msg=MM_T('lead_msg',nombre,cargo,empresa,servTxt,correo,tel);
-    var a=document.getElementById('lead-wa'); a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    var a=document.getElementById('lead-wa'); a.href='https://wa.me/'+MM_WA()+'?text='+encodeURIComponent(msg);
     form.hidden=true; document.getElementById('lead-sub').hidden=true; document.getElementById('lead-title').textContent=MM_T('thanks_t',first);
     var t=document.getElementById('lead-thanks'); t.hidden=false;
     try{t.scrollIntoView({block:'nearest'})}catch(e){}
