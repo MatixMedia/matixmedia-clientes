@@ -186,7 +186,7 @@ lead_msg:function(n,c,e,s,m,t){return 'Hi Jairo, I’m '+n+(c?', '+c:'')+(e?' fr
 top_msg:'Hi Jairo! I’m reaching out so we can get in touch, best regards',
 web_show:'www.matixmedia.us',web_url:'https://www.matixmedia.us'}};
 var cur='es', WAN='573104982100';
-try{var sv=localStorage.getItem('mm_lang'); if(sv==='es'||sv==='en') cur=sv; else if((navigator.language||'').toLowerCase().indexOf('en')===0) cur='en'}catch(e){ if((navigator.language||'').toLowerCase().indexOf('en')===0) cur='en' }
+/* siempre inicia en español; el idioma elegido solo dura mientras la página está abierta */
 window.MM_LANG=function(){return cur};
 window.MM_WA=function(){return D[cur].wa};
 window.MM_T=function(k){var v=D[cur][k]; if(typeof v==='function') return v.apply(null,[].slice.call(arguments,1)); return v};
