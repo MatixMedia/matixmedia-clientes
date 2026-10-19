@@ -256,21 +256,21 @@ const DATA = {
   "client": "HUA Naturals",
   "audit_date": "Octubre 2026 · 1–17 oct",
   "auditor": "MatixMedia",
-  "audit_desc": "Informe especial: por qué cayeron las ventas de Google Ads en octubre, qué cambios de la cuenta lo explican y plan para recuperarlas.",
-  "overall_score": 38,
+  "audit_desc": "Informe especial: en qué paso exacto se pierden las ventas de Google Ads en octubre, qué lo causa y plan para recuperarlas.",
+  "overall_score": 35,
   "channels_active": [
     "Google Ads"
   ],
   "market": "Colombia",
   "summary": {
-    "issues_criticos": 4,
-    "quick_wins": 6,
-    "oportunidad": "+1 venta/día",
+    "issues_criticos": 5,
+    "quick_wins": 7,
+    "oportunidad": "+8 a 15 ventas",
     "proxima_revision": "2 nov 2026"
   },
   "google": {
     "active": true,
-    "score": 38,
+    "score": 35,
     "score_label": "Crítico",
     "score_color": "#CF343A",
     "kpis": [
@@ -293,74 +293,84 @@ const DATA = {
         "status": "bad"
       },
       {
-        "label": "CPA",
-        "val": "$82.626",
-        "ref": "1–17 sep: $36.660",
+        "label": "Inicios de pago / 100 clics",
+        "val": "10,9",
+        "ref": "Septiembre: 9,7 · ▲ mejor",
+        "status": "good"
+      },
+      {
+        "label": "Inicio de pago → compra",
+        "val": "17,8%",
+        "ref": "Septiembre: 24,7% · ▼28%",
         "status": "bad"
       },
       {
-        "label": "Tasa conv.",
-        "val": "2,45%",
-        "ref": "1–17 sep: 4,83%",
-        "status": "warn"
-      },
-      {
-        "label": "CTR",
-        "val": "2,38%",
-        "ref": "Ref. ≥ 2% ✅ · estable",
-        "status": "good"
+        "label": "Conversión en computador",
+        "val": "7,1%",
+        "ref": "Septiembre: 10,4% · ▼31%",
+        "status": "bad"
       }
     ],
     "funnel": [
       {
-        "stage": "Impresiones",
-        "value": 34724
+        "stage": "Carrito",
+        "value": 118
       },
       {
-        "stage": "Clics",
-        "value": 825
+        "stage": "Inicio de pago",
+        "value": 90
       },
       {
-        "stage": "Compras",
-        "value": 20
+        "stage": "Info. de pago",
+        "value": 64
+      },
+      {
+        "stage": "Compra",
+        "value": 16
       }
     ],
     "benchmarks": [
       {
-        "metric": "CTR",
-        "actual": "2,38%",
-        "bueno": ">2%",
+        "metric": "Carritos por 100 clics",
+        "actual": "14,3",
+        "bueno": "Sept: 13,6",
         "estado": "good"
       },
       {
-        "metric": "Tasa de conversión",
-        "actual": "2,45%",
-        "bueno": ">3,5%",
+        "metric": "Inicios de pago por 100 clics",
+        "actual": "10,9",
+        "bueno": "Sept: 9,7",
+        "estado": "good"
+      },
+      {
+        "metric": "Inicio de pago → info. de pago",
+        "actual": "71%",
+        "bueno": "Sept: 85%",
+        "estado": "bad"
+      },
+      {
+        "metric": "Info. de pago → compra",
+        "actual": "25%",
+        "bueno": "Sept: 29%",
         "estado": "warn"
       },
       {
-        "metric": "ROAS",
-        "actual": "1,77×",
-        "bueno": "≥4× (objetivo)",
+        "metric": "Conversión en computador",
+        "actual": "7,1%",
+        "bueno": "Sept: 10,4%",
         "estado": "bad"
       },
       {
-        "metric": "CPA",
-        "actual": "$82.626",
-        "bueno": "<$45.000",
-        "estado": "bad"
+        "metric": "Conversión en móvil",
+        "actual": "1,76%",
+        "bueno": "Sept: 2,01%",
+        "estado": "warn"
       },
       {
-        "metric": "CPA genéricos Search",
+        "metric": "CPA de genéricos en Search",
         "actual": "$255.311",
-        "bueno": "<$80.000",
+        "bueno": "Sept: $78.000",
         "estado": "bad"
-      },
-      {
-        "metric": "CPC Performance Max",
-        "actual": "$1.339",
-        "bueno": "<$1.000",
-        "estado": "warn"
       },
       {
         "metric": "Impresiones perdidas por ranking",
@@ -371,21 +381,34 @@ const DATA = {
     ],
     "fugas": [
       {
-        "etapa": "Clics → Compras",
-        "retencion": 2.45,
-        "protocolo": "La fuga está después del clic y empeoró en octubre (4,83% en 1–17 sep → 2,45%). No es una falla nueva de la tienda: Clarity muestra los mismos errores y salidas que en septiembre. Es el tráfico que compra la puja después de los cambios del 1, 5, 14 y 16 de octubre: ROAS objetivo de Performance Max movido de 400% a 450%, 400% y 300%, presupuestos al alza y un grupo duplicado en Search."
+        "etapa": "Inicio de pago → Información de pago",
+        "retencion": 71.1,
+        "protocolo": "Esta es la fuga principal de octubre. En septiembre, 85 de cada 100 personas que iniciaban el pago llegaban a poner sus datos de pago; en octubre llegan 71 según la etiqueta del sitio, y 52 de 100 según la app de Google de Shopify (antes 82). En Search Brand el paso cae de 90% a 46%. Es el momento en que el cliente ve el costo de envío y los métodos de pago. Revisar si en octubre cambió la tarifa o el mínimo de envío gratis, si falla algún método de pago (tarjeta, PSE, contraentrega) y los checkouts abandonados de Shopify."
+      },
+      {
+        "etapa": "Información de pago → Compra",
+        "retencion": 25.0,
+        "protocolo": "De cada 100 que llegan a pagar, compraban 29 en septiembre (etiqueta del sitio) y ahora 25; en la app de Google de Shopify, de 66 a 59. Apunta a pagos rechazados o a una pasarela con errores. Revisar en Shopify los pagos fallidos y pendientes de octubre contra septiembre."
       },
       {
         "etapa": "Genéricos de Search → Compras",
         "retencion": 1.71,
-        "protocolo": "Search Brand gastó $510.622 en términos genéricos (ashwagandha, melena de león) por 2 ventas, el 67% de su gasto. Los términos de marca gastaron $251.015 por 7,5 ventas. En septiembre los genéricos vendían a $78.000 por venta; hoy compiten contra Mercado Libre, Amazon, iHerb y vitalsetas.com, que quedan por encima de HUA entre el 55% y el 62% de las veces."
+        "protocolo": "Search Brand gastó $510.622 en términos genéricos (ashwagandha, melena de león) por 2 ventas: el 67% de su gasto. Los términos de marca gastaron $251.015 por 7,5 ventas. En septiembre los genéricos vendían a $78.000 por venta; hoy compiten contra Mercado Libre, Amazon, iHerb y vitalsetas.com, que quedan por encima de HUA entre el 55% y el 62% de las veces."
       }
     ],
-    "oportunidades": "El CTR (2,38%) y el ticket promedio ($145.900) no cambiaron: los anuncios siguen atrayendo y quien compra gasta lo mismo. La marca vende a $33.380 por venta. Volver a la configuración de septiembre, sacar los genéricos sin venta y dejar quieta la cuenta hasta el 2 de noviembre es la forma más directa de recuperar el ritmo de 2,2 ventas por día.",
+    "oportunidades": "Hasta el inicio del pago, octubre está igual o mejor que septiembre: por cada 100 clics hay 14,3 carritos (antes 13,6) y 10,9 inicios de pago (antes 9,7). Los anuncios sí traen gente con intención de compra; la venta se pierde dentro del checkout. Si el checkout cerrara como en septiembre, octubre tendría entre 8 y 15 ventas más en estos 17 días.",
     "issues": [
       {
         "tipo": "bad",
-        "text": "Cuatro tandas de cambios en 16 días (1, 5, 14 y 16 oct). El ROAS objetivo de Performance Max se movió tres veces (400% → 450% → 400% → 300%) y cada cambio reinició el aprendizaje de la puja"
+        "text": "La venta se pierde dentro del checkout: de cada 100 inicios de pago terminan en compra 17,8, contra 24,7 en septiembre (−28%). En la app de Google de Shopify la caída es de 53,7 a 30,6 (−43%)"
+      },
+      {
+        "tipo": "bad",
+        "text": "El paso que más cae es el de información de pago: 85% → 71% (sitio) y 82% → 52% (app de Shopify). En Search Brand, de 90% a 46%"
+      },
+      {
+        "tipo": "bad",
+        "text": "El computador, el dispositivo que más convertía, pasó de 10,4% a 7,1% y trae 38% menos clics por día: sus ventas diarias caen 58%. En móvil caen 36%"
       },
       {
         "tipo": "bad",
@@ -393,31 +416,23 @@ const DATA = {
       },
       {
         "tipo": "bad",
-        "text": "El presupuesto de Search Brand subió de $50.000 a $60.000 el 1 oct. En septiembre bajarlo mantuvo las ventas y subió el ROAS de 2,12× a 3,73×"
-      },
-      {
-        "tipo": "bad",
-        "text": "El grupo \"Ashwagandha\" (14 oct) duplica 31 palabras clave del grupo original, incluida la marca, y puja con ROAS objetivo de 200%"
+        "text": "Cuatro tandas de cambios en la cuenta en 16 días (1, 5, 14 y 16 oct): ROAS objetivo de Performance Max movido tres veces y presupuestos al alza. Explican el costo y el gasto sin venta, no la caída dentro del checkout"
       },
       {
         "tipo": "warn",
-        "text": "Performance Max pasó a \"solo presencia\" y a $65.000 diarios el 5 oct: gasta 51% más por día con las mismas ventas"
+        "text": "El mejor comprador de Search Brand en septiembre, el grupo de 35 a 44 años (11,1% de conversión), cae a 3,5%"
       },
       {
         "tipo": "warn",
-        "text": "El clic de marca subió 83% ($4.434 → $8.097) y el 75% de las impresiones se pierde por ranking"
+        "text": "El anuncio que más convertía en Search Brand (796192852755) pasa de 10,5% a 5,9% de conversión"
       },
       {
         "tipo": "warn",
-        "text": "El 8 oct ambas campañas casi dejaron de mostrarse sin cambio registrado: revisar notificaciones de la cuenta"
-      },
-      {
-        "tipo": "warn",
-        "text": "Errores de JavaScript en 1 de cada 4 sesiones del sitio (Clarity), constantes desde septiembre"
+        "text": "Clarity no mide el checkout de Shopify: sus indicadores estables del sitio no descartan una falla en el pago"
       },
       {
         "tipo": "ok",
-        "text": "CTR (2,38%) y ticket promedio ($145.900) estables frente a septiembre"
+        "text": "CTR, carritos por clic e inicios de pago por clic iguales o mejores que en septiembre"
       },
       {
         "tipo": "ok",
@@ -425,12 +440,13 @@ const DATA = {
       }
     ],
     "quick_wins": [
-      "Devolver el ROAS objetivo de Performance Max a 400% y su ubicación a \"presencia o interés\"",
+      "HUA: revisar checkouts abandonados y pagos fallidos de octubre contra septiembre en Shopify",
+      "Hacer compras de prueba en computador y en móvil con tarjeta, PSE y contraentrega",
+      "Confirmar si en octubre cambió el envío (tarifa o mínimo para envío gratis), precios o cupones",
+      "Devolver Performance Max a ROAS objetivo 400% y ubicación \"presencia o interés\"",
       "Devolver los presupuestos: Search Brand $50.000 y Performance Max $60.000",
-      "Pausar el grupo duplicado \"Ashwagandha\" (ROAS objetivo 200%)",
-      "Pausar genéricos sin venta: \"ashwagandha\" frase ($118.093), \"melena de león\" frase ($105.188), \"para qué sirve la ashwagandha\" ($51.827)",
-      "Restaurar los vínculos a sitio y las imágenes quitados el 14 oct",
-      "Quitar \"Leads from messages\" de los objetivos de ambas campañas"
+      "Pausar el grupo duplicado \"Ashwagandha\" y los genéricos sin venta",
+      "Restaurar los vínculos a sitio y las imágenes quitados el 14 oct"
     ]
   },
   "meta": {
@@ -446,9 +462,9 @@ const DATA = {
     "active": false
   },
   "exec_summary": {
-    "atencion": "Octubre (1–17) lleva 20,2 ventas contra 45 en los mismos días de septiembre: −55% con el mismo gasto. La caída empieza el 5 de octubre, el día del segundo cambio de ROAS objetivo en cuatro días, y se concentra en dos puntos: los genéricos de Search ($510.622 por 2 ventas) y Performance Max, que convierte la mitad (1,58% vs 3,52%).",
-    "funciona": "El CTR y el ticket promedio siguen iguales. Los términos de marca venden a $33.380 por venta. La tienda no muestra una falla nueva (Clarity) y la medición cuadró con Shopify en septiembre.",
-    "oportunidad": "Volver a la configuración de septiembre en un solo bloque, cortar los genéricos sin venta y no tocar la cuenta hasta el 2 de noviembre. El objetivo es recuperar 2,2 ventas por día (hoy 1,2) con la misma inversión. Pendiente: confirmar las ventas de octubre con Shopify."
+    "atencion": "Octubre (1–17) lleva 20,2 ventas contra 45 en los mismos días de septiembre (−55%) con el mismo gasto. Los clientes llegan, agregan al carrito e inician el pago igual o más que en septiembre, pero se pierden dentro del checkout: de cada 100 que inician el pago compran 18, contra 25 antes. El paso que se rompe es el de información de pago, y pega más fuerte en computador. Aparte, los cambios de la cuenta encarecieron el tráfico y llevaron gasto a genéricos sin venta.",
+    "funciona": "CTR, carritos e inicios de pago por clic iguales o mejores que en septiembre: los anuncios atraen compradores. Los términos de marca venden a $33.380 por venta. La medición cuadró con Shopify en septiembre.",
+    "oportunidad": "Arreglar lo que frena el pago vale entre 8 y 15 ventas más cada 17 días. Volver a la configuración de septiembre recorta el gasto que no vende. Lo primero es revisar en Shopify los checkouts abandonados y los pagos fallidos de octubre."
   },
   "action_plan": {
     "quick_wins": {
@@ -456,7 +472,19 @@ const DATA = {
       "color": "#199477",
       "items": [
         {
-          "text": "Performance Max: ROAS objetivo a 400% y ubicación \"presencia o interés\", como en septiembre",
+          "text": "HUA: checkouts abandonados y pagos fallidos de octubre vs septiembre en Shopify",
+          "impact": "Alto"
+        },
+        {
+          "text": "Compras de prueba en computador y móvil con tarjeta, PSE y contraentrega",
+          "impact": "Alto"
+        },
+        {
+          "text": "Confirmar cambios de octubre en envío, precios, cupones o métodos de pago",
+          "impact": "Alto"
+        },
+        {
+          "text": "Performance Max: ROAS objetivo 400% y ubicación \"presencia o interés\"",
           "impact": "Alto"
         },
         {
@@ -468,15 +496,7 @@ const DATA = {
           "impact": "Alto"
         },
         {
-          "text": "Restaurar vínculos a sitio e imágenes quitados el 14 oct",
-          "impact": "Medio"
-        },
-        {
-          "text": "Quitar \"Leads from messages\" de los objetivos de las campañas",
-          "impact": "Medio"
-        },
-        {
-          "text": "Revisar las notificaciones del 8 oct y el diagnóstico de Merchant Center",
+          "text": "Restaurar vínculos a sitio e imágenes, y quitar \"Leads from messages\"",
           "impact": "Medio"
         }
       ]
@@ -486,20 +506,20 @@ const DATA = {
       "color": "#E8C046",
       "items": [
         {
+          "text": "Corregir la fricción que aparezca en el pago (envío, pasarela o métodos) y medir el paso inicio de pago → compra cada semana",
+          "impact": "Alto"
+        },
+        {
           "text": "Crear una campaña solo de marca (hua, hua naturals, huanaturals) en exacta y frase, con $15.000 diarios",
           "impact": "Alto"
         },
         {
-          "text": "Pausar genéricos sin venta y pasar los que venden a una campaña con tope de $20.000 diarios y negativas informativas",
+          "text": "Pausar genéricos sin venta y pasar los que venden a una campaña con tope de $20.000 diarios",
           "impact": "Alto"
         },
         {
-          "text": "Un solo bloque de cambios y cuenta quieta hasta la revisión del 2 nov",
+          "text": "Un solo bloque de cambios en la cuenta y quietud hasta la revisión del 2 nov",
           "impact": "Alto"
-        },
-        {
-          "text": "HUA: pedidos de Shopify de octubre por canal y compra de prueba en móvil",
-          "impact": "Medio"
         },
         {
           "text": "HUA: corregir los errores de JavaScript que aparecen en 1 de cada 4 sesiones",
@@ -520,15 +540,15 @@ const DATA = {
           "impact": "Alto"
         },
         {
+          "text": "Instalar Clarity o un embudo de checkout que permita ver dónde abandona el cliente en el pago",
+          "impact": "Alto"
+        },
+        {
           "text": "Regla de cambios: el ROAS objetivo se mueve como máximo cada 14 días y en pasos de 10–15%",
           "impact": "Alto"
         },
         {
           "text": "Bitácora de cambios mensual dentro del informe del cliente",
-          "impact": "Medio"
-        },
-        {
-          "text": "Separar Performance Max por línea de producto cuando la cuenta supere 30 ventas al mes",
           "impact": "Medio"
         }
       ]
