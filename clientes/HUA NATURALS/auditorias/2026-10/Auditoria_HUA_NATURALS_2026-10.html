@@ -464,6 +464,152 @@ const DATA = {
     ],
     "secciones_extra": [
       {
+        "title": "Métricas de los anuncios · 1–17 sep vs 1–17 oct",
+        "intro": "Mismo tramo de días en los dos meses. Los anuncios atraen igual (el CTR no cambió) y el gasto es el mismo, pero las ventas cayeron −55%. De las 25 ventas menos, unas 5 se explican por tener menos clics y unas 20 porque convierte peor quien hace clic.",
+        "headers": [
+          "Métrica",
+          "1–17 sep",
+          "1–17 oct",
+          "Cambio",
+          "Lectura"
+        ],
+        "rows": [
+          [
+            "Impresiones",
+            "40.455",
+            "34.724",
+            "−14%",
+            "Menos alcance, sobre todo en Search Brand (−40%), que no está limitada por presupuesto"
+          ],
+          [
+            "Clics",
+            "932",
+            "825",
+            "−11%",
+            "Baja leve; no explica una caída de ventas de 55%"
+          ],
+          [
+            "CTR",
+            "2,30%",
+            "2,38%",
+            "+0,07 pts",
+            "Sin fuga: los anuncios atraen igual que en septiembre"
+          ],
+          [
+            "CPC",
+            "$1.770",
+            "$2.026",
+            "+14%",
+            "Fuga menor: cada clic cuesta más"
+          ],
+          [
+            "CPM (costo por mil impresiones)",
+            "$40.779",
+            "$48.135",
+            "+18%",
+            "Subasta más cara"
+          ],
+          [
+            "Costo",
+            "$1.649.712",
+            "$1.671.437",
+            "+1%",
+            "Mismo gasto"
+          ],
+          [
+            "Conversiones (ventas)",
+            "45,0",
+            "20,2",
+            "−55%",
+            "Aquí está la caída"
+          ],
+          [
+            "Tasa de conversión (ventas / clics)",
+            "4,83%",
+            "2,45%",
+            "−2,38 pts",
+            "Fuga principal: del clic a la compra"
+          ],
+          [
+            "Costo por conversión",
+            "$36.660",
+            "$82.622",
+            "+125%",
+            "Cada venta cuesta más del doble"
+          ],
+          [
+            "ROAS",
+            "3,94×",
+            "1,77×",
+            "−55%",
+            "Por debajo del objetivo de 4×"
+          ]
+        ],
+        "note": "Fuente: datos diarios de Google Ads por campaña. Conversiones = compras registradas en Google Ads (pueden ser fracciones por la atribución)."
+      },
+      {
+        "title": "Métricas por campaña · dónde está cada fuga",
+        "intro": "Performance Max: tiene los mismos clics (682 → 676), pero su conversión cayó de 3,52% a 1,58% y cada venta pasó de $31.592 a $84.529. Search Brand: perdió 40% de impresiones, el clic subió +44% ($3.566 → $5.142) y la conversión bajó de 8,40% a 6,39%.",
+        "headers": [
+          "Campaña · periodo",
+          "Impr.",
+          "Clics",
+          "CTR",
+          "CPC",
+          "Costo",
+          "Conv.",
+          "Tasa conv.",
+          "Costo / conv."
+        ],
+        "rows": [
+          [
+            "Performance Max · 1–17 sep",
+            "34.001",
+            "682",
+            "2,01%",
+            "$1.112",
+            "$758.211",
+            "24,0",
+            "3,52%",
+            "$31.592"
+          ],
+          [
+            "Performance Max · 1–17 oct",
+            "30.865",
+            "676",
+            "2,19%",
+            "$1.339",
+            "$905.309",
+            "10,7",
+            "1,58%",
+            "$84.529"
+          ],
+          [
+            "Search Brand · 1–17 sep",
+            "6.454",
+            "250",
+            "3,87%",
+            "$3.566",
+            "$891.501",
+            "21,0",
+            "8,40%",
+            "$42.452"
+          ],
+          [
+            "Search Brand · 1–17 oct",
+            "3.859",
+            "149",
+            "3,86%",
+            "$5.142",
+            "$766.128",
+            "9,5",
+            "6,39%",
+            "$80.476"
+          ]
+        ],
+        "note": "Dentro de Search Brand, las palabras de marca venden a $33.380 por venta (7,5 ventas, $251.015); las genéricas gastaron $510.622 con 2 ventas y suben el promedio de la campaña. La conversión cayó en las dos campañas a la vez, por eso apunta al sitio y al checkout más que a una campaña en particular."
+      },
+      {
         "title": "Qué descartamos",
         "intro": "La caída no viene de perder visibilidad, de falta de presupuesto ni de productos agotados. Viene del pago.",
         "headers": [
@@ -777,7 +923,7 @@ window.addEventListener('load', function() {
       div.className = 'section';
       div.innerHTML = '<div class="section-header"><span class="section-num">' + num + '</span><span class="section-title">' + sx.title + '</span></div>' +
         (sx.intro ? '<div class="diag-text" style="margin-bottom:14px">' + sx.intro + '</div>' : '') +
-        '<div class="table-wrap"><table class="bench-table"><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table></div>' +
+        '<div class="table-wrap" style="overflow-x:auto"><table class="bench-table"><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table></div>' +
         (sx.note ? '<div style="color:var(--ink-dim);font-size:11px;margin-top:10px">' + sx.note + '</div>' : '');
       wrap.insertBefore(div, last);
     });
