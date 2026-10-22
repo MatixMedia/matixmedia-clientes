@@ -690,6 +690,10 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <div class="section">
     <div class="section-header"><span class="section-num">10</span><span class="section-title">Anuncios · Performance en el tiempo</span></div>
     <div class="chart-host"><div class="chart-title">CTR vs Resultados por anuncio</div><div style="height:240px"><canvas id="m-scatterAds"></canvas></div></div>
+    <div class="charts-2col" style="margin-top:10px">
+      <div class="chart-host"><div class="chart-title">Anuncios vs Alcance</div><div style="height:320px"><canvas id="m-adsReach"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title">Anuncios vs Interacciones</div><div style="height:320px"><canvas id="m-adsInter"></canvas></div></div>
+    </div>
   </div>
 
   <!-- 11. RECOMENDACIONES CON BENCHMARKS -->
@@ -2437,6 +2441,90 @@ const DATA = {
        "value": 221353
       }
      ],
+     "ads_reach": [
+      {
+       "ad": "Urabá-AD1",
+       "value": 293791
+      },
+      {
+       "ad": "IG - AD14 - Copia",
+       "value": 248484
+      },
+      {
+       "ad": "JEP1 - AD1 - Copia",
+       "value": 225112
+      },
+      {
+       "ad": "CAPs - AD1 - Copia 2",
+       "value": 197438
+      },
+      {
+       "ad": "FE - AD1 - Copia",
+       "value": 184407
+      },
+      {
+       "ad": "IG-AD4",
+       "value": 166697
+      },
+      {
+       "ad": "LND - AD1 - Copia",
+       "value": 154021
+      },
+      {
+       "ad": "IG-AD12",
+       "value": 152267
+      },
+      {
+       "ad": "BÑ - AD1 - Copia",
+       "value": 142330
+      },
+      {
+       "ad": "CAPs - AD1 - Copia",
+       "value": 129938
+      }
+     ],
+     "ads_inter": [
+      {
+       "ad": "Urabá-AD1",
+       "value": 193875
+      },
+      {
+       "ad": "IG - AD14 - Copia",
+       "value": 138347
+      },
+      {
+       "ad": "JEP1 - AD1 - Copia",
+       "value": 136299
+      },
+      {
+       "ad": "IG-AD4",
+       "value": 113856
+      },
+      {
+       "ad": "IG-AD12",
+       "value": 107628
+      },
+      {
+       "ad": "FE - AD1 - Copia",
+       "value": 102457
+      },
+      {
+       "ad": "BÑ - AD1 - Copia",
+       "value": 98787
+      },
+      {
+       "ad": "CAPs - AD1 - Copia 2",
+       "value": 97741
+      },
+      {
+       "ad": "IG-AD3",
+       "value": 82746
+      },
+      {
+       "ad": "LND - AD1 - Copia",
+       "value": 72890
+      }
+     ],
      "inter_daily": [
       {
        "date": "2026-09-02",
@@ -3058,6 +3146,15 @@ function byDate(rows){
 }
 
 // ─── CHART HELPERS ───────────────────────────────
+function adsExtra(ch){
+  [['m-adsReach',ch.ads_reach,'#A78BFA','Alcance'],['m-adsInter',ch.ads_inter,'#69C9D0','Interacciones']].forEach(([id,arr,col,lab])=>{
+    const el=document.getElementById(id); if(!el||!arr||!arr.length) return;
+    destroyC(id);
+    CHARTS[id]=new Chart(el,{type:'bar',data:{labels:arr.map(a=>a.ad),datasets:[{label:lab,data:arr.map(a=>a.value),backgroundColor:col+'88',borderColor:col,borderWidth:1.5,borderRadius:3}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>' '+lab+': '+fmt(c.raw)}}},
+      scales:{x:{ticks:{color:'#A8A598',font:{size:10},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{size:10}},grid:{display:false}}}}});
+  });
+}
 function mkBar(id,labels,datasets,opts={}){
   destroyC(id);
   const el=document.getElementById(id); if(!el) return;
@@ -4136,6 +4233,7 @@ function renderMeta(){
     }
   }
 
+  adsExtra(ch);
   // ── 11. Benchmarks + Recomendaciones ─────────────
   renderMetaBenchmarks(ch,obj);
   renderRecos('m-reco',camps,{roas_min:B.roas_min||2.5,roas_good:B.roas_good||4});
