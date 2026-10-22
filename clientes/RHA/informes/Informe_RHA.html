@@ -2308,12 +2308,12 @@ const DATA = {
        "value": 3673010
       },
       {
-       "stage": "Clics en el enlace",
-       "value": 16389
+       "stage": "Alcance",
+       "value": 1170884
       },
       {
-       "stage": "Conv. Iniciadas",
-       "value": 115
+       "stage": "Interacciones",
+       "value": 2031344
       }
      ],
      "funnel_leads": [],
@@ -2525,6 +2525,7 @@ const DATA = {
        "value": 72890
       }
      ],
+     "diag_awareness": true,
      "inter_daily": [
       {
        "date": "2026-09-02",
@@ -4166,6 +4167,11 @@ function renderMeta(){
 
   // ── 05. Diagnóstico ─────────────────────────────
   if(isVentas) renderDiagnosisMetaVentas('m-diagnosis',funnel||[]);
+  else if(ch.diag_awareness){
+    const f=funnel||[]; const imp=(f[0]||{}).value||0, rea=(f[1]||{}).value||0, inter=(f[2]||{}).value||0;
+    const el=document.getElementById('m-diagnosis');
+    if(el) el.innerHTML=`<div class="diag-box ok"><div class="diag-title">✓ LECTURA DEL EMBUDO DE RECONOCIMIENTO</div><div class="diag-text">Las ${fmt(imp)} impresiones llegaron a ${fmt(rea)} personas únicas (frecuencia ${rea?(imp/rea).toFixed(1).replace('.',','):'0'}). Se registraron ${fmt(inter)} interacciones, ${rea?(inter/rea).toFixed(1).replace('.',','):'0'} por persona alcanzada. En una cuenta de reconocimiento el alcance es menor que las impresiones y las interacciones pueden superar al alcance; por eso no se mide como fuga.</div></div>`;
+  }
   else renderDiagnosisMetaLeads('m-diagnosis',funnel||[],ch);
 
   // ── 06. Scatter ─────────────────────────────────
