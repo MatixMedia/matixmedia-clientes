@@ -623,6 +623,10 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <div class="funnel-wrap" id="m-funnel"></div>
       <div class="chart-host"><div class="chart-title">Retención por etapa</div><div style="height:280px"><canvas id="m-chartFunnel"></canvas></div></div>
     </div>
+    <div class="charts-2col" style="margin-top:10px">
+      <div class="chart-host"><div class="chart-title" id="m-sexTitle1">Impresiones vs Alcance y gasto por sexo</div><div style="height:300px"><canvas id="m-sexImpReach"></canvas></div></div>
+      <div class="chart-host"><div class="chart-title" id="m-sexTitle2">Impresiones vs Interacciones y gasto por sexo</div><div style="height:300px"><canvas id="m-sexImpInter"></canvas></div></div>
+    </div>
   </div>
 
   <!-- 04. MICRO-CONVERSIONES -->
@@ -2926,7 +2930,34 @@ const DATA = {
        ],
        "note": "Las visitas al perfil y los seguidores vienen del reporte por campaña y solo existen como total del período. Desde noviembre el informe se acumula mes a mes con mm_actinfo."
       }
-     ]
+     ],
+     "sex_data": {
+      "desde": "2026-10-17",
+      "hasta": "2026-10-22",
+      "rows": [
+       {
+        "sexo": "Mujeres",
+        "impr": 635613,
+        "reach": 600937,
+        "cost": 1186026,
+        "inter": 340865
+       },
+       {
+        "sexo": "Hombres",
+        "impr": 597123,
+        "reach": 551115,
+        "cost": 1026263,
+        "inter": 302082
+       },
+       {
+        "sexo": "Desconocido",
+        "impr": 4131,
+        "reach": 3865,
+        "cost": 9542,
+        "inter": 2198
+       }
+      ]
+     }
     }
    }
   }
@@ -3202,6 +3233,22 @@ function byDate(rows){
 }
 
 // ─── CHART HELPERS ───────────────────────────────
+function sexExtra(ch){
+  const sd=ch.sex_data; if(!sd||!sd.rows||!sd.rows.length) return;
+  const per=' · '+sd.desde.slice(5)+' a '+sd.hasta.slice(5);
+  [['m-sexImpReach','m-sexTitle1','Impresiones vs Alcance y gasto por sexo','reach','Alcance','#A78BFA'],['m-sexImpInter','m-sexTitle2','Impresiones vs Interacciones y gasto por sexo','inter','Interacciones','#69C9D0']].forEach(([id,tid,title,k,lab,col])=>{
+    const el=document.getElementById(id); if(!el) return;
+    const t=document.getElementById(tid); if(t) t.textContent=title+per;
+    destroyC(id);
+    const R=sd.rows, tk={color:'#A8A598',font:{size:10},callback:v=>fmt(v)}, gr={color:'rgba(255,255,255,0.04)'};
+    CHARTS[id]=new Chart(el,{data:{labels:R.map(r=>r.sexo),datasets:[
+      {type:'bar',label:'Impresiones',data:R.map(r=>r.impr),backgroundColor:'#1877F2AA',borderColor:'#1877F2',borderWidth:1,yAxisID:'y'},
+      {type:'bar',label:lab,data:R.map(r=>r[k]),backgroundColor:col+'AA',borderColor:col,borderWidth:1,yAxisID:'y'},
+      {type:'line',label:'Gasto (COP)',data:R.map(r=>r.cost),borderColor:'#E8C046',backgroundColor:'#E8C046',pointRadius:7,showLine:false,borderWidth:2,yAxisID:'y2'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#A8A598',font:{size:10}}},tooltip:{...TP(),callbacks:{label:c=>c.dataset.label+': '+(c.dataset.yAxisID==='y2'?'$'+fmt(c.raw):fmt(c.raw))}}},
+      scales:{x:{ticks:{color:'#A8A598',font:{size:11}},grid:{display:false}},y:{title:{display:true,text:'Impresiones / '+lab,color:'#A8A598'},ticks:tk,grid:gr},y2:{position:'right',title:{display:true,text:'Gasto (COP)',color:'#E8C046'},ticks:{color:'#E8C046',font:{size:10},callback:v=>'$'+fmt(v)},grid:{display:false}}}}});
+  });
+}
 function adsExtra(ch){
   [['m-adsReach',ch.ads_reach,'#A78BFA','Alcance'],['m-adsInter',ch.ads_inter,'#69C9D0','Interacciones']].forEach(([id,arr,col,lab])=>{
     const el=document.getElementById(id); if(!el||!arr||!arr.length) return;
@@ -4303,6 +4350,7 @@ function renderMeta(){
   }
 
   adsExtra(ch);
+  sexExtra(ch);
   // ── 11. Benchmarks + Recomendaciones ─────────────
   renderMetaBenchmarks(ch,obj);
   renderRecos('m-reco',camps,{roas_min:B.roas_min||2.5,roas_good:B.roas_good||4});
