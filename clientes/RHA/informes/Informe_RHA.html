@@ -2855,7 +2855,11 @@ const DATA = {
     {
      "label": "ROI %",
      "key": "roi",
-     "pct": true
+     "pct": true,
+     "sem": [
+      60,
+      100
+     ]
     }
    ],
    "move_cols_end": [
@@ -3295,7 +3299,7 @@ function applySeccionVisibility(canal){
       tb.querySelectorAll('tbody tr').forEach(tr=>{
         if(tr.children.length>base) return;
         const row=src.find(s=>s.campaign===tr.children[0].textContent.trim())||{};
-        cfg.camp_extra_cols.forEach(c=>{const td=document.createElement('td');td.className='mono';td.textContent=c.pct?((row[c.key]||0).toFixed(1).replace('.',',')+'%'):fmt(row[c.key]||0);tr.appendChild(td);});
+        cfg.camp_extra_cols.forEach(c=>{const td=document.createElement('td');const _v=row[c.key]||0;td.className=c.sem?(_v>=c.sem[1]?'good':_v>=c.sem[0]?'warn':'bad'):'mono';td.textContent=c.pct?((row[c.key]||0).toFixed(1).replace('.',',')+'%'):fmt(row[c.key]||0);tr.appendChild(td);});
       });
     }
   }
