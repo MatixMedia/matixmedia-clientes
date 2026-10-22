@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""mm_carrusel.py — carruseles e imagen de blog con la identidad de un cliente (sistema MatixMedia).
+"""mm_carrusel.py — carruseles, posts de una imagen e imagen de blog con la identidad de un cliente (sistema MatixMedia).
 
 Uso:
   python3 mm_carrusel.py generar guion.json [--salida carpeta]
       -> carrusel.html, lamina_01.png…, carrusel.pdf, muestra.jpg y, si el guion trae "blog",
          imagen_blog_<formato>.png
+  python3 mm_carrusel.py post post.json [--salida carpeta]
+      -> <nombre>_<formato>.png por cada formato (cuadrado, vertical, historia, horizontal) + muestra
   python3 mm_carrusel.py unir carpeta_tiles --cols 3 --filas 2 --salida imagen.png
       -> une capturas t_<col>_<fila>.png (todas del mismo tamaño) en una sola imagen
   python3 mm_carrusel.py identidad nombre        -> imprime la identidad guardada
@@ -392,6 +394,153 @@ def _rgba(hexa, a):
     return f"rgba({r},{g},{b},{a})"
 
 
+# ───────────────────────── post de una imagen ─────────────────────────
+POST = {"cuadrado": (1080, 1080), "vertical": (1080, 1350), "historia": (1080, 1920), "horizontal": (1200, 628)}
+
+
+class Post(Carrusel):
+    """Una sola pieza en uno o varios formatos. Reutiliza identidad, fuentes y adornos del carrusel."""
+
+    def __init__(self, guion, base, formato):
+        g = dict(guion)
+        g["laminas"] = [guion]
+        g.setdefault("formato", "4:5")
+        super().__init__(g, base)
+        self.forma = formato
+        self.W, self.H = POST[formato]
+        self.p = dict(guion, **guion.get("por_formato", {}).get(formato, {}))
+
+    def px(self, n):
+        escala = 1.12 if self.forma == "historia" else 1
+        return round(n * escala * min(self.W, self.H) / 1080)
+
+    def cuerpo(self):
+        p, t = self.p, self.p.get("tipo", "imagen")
+        k = self.kicker(p.get("etiqueta"))
+        tit = f'<h1 class="pt">{_txt(p["titulo"])}</h1>' if p.get("titulo") else ""
+        txt = f'<p class="ps">{_txt(p["texto"])}</p>' if p.get("texto") else ""
+        btn = f'<div class="btn">{_txt(p["boton"])}</div>' if p.get("boton") else ""
+        if t == "dato":
+            d = p["dato"]
+            num = f'<p class="pnum {COLOR.get(d.get("color", "acento"), "acc")}">{_txt(d["v"])}</p><p class="pk">{_txt(d.get("k", ""))}</p>'
+            return k + num + tit + txt + btn
+        if t == "frase":
+            autor = f'<p class="pa">— {_txt(p["autor"])}</p>' if p.get("autor") else ""
+            return k + '<p class="pq">“</p>' + tit.replace('class="pt"', 'class="pt quote"') + autor + txt + btn
+        if t == "lista":
+            items = "".join(f'<li>{CHECK}<span>{_txt(i)}</span></li>' for i in p["items"])
+            return k + tit + f'<ul class="pl">{items}</ul>' + txt + btn
+        return k + tit + txt + btn  # imagen / cta
+
+    def html(self):
+        p, W, H, px = self.p, self.W, self.H, self.px
+        horiz = W > H
+        img = self.imgs.get(p.get("imagen", ""), "")
+        lado = horiz and img
+        fondo = ""
+        if img and not lado:
+            fondo = f'<img class="pimg" src="{img}" alt=""><div class="pfade"></div>'
+        elif lado:
+            fondo = f'<img class="pimg lado" src="{img}" alt=""><div class="pfade lado"></div>'
+        alinear = "flex-end" if (img and not lado) else "center"
+        logo = f'<img class="plogo" src="{self.logo}" alt="">' if self.logo else f'<b class="marca">{html.escape(self.idn.get("marca", ""))}</b>'
+        pie = p.get("pie", {})
+        izq = pie.get("izq", self.idn.get("web", ""))
+        der = pie.get("der", "")
+        # historia: zonas seguras de Instagram/TikTok (arriba y abajo los tapa la interfaz)
+        pad = "220px 88px 250px" if self.forma == "historia" else f"{px(64)}px {px(88)}px {px(60)}px"
+        franja = "".join(f'<i style="background:{c}"></i>' for c in self.idn.get("franja", []))
+        css = re.sub(r"@page\{[^}]*\}", "", self.css()) + f'''
+.post{{position:relative;width:{W}px;height:{H}px;overflow:hidden;display:flex;flex-direction:column;padding:{pad};
+  background:{",".join(f'radial-gradient({px(620)}px {px(540)}px at {b["pos"]},{_rgba(b["color"], b.get("alfa", .18))},transparent 70%)' for b in self.idn.get("brillos", []))}{"," if self.idn.get("brillos") else ""}var(--bg)}}
+.pstripe{{position:absolute;left:0;right:0;top:0;height:{max(5, px(9))}px;display:flex;z-index:6}} .pstripe i{{flex:1}}
+.ptop,.pfoot{{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center}}
+.plogo{{height:{px(62)}px;border-radius:{"50%" if self.idn.get("logo_redondo", True) else "0"}}}
+.marca{{font-family:"{self.idn["fuentes"]["titulos"]["familia"]}",serif;font-size:{px(34)}px}}
+.pfoot{{font-size:{px(24)}px;color:var(--muted)}} .pfoot .swipe{{color:var(--acc);font-weight:600}}
+.pbody{{position:relative;z-index:4;flex:1;display:flex;flex-direction:column;justify-content:{alinear};padding:{px(36)}px 0 {px(40)}px;{"max-width:52%;" if lado else ""}min-height:0}}
+.pimg{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}}
+.pfade{{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:2;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg) 82%,transparent) 40%,var(--bg) 78%)}}
+.pimg.lado{{left:auto;width:52%}}
+.pfade.lado{{left:auto;top:0;width:52%;height:100%;background:linear-gradient(90deg,var(--bg) 0%,transparent 42%)}}
+.kicker{{margin-top:0;font-size:{px(30)}px;gap:{px(18)}px}} .dash{{width:{px(46)}px}}
+.pt{{font-family:"{self.idn["fuentes"]["titulos"]["familia"]}",serif;font-weight:{self.idn["fuentes"]["titulos"].get("peso", 600)};font-size:{px(p.get("tamano_titulo", 92))}px;line-height:1.03;letter-spacing:-.015em;margin-top:{px(24)}px}}
+.pt em{{font-style:normal;color:var(--acc)}}
+.pt.quote{{font-size:{px(p.get("tamano_titulo", 76))}px;line-height:1.12;margin-top:0}}
+.pq{{font-family:"{self.idn["fuentes"]["titulos"]["familia"]}",serif;color:var(--acc);font-size:{px(220)}px;line-height:.7;height:{px(110)}px;margin-top:{px(20)}px}}
+.pa{{margin-top:{px(28)}px;font-size:{px(30)}px;color:var(--ink2);font-weight:500}}
+.ps{{font-size:{px(34)}px;line-height:1.4;color:var(--ink2);margin-top:{px(26)}px;max-width:{px(880)}px}}
+.pnum{{font-family:"{self.idn["fuentes"]["titulos"]["familia"]}",serif;font-weight:{self.idn["fuentes"]["titulos"].get("peso", 600)};font-size:{px(p.get("tamano_dato", 250))}px;line-height:.95;margin-top:{px(20)}px;letter-spacing:-.02em}}
+.pk{{font-size:{px(30)}px;color:var(--ink2);font-weight:500;margin-top:{px(10)}px}}
+.pl{{list-style:none;margin-top:{px(34)}px;display:flex;flex-direction:column;gap:{px(22)}px}}
+.pl li{{display:flex;gap:{px(20)}px;align-items:flex-start;font-size:{px(36)}px;line-height:1.35}}
+.pl svg{{flex:none;width:{px(40)}px;height:{px(40)}px;margin-top:{px(3)}px}}
+.btn{{align-self:flex-start;margin-top:{px(36)}px;font-size:{px(32)}px;padding:{px(26)}px {px(52)}px}}
+.adorno{{z-index:3}}
+{'.a-abajo-derecha{bottom:330px}' if self.forma == 'historia' else ''}
+'''
+        cuerpo = f'''<div class="post">{fondo}<div class="pstripe">{franja}</div>
+<div class="ptop">{logo}<span class="count">{_txt(p.get("esquina", ""))}</span></div>
+<div class="pbody">{self.cuerpo()}</div>{self.adorno(p.get("adorno"))}
+<div class="pfoot"><span>{_txt(izq)}</span><span class="swipe">{_txt(der)}</span></div></div>'''
+        # ajuste automático: si el texto no cabe, baja el tamaño del titular hasta 12 veces
+        fit = '''<script>(()=>{const b=document.querySelector('.pbody'),t=b.querySelector('.pt,.pnum');let i=0;
+while(b.scrollHeight>b.clientHeight+1&&t&&i<12){t.style.fontSize=(parseFloat(getComputedStyle(t).fontSize)*0.93)+'px';i++}
+document.body.dataset.ajuste=i;document.body.dataset.cabe=b.scrollHeight<=b.clientHeight+1})()</script>'''
+        return f'<!doctype html><html lang="es"><head><meta charset="utf-8"><style>{css}</style></head><body>{cuerpo}{fit}</body></html>'
+
+
+def generar_post(guion_path, salida=None):
+    guion_path = pathlib.Path(guion_path).resolve()
+    guion = json.loads(guion_path.read_text(encoding="utf-8"))
+    salida = pathlib.Path(salida or guion_path.parent / "salida").resolve()
+    salida.mkdir(parents=True, exist_ok=True)
+    nombre = re.sub(r"[^\w-]", "_", guion.get("nombre", "post"))
+    formatos = guion.get("formatos") or [guion.get("formato_post", "cuadrado")]
+    pngs = []
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        sync_playwright = None
+    for f in formatos:
+        po = Post(guion, guion_path.parent, f)
+        h = salida / f"{nombre}_{f}.html"
+        h.write_text(po.html(), encoding="utf-8")
+        if not sync_playwright:
+            print("⚠️ Sin Playwright: queda solo el HTML.", file=sys.stderr)
+            continue
+        with sync_playwright() as p:
+            b = p.chromium.launch()
+            pg = b.new_page(viewport={"width": po.W, "height": po.H})
+            pg.goto(h.as_uri())
+            pg.wait_for_timeout(900)
+            png = salida / f"{nombre}_{f}.png"
+            pg.locator(".post").screenshot(path=str(png))
+            aj, cabe = pg.evaluate("[document.body.dataset.ajuste, document.body.dataset.cabe]")
+            if cabe != "true":
+                print(f"⚠️ {f}: el texto no cabe ni achicando el titular. Acorta el texto o usa por_formato.")
+            elif aj != "0":
+                print(f"ℹ️ {f}: titular reducido {aj} pasos para que quepa.")
+            b.close()
+        pngs.append(png)
+    if len(pngs) > 1:
+        try:
+            from PIL import Image
+            ims = [Image.open(x).convert("RGB") for x in pngs]
+            alto = 700
+            ims = [i.resize((round(i.width * alto / i.height), alto), Image.LANCZOS) for i in ims]
+            hoja = Image.new("RGB", (sum(i.width for i in ims) + 20 * (len(ims) + 1), alto + 40), (34, 34, 34))
+            x = 20
+            for i in ims:
+                hoja.paste(i, (x, 20))
+                x += i.width + 20
+            hoja.save(salida / f"{nombre}_muestra.jpg", quality=88)
+        except ImportError:
+            pass
+    print(f"✅ {len(pngs)} formato(s) en {salida}")
+    return pngs
+
+
 # ───────────────────────── render ─────────────────────────
 def renderizar(html_path, salida, W, H, n_paginas, pdf=True, prefijo="lamina_"):
     try:
@@ -481,6 +630,8 @@ if __name__ == "__main__":
         print(__doc__)
     elif a[0] == "generar":
         generar(a[1], a[a.index("--salida") + 1] if "--salida" in a else None)
+    elif a[0] == "post":
+        generar_post(a[1], a[a.index("--salida") + 1] if "--salida" in a else None)
     elif a[0] == "unir":
         unir(a[1], int(a[a.index("--cols") + 1]), int(a[a.index("--filas") + 1]), a[a.index("--salida") + 1])
     elif a[0] == "identidad":
