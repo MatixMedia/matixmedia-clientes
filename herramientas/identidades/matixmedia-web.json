@@ -1,0 +1,54 @@
+{
+  "nombre": "matixmedia-web",
+  "marca": "MatixMedia",
+  "web": "matixmedia.com.co",
+  "descripcion": "Identidad de la web de MatixMedia: fondo casi negro, títulos Fraunces con la palabra clave en dorado, texto DM Sans, franja tricolor y brillos verde/rojo.",
+  "logo": "matixmedia-web_logo.png",
+  "logo_redondo": true,
+  "colores": {
+    "fondo": "#04050A",
+    "texto": "#FDFCF7",
+    "texto2": "#C8C7C0",
+    "suave": "#8D8B80",
+    "acento": "#E8C046",
+    "positivo": "#22B088",
+    "negativo": "#CF343A"
+  },
+  "fuentes": {
+    "titulos": {
+      "familia": "Fraunces",
+      "peso": 600
+    },
+    "texto": {
+      "familia": "DM Sans"
+    }
+  },
+  "franja": [
+    "#E8C046",
+    "#CF343A",
+    "#22B088"
+  ],
+  "brillos": [
+    {
+      "pos": "100% 0%",
+      "color": "#22B088",
+      "alfa": 0.2
+    },
+    {
+      "pos": "0% 100%",
+      "color": "#CF343A",
+      "alfa": 0.18
+    },
+    {
+      "pos": "85% 92%",
+      "color": "#E8C046",
+      "alfa": 0.07
+    }
+  ],
+  "boton": {
+    "de": "#2BC498",
+    "a": "#1A9C78",
+    "texto": "#04050A"
+  },
+  "tono": "Directo, cercano, español de Colombia. Frases cortas, datos concretos, cero tecnicismos sin explicar."
+}
