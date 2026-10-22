@@ -7,6 +7,8 @@ Uso:
          imagen_blog_<formato>.png
   python3 mm_carrusel.py post post.json [--salida carpeta]
       -> <nombre>_<formato>.png por cada formato (cuadrado, vertical, historia, horizontal) + muestra
+  python3 mm_carrusel.py blog imagen_blog.json [--salida carpeta]
+      -> solo la imagen destacada del blog (horizontal 1200×630, cuadrada 1200×1200, vertical 1080×1350)
   python3 mm_carrusel.py unir carpeta_tiles --cols 3 --filas 2 --salida imagen.png
       -> une capturas t_<col>_<fila>.png (todas del mismo tamaño) en una sola imagen
   python3 mm_carrusel.py identidad nombre        -> imprime la identidad guardada
@@ -356,7 +358,7 @@ h2.big{{font-size:96px;line-height:1.02}}
         ft = self.idn["fuentes"]["titulos"]["familia"]
         if forma == "horizontal":
             capa = f'<img class="bimg h" src="{img}" alt=""><div class="bfade h"></div>' if img else ""
-            caja = 'left:72px;right:46%;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center'
+            caja = f'left:72px;right:{"46%" if img else "72px"};top:0;bottom:0;display:flex;flex-direction:column;justify-content:center'
             tam = 64
         else:
             capa = f'<img class="bimg v" src="{img}" alt=""><div class="bfade v"></div>' if img else ""
@@ -609,6 +611,26 @@ def generar(guion_path, salida=None):
     return salida
 
 
+def generar_blog(guion_path, salida=None):
+    """Solo la imagen destacada del blog. Acepta {"identidad", "imagenes", "blog": {...}} o los campos de blog sueltos."""
+    guion_path = pathlib.Path(guion_path).resolve()
+    g = json.loads(guion_path.read_text(encoding="utf-8"))
+    if "blog" not in g:
+        g = {"identidad": g["identidad"], "imagenes": g.get("imagenes", {}), "blog": g}
+    g.setdefault("laminas", [])
+    salida = pathlib.Path(salida or guion_path.parent / "salida").resolve()
+    salida.mkdir(parents=True, exist_ok=True)
+    c = Carrusel(g, guion_path.parent)
+    hb, (W, H) = c.html_blog()
+    fb = salida / "imagen_blog.html"
+    fb.write_text(hb, encoding="utf-8")
+    forma = g["blog"].get("formato", "horizontal")
+    nombre = g["blog"].get("archivo", f"imagen_blog_{forma}.png")
+    renderizar(fb, salida, W, H, 1, pdf=False, prefijo=nombre)
+    print(f"✅ {salida / nombre} ({W}×{H})")
+    return salida / nombre
+
+
 def unir(carpeta, cols, filas, destino):
     from PIL import Image
     carpeta = pathlib.Path(carpeta)
@@ -630,6 +652,8 @@ if __name__ == "__main__":
         print(__doc__)
     elif a[0] == "generar":
         generar(a[1], a[a.index("--salida") + 1] if "--salida" in a else None)
+    elif a[0] == "blog":
+        generar_blog(a[1], a[a.index("--salida") + 1] if "--salida" in a else None)
     elif a[0] == "post":
         generar_post(a[1], a[a.index("--salida") + 1] if "--salida" in a else None)
     elif a[0] == "unir":
