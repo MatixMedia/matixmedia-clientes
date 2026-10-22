@@ -689,7 +689,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
   <!-- 10. SCATTER ANUNCIOS -->
   <div class="section">
     <div class="section-header"><span class="section-num">10</span><span class="section-title">Anuncios · Performance en el tiempo</span></div>
-    <div class="chart-host"><div class="chart-title">CTR vs Resultados por anuncio</div><div style="height:240px"><canvas id="m-scatterAds"></canvas></div></div>
+    <div class="chart-host"><div class="chart-title">CTR vs Impresiones por anuncio</div><div style="height:240px"><canvas id="m-scatterAds"></canvas></div></div>
     <div class="charts-2col" style="margin-top:10px">
       <div class="chart-host"><div class="chart-title">Anuncios vs Alcance</div><div style="height:320px"><canvas id="m-adsReach"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Anuncios vs Interacciones</div><div style="height:320px"><canvas id="m-adsInter"></canvas></div></div>
@@ -4218,8 +4218,8 @@ function renderMeta(){
     // Usar ad_performance si existe, sino calcular desde byCamp
     const adsRaw=ch.ad_performance||[];
     const scatterPts=adsRaw.length
-      ? adsRaw.map(a=>({label:a.ad||a.name||'Anuncio',ctr:+(a.ctr||0),res:+(a.conv||a.results||0)}))
-      : camps.map(c=>({label:c.campaign,ctr:+c.ctr.toFixed(2),res:c.results}));
+      ? adsRaw.map(a=>({label:a.ad||a.name||'Anuncio',ctr:+(a.ctr||0),res:+(a.impr||0)}))
+      : camps.map(c=>({label:c.campaign,ctr:+c.ctr.toFixed(2),res:c.impr}));
     destroyC('m-scatterAds');
     if(scatterPts.length){
       CHARTS['m-scatterAds']=new Chart(elAds,{type:'scatter',
@@ -4231,10 +4231,10 @@ function renderMeta(){
           pointRadius:10,pointHoverRadius:14}))},
         options:{responsive:true,maintainAspectRatio:false,
           plugins:{legend:{labels:{color:'#A8A598',font:{size:10}}},
-            tooltip:{...TP(),callbacks:{label:c=>`${c.dataset.label} | CTR: ${c.raw.x.toFixed(2)}% | Res: ${c.raw.y}`}}},
+            tooltip:{...TP(),callbacks:{label:c=>`${c.dataset.label} | CTR: ${c.raw.x.toFixed(2)}% | Impresiones: ${fmt(c.raw.y)}`}}},
           scales:{
             x:{title:{display:true,text:'CTR %',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}},
-            y:{title:{display:true,text:'Resultados',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}}}
+            y:{title:{display:true,text:'Impresiones',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10}},grid:{color:'rgba(255,255,255,0.04)'}}}
         }});
     }
   }
