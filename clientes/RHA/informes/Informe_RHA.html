@@ -694,6 +694,7 @@ td.warn{color:var(--accent);font-family:var(--mono);font-weight:600}
       <div class="chart-host"><div class="chart-title">Anuncios vs Alcance</div><div style="height:320px"><canvas id="m-adsReach"></canvas></div></div>
       <div class="chart-host"><div class="chart-title">Anuncios vs Interacciones</div><div style="height:320px"><canvas id="m-adsInter"></canvas></div></div>
     </div>
+    <div class="chart-host" style="margin-top:10px"><div class="chart-title">Impresiones vs Alcance por anuncio</div><div style="height:300px"><canvas id="m-adsImpReach"></canvas></div></div>
   </div>
 
   <!-- 11. RECOMENDACIONES CON BENCHMARKS -->
@@ -2525,6 +2526,58 @@ const DATA = {
        "value": 72890
       }
      ],
+     "ads_imp_reach": [
+      {
+       "ad": "Urabá-AD1",
+       "reach": 293791,
+       "impr": 302823
+      },
+      {
+       "ad": "IG - AD14 - Copia",
+       "reach": 248484,
+       "impr": 261405
+      },
+      {
+       "ad": "JEP1 - AD1 - Copia",
+       "reach": 225112,
+       "impr": 231199
+      },
+      {
+       "ad": "CAPs - AD1 - Copia 2",
+       "reach": 197438,
+       "impr": 208398
+      },
+      {
+       "ad": "FE - AD1 - Copia",
+       "reach": 184407,
+       "impr": 203981
+      },
+      {
+       "ad": "IG-AD4",
+       "reach": 166697,
+       "impr": 171660
+      },
+      {
+       "ad": "LND - AD1 - Copia",
+       "reach": 154021,
+       "impr": 164088
+      },
+      {
+       "ad": "IG-AD12",
+       "reach": 152267,
+       "impr": 161548
+      },
+      {
+       "ad": "BÑ - AD1 - Copia",
+       "reach": 142330,
+       "impr": 145563
+      },
+      {
+       "ad": "CAPs - AD1 - Copia",
+       "reach": 129938,
+       "impr": 139557
+      }
+     ],
      "diag_awareness": true,
      "inter_daily": [
       {
@@ -3155,6 +3208,14 @@ function adsExtra(ch){
       options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...TP(),callbacks:{label:c=>' '+lab+': '+fmt(c.raw)}}},
       scales:{x:{ticks:{color:'#A8A598',font:{size:10},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}},y:{ticks:{color:'#A8A598',font:{size:10}},grid:{display:false}}}}});
   });
+  const e3=document.getElementById('m-adsImpReach'); const d3=ch.ads_imp_reach||[];
+  if(e3&&d3.length){
+    destroyC('m-adsImpReach');
+    const cols=['#1877F2','#199477','#CF343A','#E8C046','#A78BFA','#69C9D0','#F4845F','#8BC34A','#FF6FB5','#B0BEC5'];
+    CHARTS['m-adsImpReach']=new Chart(e3,{type:'scatter',data:{datasets:d3.map((a,i)=>({label:a.ad,data:[{x:a.reach,y:a.impr}],backgroundColor:cols[i%10]+'BB',borderColor:cols[i%10],pointRadius:9,pointHoverRadius:12}))},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#A8A598',font:{size:10}}},tooltip:{...TP(),callbacks:{label:c=>c.dataset.label+' | Alcance: '+fmt(c.raw.x)+' | Impresiones: '+fmt(c.raw.y)+' | Frecuencia: '+(c.raw.x?(c.raw.y/c.raw.x).toFixed(2):'0')}}},
+      scales:{x:{title:{display:true,text:'Alcance',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}},y:{title:{display:true,text:'Impresiones',color:'#A8A598'},ticks:{color:'#A8A598',font:{size:10},callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}}}}});
+  }
 }
 function mkBar(id,labels,datasets,opts={}){
   destroyC(id);
