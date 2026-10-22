@@ -14,6 +14,11 @@
       "id": "dentiplan",
       "prioridad": 99,
       "nombre": "Dentiplan Plus"
+    },
+    {
+      "id": "matixmedia",
+      "prioridad": 99,
+      "nombre": "MatixMedia"
     }
   ],
   "contenido": {
@@ -1722,7 +1727,111 @@
           "Ratio 4:5 (1080x1350px) para mayor presencia en feed"
         ]
       }
+    ],
+    "matixmedia_2026-10": [
+      {
+        "id": "fantasmas-campanas",
+        "prioridad": 1,
+        "titulo": "Los fantasmas de tus campañas de marketing",
+        "formato": "Carrusel",
+        "plataformas": [
+          "Instagram"
+        ],
+        "estado": "Aprobado",
+        "duracion": "8 slides",
+        "objetivo": "Comentarios con la palabra ‘AUDITAR’ · leads para el auditor gratuito",
+        "blocks": [
+          {
+            "label": "SLIDE 1 — PORTADA",
+            "tiempo": "Slide 1",
+            "color": "#E8C046",
+            "icon": "👻",
+            "audio": "Los fantasmas de tus campañas de marketing. 5 señales de que tu pauta en Google, Meta o TikTok está embrujada y cómo espantarlas.",
+            "visual": "Ilustración de fantasmas alrededor de un celular · etiqueta «Especial Halloween» · logo X pequeño arriba a la izquierda",
+            "pantalla": "Los *fantasmas* de tus campañas de marketing",
+            "tip": "Gancho de temporada con un tema de dolor real: la plata que se pierde. Menciona las tres plataformas desde la portada."
+          },
+          {
+            "label": "SLIDE 2 — FANTASMA #1 · CLICS FANTASMA",
+            "tiempo": "Slide 2",
+            "color": "#CF343A",
+            "icon": "👻",
+            "audio": "Pagas cientos de clics… y nadie te escribe. Clics 1.240, conversiones 0, inversión del mes $1.860.000. Cómo espantarlo: excluye los términos de búsqueda, las ubicaciones y los públicos que nunca compran.",
+            "visual": "Tarjeta de vidrio con dos datos grandes (Clics en dorado, Conversiones 0 en rojo) · fantasma dentro del dato · franja tricolor",
+            "pantalla": "Pagas cientos de clics… y nadie te escribe.",
+            "tip": "Los números son un ejemplo típico, no un caso real. Mantener la etiqueta «ejemplo»."
+          },
+          {
+            "label": "SLIDE 3 — FANTASMA #2 · EL PRESUPUESTO QUE SE ESFUMA",
+            "tiempo": "Slide 3",
+            "color": "#CF343A",
+            "icon": "🌙",
+            "audio": "Tu presupuesto se va a las 3 a.m. y nadie lo nota. Cómo espantarlo: programa horarios y revisa dónde salen tus anuncios: red de Display, Audience Network, apps y sitios de baja calidad.",
+            "visual": "Gráfico de barras de gasto por hora con las barras rojas de madrugada · marca «3 a.m.» · fantasma sobre el gráfico, en espejo",
+            "pantalla": "Tu presupuesto se va a las 3 a.m. y nadie lo nota.",
+            "tip": "El fantasma cambia de posición en cada lámina; aquí va sobre el gráfico."
+          },
+          {
+            "label": "SLIDE 4 — FANTASMA #3 · LEADS FANTASMA",
+            "tiempo": "Slide 4",
+            "color": "#CF343A",
+            "icon": "📞",
+            "audio": "Llegan leads… y nadie contesta. No contesta, número equivocado, sin respuesta. Cómo espantarlo: pon preguntas que filtren en tus formularios y responde en los primeros 5 minutos.",
+            "visual": "Lista de leads de la semana (Meta y TikTok) con tres estados · fantasma asomado en la esquina de la tarjeta",
+            "pantalla": "Llegan leads… y nadie contesta.",
+            "tip": "El consejo de los 5 minutos es el más accionable de la serie: buen candidato para guardar."
+          },
+          {
+            "label": "SLIDE 5 — FANTASMA #4 · CONVERSIONES INFLADAS",
+            "tiempo": "Slide 5",
+            "color": "#CF343A",
+            "icon": "📊",
+            "audio": "La plataforma dice 38 ventas. Tu caja, 4. Cómo espantarlo: mide ventas y leads reales, no visitas a la página de gracias. Revisa el píxel de Meta y TikTok y la etiqueta de Google.",
+            "visual": "Comparación 38 (verde, «según la plataforma») vs 4 (rojo, «en tu caja») · fantasma saliendo por debajo de la tarjeta",
+            "pantalla": "La plataforma dice 38 ventas. Tu caja, 4.",
+            "tip": "Es la lámina más compartible: la diferencia de cifras se entiende sin leer nada más."
+          },
+          {
+            "label": "SLIDE 6 — FANTASMA #5 · EL ANUNCIO ZOMBI",
+            "tiempo": "Slide 6",
+            "color": "#CF343A",
+            "icon": "🧟",
+            "audio": "El mismo anuncio lleva 6 meses. Ya nadie lo ve. Reel activo desde abril, frecuencia 7,8, CTR de 3,1 % a 0,6 %. Cómo espantarlo: renueva los creativos cada 3 o 4 semanas y prueba ángulos nuevos en Meta y TikTok.",
+            "visual": "Miniatura de un reel con el fantasma encima · métrica de frecuencia y CTR bajando",
+            "pantalla": "El mismo anuncio lleva 6 meses. Ya nadie lo ve.",
+            "tip": "Cierra la serie de fantasmas con la métrica más fácil de revisar en cualquier cuenta."
+          },
+          {
+            "label": "SLIDE 7 — LA VERDAD",
+            "tiempo": "Slide 7",
+            "color": "#22B088",
+            "icon": "💡",
+            "audio": "Los fantasmas no existen. La plata perdida, sí. Clics que no venden, presupuesto que se esfuma, leads que no contestan, conversiones infladas y anuncios cansados: todo se ve en una auditoría.",
+            "visual": "Fantasma grande abajo a la derecha · titular con la segunda frase en dorado",
+            "pantalla": "Los fantasmas no existen. La plata perdida, sí.",
+            "tip": "Gira el tono hacia la solución antes del CTA."
+          },
+          {
+            "label": "SLIDE 8 — CTA",
+            "tiempo": "Slide 8",
+            "color": "#E8C046",
+            "icon": "💬",
+            "audio": "¿Cuántos fantasmas tiene tu cuenta? Comenta ‘AUDITAR’ y te enviamos por mensaje el link de nuestro auditor para que revises tus campañas de Google, Meta y TikTok.",
+            "visual": "Lámina limpia, sin fantasma ni comentarios simulados · botón verde «Escríbelo en los comentarios ↓»",
+            "pantalla": "Comenta ‘AUDITAR’",
+            "tip": "El link no va en la imagen: se manda por mensaje directo a quien comente."
+          }
+        ],
+        "copy": "👻 Tu pauta no está embrujada… pero sí tiene fantasmas.\n\nClics que no compran, presupuesto que se va a las 3 a.m., leads que no contestan, conversiones infladas y anuncios zombis que llevan meses activos. Los 5 se esconden en Google, Meta y TikTok, y se llevan la plata todos los meses.\n\nDesliza para ver cómo detectar cada uno y cómo espantarlo.\n\n¿Cuántos fantasmas tiene tu cuenta? Comenta ‘AUDITAR’ y te enviamos por mensaje el link de nuestro auditor. 👇\n\n#PublicidadDigital #MetaAds #GoogleAds #TikTokAds #MarketingDigital #PautaDigital #Emprendedores #Halloween",
+        "produccion": [
+          "Identidad matixmedia-web · 1080×1350 (4:5) · solo la X pequeña como logo",
+          "Respuesta por DM a quien comente AUDITAR: link del auditor https://portal.matix.media/ir/pagina-auditoriagratis-matixmedia.html",
+          "Los números de las láminas 2 a 6 son un ejemplo típico, no un caso real",
+          "Archivos en Drive: CLIENTES/MATIXMEDIA/Contenido/En_revision/Carrusel_Fantasmas_2026-10/ (PDF + 8 PNG + caption + guion JSON)",
+          "Pendiente: mover a Aprobados/ con «aprobar MATIXMEDIA» y definir fecha de publicación"
+        ]
+      }
     ]
   },
-  "rev": 2
+  "rev": 3
 }
