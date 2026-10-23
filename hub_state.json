@@ -1737,7 +1737,7 @@
         "plataformas": [
           "Instagram"
         ],
-        "estado": "Aprobado",
+        "estado": "Publicado",
         "duracion": "8 slides",
         "objetivo": "Comentarios con la palabra ‘AUDITAR’ · leads para el auditor gratuito",
         "blocks": [
@@ -1829,7 +1829,8 @@
           "Los números de las láminas 2 a 6 son un ejemplo típico, no un caso real",
           "Archivos en Drive: CLIENTES/MATIXMEDIA/Contenido/En_revision/Carrusel_Fantasmas_2026-10/ (PDF + 8 PNG + caption + guion JSON)",
           "Pendiente: mover a Aprobados/ con «aprobar MATIXMEDIA» y definir fecha de publicación"
-        ]
+        ],
+        "fecha_publicacion": "2026-10-23"
       }
     ]
   },
