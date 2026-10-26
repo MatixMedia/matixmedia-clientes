@@ -1,6 +1,6 @@
 // Simulación de Apps Script para probar CRM_MatixMedia.gs fuera de Google.
 const fs = require('fs'), crypto = require('crypto'), vm = require('vm'), assert = require('assert');
-const code = fs.readFileSync(require('fs').existsSync(__dirname + '/CRM_MatixMedia.gs') ? __dirname + '/CRM_MatixMedia.gs' : __dirname + '/../CRM_MatixMedia.gs', 'utf8');
+const code = fs.readFileSync(__dirname + '/CRM_MatixMedia.gs', 'utf8');
 
 // ── utilidades A1
 function colNum(s) { let n = 0; for (const ch of s) n = n * 26 + (ch.charCodeAt(0) - 64); return n; }
@@ -89,8 +89,8 @@ const ctx = {
   LockService: { getScriptLock: () => ({ waitLock() { }, releaseLock() { } }) },
   UrlFetchApp: { fetch: (url, o) => { fetches.push({ url, o }); const r = fetchResp(url, o); return { getResponseCode: () => r[0], getContentText: () => JSON.stringify(r[1]) }; } },
   ScriptApp: {
-    getProjectTriggers: () => triggers, deleteTrigger: t => triggers.splice(triggers.indexOf(t), 1),
-    newTrigger: fn => { const o = { timeBased() { return o; }, everyDays() { return o; }, atHour() { return o; }, create() { const t = { fn, uid: 'u' + triggers.length, getHandlerFunction: () => fn, getUniqueId: () => t.uid }; triggers.push(t); return t; } }; return o; },
+    getProjectTriggers: () => triggers.slice(), deleteTrigger: t => triggers.splice(triggers.indexOf(t), 1),
+    newTrigger: fn => { const o = { timeBased() { return o; }, everyDays() { return o; }, everyMinutes() { return o; }, atHour() { return o; }, create() { const t = { fn, uid: 'u' + triggers.length, getHandlerFunction: () => fn, getUniqueId: () => t.uid }; triggers.push(t); return t; } }; return o; },
     getService: () => ({ getUrl: () => 'https://script.google.com/macros/s/XYZ/exec' }),
   },
   HtmlService: { createHtmlOutput: () => html() },
@@ -253,8 +253,9 @@ console.log('   ' + rg.replace(/\n/g, '\n   '));
 ok('Google Ads: hoja por cliente con calificado y venta, hora con -0500, email y teléfono normalizados');
 
 // 12. activador diario
-G.activarDiario(); assert.strictEqual(triggers.length, 1); G.activarDiario(); assert.strictEqual(triggers.length, 1);
+G.activarDiario(); assert.strictEqual(triggers.length, 2); G.activarDiario(); assert.strictEqual(triggers.length, 2);
 const n6 = fetches.length; G.envioDiario({ triggerUid: triggers[0].uid }); assert.ok(fetches.length >= n6);
+G.lecturaFrecuente({}); G.lecturaFrecuente({ triggerUid: triggers[1].uid });
 G.desactivarDiario(); assert.strictEqual(triggers.length, 0);
 ok('activador diario: uno solo, corre con su id y se desactiva');
 
@@ -271,3 +272,55 @@ const dd = ctx.DriveApp.getFolderById('x'); const itx = dd.getFolders(); const n
 const rs = G.sincronizarClientes_(); assert.ok(G.cliente_('CLIENTE NUEVO SAS'), 'el envío diario ya lo agregó'); assert.ok(!G.cliente_('_PLANTILLA_CLIENTE'));
 assert.ok(/No hay clientes nuevos/.test(G.sincronizarClientes_()));
 ok('sincronización con CLIENTES/: agrega los nuevos, ignora «_», no duplica');
+
+// 14. webhook de formularios de Google Ads
+const nAntes = G.leads_().length;
+let rg2 = JSON.parse(G.doPost({ postData: { type: 'application/json', contents: JSON.stringify({ lead_id: 'GL-77', api_version: '1.0', form_id: 1, campaign_id: 2233, google_key: bt.clave_form, is_test: true, gcl_id: 'EAIaIQ_gl',
+  user_column_data: [{ column_id: 'FULL_NAME', string_value: 'Marta Díaz' }, { column_id: 'EMAIL', string_value: 'marta@x.co' }, { column_id: 'PHONE_NUMBER', string_value: '+573004445566' }, { column_name: '¿Cuántas personas viajan?', string_value: '4' }] }) } }).body);
+assert.deepStrictEqual(rg2, {});
+const marta = G.leads_().find(l => l.nombre === 'Marta Díaz');
+assert.ok(marta && marta.cliente === 'BANANA TRAVEL' && marta.plataforma === 'Google' && marta.origen === 'Formulario Google' && marta.gclid === 'EAIaIQ_gl');
+assert.ok(/PRUEBA/.test(marta.notas) && /Cuántas personas viajan\?: 4/.test(marta.notas));
+G.doPost({ postData: { type: 'application/json', contents: JSON.stringify({ lead_id: 'GL-77', google_key: bt.clave_form, user_column_data: [{ column_id: 'FULL_NAME', string_value: 'Marta Díaz' }] }) } });
+assert.strictEqual(G.leads_().length, nAntes + 1, 'reintento de Google no duplica');
+rg2 = JSON.parse(G.doPost({ postData: { type: 'application/json', contents: JSON.stringify({ google_key: 'mala', user_column_data: [] }) } }).body); assert.ok(rg2.message);
+ok('webhook de formularios de Google: crea el lead con gclid, preguntas extra en notas, no duplica, rechaza clave mala');
+
+// 15. lectura directa de formularios de Meta
+const cx = G.cx_inicio; // (solo para asegurar que existe)
+props['META_PAGE::QASA'] = '1122334455'; props['META_PAGE_TOKEN::QASA'] = 'EAAPAGE';
+fetchResp = (url) => {
+  if (url.includes('/leadgen_forms')) return [200, { data: [{ id: '900', name: 'Form Apartamentos' }] }];
+  if (url.includes('/900/leads') && !url.includes('after=')) return [200, { data: [{ id: '120212345678901', created_time: '2026-10-26T14:05:00+0000', campaign_name: 'qasa-leads-1026', field_data: [{ name: 'full_name', values: ['Jorge Ramírez'] }, { name: 'phone_number', values: ['+573109998877'] }, { name: 'presupuesto', values: ['300-400M'] }] }], paging: { next: 'https://graph.facebook.com/v23.0/900/leads?after=XX' } }];
+  if (url.includes('after=XX')) return [200, { data: [{ id: '120212345678902', created_time: '2026-10-26T15:00:00+0000', field_data: [{ name: 'email', values: ['ana@q.co'] }] }] }];
+  return [200, {}];
+};
+let rm = G.leerFormularios_();
+assert.ok(/QASA · Meta: 2 lead/.test(rm), rm);
+const jorge = G.leads_().find(l => l.meta_lead === '120212345678901' || l.meta_lead === 120212345678901);
+assert.ok(jorge && jorge.cliente === 'QASA' && jorge.plataforma === 'Meta' && jorge.campana === 'qasa-leads-1026' && /presupuesto: 300-400M/.test(jorge.notas));
+assert.strictEqual(jorge.fecha.toISOString(), '2026-10-26T14:05:00.000Z');
+assert.ok(fetches.some(f => f.url.includes('filtering=') && f.url.includes('access_token=EAAPAGE')));
+rm = G.leerFormularios_(); assert.ok(!/QASA · Meta/.test(rm), 'segunda lectura no duplica: ' + rm);
+assert.ok(props['META_ULT::QASA']);
+fetchResp = () => [400, { error: { message: 'Invalid OAuth access token' } }];
+assert.ok(/QASA · Meta: error Invalid OAuth/.test(G.leerFormularios_()));
+ok('Meta: lee los formularios de la página, pagina, guarda campaña y preguntas, no duplica, avisa si el token falla');
+delete props['META_PAGE_TOKEN::QASA'];
+
+// 16. pestaña de entrada de TikTok (integración nativa con Google Sheets)
+SSMAIN.getSheetByName('Panel').set(2, 2, 'BANANA TRAVEL');
+G.crearEntradaTikTok();
+const tt = SSMAIN.getSheetByName('TikTok · BANANA TRAVEL'); assert.ok(tt);
+assert.strictEqual(tt.get(1, 8), 'Importado al CRM');
+tt.set(2, 1, 'Camila Rojas'); tt.set(2, 3, '3015556677'); tt.set(2, 7, '7412345678'); tt.set(2, 5, 'Plan Caribe');
+tt.set(3, 2, 'pablo@x.co');
+const nTT = G.leads_().length;
+let rt = G.leerFormularios_(); assert.ok(/BANANA TRAVEL · TikTok: 2 lead/.test(rt), rt);
+const cam = G.leads_().find(l => l.nombre === 'Camila Rojas');
+assert.ok(cam.plataforma === 'TikTok' && cam.origen === 'Formulario TikTok' && String(cam.tt_lead) === '7412345678' && cam.interes === 'Plan Caribe');
+assert.ok(/^L-\d+/.test(tt.get(2, 8)) && /^L-\d+/.test(tt.get(3, 8)));
+rt = G.leerFormularios_(); assert.strictEqual(G.leads_().length, nTT + 2, 'no reimporta');
+G.actualizarEstadoConexiones_(); assert.ok(/Lectura: Meta — · TikTok ✓/.test(cliSh.get(2, K.conexiones)), cliSh.get(2, K.conexiones));
+ok('TikTok: pestaña de entrada por cliente, importa filas nuevas, marca el ID y no reimporta');
+console.log('\nTODAS LAS PRUEBAS v1.3.0 PASARON');

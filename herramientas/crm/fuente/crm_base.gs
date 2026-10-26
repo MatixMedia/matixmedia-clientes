@@ -1,5 +1,5 @@
 /**
- * CRM MatixMedia · v1.2.0 (identidad MatixMedia, vidrio)
+ * CRM MatixMedia · v1.3.0 (lectura automática de formularios)
  * Un CRM central para todos los clientes, con panel y conexiones propias por cliente.
  *
  * INSTALACIÓN (una sola vez):
@@ -14,7 +14,7 @@
  * Los tokens de Meta, TikTok y ChatGPT NUNCA van en celdas: se guardan en las propiedades
  * del script con MatixMedia → Conectar cliente.
  */
-const CRM_VERSION = '1.2.0';
+const CRM_VERSION = '1.3.0';
 const HOJA = { leads: 'Leads', panel: 'Panel', clientes: 'Clientes', tiktok: 'TikTok_CSV', envios: 'Envios', config: 'Config' };
 const COLS = ['id', 'cliente', 'fecha', 'origen', 'plataforma', 'campana', 'nombre', 'email', 'tel', 'ciudad', 'interes',
   'responsable', 'etapa', 'seguimiento', 'notas', 'f_contactado', 'f_calificado', 'f_venta', 'valor', 'motivo',
@@ -25,7 +25,7 @@ const CLI = ['cliente', 'activo', 'moneda', 'indicativo', 'meta_dataset', 'tikto
   'g_venta', 'g_valor_cal', 'hoja_google', 'clave', 'clave_form', 'enlace', 'conexiones', 'notas'];
 const K = {}; CLI.forEach(function (k, i) { K[k] = i + 1; });
 const ETAPAS = ['Nuevo', 'Contactado', 'Calificado', 'Venta', 'Perdido'];
-const ORIGENES = ['WhatsApp', 'Formulario web', 'Formulario Meta', 'Formulario TikTok', 'Llamada', 'Venta directa', 'Otro'];
+const ORIGENES = ['WhatsApp', 'Formulario web', 'Formulario Google', 'Formulario Meta', 'Formulario TikTok', 'Llamada', 'Venta directa', 'Otro'];
 const PLATAFORMAS = ['Google', 'Meta', 'TikTok', 'ChatGPT', 'Orgánico', 'Otra'];
 const ETAPA_FECHA = { Contactado: 'f_contactado', Calificado: 'f_calificado', Venta: 'f_venta' };
 const PREVIAS = { Contactado: [], Calificado: ['f_contactado'], Venta: ['f_contactado', 'f_calificado'] };
@@ -42,13 +42,15 @@ function onOpen() {
     .addItem('Sincronizar clientes con Drive (CLIENTES/)', 'sincronizarClientes')
     .addItem('Conectar cliente (Meta, TikTok, ChatGPT)', 'abrirConexiones')
     .addItem('Ver enlaces del cliente elegido en Panel', 'verEnlaces')
+    .addItem('Crear pestaña de entrada TikTok (cliente elegido en Panel)', 'crearEntradaTikTok')
+    .addItem('Leer formularios ahora', 'leerFormularios')
     .addSeparator()
     .addItem('Enviar ahora', 'enviarAhora')
     .addItem('Enviar en modo prueba', 'enviarPrueba')
     .addItem('Actualizar hojas de Google Ads', 'actualizarHojasGoogle')
     .addSeparator()
-    .addItem('Activar envío diario', 'activarDiario')
-    .addItem('Desactivar envío diario', 'desactivarDiario')
+    .addItem('Activar automático (lectura cada 15 min + envío diario)', 'activarDiario')
+    .addItem('Desactivar automático', 'desactivarDiario')
     .addItem('Instalar o reparar el CRM', 'instalarCRM')
     .addToUi();
 }
@@ -440,6 +442,7 @@ function doPost(e) {
     else p = e.parameter || {};
   } catch (err) { p = e.parameter || {}; }
   const resp = function (o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); };
+  if (p.user_column_data || p.google_key !== undefined) return resp(leadGoogle_(p));
   const cli = clientePorClave_(p.k || p.clave, 'clave_form');
   if (!cli) return resp({ ok: false, error: 'clave inválida' });
   const pick = function () { for (let i = 0; i < arguments.length; i++) { const v = p[arguments[i]]; if (v !== undefined && v !== '') return String(v).slice(0, 500); } return ''; };
@@ -456,6 +459,152 @@ function doPost(e) {
   if (!d.nombre && !d.email && !d.tel) return resp({ ok: false, error: 'sin datos de contacto' });
   try { return resp({ ok: true, id: crearLead_(d, cli.cliente) }); }
   catch (err) { return resp({ ok: false, error: String(err.message || err) }); }
+}
+
+/** Webhook de formularios de Google Ads. En Google Ads: URL = URL de la app web; Clave = «Clave de formularios» del cliente. */
+function leadGoogle_(p) {
+  const cli = clientePorClave_(p.google_key, 'clave_form');
+  if (!cli) return { message: 'google_key inválida' };
+  const col = {}, extra = [];
+  (p.user_column_data || []).forEach(function (c) {
+    const id = String(c.column_id || ''), v = String(c.string_value || '').slice(0, 500);
+    if (['FULL_NAME', 'FIRST_NAME', 'LAST_NAME', 'EMAIL', 'WORK_EMAIL', 'PHONE_NUMBER', 'WORK_PHONE', 'CITY'].indexOf(id) >= 0) col[id] = v;
+    else if (v) extra.push((c.column_name || id) + ': ' + v);
+  });
+  const gid = String(p.lead_id || '').trim();
+  if (gid && leads_().some(function (l) { return String(l.notas).indexOf('lead_id Google: ' + gid) >= 0; })) return {};
+  const d = {
+    nombre: col.FULL_NAME || [col.FIRST_NAME, col.LAST_NAME].filter(String).join(' '),
+    email: col.EMAIL || col.WORK_EMAIL || '', tel: col.PHONE_NUMBER || col.WORK_PHONE || '', ciudad: col.CITY || '',
+    gclid: String(p.gcl_id || ''), origen: 'Formulario Google', plataforma: 'Google',
+    campana: p.campaign_id ? 'Campaña ' + p.campaign_id : '',
+    notas: (p.is_test ? 'PRUEBA enviada desde Google Ads · ' : '') + (gid ? 'lead_id Google: ' + gid : '') + (extra.length ? '\n' + extra.join('\n') : '')
+  };
+  if (!d.nombre && !d.email && !d.tel) return { message: 'sin datos de contacto' };
+  crearLead_(d, cli.cliente);
+  return {};
+}
+
+/* ───────────────────────── Lectura automática de formularios ───────────────────────── */
+
+function leerFormularios() { soloEquipo_(); avisar_(leerFormularios_()); }
+
+function leerFormularios_() {
+  const out = [];
+  clientes_().forEach(function (c) {
+    if (c.activo === 'No') return;
+    try { const r = leerMeta_(c); if (r) out.push(r); } catch (e) { out.push(c.cliente + ' · Meta: error ' + (e.message || e)); }
+  });
+  try { const r = importarEntradas_(); if (r) out.push(r); } catch (e) { out.push('TikTok: error ' + (e.message || e)); }
+  return out.length ? out.join('\n') : 'No hay formularios nuevos.';
+}
+
+function fechaMeta_(s) {
+  const d = new Date(String(s || '').replace(/([+-]\d{2})(\d{2})$/, '$1:$2'));
+  return isNaN(d.getTime()) ? new Date() : d;
+}
+
+function getJson_(url) {
+  const r = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  let j = null; try { j = JSON.parse(r.getContentText()); } catch (e) { }
+  if (r.getResponseCode() !== 200 || !j) throw new Error((j && j.error && j.error.message) || ('HTTP ' + r.getResponseCode()));
+  return j;
+}
+
+/** Formularios instantáneos de Meta: lee la página del cliente con su token de página (permiso leads_retrieval). */
+function leerMeta_(c) {
+  const props = PropertiesService.getScriptProperties();
+  const page = props.getProperty('META_PAGE::' + c.cliente), tok = props.getProperty('META_PAGE_TOKEN::' + c.cliente);
+  if (!page || !tok) return '';
+  const ver = String(config_().meta_version || 'v23.0');
+  const base = 'https://graph.facebook.com/' + ver + '/';
+  const desde = Number(props.getProperty('META_ULT::' + c.cliente)) || Math.floor(Date.now() / 1000) - 3 * 86400;
+  const inicio = Math.floor(Date.now() / 1000);
+  const forms = getJson_(base + encodeURIComponent(page) + '/leadgen_forms?fields=id,name&limit=200&access_token=' + encodeURIComponent(tok)).data || [];
+  const filtro = encodeURIComponent(JSON.stringify([{ field: 'time_created', operator: 'GREATER_THAN', value: desde - 3600 }]));
+  let n = 0;
+  forms.forEach(function (f) {
+    let url = base + f.id + '/leads?fields=id,created_time,field_data,campaign_name,ad_name,is_organic&limit=200&filtering=' + filtro + '&access_token=' + encodeURIComponent(tok);
+    for (let pag = 0; url && pag < 20; pag++) {
+      const j = getJson_(url);
+      (j.data || []).forEach(function (ld) {
+        const v = {}, extra = [];
+        (ld.field_data || []).forEach(function (x) {
+          const val = (x.values || []).join(', ');
+          const k = String(x.name || '').toLowerCase();
+          if (['full_name', 'first_name', 'last_name', 'email', 'phone_number', 'city'].indexOf(k) >= 0) v[k] = val; else if (val) extra.push(x.name + ': ' + val);
+        });
+        const d = { nombre: v.full_name || [v.first_name, v.last_name].filter(String).join(' '), email: v.email || '', tel: v.phone_number || '',
+          ciudad: v.city || '', meta_lead: String(ld.id), fecha: fechaMeta_(ld.created_time), origen: 'Formulario Meta', plataforma: 'Meta',
+          campana: ld.campaign_name || '', notas: 'Formulario: ' + (f.name || f.id) + (ld.is_organic ? ' (orgánico)' : '') + (extra.length ? '\n' + extra.join('\n') : '') };
+        const antes = leads_().length;
+        crearLead_(d, c.cliente);
+        if (leads_().length > antes) n++;
+      });
+      url = j.paging && j.paging.next ? j.paging.next : '';
+    }
+  });
+  props.setProperty('META_ULT::' + c.cliente, String(inicio));
+  return n ? c.cliente + ' · Meta: ' + n + ' lead(s) nuevo(s)' : '';
+}
+
+const PREF_TT = 'TikTok · ';
+const ENC_TT = ['Nombre', 'Email', 'Teléfono', 'Ciudad', 'Interés', 'Campaña', 'Lead ID', 'Importado al CRM'];
+
+/** Crea la pestaña donde la integración nativa de TikTok (Herramientas → Leads → Conectar CRM → Google Sheets) escribe los leads del cliente. */
+function crearEntradaTikTok() {
+  soloEquipo_();
+  const nombre = String(hoja_(HOJA.panel).getRange('B2').getValue() || '');
+  const c = cliente_(nombre);
+  if (!c) return avisar_('Elige un cliente en Panel → B2.');
+  const ss = SpreadsheetApp.getActive(), n = PREF_TT + c.cliente;
+  let sh = ss.getSheetByName(n);
+  if (!sh) sh = ss.insertSheet(n, ss.getSheets().length);
+  sh.getRange(1, 1, 1, ENC_TT.length).setValues([ENC_TT]).setFontWeight('bold');
+  sh.setFrozenRows(1);
+  avisar_('Pestaña «' + n + '» lista.\n\nEn TikTok Ads Manager: Herramientas → Leads → Conectar CRM → Google Sheets → elige esta hoja (MATIXMEDIA_CRM) y la pestaña «' + n +
+    '». Une cada pregunta del formulario con su columna. No escribas en «Importado al CRM»: la llena el CRM.');
+}
+
+/** Pasa al CRM las filas nuevas de las pestañas «TikTok · CLIENTE». */
+function importarEntradas_() {
+  const ss = SpreadsheetApp.getActive();
+  const alias = { nombre: /^(nombre|name|full.?name|nombre completo)$/i, email: /^(email|e-?mail|correo)/i, tel: /^(tel|tel[eé]fono|phone|celular|whatsapp)/i,
+    ciudad: /^(ciudad|city)/i, interes: /^(inter[eé]s|producto|servicio)/i, campana: /^(campa[ñn]a|campaign)/i, tt_lead: /^(lead.?id|id del lead)$/i };
+  const out = [];
+  ss.getSheets().forEach(function (sh) {
+    const nom = sh.getName();
+    if (nom.indexOf(PREF_TT) !== 0) return;
+    const cli = cliente_(nom.slice(PREF_TT.length));
+    if (!cli) return;
+    const last = sh.getLastRow(), nc = Math.max(sh.getMaxColumns(), ENC_TT.length);
+    if (last < 2) return;
+    const datos = sh.getRange(1, 1, last, nc).getValues();
+    const enc = datos[0].map(function (h) { return String(h).trim(); });
+    let colImp = enc.indexOf('Importado al CRM');
+    if (colImp < 0) { colImp = enc.filter(String).length; sh.getRange(1, colImp + 1).setValue('Importado al CRM'); }
+    let n = 0;
+    for (let i = 1; i < datos.length; i++) {
+      const fila = datos[i];
+      if (String(fila[colImp] || '').trim()) continue;
+      if (!fila.some(function (x) { return String(x).trim(); })) continue;
+      const d = { origen: 'Formulario TikTok', plataforma: 'TikTok' }, extra = [];
+      enc.forEach(function (h, j) {
+        if (j === colImp || !h) return;
+        const v = fila[j] === '' || fila[j] === null ? '' : String(fila[j]).trim();
+        if (!v) return;
+        const k = Object.keys(alias).filter(function (a) { return alias[a].test(h); })[0];
+        if (k && !d[k]) d[k] = v; else extra.push(h + ': ' + v);
+      });
+      if (extra.length) d.notas = extra.join('\n');
+      if (!d.nombre && !d.email && !d.tel) continue;
+      const id = crearLead_(d, cli.cliente);
+      sh.getRange(i + 1, colImp + 1).setValue(id);
+      n++;
+    }
+    if (n) out.push(cli.cliente + ' · TikTok: ' + n + ' lead(s) nuevo(s)');
+  });
+  return out.join('\n');
 }
 
 function urlWeb_() {
@@ -489,9 +638,10 @@ function verEnlaces() {
     '<textarea style="width:100%;height:46px">' + esc(enlace) + '</textarea>' +
     '<p><b>Formularios web</b>: pega este código en la web y, al enviar el formulario, llama a <code>mmEnviarLead({nombre, email, telefono, interes})</code>.</p>' +
     '<textarea style="width:100%;height:190px;font-family:monospace;font-size:11px">' + esc(snippet) + '</textarea>' +
-    '<p><b>Zapier / Make</b> (formularios de Meta o TikTok): POST a la URL de arriba (sin <code>?k=</code>) con los campos <code>k=' + esc(c.clave_form) +
+    '<p><b>Formularios de Google Ads</b> (recurso de formulario → Integración de leads → Webhook): URL del webhook = <code>' + esc(url) + '</code> · Clave = <code>' + esc(c.clave_form) + '</code>. Usa «Enviar datos de prueba» para comprobarlo.</p>' +
+    '<p><b>Zapier / Make</b> (opcional, si no usas la lectura directa): POST a la URL de arriba (sin <code>?k=</code>) con los campos <code>k=' + esc(c.clave_form) +
     '</code>, nombre, email, telefono, campana y <code>meta_lead_id</code> o <code>tiktok_lead_id</code>.</p></div>';
-  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(620).setHeight(520), 'Enlaces de ' + c.cliente);
+  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(html).setWidth(620).setHeight(600), 'Enlaces de ' + c.cliente);
 }
 
 /* ───────────────────────── Clientes y conexiones ───────────────────────── */
@@ -535,7 +685,7 @@ function sincronizarClientes_() {
 
 function abrirConexiones() {
   soloEquipo_();
-  const html = HtmlService.createHtmlOutput(htmlConexiones_()).setWidth(460).setHeight(600);
+  const html = HtmlService.createHtmlOutput(htmlConexiones_()).setWidth(460).setHeight(680);
   SpreadsheetApp.getUi().showModalDialog(html, 'Conectar cliente');
 }
 
@@ -546,7 +696,8 @@ function cx_inicio() {
     return { cliente: c.cliente, meta_dataset: String(c.meta_dataset || ''), tiktok_set: String(c.tiktok_set || ''), openai_pixel: String(c.openai_pixel || ''),
       meta_token: !!props.getProperty('META_TOKEN::' + c.cliente), tiktok_token: !!props.getProperty('TIKTOK_TOKEN::' + c.cliente),
       openai_key: !!props.getProperty('OPENAI_KEY::' + c.cliente), meta_test: props.getProperty('META_TEST::' + c.cliente) || '',
-      tiktok_test: props.getProperty('TIKTOK_TEST::' + c.cliente) || '' };
+      tiktok_test: props.getProperty('TIKTOK_TEST::' + c.cliente) || '', meta_page: props.getProperty('META_PAGE::' + c.cliente) || '',
+      meta_page_token: !!props.getProperty('META_PAGE_TOKEN::' + c.cliente) };
   });
 }
 
@@ -559,11 +710,11 @@ function cx_guardar(d) {
     if (d[p[0]] !== undefined) sh.getRange(c.fila, K[p[1]]).setNumberFormat('@').setValue(String(d[p[0]]).trim());
   });
   const props = PropertiesService.getScriptProperties();
-  [['meta_token', 'META_TOKEN::'], ['tiktok_token', 'TIKTOK_TOKEN::'], ['openai_key', 'OPENAI_KEY::']].forEach(function (p) {
+  [['meta_token', 'META_TOKEN::'], ['tiktok_token', 'TIKTOK_TOKEN::'], ['openai_key', 'OPENAI_KEY::'], ['meta_page_token', 'META_PAGE_TOKEN::']].forEach(function (p) {
     if (d[p[0]] === '__BORRAR__') props.deleteProperty(p[1] + c.cliente);
     else if (d[p[0]]) props.setProperty(p[1] + c.cliente, String(d[p[0]]).trim());
   });
-  [['meta_test', 'META_TEST::'], ['tiktok_test', 'TIKTOK_TEST::']].forEach(function (p) {
+  [['meta_test', 'META_TEST::'], ['tiktok_test', 'TIKTOK_TEST::'], ['meta_page', 'META_PAGE::']].forEach(function (p) {
     if (d[p[0]] !== undefined) {
       if (String(d[p[0]]).trim()) props.setProperty(p[1] + c.cliente, String(d[p[0]]).trim());
       else props.deleteProperty(p[1] + c.cliente);
@@ -581,8 +732,10 @@ function actualizarEstadoConexiones_() {
     const t = c.tiktok_set && props.getProperty('TIKTOK_TOKEN::' + c.cliente);
     const o = c.openai_pixel && props.getProperty('OPENAI_KEY::' + c.cliente);
     const g = c.hoja_google;
-    sh.getRange(c.fila, K.conexiones).setValue('Meta ' + (m ? '✓' : '—') + ' · TikTok ' + (t ? '✓' : '—') +
-      ' · ChatGPT ' + (o ? '✓' : '—') + ' · Google ' + (g ? '✓' : '—'));
+    const f = props.getProperty('META_PAGE::' + c.cliente) && props.getProperty('META_PAGE_TOKEN::' + c.cliente);
+    const tt = !!SpreadsheetApp.getActive().getSheetByName(PREF_TT + c.cliente);
+    sh.getRange(c.fila, K.conexiones).setValue('Envío: Meta ' + (m ? '✓' : '—') + ' · TikTok ' + (t ? '✓' : '—') +
+      ' · ChatGPT ' + (o ? '✓' : '—') + ' · Google ' + (g ? '✓' : '—') + ' | Lectura: Meta ' + (f ? '✓' : '—') + ' · TikTok ' + (tt ? '✓' : '—'));
   });
 }
 
@@ -599,15 +752,22 @@ function envioDiario(e) {
   try { console.log(actualizarHojasGoogle_()); } catch (e) { console.log('google: ' + e); }
 }
 
+function lecturaFrecuente(e) {
+  const uid = e && e.triggerUid;
+  if (!uid || !ScriptApp.getProjectTriggers().some(function (t) { return t.getUniqueId() === String(uid); })) return;
+  console.log(leerFormularios_());
+}
+
 function activarDiario() {
   soloEquipo_();
   desactivarDiario_();
   ScriptApp.newTrigger('envioDiario').timeBased().everyDays(1).atHour(5).create();
-  avisar_('Envío diario activado (todos los días, 5–6 a. m.).');
+  ScriptApp.newTrigger('lecturaFrecuente').timeBased().everyMinutes(15).create();
+  avisar_('Automático activado: lee los formularios cada 15 minutos y envía la calidad a las plataformas todos los días (5–6 a. m.).');
 }
-function desactivarDiario() { soloEquipo_(); desactivarDiario_(); avisar_('Envío diario desactivado.'); }
+function desactivarDiario() { soloEquipo_(); desactivarDiario_(); avisar_('Automático desactivado.'); }
 function desactivarDiario_() {
-  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'envioDiario') ScriptApp.deleteTrigger(t); });
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (['envioDiario', 'lecturaFrecuente'].indexOf(t.getHandlerFunction()) >= 0) ScriptApp.deleteTrigger(t); });
 }
 
 function registro_() {

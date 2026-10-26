@@ -86,7 +86,7 @@ for k, src in (("iso_lead", "fecha"), ("iso_calificado", "f_calificado"), ("iso_
 def lista(ws, vals, cr):
     dv = DataValidation(type="list", formula1='"' + ",".join(vals) + '"', allow_blank=True)
     ws.add_data_validation(dv); dv.add(cr)
-ORIGENES = ["WhatsApp", "Formulario web", "Formulario Meta", "Formulario TikTok", "Llamada", "Venta directa", "Otro"]
+ORIGENES = ["WhatsApp", "Formulario web", "Formulario Google", "Formulario Meta", "Formulario TikTok", "Llamada", "Venta directa", "Otro"]
 PLATAFORMAS = ["Google", "Meta", "TikTok", "ChatGPT", "Orgánico", "Otra"]
 ETAPAS = ["Nuevo", "Contactado", "Calificado", "Venta", "Perdido"]
 lista(wl, ORIGENES, f'{C["origen"]}2:{C["origen"]}{N+1}')
