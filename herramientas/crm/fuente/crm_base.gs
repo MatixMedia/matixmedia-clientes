@@ -1,5 +1,5 @@
 /**
- * CRM MatixMedia · v1.1.0 (identidad MatixMedia)
+ * CRM MatixMedia · v1.2.0 (identidad MatixMedia, vidrio)
  * Un CRM central para todos los clientes, con panel y conexiones propias por cliente.
  *
  * INSTALACIÓN (una sola vez):
@@ -14,7 +14,7 @@
  * Los tokens de Meta, TikTok y ChatGPT NUNCA van en celdas: se guardan en las propiedades
  * del script con MatixMedia → Conectar cliente.
  */
-const CRM_VERSION = '1.1.0';
+const CRM_VERSION = '1.2.0';
 const HOJA = { leads: 'Leads', panel: 'Panel', clientes: 'Clientes', tiktok: 'TikTok_CSV', envios: 'Envios', config: 'Config' };
 const COLS = ['id', 'cliente', 'fecha', 'origen', 'plataforma', 'campana', 'nombre', 'email', 'tel', 'ciudad', 'interes',
   'responsable', 'etapa', 'seguimiento', 'notas', 'f_contactado', 'f_calificado', 'f_venta', 'valor', 'motivo',
