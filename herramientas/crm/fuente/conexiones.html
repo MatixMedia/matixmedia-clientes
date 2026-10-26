@@ -1,12 +1,14 @@
-<!DOCTYPE html><html><head><base target="_top"><meta charset="utf-8"><style>
-body{font-family:Arial,sans-serif;font-size:13px;color:#0B1220;margin:0;padding:4px 6px}
-label{display:block;font-size:11px;color:#5B6170;margin:8px 0 3px}
-input,select{font:inherit;width:100%;box-sizing:border-box;border:1px solid #E3E5EA;border-radius:6px;padding:7px}
-h3{margin:14px 0 2px;font-size:13px;border-bottom:2px solid #C9A227;padding-bottom:3px}
-.ok{color:#1A8F6E;font-weight:bold}.no{color:#C0392B}
-button{font:inherit;border:0;border-radius:6px;padding:9px 14px;background:#1A8F6E;color:#fff;font-weight:bold;cursor:pointer;margin-top:12px}
-small{color:#5B6170}
-</style></head><body>
+<!DOCTYPE html><html><head><base target="_top"><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=DM+Mono:wght@500&display=swap" rel="stylesheet"><style>
+body{font-family:'DM Sans',Arial,sans-serif;font-size:13px;color:#FDFCF7;background:#04050A;margin:0;padding:0 14px 14px}
+.franja{height:3px;margin:0 -14px 10px;background:linear-gradient(90deg,#E8C046 0 33.3%,#CF343A 33.3% 66.6%,#22B088 66.6%)}
+label{display:block;font:500 9.5px 'DM Mono',monospace;color:#A8A598;text-transform:uppercase;letter-spacing:1px;margin:10px 0 4px}
+input,select{font:inherit;width:100%;box-sizing:border-box;color:#FDFCF7;background:#0C0D13;border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:8px;outline:none}
+input:focus,select:focus{border-color:#E8C046} select option{background:#14151C}
+h3{margin:18px 0 2px;font:300 16px 'Fraunces',Georgia,serif;color:#FDFCF7;border-bottom:1px solid rgba(232,192,70,.35);padding-bottom:5px}
+.ok{color:#22B088;font-weight:600}.no{color:#CF343A}
+button{font:600 13px 'DM Sans',Arial,sans-serif;border:0;border-radius:6px;padding:10px 16px;background:linear-gradient(180deg,#2BC498,#1A9C78);color:#04050A;cursor:pointer;margin-top:14px}
+small{color:#8D8B80;font-size:11.5px}
+</style></head><body><div class="franja"></div>
 <label>Cliente</label><select id="cli"></select>
 <h3>Meta (Conversions API para CRM)</h3>
 <small>Events Manager → conjunto de datos del cliente → Configuración → Conversions API → Generar token.</small>

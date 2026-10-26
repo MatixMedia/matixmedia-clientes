@@ -33,7 +33,7 @@ class Range {
   getRow() { return this.r; } getColumn() { return this.c; } getNumRows() { return this.nr; } getNumColumns() { return this.nc; }
   getSheet() { return this.sh; }
 }
-['setFontWeight', 'setFontColor', 'setFontSize', 'setBackground', 'setWrap', 'setNumberFormat', 'setDataValidation'].forEach(m => { Range.prototype[m] = function () { return this; }; });
+['setFontFamily', 'setFontWeight', 'setFontColor', 'setFontSize', 'setBackground', 'setWrap', 'setNumberFormat', 'setDataValidation'].forEach(m => { Range.prototype[m] = function () { return this; }; });
 class Sheet {
   constructor(name, ss) { this.name = name; this.ss = ss; this.d = {}; this.active = { r: 1, c: 1 }; }
   key(r, c) { return r + ',' + c; }
@@ -43,6 +43,7 @@ class Sheet {
   getRange(a, b, c, d) { if (typeof a === 'string') { const p = parseA1(a); return new Range(this, p.r, p.c, p.nr, p.nc); } return new Range(this, a, b, c || 1, d || 1); }
   getLastRow() { let m = 0; Object.keys(this.d).forEach(k => { m = Math.max(m, +k.split(',')[0]); }); return m; }
   getMaxRows() { return 3001; }
+  getMaxColumns() { return 34; } setRowHeight() { }
   setColumnWidth() { } setFrozenRows() { } setFrozenColumns() { } setTabColor() { }
   clearContents() { this.d = {}; }
   getActiveRange() { return new Range(this, this.active.r, this.active.c, 1, 1); }

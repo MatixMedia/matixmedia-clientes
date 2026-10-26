@@ -11,8 +11,8 @@ from openpyxl.utils import get_column_letter as LET
 
 out = sys.argv[1]
 MUESTRA = "--muestra" in sys.argv
-F = "Arial"
-NAVY, GOLD, GREEN, GREY, SOFT = "0B1220", "C9A227", "1A8F6E", "8D8B80", "FFF8DC"
+F = "DM Sans"
+NAVY, GOLD, GREEN, GREY, SOFT = "04050A", "E8C046", "199477", "5A5A52", "FBF6E3"
 N = 3000
 
 def fill(c): return PatternFill("solid", fgColor=c)

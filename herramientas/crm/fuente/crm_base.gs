@@ -1,5 +1,5 @@
 /**
- * CRM MatixMedia · v1.0.0
+ * CRM MatixMedia · v1.1.0 (identidad MatixMedia)
  * Un CRM central para todos los clientes, con panel y conexiones propias por cliente.
  *
  * INSTALACIÓN (una sola vez):
@@ -14,7 +14,7 @@
  * Los tokens de Meta, TikTok y ChatGPT NUNCA van en celdas: se guardan en las propiedades
  * del script con MatixMedia → Conectar cliente.
  */
-const CRM_VERSION = '1.0.0';
+const CRM_VERSION = '1.1.0';
 const HOJA = { leads: 'Leads', panel: 'Panel', clientes: 'Clientes', tiktok: 'TikTok_CSV', envios: 'Envios', config: 'Config' };
 const COLS = ['id', 'cliente', 'fecha', 'origen', 'plataforma', 'campana', 'nombre', 'email', 'tel', 'ciudad', 'interes',
   'responsable', 'etapa', 'seguimiento', 'notas', 'f_contactado', 'f_calificado', 'f_venta', 'valor', 'motivo',
@@ -106,6 +106,9 @@ function instalarCRM() {
       sh.setFrozenRows(fr.getRow() - 1); sh.setFrozenColumns(fr.getColumn() - 1);
     }
     if (s.tab) sh.setTabColor('#' + s.tab);
+    // identidad MatixMedia: DM Sans en todo, Fraunces en los títulos, encabezado alto
+    sh.getRange(1, 1, sh.getMaxRows(), sh.getMaxColumns()).setFontFamily('DM Sans');
+    sh.setRowHeight(1, 34);
     s.dv.forEach(function (d) {
       const rule = d.f.charAt(0) === '='
         ? SpreadsheetApp.newDataValidation().requireValueInRange(ss.getRange(d.f.slice(1).replace(/\$/g, '')), true)
@@ -125,6 +128,9 @@ function instalarCRM() {
   P.getRange('B10:B11').setNumberFormat('#,##0'); P.getRange('G14:G19').setNumberFormat('#,##0');
   P.getRange('F31:F80').setNumberFormat('yyyy-mm-dd hh:mm');
   P.getRange('M5:M40').setNumberFormat('#,##0'); P.getRange('N5:N40').setNumberFormat('0.0%');
+  [[HOJA.panel, 'A1'], ['Instrucciones', 'A1']].forEach(function (x) {
+    const h = ss.getSheetByName(x[0]); if (h) h.getRange(x[1]).setFontFamily('Fraunces').setFontSize(18).setFontWeight('normal');
+  });
   // orden de pestañas
   SPEC.forEach(function (s, idx) { ss.setActiveSheet(ss.getSheetByName(s.n)); ss.moveActiveSheet(idx + 1); });
   const propias = SPEC.map(function (s) { return s.n; });
