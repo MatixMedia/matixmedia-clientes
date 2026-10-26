@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><base target="_top"><meta charset="utf-8"><style>
+body{font-family:Arial,sans-serif;font-size:13px;color:#0B1220;margin:0;padding:4px 6px}
+label{display:block;font-size:11px;color:#5B6170;margin:8px 0 3px}
+input,select{font:inherit;width:100%;box-sizing:border-box;border:1px solid #E3E5EA;border-radius:6px;padding:7px}
+h3{margin:14px 0 2px;font-size:13px;border-bottom:2px solid #C9A227;padding-bottom:3px}
+.ok{color:#1A8F6E;font-weight:bold}.no{color:#C0392B}
+button{font:inherit;border:0;border-radius:6px;padding:9px 14px;background:#1A8F6E;color:#fff;font-weight:bold;cursor:pointer;margin-top:12px}
+small{color:#5B6170}
+</style></head><body>
+<label>Cliente</label><select id="cli"></select>
+<h3>Meta (Conversions API para CRM)</h3>
+<small>Events Manager → conjunto de datos del cliente → Configuración → Conversions API → Generar token.</small>
+<label>ID del conjunto de datos (píxel)</label><input id="meta_dataset">
+<label>Token de acceso <span id="s_meta"></span></label><input id="meta_token" type="password" placeholder="Vacío = no cambiar">
+<label>Código de prueba (Eventos de prueba, opcional)</label><input id="meta_test">
+<h3>TikTok (eventos de CRM)</h3>
+<small>Ads Manager → Herramientas → Eventos → CRM → configuración manual → Generar token.</small>
+<label>ID del conjunto de eventos CRM</label><input id="tiktok_set">
+<label>Token de acceso <span id="s_tiktok"></span></label><input id="tiktok_token" type="password" placeholder="Vacío = no cambiar">
+<label>Código de prueba (opcional)</label><input id="tiktok_test">
+<h3>ChatGPT Ads (Conversions API)</h3>
+<label>Pixel ID</label><input id="openai_pixel">
+<label>API key <span id="s_openai"></span></label><input id="openai_key" type="password" placeholder="Vacío = no cambiar">
+<small>Para borrar un token guardado escribe BORRAR en su campo.</small><br>
+<button id="g">Guardar conexiones</button> <span id="m"></span>
+<script>
+var DATA=[];
+function $(i){return document.getElementById(i);}
+function pintar(){var c=DATA.filter(function(x){return x.cliente===$('cli').value;})[0]; if(!c)return;
+ ['meta_dataset','tiktok_set','openai_pixel','meta_test','tiktok_test'].forEach(function(k){$(k).value=c[k]||'';});
+ ['meta_token','tiktok_token','openai_key'].forEach(function(k){$(k).value='';});
+ $('s_meta').innerHTML=c.meta_token?'<span class="ok">✓ guardado</span>':'<span class="no">sin token</span>';
+ $('s_tiktok').innerHTML=c.tiktok_token?'<span class="ok">✓ guardado</span>':'<span class="no">sin token</span>';
+ $('s_openai').innerHTML=c.openai_key?'<span class="ok">✓ guardada</span>':'<span class="no">sin key</span>';}
+google.script.run.withSuccessHandler(function(d){DATA=d;$('cli').innerHTML=d.map(function(c){return '<option>'+c.cliente+'</option>';}).join('');pintar();}).cx_inicio();
+$('cli').onchange=pintar;
+$('g').onclick=function(){var o={cliente:$('cli').value};
+ ['meta_dataset','tiktok_set','openai_pixel','meta_test','tiktok_test'].forEach(function(k){o[k]=$(k).value.trim();});
+ ['meta_token','tiktok_token','openai_key'].forEach(function(k){var v=$(k).value.trim();o[k]=v==='BORRAR'?'__BORRAR__':v;});
+ $('g').disabled=true;$('m').textContent='Guardando…';
+ google.script.run.withSuccessHandler(function(){google.script.run.withSuccessHandler(function(d){DATA=d;pintar();$('g').disabled=false;$('m').innerHTML='<span class="ok">Guardado</span>';}).cx_inicio();})
+  .withFailureHandler(function(e){$('g').disabled=false;$('m').textContent='Error: '+e.message;}).cx_guardar(o);};
+</script></body></html>

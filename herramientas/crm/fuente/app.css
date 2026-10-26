@@ -1,0 +1,42 @@
+<style>
+:root{--navy:#0B1220;--gold:#C9A227;--green:#1A8F6E;--red:#C0392B;--line:#E3E5EA;--soft:#F5F6F8;--mute:#5B6170}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:var(--navy);background:#fff}
+.top{background:var(--navy);color:#fff;padding:12px 14px}
+.top h1{margin:0;font-size:16px;letter-spacing:.3px}
+.top small{color:var(--gold);font-weight:bold;letter-spacing:1px;font-size:10px}
+.wrap{max-width:980px;margin:0 auto;padding:10px 12px 40px}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:6px;margin:10px 0}
+.chip{background:var(--soft);border-radius:8px;padding:8px;text-align:center}
+.chip b{display:block;font-size:17px}
+.chip span{font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.5px}
+.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:6px;padding:7px 8px;width:100%;background:#fff;color:var(--navy)}
+textarea{min-height:54px;resize:vertical}
+label{display:block;font-size:11px;color:var(--mute);margin:8px 0 3px}
+button{font:inherit;border:0;border-radius:6px;padding:8px 12px;cursor:pointer;background:var(--soft);color:var(--navy)}
+button.pri{background:var(--gold);color:var(--navy);font-weight:bold}
+button.ok{background:var(--green);color:#fff;font-weight:bold}
+button.sel{outline:2px solid var(--navy)}
+button:disabled{opacity:.5;cursor:wait}
+.filtros button{padding:5px 9px;font-size:12px}
+.lead{border:1px solid var(--line);border-radius:8px;margin:7px 0;background:#fff}
+.lead .cab{display:flex;justify-content:space-between;gap:8px;padding:9px 10px;cursor:pointer}
+.lead .cab b{font-size:13px}
+.lead .meta{font-size:11px;color:var(--mute);margin-top:2px}
+.badge{display:inline-block;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:bold;white-space:nowrap;height:20px}
+.e-Nuevo{background:#E8EEF8;color:#2B4C8C}.e-Contactado{background:#FFF4D6;color:#8A6A00}
+.e-Calificado{background:#E3F4EE;color:#14705A}.e-Venta{background:var(--green);color:#fff}.e-Perdido{background:#F6E3E1;color:var(--red)}
+.det{border-top:1px solid var(--line);padding:8px 10px 12px;display:none;background:#FCFCFD}
+.lead.abierto .det{display:block}
+.etapas{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
+.notas{white-space:pre-wrap;font-size:11px;color:var(--mute);background:var(--soft);border-radius:6px;padding:6px;margin-top:6px;max-height:120px;overflow:auto}
+.form{border:1px solid var(--gold);border-radius:8px;padding:10px;margin:8px 0;display:none;background:#FFFDF5}
+.form.vis{display:block}
+details summary{cursor:pointer;color:var(--mute);font-size:12px;margin-top:8px}
+.msg{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 14px;border-radius:6px;font-size:12px;display:none;z-index:9}
+.vacio{color:var(--mute);text-align:center;padding:24px}
+a.wa{color:var(--green);text-decoration:none;font-weight:bold}
+@media (max-width:420px){.grid2{grid-template-columns:1fr}}
+</style>

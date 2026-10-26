@@ -1,0 +1,121 @@
+<div class="top"><small>MATIXMEDIA · CRM</small><h1 id="titulo">Cargando…</h1></div>
+<div class="wrap">
+  <div id="selCli" style="display:none"><label>Cliente</label><select id="cliente"></select></div>
+  <div class="chips" id="chips"></div>
+  <div class="bar">
+    <button class="pri" id="btnNuevo">+ Nuevo lead</button>
+    <input id="buscar" placeholder="Buscar nombre, teléfono o email" style="flex:1;min-width:150px">
+  </div>
+  <div class="bar filtros" id="filtros"></div>
+  <div class="form" id="formNuevo">
+    <b>Nuevo lead</b>
+    <div class="grid2">
+      <div><label>Nombre</label><input id="n_nombre"></div>
+      <div><label>Teléfono (con indicativo)</label><input id="n_tel" inputmode="tel"></div>
+      <div><label>Email</label><input id="n_email" type="email"></div>
+      <div><label>Ciudad</label><input id="n_ciudad"></div>
+      <div><label>Origen</label><select id="n_origen"></select></div>
+      <div><label>Plataforma del anuncio</label><select id="n_plataforma"></select></div>
+      <div><label>Campaña</label><input id="n_campana"></div>
+      <div><label>Interés / producto</label><input id="n_interes"></div>
+      <div><label>Responsable</label><input id="n_responsable"></div>
+      <div><label>Fecha del lead (vacío = ahora)</label><input id="n_fecha" type="datetime-local"></div>
+    </div>
+    <label>Notas</label><textarea id="n_notas"></textarea>
+    <details><summary>Identificadores de anuncios (si los tienes)</summary>
+      <div class="grid2">
+        <div><label>gclid (Google)</label><input id="n_gclid"></div>
+        <div><label>fbclid (Meta, web)</label><input id="n_fbclid"></div>
+        <div><label>Meta lead_id</label><input id="n_meta_lead"></div>
+        <div><label>TikTok lead_id</label><input id="n_tt_lead"></div>
+        <div><label>ttclid (TikTok, web)</label><input id="n_ttclid"></div>
+        <div><label>oppref (ChatGPT)</label><input id="n_oppref"></div>
+      </div>
+    </details>
+    <div class="bar" style="margin-top:10px"><button class="ok" id="btnCrear">Guardar lead</button><button id="btnCancelar">Cancelar</button></div>
+  </div>
+  <div id="lista"><div class="vacio">Cargando…</div></div>
+</div>
+<div class="msg" id="msg"></div>
+<script>
+(function(){
+var MODO=document.body.getAttribute('data-modo'), K=document.body.getAttribute('data-k');
+var D=null, filtro='Abiertos', abierto=null, CLIENTE='';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function msg(t){var m=$('msg');m.textContent=t;m.style.display='block';clearTimeout(m._t);m._t=setTimeout(function(){m.style.display='none';},2600);}
+function fmt(n){return (Number(n)||0).toLocaleString('es-CO');}
+function run(fn,args,ok){var r=google.script.run.withSuccessHandler(ok).withFailureHandler(function(e){msg('Error: '+(e.message||e));document.querySelectorAll('button').forEach(function(b){b.disabled=false;});});
+  if(MODO==='cliente'){args=[K].concat(args);fn='wp_'+fn;}else{fn='eq_'+fn;}
+  r[fn].apply(r,args);}
+function cargar(){ $('lista').innerHTML='<div class="vacio">Cargando…</div>';
+  run('datos',MODO==='cliente'?[]:[CLIENTE],function(d){D=d;pintar();});}
+function opciones(sel,arr,vacio){sel.innerHTML=(vacio?'<option value="">'+vacio+'</option>':'')+arr.map(function(x){return '<option>'+esc(x)+'</option>';}).join('');}
+function pintar(){
+  $('titulo').textContent=D.cliente;
+  var r=D.resumen;
+  $('chips').innerHTML=[['Leads',r.leads],['Contactados',r.contactados],['Calificados',r.calificados],['Ventas',r.ventas],['Valor ventas',fmt(r.valor)]]
+    .map(function(c){return '<div class="chip"><b>'+c[1]+'</b><span>'+c[0]+'</span></div>';}).join('');
+  opciones($('n_origen'),D.origenes); opciones($('n_plataforma'),D.plataformas);
+  var fs=['Abiertos','Todos'].concat(D.etapas);
+  $('filtros').innerHTML=fs.map(function(f){return '<button data-f="'+f+'" class="'+(f===filtro?'sel':'')+'">'+f+'</button>';}).join('');
+  lista();
+}
+function lista(){
+  var q=$('buscar').value.trim().toLowerCase();
+  var ls=D.leads.filter(function(l){
+    if(filtro==='Abiertos'&&(l.etapa==='Venta'||l.etapa==='Perdido'))return false;
+    if(filtro!=='Abiertos'&&filtro!=='Todos'&&l.etapa!==filtro)return false;
+    if(q&&(l.nombre+' '+l.tel+' '+l.email).toLowerCase().indexOf(q)<0)return false;return true;});
+  if(!ls.length){$('lista').innerHTML='<div class="vacio">No hay leads en esta vista.</div>';return;}
+  $('lista').innerHTML=ls.map(card).join('');
+}
+function wa(t){var d=String(t||'').replace(/\D/g,'');return d?'<a class="wa" target="_blank" href="https://wa.me/'+d+'">WhatsApp</a>':'';}
+function card(l){
+  var seg=l.seguimiento?' · seguimiento '+l.seguimiento.replace('T',' '):'';
+  return '<div class="lead'+(abierto===l.id?' abierto':'')+'" id="L_'+l.id+'"><div class="cab" data-id="'+l.id+'"><div><b>'+esc(l.nombre||'(sin nombre)')+'</b>'+
+  '<div class="meta">'+esc(l.id)+' · '+esc(l.fecha.replace('T',' '))+' · '+esc(l.plataforma||'')+' / '+esc(l.origen||'')+seg+'</div></div>'+
+  '<span class="badge e-'+esc(l.etapa)+'">'+esc(l.etapa)+'</span></div>'+
+  '<div class="det"><div class="meta">'+esc(l.tel)+' '+wa(l.tel)+(l.email?' · '+esc(l.email):'')+(l.interes?' · '+esc(l.interes):'')+(l.campana?' · '+esc(l.campana):'')+'</div>'+
+  '<label>Etapa</label><div class="etapas">'+D.etapas.map(function(e){return '<button data-et="'+e+'" class="'+(e===l.etapa?'sel':'')+'">'+e+'</button>';}).join('')+'</div>'+
+  '<div class="grid2"><div><label>Valor de la venta</label><input class="f_valor" inputmode="numeric" value="'+esc(l.valor)+'"></div>'+
+  '<div><label>Motivo de pérdida</label><input class="f_motivo" value="'+esc(l.motivo)+'"></div>'+
+  '<div><label>Próximo seguimiento</label><input class="f_seg" type="datetime-local" value="'+esc(l.seguimiento)+'"></div>'+
+  '<div><label>Responsable</label><input class="f_resp" value="'+esc(l.responsable)+'"></div></div>'+
+  '<label>Agregar nota</label><textarea class="f_nota"></textarea>'+
+  (l.notas?'<div class="notas">'+esc(l.notas)+'</div>':'')+
+  '<div class="bar" style="margin-top:8px"><button class="ok b_guardar" data-id="'+l.id+'">Guardar</button></div></div></div>';
+}
+document.addEventListener('click',function(ev){
+  var t=ev.target;
+  if(t.dataset.f){filtro=t.dataset.f;pintar();return;}
+  var cab=t.closest('.cab'); if(cab){abierto=abierto===cab.dataset.id?null:cab.dataset.id;lista();return;}
+  if(t.dataset.et){var box=t.closest('.etapas');box.querySelectorAll('button').forEach(function(b){b.classList.remove('sel');});t.classList.add('sel');return;}
+  if(t.classList.contains('b_guardar')){
+    var c=t.closest('.lead'), id=t.dataset.id, s=c.querySelector('.etapas .sel');
+    var cambios={etapa:s?s.dataset.et:'',valor:c.querySelector('.f_valor').value,motivo:c.querySelector('.f_motivo').value,
+      seguimiento:c.querySelector('.f_seg').value,responsable:c.querySelector('.f_resp').value,nota:c.querySelector('.f_nota').value.trim()};
+    if(cambios.etapa==='Venta'&&!cambios.valor){msg('Escribe el valor de la venta');return;}
+    t.disabled=true; run('guardar',[id,cambios],function(){msg('Guardado');cargar();});
+  }
+});
+$('buscar').addEventListener('input',function(){if(D)lista();});
+$('btnNuevo').onclick=function(){$('formNuevo').classList.toggle('vis');};
+$('btnCancelar').onclick=function(){$('formNuevo').classList.remove('vis');};
+$('btnCrear').onclick=function(){
+  var d={cliente:CLIENTE};
+  ['nombre','tel','email','ciudad','origen','plataforma','campana','interes','responsable','fecha','notas','gclid','fbclid','meta_lead','tt_lead','ttclid','oppref']
+    .forEach(function(k){var v=$('n_'+k).value.trim();if(v)d[k]=v;});
+  if(!d.nombre&&!d.tel&&!d.email){msg('Escribe al menos nombre, teléfono o email');return;}
+  $('btnCrear').disabled=true;
+  run('crear',[d],function(id){msg('Lead '+id+' creado');$('btnCrear').disabled=false;$('formNuevo').classList.remove('vis');
+    document.querySelectorAll('#formNuevo input,#formNuevo textarea').forEach(function(i){i.value='';});cargar();});
+};
+if(MODO==='equipo'){
+  $('selCli').style.display='block';
+  google.script.run.withSuccessHandler(function(r){opciones($('cliente'),r.clientes);CLIENTE=r.elegido||r.clientes[0]||'';$('cliente').value=CLIENTE;cargar();})
+   .withFailureHandler(function(e){msg('Error: '+(e.message||e));}).eq_inicio();
+  $('cliente').onchange=function(){CLIENTE=this.value;abierto=null;cargar();};
+}else{cargar();}
+})();
+</script>
