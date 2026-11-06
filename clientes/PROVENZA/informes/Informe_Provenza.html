@@ -800,7 +800,7 @@ document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){tr
         else if(/Clientes potenciales/.test(v)){n.nodeValue=v.replace(/Clientes potenciales/g,'Inicio de finalización de compra');}}
     }catch(e){console.error(e)}
   };
-  var k=Object.keys(DATA.channels).find(function(x){return DATA.channels[x]&&DATA.channels[x].active});if(k)switchChannel(k);
+  var k=(DATA.channels.meta&&DATA.channels.meta.active)?'meta':Object.keys(DATA.channels).find(function(x){return DATA.channels[x]&&DATA.channels[x].active});if(k)switchChannel(k);
 }catch(e){console.error(e)}},0)});
 // ═══════════════════════════════════════════════
 // FIN DATA
@@ -856,8 +856,8 @@ let currentFrom, currentTo, activeChannel='google';
 function buildTabs(){
   const bar=document.getElementById('channelTabs');
   const tabs=[
-    {key:'google',label:'Google Ads',cls:'g-tab'},
     {key:'meta',  label:'Meta Ads',  cls:'m-tab'},
+    {key:'google',label:'Google Ads',cls:'g-tab'},
     {key:'tiktok',label:'TikTok Ads',cls:'t-tab'}
   ];
   bar.innerHTML='';
@@ -2676,7 +2676,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('dateFrom').addEventListener('change',e=>{currentFrom=e.target.value;renderAll();});
   document.getElementById('dateTo').addEventListener('change',e=>{currentTo=e.target.value;renderAll();});
   // Find first active channel
-  activeChannel=Object.keys(DATA.channels).find(k=>DATA.channels[k]?.active)||'google';
+  activeChannel=(DATA.channels.meta?.active?'meta':Object.keys(DATA.channels).find(k=>DATA.channels[k]?.active))||'google';
   buildTabs();
   renderAll();
 });
