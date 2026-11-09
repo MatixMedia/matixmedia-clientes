@@ -587,8 +587,8 @@
 <div class="container">
   <!-- SUB-TOGGLE VENTAS / LEADS -->
   <div class="obj-toggle" id="metaObjToggle">
-    <button class="obj-btn active" onclick="switchObj('ventas')">💬 Plan principal · Mensajes WA</button>
-    <button class="obj-btn" onclick="switchObj('leads')">📈 Fase 2 · Ventas + CRM</button>
+    <button class="obj-btn active" onclick="switchObj('ventas')">🍂 Noviembre · Cambios reales + Black Friday</button>
+    <button class="obj-btn" onclick="switchObj('leads')">🎁 Diciembre · Regala bienestar</button>
   </div>
 
   <!-- VENTAS PANEL -->
@@ -630,7 +630,7 @@
     </div>
 
     <div class="section" id="m6">
-      <div class="section-label">06 · Salud del Pixel</div>
+      <div class="section-label">06 · Medición</div>
       <div class="section-title" id="mt6v"></div>
       <div class="pixel-list" id="mPixelV"></div>
     </div>
@@ -653,43 +653,43 @@
   <div class="obj-panel" id="obj-leads">
 
     <div class="section">
-      <div class="section-label">01 · Diagnóstico — Leads</div>
+      <div class="section-label">01 · Diagnóstico — Diciembre</div>
       <div class="section-title" id="mt1l"></div>
       <div class="diagnosis-grid" id="mDiagL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">02 · Estructura — Leads</div>
+      <div class="section-label">02 · Estructura — Diciembre</div>
       <div class="section-title" id="mt2l"></div>
       <div class="tree" id="mTreeL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">03 · Audiencias — Leads</div>
+      <div class="section-label">03 · Audiencias — Diciembre</div>
       <div class="section-title" id="mt3l"></div>
       <div class="aud-grid" id="mAudL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">04 · Copies — Leads</div>
+      <div class="section-label">04 · Copies — Diciembre</div>
       <div class="section-title" id="mt4l"></div>
       <div class="copy-grid" id="mCopyL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">05 · Calidad de Lead y CPL</div>
+      <div class="section-label">05 · Metas de diciembre</div>
       <div class="section-title" id="mt5l"></div>
       <div class="targets-grid" id="mTargetsL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">06 · Pixel y Eventos</div>
+      <div class="section-label">06 · Medición</div>
       <div class="section-title" id="mt6l"></div>
       <div class="pixel-list" id="mPixelL"></div>
     </div>
 
     <div class="section">
-      <div class="section-label">07 · Roadmap — Leads</div>
+      <div class="section-label">07 · Roadmap — Diciembre</div>
       <div class="section-title" id="mt7l"></div>
       <div class="timeline" id="mTimelineL"></div>
     </div>
@@ -797,11 +797,11 @@ const LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJkAAASeCAYAAABlz/+T
 const D = {
   "cliente": "BRIGITTE SPA",
   "subtitulo": "Spa estético y corporal · Manizales y Villamaría",
-  "periodo": "Noviembre 2026 – Enero 2027",
+  "periodo": "Noviembre – Diciembre 2026",
   "base_datos": "Cuenta nueva · estrategia de lanzamiento",
   "header": {
     "titulo": "Estrategia Meta Ads",
-    "subtitulo_italic": "Noviembre 2026 – Enero 2027",
+    "subtitulo_italic": "Noviembre – Diciembre 2026",
     "sub": "Cliente solo Meta Ads · ver panel Meta",
     "kpis": []
   },
@@ -865,7 +865,7 @@ const D = {
     "desc": "",
     "oportunidades": []
   },
-  "footer_info": "Estrategia Meta Ads · Noviembre 2026 – Enero 2027 · MatixMedia"
+  "footer_info": "Estrategia Meta Ads · Noviembre – Diciembre 2026 · MatixMedia"
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -1167,13 +1167,13 @@ const DM = {
   "cliente": D.cliente,
   "header": {
     "titulo": "Estrategia Meta Ads",
-    "subtitulo_italic": "Noviembre 2026 – Enero 2027",
-    "sub": "Cuenta nueva · lanzamiento con $600.000 COP/mes · metas estimadas con referentes de cuentas MatixMedia de salud y belleza en Colombia",
+    "subtitulo_italic": "Noviembre – Diciembre 2026",
+    "sub": "Versión ajustada al plan de contenido de Brigitte Spa: “¿Quién dijo que no se puede?”, Black Friday de Cambios Reales y Regala bienestar · $600.000 COP/mes · metas estimadas con referentes de cuentas MatixMedia de salud y belleza",
     "kpis": [
       {
-        "label": "Inversión propuesta",
+        "label": "Inversión",
         "val": "$600K",
-        "sub": "COP / mes · ~$20K/día",
+        "sub": "COP / mes · $18–24K/día según la semana",
         "cls": ""
       },
       {
@@ -1189,354 +1189,383 @@ const DM = {
         "cls": "gold"
       },
       {
-        "label": "Citas por pauta",
-        "val": "30–40",
-        "sub": "por mes · ~20% de las conversaciones",
+        "label": "Valoraciones corporales",
+        "val": "25–35",
+        "sub": "por mes · desde la pauta",
         "cls": "green"
       },
       {
-        "label": "ROAS esperado",
-        "val": ">10×",
-        "sub": "medido con el CRM",
+        "label": "Ticket de citas por pauta",
+        "val": "≥$450K",
+        "sub": "70% de la inversión a corporal",
         "cls": "gold"
       }
     ]
   },
   "ventas": {
-    "diag_titulo": "Punto de partida: <em>qué permite</em> el presupuesto",
+    "diag_titulo": "Cómo se conecta la pauta con <em>el plan de contenido</em>",
     "diagnostico": [
       {
+        "tipo": "opportunity",
+        "tag": "🟢 Los anuncios son los reels del plan",
+        "metrica": "Publicar → elegir → pautar",
+        "metrica_cls": "good",
+        "titulo": "No producimos anuncios aparte: pautamos los reels que graba Brigitte",
+        "desc": "Cada reel de los guiones se publica primero en Instagram. A las 48 horas comparamos retención, guardados, compartidos y mensajes, y el mejor se pauta como publicación existente: conserva los comentarios y los me gusta, que dan confianza a quien lo ve por primera vez. Lo que no funciona en orgánico no recibe presupuesto."
+      },
+      {
+        "tipo": "opportunity",
+        "tag": "🟢 Corporal es el ticket alto",
+        "metrica": "$450K – $3,5M",
+        "metrica_cls": "good",
+        "titulo": "El 70% de la prospección va a la campaña corporal, igual que la mezcla 70/30 del plan",
+        "desc": "Moldeamiento corporal ($450.000), tratamiento para celulitis ($525.000), glúteos ($750.000) y lipo sin cirugía full body ($3.500.000) frente a combos de $140.000–$200.000. Si el objetivo son más citas con buen ticket, el presupuesto principal sigue la campaña “¿Quién dijo que no se puede?”. Los combos se pautan como puerta de entrada y para Black Friday."
+      },
+      {
         "tipo": "problem",
-        "tag": "🔴 Presupuesto para un solo objetivo",
-        "metrica": "$20K/día",
+        "tag": "🔴 Tres listas de precios para los mismos combos",
+        "metrica": "Unificar antes de pautar",
         "metrica_cls": "bad",
-        "titulo": "No alcanza para Reconocimiento + Tráfico + Mensajes a la vez",
-        "desc": "Dividir $600.000 al mes en tres campañas deja cada una con unos $6.700 al día: la de mensajes traería 2 conversaciones diarias y ninguna saldría de la fase de aprendizaje de Meta. Además, Tráfico al sitio no se puede medir (no hay Pixel) y Reconocimiento optimiza por alcance barato, no por personas que agendan. Todo el presupuesto va a conversaciones de WhatsApp, que es donde hoy Brigitte cierra las ventas."
+        "titulo": "Los documentos no coinciden y un anuncio no puede mostrar un precio que luego cambia",
+        "desc": "Chocolaterapia + hidratación capilar aparece a $210.000 (brief), $200.000 (estrategia y guion 5) y $240.000 (tabla del guion 7). Lo mismo pasa con los otros tres combos ($150K/$140K/$155K · $190K/$180K/$200K · $150K/$150K/$160K). Proponemos: precios de la estrategia para Black Friday y precios del guion 7 para el resto de la temporada. Brigitte debe confirmarlo antes de editar los videos."
       },
       {
         "tipo": "problem",
-        "tag": "🔴 Leads fuera de zona",
-        "metrica": "4 ciudades a excluir",
+        "tag": "🔴 Afirmaciones que Meta rechaza",
+        "metrica": "Guion 3 + notas de diciembre",
         "metrica_cls": "bad",
-        "titulo": "Pautas anteriores atrajeron gente de Pereira, Cali, Medellín y Barrancabermeja",
-        "desc": "Se corrige en tres capas: segmentación solo a Manizales y Villamaría con exclusión explícita de esas ciudades, la palabra \"Manizales\" en el texto y en los primeros segundos del video, y un mensaje de bienvenida en WhatsApp que pregunta la ciudad antes de dar precios."
-      },
-      {
-        "tipo": "neutral",
-        "tag": "🟡 Interacción vs. Ventas",
-        "metrica": "Arrancar con Interacción",
-        "metrica_cls": "mid",
-        "titulo": "Las dos optimizan por conversaciones; la diferencia es el costo y el volumen",
-        "desc": "Ventas permite después optimizar por citas que el CRM le reporte a Meta, pero con 30–40 citas al mes no se llega al volumen que Meta necesita para aprender (~50 eventos por semana). En una cuenta de salud que manejamos, el objetivo de clientes potenciales costó $4.407 por conversación contra $1.332–$2.760 en Interacción. Arrancamos en Interacción, el CRM mide las citas y el ROAS reales, y Ventas se prueba en la Fase 2."
-      },
-      {
-        "tipo": "neutral",
-        "tag": "🟡 Sin medición de citas",
-        "metrica": "0 eventos",
-        "metrica_cls": "mid",
-        "titulo": "Hoy no hay Pixel, GA4 ni GTM",
-        "desc": "Meta solo verá conversaciones iniciadas. Para saber cuántas terminan en cita y cuánto factura cada peso invertido, Brigitte (o su equipo) debe marcar cada conversación en el CRM de MatixMedia: lead calificado, cita agendada, compra."
+        "titulo": "“Elimina grasa visceral”, “5 cm desde la primera sesión”, “garantizado”, “en solo 18 sesiones”",
+        "desc": "Contradicen las reglas del propio plan (sección 3) y la política de salud y apariencia de Meta: los anuncios no pueden prometer resultados, cifras de centímetros ni plazos. Además, la aparatología corporal trabaja la grasa bajo la piel, no la grasa visceral, y esa afirmación debe validarla Brigitte. Pueden ir en la valoración por WhatsApp; en los anuncios usamos la versión ajustada del guion 3 que está en la sección de copies."
       },
       {
         "tipo": "opportunity",
-        "tag": "🟢 Temporada alta",
-        "metrica": "BF 27 nov + Navidad",
+        "tag": "🟢 Respuesta a la objeción de precio",
+        "metrica": "Addi · Sistecrédito · 50%",
         "metrica_cls": "good",
-        "titulo": "Black Friday y la rifa navideña dan razones reales para escribir hoy",
-        "desc": "El 50% en moldeamiento corporal solo el 27 de noviembre (primera vez en la historia de la marca) y los paquetes navideños con rifa son ganchos con fecha límite. Se calientan con lista de espera por WhatsApp antes del día para no depender de un solo día de pauta."
-      },
-      {
-        "tipo": "opportunity",
-        "tag": "🟢 El comprador que regala",
-        "metrica": "40% hombres",
-        "metrica_cls": "good",
-        "titulo": "4 de cada 10 compradores son hombres que le regalan a su pareja",
-        "desc": "En diciembre se abre un conjunto de anuncios solo para hombres de 30–55 en Manizales con el ángulo \"regálale bienestar\": paquetes desde $150.000 y participación en la rifa. Es una audiencia que hoy nadie le está hablando."
+        "titulo": "La financiación y la habilitación de la Secretaría de Salud van al remarketing",
+        "desc": "La objeción principal del brief es el precio. “Empiezas con el 50%” y los pagos con Addi, Sistecrédito, tarjeta o transferencia responden a esa duda en quien ya vio un reel. El cumplimiento de la normativa de salud responde a la desconfianza hacia la lipo sin cirugía."
       },
       {
         "tipo": "neutral",
-        "tag": "🟡 Política de Meta (salud y estética)",
-        "metrica": "\"Lipo sin cirugía\"",
+        "tag": "🟡 Una palabra por campaña",
+        "metrica": "Medición en el CRM",
         "metrica_cls": "mid",
-        "titulo": "El mejor hook del cliente necesita otra redacción",
-        "desc": "Meta rechaza anuncios que prometen resultados corporales, muestran antes/después o señalan defectos del cuerpo de quien los ve. Se usa \"Moldea tu figura sin cirugía\" y se muestra el proceso, el ambiente y a Brigitte explicando el tratamiento, no fotos de resultados."
+        "titulo": "Las palabras de los guiones son la medición",
+        "desc": "Cada anuncio abre WhatsApp con su texto ya escrito: “QUIERO MI VALORACIÓN” (corporal), “COMBO” (promociones), “BLACK” (Black Friday) y, en diciembre, “REGALO”, “PAREJA” y “CELULITIS”. Así el CRM sabe qué campaña trajo cada conversación y cuál termina en cita, que es lo que el plan pide medir."
       },
       {
-        "tipo": "opportunity",
-        "tag": "🟢 Base de clientes propia",
-        "metrica": "Remarketing + exclusión",
-        "metrica_cls": "good",
-        "titulo": "La base de datos de clientes sirve desde el día 1",
-        "desc": "Se sube como audiencia personalizada: se excluye de la prospección (no pagar por quien ya es cliente), se usa para reactivar clientes inactivos en Navidad y como señal para que Meta encuentre perfiles parecidos."
+        "tipo": "problem",
+        "tag": "🔴 Presupuesto para un objetivo",
+        "metrica": "$18–24K/día",
+        "metrica_cls": "bad",
+        "titulo": "Todo en mensajes de WhatsApp, sin Reconocimiento ni Tráfico",
+        "desc": "El plan de contenido busca comunidad (guardados, respuestas, compartidos) y eso lo hace el orgánico. La pauta se concentra en conversaciones, que es donde Brigitte cierra. Reconocimiento entra cuando el presupuesto llegue a ~$1,5M/mes."
+      },
+      {
+        "tipo": "neutral",
+        "tag": "🟡 Lo que no va en pauta",
+        "metrica": "Plasma · saludos",
+        "metrica_cls": "mid",
+        "titulo": "Plasma + masaje es solo para clientas internas",
+        "desc": "No se anuncia en Meta (un anuncio lo ve cualquiera). Se envía por WhatsApp a la lista de clientas desde el CRM. Los saludos de Navidad y Año Nuevo, las historias interactivas y el contenido emocional van solo en orgánico."
       }
     ],
-    "struct_titulo": "Dos campañas de <em>mensajes a WhatsApp</em> y picos por temporada",
+    "struct_titulo": "Noviembre: <em>¿Quién dijo que no se puede?</em> + Black Friday",
     "estructura": [
       {
         "emoji": "💬",
         "nombre": "INT · MSJ-WA · Prospección Manizales",
         "grupos": [
-          "Ad set 1 · Mujeres 28–55 · Manizales + Villamaría · Advantage+ con sugerencias (spa, estética, bienestar, fitness, viajes) · anuncios de moldeamiento corporal y de bienestar (masajes, faciales, uñas, cejas y pestañas)",
-          "Ad set 2 · Navidad \"Regálale bienestar\" · Hombres 30–55 · Manizales + Villamaría · solo del 1 al 24 de diciembre",
-          "Exclusiones: Pereira, Cali, Medellín, Barrancabermeja + base de clientes actuales"
+          "Ad set Corporal · Mujeres 28–55 · Manizales + Villamaría · Guion 1 (el vestido), Guion 2 (POV enero) y Guion 3 ajustado (lipo sin cirugía) · texto “QUIERO MI VALORACIÓN” · $11K/día",
+          "Ad set Combos · Mujeres 25–55 · Guion 7 (combos) · texto “COMBO” · $3K/día",
+          "Exclusiones: Pereira, Cali, Medellín, Barrancabermeja + base de clientas actuales"
         ],
-        "estrategia": "Objetivo Interacción · destino WhatsApp · meta: maximizar conversaciones · presupuesto por ad set (ABO) · CTA \"Enviar mensaje\" con texto prellenado"
+        "estrategia": "Objetivo Interacción · destino WhatsApp · ABO · cada anuncio es un reel ya publicado en Instagram"
       },
       {
         "emoji": "🔁",
         "nombre": "INT · MSJ-WA · Remarketing",
         "grupos": [
-          "Ad set 1 · Interactuaron con Instagram o Facebook en 90 días + vieron 50% de un video en 30 días",
-          "Ad set 2 · Escribieron por WhatsApp y no agendaron (lista del CRM, desde diciembre)"
+          "Vieron 50% de los reels pautados (30 días) + interactuaron con Instagram o Facebook (90 días)",
+          "Escribieron por WhatsApp y no agendaron (lista del CRM)",
+          "Piezas: testimonios autorizados, detrás de cámaras, financiación (Addi, Sistecrédito, empieza con el 50%) y habilitación de salud"
         ],
-        "estrategia": "ABO · ofertas con fecha (Black Friday, Navidad) y respuesta a la objeción de precio · frecuencia máxima ~3 por semana"
+        "estrategia": "$4K/día · frecuencia máxima ~3 por semana"
       },
       {
         "emoji": "⚡",
-        "nombre": "Picos de temporada (dentro de las mismas campañas)",
+        "nombre": "Black Friday de Cambios Reales (dentro de las mismas campañas)",
         "grupos": [
-          "Black Friday · 23–26 nov teaser + lista de espera por WhatsApp · 27 nov moldeamiento 50% (presupuesto sube a $35K ese bloque)",
-          "Navidad · 28 nov–24 dic · paquetes en promoción + rifa \"Brigitte Navidad Premiada\"",
-          "Enero · \"Tu propósito de año nuevo\" · moldeamiento + valoración gratis"
+          "20–26 nov · Guion 4 teaser: “escríbenos BLACK” para entrar a la lista de aviso",
+          "23–30 nov · Guion 5 revelación: los 4 combos con precio BLACK",
+          "27 nov · Guion 6 “Hoy es el día”: moldeamiento corporal 50% · $40K/día"
         ],
-        "estrategia": "No se abren campañas nuevas con presupuestos pequeños: se cambian los anuncios dentro de los mismos ad sets según el calendario"
+        "estrategia": "No se abren campañas nuevas: cambian los anuncios dentro de los ad sets según el calendario del plan"
       }
     ],
-    "aud_titulo": "A quién le <em>hablamos</em> y con cuánto",
+    "aud_titulo": "Audiencias de <em>noviembre</em>",
     "audiencias": [
       {
         "tipo": "frio",
         "label": "Prospección",
-        "nombre": "Mujeres de Manizales y Villamaría",
+        "nombre": "Corporal · mujeres de Manizales",
         "items": [
-          "Edad 28–55 (núcleo 30–50 según el brief)",
-          "Ubicación: Manizales + Villamaría · excluir Pereira, Cali, Medellín, Barrancabermeja",
-          "Advantage+ con sugerencias: spa, estética, bienestar, fitness, viajes, playa",
-          "En diciembre: ad set de hombres 30–55 con el ángulo de regalo"
+          "Mujeres 28–55 · Manizales + Villamaría",
+          "Advantage+ con sugerencias: estética, bienestar, fitness, viajes",
+          "Mensaje: tu fecha especial se acerca, empieza sin esperar a enero",
+          "Excluir ciudades fuera de zona y clientas actuales"
         ],
-        "budget": "~80% · $14K/día en noviembre"
+        "budget": "$11K/día · 70% de la prospección"
       },
       {
         "tipo": "retargeting",
         "label": "Remarketing",
-        "nombre": "Ya conocen a Brigitte Spa",
+        "nombre": "Ya vieron un reel o escribieron",
         "items": [
+          "Vieron 50% de un reel pautado: 30 días",
           "Interactuaron con Instagram o Facebook: 90 días",
-          "Vieron 50% de un video: 30 días",
-          "Escribieron por WhatsApp sin agendar (CRM): 30 días",
-          "Frecuencia máxima ~3 por semana: el público local es pequeño"
+          "Escribieron por WhatsApp sin agendar: 30 días",
+          "Lista “BLACK” para el 27 de noviembre"
         ],
-        "budget": "~20% · $4K/día"
+        "budget": "$4K/día"
       },
       {
         "tipo": "lookalike",
         "label": "Base CRM",
-        "nombre": "Clientes actuales",
+        "nombre": "Clientas actuales",
         "items": [
-          "Subir la base de clientes como audiencia personalizada",
-          "Excluirla de la prospección",
-          "Reactivación de clientes inactivos con los paquetes navideños",
-          "Lookalike 1% Colombia solo como señal, filtrado por la geografía"
+          "Excluidas de la prospección",
+          "Plasma + masaje y novedades por WhatsApp, no por anuncios",
+          "Lookalike 1% solo como señal, filtrado por Manizales"
         ],
-        "budget": "Sin presupuesto propio · señal y exclusión"
+        "budget": "Sin presupuesto propio"
       }
     ],
-    "copy_titulo": "Copies <em>por momento</em> del calendario",
+    "copy_titulo": "Guiones del plan <em>convertidos en anuncios</em>",
     "copies": [
       {
-        "campana": "Prospección · Moldeamiento corporal",
-        "tipo": "Video de Brigitte explicando el tratamiento · audiencia fría",
+        "campana": "Corporal · Guion 1 “El vestido ya tiene fecha”",
+        "tipo": "Reel 30–40 s · prospección · primer anuncio a lanzar",
         "titulares": [
-          "Moldea tu figura sin cirugía",
+          "Tu fecha especial se acerca",
           "Tu valoración es gratis"
         ],
         "descripciones": [
-          "¿Quieres moldear tu figura sin pasar por un quirófano? En Brigitte Spa, en Manizales, te hacemos una valoración gratuita y armamos tu plan de moldeamiento a la medida, con acompañamiento en cada sesión. Escríbenos y agenda tu valoración.",
-          "Cambios reales en cuerpos reales, con garantía y acompañamiento."
+          "¿Ya tienes el outfit para Navidad… pero todavía no tienes un plan para ti? En Brigitte Spa, en Manizales, empezamos con una valoración gratuita para conocer tus objetivos y decirte qué tratamiento corporal puede ser adecuado para ti. Tu bienestar no tiene que esperar a enero.",
+          "Escríbenos “QUIERO MI VALORACIÓN”."
         ],
-        "path": "Enviar mensaje · texto prellenado: \"Hola, quiero mi valoración gratis en Manizales\""
+        "path": "Enviar mensaje · texto: “QUIERO MI VALORACIÓN”"
       },
       {
-        "campana": "Prospección · Bienestar",
-        "tipo": "Carrusel o reel de masajes, faciales y uñas · audiencia fría",
+        "campana": "Corporal · Guion 2 “POV: en enero empiezo”",
+        "tipo": "Reel 20–25 s · prospección · prueba A/B contra el guion 1",
         "titulares": [
-          "Ese dolor de espalda tiene solución",
-          "Masaje descontracturante en Manizales"
+          "No tienes que esperar a enero",
+          "Empieza hoy en Manizales"
         ],
         "descripciones": [
-          "Contracturas, tensión, cansancio acumulado. En Brigitte Spa te ayudamos con masajes, faciales y cuidado de uñas para que salgas descansada y renovada. Estamos en Manizales: escríbenos y agenda tu espacio.",
-          "Especialistas en cada tratamiento, siempre actualizados."
+          "POV: llevas meses diciendo “en enero empiezo”… y ya estamos en noviembre 😅 En Brigitte Spa te orientamos sobre tratamientos corporales según tus objetivos. La valoración es gratis.",
+          "Escríbenos “QUIERO MI VALORACIÓN”."
         ],
-        "path": "Enviar mensaje · \"Hola, quiero agendar un masaje\""
+        "path": "Enviar mensaje · “QUIERO MI VALORACIÓN”"
       },
       {
-        "campana": "Navidad · Paquetes + rifa",
-        "tipo": "Mujeres: \"date un regalo\" · Hombres: \"regálale bienestar\"",
+        "campana": "Corporal · Guion 3 ajustado “Lipo sin cirugía: tus dudas”",
+        "tipo": "Reel 30–40 s · versión para pauta (cambia la frase de resultados)",
         "titulares": [
-          "Regala bienestar esta Navidad",
-          "Paquetes desde $150.000"
+          "Lipo sin cirugía: resolvemos tus dudas",
+          "Valoración gratis en Manizales"
         ],
         "descripciones": [
-          "Esta Navidad regala (o regálate) un momento para ti: chocolaterapia + hidratación capilar a $210.000, limpieza facial + masaje relajante a $190.000, y más paquetes desde $150.000. Cada paquete participa en nuestra rifa navideña. Escríbenos.",
-          "Brigitte Spa · Manizales · cupos de diciembre por agenda."
+          "Frase para grabar en lugar de “eliminar grasa visceral… en solo 18 sesiones”: “En la valoración revisamos tus objetivos, te explicamos en qué consiste el procedimiento, en qué zonas se trabaja —abdomen, cintura, flacidez— cuántas sesiones podrías necesitar y qué cuidados implica. Y la valoración es gratis.”",
+          "No todos los tratamientos son para todas las personas: por eso empezamos con una valoración."
         ],
-        "path": "Enviar mensaje · \"Quiero un paquete navideño\""
+        "path": "Enviar mensaje · “QUIERO MI VALORACIÓN”"
       },
       {
-        "campana": "Black Friday · Teaser + día",
-        "tipo": "23–26 nov lista de espera · 27 nov oferta activa",
+        "campana": "Combos · Guion 7 “No tienes que elegir solo una”",
+        "tipo": "Reel con clips de 2–3 s por combo · prospección y remarketing",
         "titulares": [
-          "Black Friday: algo que nunca hicimos",
-          "Moldeamiento corporal al 50% hoy"
+          "Dos servicios, una cita",
+          "Combos para consentirte"
         ],
         "descripciones": [
-          "Por primera vez en la historia de Brigitte Spa: el 27 de noviembre, moldeamiento corporal con 50% de descuento, solo ese día. Escríbenos \"BLACK\" y te reservamos el aviso para que no te quedes por fuera.",
-          "Solo el 27 de noviembre · Brigitte Spa Manizales."
+          "Chocolaterapia + hidratación capilar, limpieza facial + manicure y pedicure, limpieza facial + masaje relajante o masaje descontracturante + manicure. Escríbenos y te compartimos precios y disponibilidad. (Precios en pantalla: los que confirme Brigitte.)",
+          "Brigitte Spa · Manizales."
         ],
-        "path": "Enviar mensaje · \"BLACK\""
+        "path": "Enviar mensaje · “COMBO”"
       },
       {
-        "campana": "Remarketing · Objeción de precio",
-        "tipo": "Imagen o video corto · audiencia caliente",
+        "campana": "Black Friday · Guiones 4, 5 y 6",
+        "tipo": "Teaser 20–26 nov · revelación 23–30 nov · “Hoy es el día” 27 nov",
         "titulares": [
-          "Tu valoración sigue siendo gratis",
-          "Agenda tu cupo de diciembre"
+          "Nuestro primer Black Friday",
+          "Moldeamiento corporal 50% hoy"
         ],
         "descripciones": [
-          "Antes de decidir, conoce tu plan: la valoración es gratuita y te decimos exactamente qué necesitas y cuánto cuesta, sin compromiso. Escríbenos y agenda.",
-          "Garantía y acompañamiento en cada tratamiento."
+          "Teaser: “Se acerca una fecha para darte ese empujoncito que estabas esperando. ¿Quieres enterarte primero? Escríbenos BLACK.” · 27 nov: “Llegó nuestro primer Black Friday: solo por hoy, 50% en moldeamiento corporal. Solo 24 horas.”",
+          "Revelación: los 4 combos con su precio BLACK confirmado y las fechas reales de la promoción."
         ],
-        "path": "Enviar mensaje · \"Quiero agendar mi valoración\""
+        "path": "Enviar mensaje · “BLACK”"
+      },
+      {
+        "campana": "Remarketing · Precio y confianza",
+        "tipo": "Video corto de Brigitte o carrusel · audiencia caliente",
+        "titulares": [
+          "Empieza con el 50%",
+          "Paga con Addi o Sistecrédito"
+        ],
+        "descripciones": [
+          "¿Te interesa un tratamiento corporal pero te frena el precio? En Brigitte Spa puedes empezar con el 50% y pagar con Addi, Sistecrédito, tarjeta, transferencia o efectivo. Somos un establecimiento que cumple la normativa de salud. Tu valoración sigue siendo gratis.",
+          "Escríbenos y agenda tu valoración."
+        ],
+        "path": "Enviar mensaje · “QUIERO MI VALORACIÓN”"
       }
     ],
-    "budget_titulo": "<em>Distribución</em> del presupuesto mes a mes",
-    "budget_desc": "Noviembre (del 9 al 30, ~$447K): $18K/día entre prospección y remarketing, y $35K/día del 25 al 27 para Black Friday. Diciembre ($600K): la prospección de mujeres baja a $11K/día para abrir el ad set de hombres con $5K/día; remarketing sigue en $4K. Si el cliente puede sumar $200–300K solo para Black Friday y Navidad, van al 27 de noviembre y al ad set de hombres. Reconocimiento y Tráfico se activan cuando el presupuesto llegue a ~$1,5M/mes (ver Fase 2).",
+    "budget_titulo": "<em>Calendario</em> de inversión",
+    "budget_desc": "La inversión sigue el ritmo del plan de contenido. Noviembre (del 10 al 30) suma ~$414.000: más peso a la campaña corporal y un pico el 27. Diciembre suma $600.000: sube del 1 al 20, cuando se compran los regalos, y baja del 21 al 31 (“Navidad en calma”), cuando el spa reduce la agenda. La barra muestra la distribución de noviembre. En diciembre, del 1 al 20: regalos 42%, corporal 37%, remarketing 21%.",
     "budget_tabla": [
       {
-        "campana": "Prospección mujeres",
+        "campana": "10–22 nov · Lanzamiento",
         "actual": "—",
-        "propuesto": "$14K/día",
-        "cambio": "Nuevo",
-        "just": "Volumen principal de conversaciones; en diciembre baja a $11K para financiar el ad set de hombres",
+        "propuesto": "$18K/día",
+        "cambio": "~$234K",
+        "just": "Corporal $11K (guiones 1–3) · combos $3K (guion 7) · remarketing $4K",
         "cls": "good"
       },
       {
-        "campana": "Remarketing",
+        "campana": "23–26 nov · Black Friday previo",
         "actual": "—",
-        "propuesto": "$4K/día",
-        "cambio": "Nuevo",
-        "just": "Público local pequeño: más presupuesto dispararía la frecuencia",
+        "propuesto": "$20K/día",
+        "cambio": "$80K",
+        "just": "Corporal $8K · combos y teaser BLACK $8K · remarketing $4K",
         "cls": "good"
       },
       {
-        "campana": "Pico Black Friday (25–27 nov)",
+        "campana": "27 nov · Hoy es el día",
         "actual": "—",
-        "propuesto": "$35K/día",
-        "cambio": "3 días",
-        "just": "Lista de espera los días previos y oferta del 50% el 27; sale del mismo mes",
+        "propuesto": "$40K",
+        "cambio": "1 día",
+        "just": "Guion 6: moldeamiento 50% a la lista BLACK y a nuevas audiencias",
         "cls": "good"
       },
       {
-        "campana": "Navidad hombres (1–24 dic)",
+        "campana": "28–30 nov · Cierre de campaña",
         "actual": "—",
-        "propuesto": "$5K/día",
-        "cambio": "Nuevo",
-        "just": "40% de los compradores son hombres que regalan; sale de la prospección de mujeres",
+        "propuesto": "$20K/día",
+        "cambio": "$60K",
+        "just": "Corporal $8K · combos BLACK $8K · remarketing $4K a quienes no agendaron",
         "cls": "good"
       },
       {
-        "campana": "Reconocimiento / Tráfico",
+        "campana": "1–20 dic · Regala bienestar",
         "actual": "—",
-        "propuesto": "$0",
-        "cambio": "No se activa",
-        "just": "Con $600K/mes le quitaría volumen a la campaña que trae citas; entra con ≥$1,5M/mes",
+        "propuesto": "$24K/día",
+        "cambio": "$480K",
+        "just": "Regalos $10K (gift cards + parejas) · corporal $9K (celulitis, moldeamiento) · remarketing $5K",
+        "cls": "good"
+      },
+      {
+        "campana": "21–27 dic · Navidad en calma",
+        "actual": "—",
+        "propuesto": "$10K/día",
+        "cambio": "$70K",
+        "just": "Solo remarketing de regalos de último minuto (hasta el 23) y corporal para enero",
+        "cls": "mid"
+      },
+      {
+        "campana": "28–31 dic · Cerrar el año",
+        "actual": "—",
+        "propuesto": "$12,5K/día",
+        "cambio": "$50K",
+        "just": "“Empieza el año con tu valoración”: agenda para enero",
         "cls": "mid"
       }
     ],
     "budget_barras": [
       {
-        "nombre": "Prospección",
-        "pct": 59,
+        "nombre": "Corporal",
+        "pct": 58,
         "cls": "b-blue",
-        "label": "Prospección 59%"
+        "label": "Corporal 58%"
       },
       {
-        "nombre": "Black Friday",
-        "pct": 24,
+        "nombre": "Combos y Black Friday",
+        "pct": 23,
         "cls": "b-green-l",
-        "label": "Black Friday 24%"
+        "label": "Combos y BF 23%"
       },
       {
         "nombre": "Remarketing",
-        "pct": 17,
+        "pct": 19,
         "cls": "b-amber",
-        "label": "Remarketing 17%"
+        "label": "Remarketing 19%"
       }
     ],
-    "pixel_titulo": "Medición: <em>WhatsApp, Pixel y CRM</em>",
+    "pixel_titulo": "Medición: <em>WhatsApp, CRM y parrilla</em>",
     "pixel": [
       {
         "icon": "⚠️",
-        "text": "WhatsApp Business conectado a la página de Facebook, a Instagram y a la cuenta publicitaria",
-        "note": "Requisito para el destino WhatsApp · verificar en la primera semana"
-      },
-      {
-        "icon": "❌",
-        "text": "Pixel de Meta no instalado en brigittespa.com",
-        "note": "Instalarlo para crear públicos de visitantes, aunque la conversión ocurra en WhatsApp"
-      },
-      {
-        "icon": "❌",
-        "text": "Pixel en la landing de la rifa (lovable.app)",
-        "note": "Agregar el mismo Pixel para remarketing de quienes vieron la rifa"
+        "text": "WhatsApp Business conectado a Facebook, Instagram y la cuenta publicitaria",
+        "note": "Requisito para pautar los reels con destino WhatsApp"
       },
       {
         "icon": "⚠️",
-        "text": "Conjunto de datos de Meta + token en MATIXMEDIA_CRM",
-        "note": "Conectar cliente → Meta: el CRM reporta lead calificado, cita y compra"
+        "text": "Texto prellenado por campaña: QUIERO MI VALORACIÓN · COMBO · BLACK",
+        "note": "Atribución en el CRM sin Pixel"
       },
       {
         "icon": "⚠️",
-        "text": "Marcado de cada conversación en el CRM",
-        "note": "Sin este paso no hay costo por cita ni ROAS real"
+        "text": "Brigitte conectada a MATIXMEDIA_CRM y cada conversación marcada",
+        "note": "Valoración agendada · reserva · venta por promoción, como pide el plan"
+      },
+      {
+        "icon": "❌",
+        "text": "Pixel de Meta en brigittespa.com y en la landing de la rifa",
+        "note": "Para públicos de remarketing de visitantes"
+      },
+      {
+        "icon": "⚠️",
+        "text": "Parrilla: Sin revisar → Revisado → Creado → Publicado",
+        "note": "Solo se pauta lo que está Publicado y con precios confirmados"
       },
       {
         "icon": "✅",
-        "text": "Base de datos de clientes disponible",
-        "note": "Audiencia personalizada, exclusión y reactivación"
+        "text": "Autorización escrita de clientas para testimonios",
+        "note": "Obligatoria antes de usar un testimonio en un anuncio"
       }
     ],
-    "kpi_titulo": "Metas del <em>primer trimestre</em>",
+    "kpi_titulo": "Metas de <em>noviembre</em>",
     "targets": [
       {
         "metrica": "Costo por conversación",
         "actual": "—",
         "meta": "<$3.500",
-        "label": "Referente propio: $2.300–2.600 en salud (Medellín)"
+        "label": "Referente: $2.300–2.600 en salud"
       },
       {
-        "metrica": "Conversaciones / mes",
+        "metrica": "Conversaciones (10–30 nov)",
         "actual": "—",
-        "meta": "150–200",
-        "label": "Con $600K/mes"
+        "meta": "110–140",
+        "label": "Con ~$432K"
       },
       {
-        "metrica": "CTR",
+        "metrica": "Valoraciones corporales agendadas",
         "actual": "—",
-        "meta": ">1% · bueno >3%",
-        "label": "Benchmark MatixMedia para WhatsApp"
-      },
-      {
-        "metrica": "Conversación → cita",
-        "actual": "—",
-        "meta": "≥20%",
+        "meta": "20–25",
         "label": "Medido en el CRM"
       },
       {
-        "metrica": "Costo por cita",
+        "metrica": "Lista “BLACK” antes del 27",
         "actual": "—",
-        "meta": "<$20.000",
-        "label": "Inversión ÷ citas del CRM"
+        "meta": "≥60 personas",
+        "label": "Conversaciones con la palabra BLACK"
+      },
+      {
+        "metrica": "Retención 3 s de los reels pautados",
+        "actual": "—",
+        "meta": "≥25%",
+        "label": "Por debajo se cambia el gancho"
       },
       {
         "metrica": "Conversaciones de Caldas",
@@ -1545,260 +1574,340 @@ const DM = {
         "label": "Control de leads fuera de zona"
       }
     ],
-    "roadmap_titulo": "Del lanzamiento a <em>enero</em>",
+    "roadmap_titulo": "Noviembre <em>semana a semana</em>",
     "roadmap": [
       {
         "color": "red",
-        "semana": "Semana 1 · 9–15 nov",
-        "titulo": "Base técnica y lanzamiento",
+        "semana": "9–15 nov",
+        "titulo": "Confirmar y lanzar",
         "acciones": [
-          "Verificar WhatsApp Business conectado a Facebook, Instagram y cuenta publicitaria",
-          "Instalar el Pixel en brigittespa.com y en la landing de la rifa",
-          "Conectar a Brigitte en MATIXMEDIA_CRM y subir la base de clientes como audiencia",
-          "Mensaje de bienvenida en WhatsApp que pregunta la ciudad + respuestas rápidas con precios",
-          "Lanzar prospección (4–6 anuncios de moldeamiento y bienestar) y remarketing"
+          "Brigitte confirma una sola lista de precios de combos (BLACK y temporada) y el precio del moldeamiento",
+          "Brigitte valida la versión ajustada del guion 3 antes de grabar",
+          "Conectar WhatsApp Business a la cuenta publicitaria y a Brigitte al CRM",
+          "Grabar guiones 1, 2 y 3; publicar el 1 y lanzarlo en pauta en cuanto esté publicado"
         ]
       },
       {
         "color": "amber",
-        "semana": "Semana 2 · 16–22 nov",
-        "titulo": "Primer ajuste y piezas de temporada",
+        "semana": "16–22 nov",
+        "titulo": "Elegir ganadores y construir confianza",
         "acciones": [
-          "Revisar costo por conversación y CTR por anuncio; pausar los de CTR <1%",
-          "Revisar en el CRM de qué ciudades escriben y cuántas conversaciones terminan en cita",
-          "Producir piezas de Black Friday (teaser + día) y de Navidad",
-          "Completar el brand kit para que el contenido salga con la identidad de la marca"
+          "Comparar guion 1 vs. guion 2 por costo por conversación y retención; el perdedor sale",
+          "Publicar el guion 7 (combos) y pautarlo con el texto COMBO",
+          "Testimonios autorizados y detrás de cámaras al remarketing",
+          "Confirmar fechas de Black Friday para el teaser"
         ]
       },
       {
         "color": "red",
-        "semana": "Semana 3 · 23–27 nov",
-        "titulo": "Black Friday",
+        "semana": "23–30 nov",
+        "titulo": "Black Friday de Cambios Reales",
         "acciones": [
-          "23–26 nov: teaser y lista de espera (\"escríbenos BLACK\")",
-          "27 nov: oferta del 50% en moldeamiento todo el día con $35K/día",
-          "Brigitte con respuestas rápidas listas: el volumen de mensajes se multiplica ese día"
-        ]
-      },
-      {
-        "color": "amber",
-        "semana": "28 nov – 24 dic",
-        "titulo": "Navidad",
-        "acciones": [
-          "Rotar anuncios a paquetes navideños + rifa",
-          "Abrir el ad set de hombres \"Regálale bienestar\" (1–24 dic)",
-          "Remarketing a quienes escribieron en Black Friday y no agendaron"
-        ]
-      },
-      {
-        "color": "green",
-        "semana": "26 dic – 31 ene",
-        "titulo": "Año nuevo y evaluación",
-        "acciones": [
-          "Campaña \"Tu propósito de año nuevo\" con moldeamiento + valoración gratis",
-          "Medir con el CRM costo por cita y ROAS del trimestre",
-          "Decidir Fase 2: prueba de Ventas, expansión a municipios de Caldas y presupuesto"
+          "Teaser BLACK desde el 20 y revelación de combos desde el 23",
+          "27 nov: guion 6 todo el día con $40K; respuestas rápidas listas en WhatsApp",
+          "28–30 nov: cierre de campaña y remarketing a quienes no agendaron",
+          "Antes del 27: datos completos de gift cards, rifa, Plan Amigas y Bride to Be para lanzar diciembre"
         ]
       }
     ]
   },
   "leads": {
-    "diag_titulo": "Cuándo pasar a <em>Ventas + CRM</em>",
+    "diag_titulo": "Diciembre: <em>regalar, celebrar y fidelizar</em>",
     "diagnostico": [
       {
         "tipo": "opportunity",
-        "tag": "🟢 Optimizar por citas reales",
-        "metrica": "Objetivo Ventas",
+        "tag": "🟢 Producto para quien regala",
+        "metrica": "40% de compradores son hombres",
         "metrica_cls": "good",
-        "titulo": "Con el CRM conectado, Meta puede buscar personas que agendan, no solo que escriben",
-        "desc": "El CRM le envía a Meta los eventos de lead calificado, cita y compra. Con el objetivo Ventas y destino WhatsApp, Meta optimiza hacia quienes generan esos eventos: menos conversaciones curiosas y más citas de buen ticket."
-      },
-      {
-        "tipo": "problem",
-        "tag": "🔴 Volumen mínimo",
-        "metrica": "~50 eventos/semana",
-        "metrica_cls": "bad",
-        "titulo": "Meta necesita volumen para aprender",
-        "desc": "Con 30–40 citas al mes el algoritmo no sale de aprendizaje. Por eso Ventas no arranca el día 1: se prueba cuando el presupuesto o el volumen lo permitan."
-      },
-      {
-        "tipo": "neutral",
-        "tag": "🟡 Condiciones para activarla",
-        "metrica": "Cualquiera de las dos",
-        "metrica_cls": "mid",
-        "titulo": "Presupuesto ≥$1,2M/mes o ≥15 citas por semana registradas en el CRM",
-        "desc": "Cuando se cumpla una de las dos, se corre un A/B de 14 días: Ventas contra Interacción, mismo público y mismos anuncios. Gana la que tenga menor costo por cita en el CRM, no la de menor costo por conversación."
+        "titulo": "Gift cards y experiencias de pareja abren un público nuevo",
+        "desc": "El brief dice que 4 de cada 10 compradores son hombres que le regalan a su pareja. En diciembre el ad set “Regala bienestar” les habla a ellos y a quien busca regalo para mamá, amiga o hermana, con los guiones 11, 12 y 8."
       },
       {
         "tipo": "opportunity",
-        "tag": "🟢 Reconocimiento con video",
-        "metrica": "≥$1,5M/mes",
+        "tag": "🟢 Experiencias de pareja",
+        "metrica": "$243K – $387K",
         "metrica_cls": "good",
-        "titulo": "Con más presupuesto, el reconocimiento alimenta el remarketing",
-        "desc": "Una campaña de ThruPlay (~15% del presupuesto) con videos de Brigitte crea un público grande de personas que vieron el contenido, que luego se convierte en remarketing de mensajes más barato."
+        "titulo": "Amor en Calma, Conexión Profunda y Dulce Tentación con 10% de descuento",
+        "desc": "Precio por pareja, con vino, tabla de quesos y decoración. El guion 8 es solo audio: lo montamos sobre tomas de la experiencia preparada (mesa, copas, camillas dobles), que es lo que vende."
+      },
+      {
+        "tipo": "opportunity",
+        "tag": "🟢 Corporal sigue activo",
+        "metrica": "Celulitis $525K",
+        "metrica_cls": "good",
+        "titulo": "Tratamiento para celulitis y moldeamiento para quien quiere empezar antes de enero",
+        "desc": "El ad set corporal baja a $9K/día, pero no se apaga: es el ticket alto y alimenta la agenda de enero. Se anuncia con valoración gratis y financiación, sin “garantizado” en el anuncio."
+      },
+      {
+        "tipo": "problem",
+        "tag": "🔴 Falta información para pautar",
+        "metrica": "Fecha límite: 27 nov",
+        "metrica_cls": "bad",
+        "titulo": "Sin estos datos no se pueden lanzar los anuncios de diciembre",
+        "desc": "Gift cards: valores o servicios, vigencia, formato, medios de pago, cómo se redime y fecha límite de compra. Rifa navideña: premio (el plan menciona moldeamiento corporal), precio del número y cómo se participa; el guion 13 está incompleto. Plan Amigas y Bride to Be: precio. Horarios del 21 al 31 y fecha de reapertura."
+      },
+      {
+        "tipo": "neutral",
+        "tag": "🟡 Plan Amigas y Bride to Be",
+        "metrica": "Orgánico + remarketing",
+        "metrica_cls": "mid",
+        "titulo": "Sin precio definido, no van en prospección",
+        "desc": "Mientras no tengan precio, van en orgánico y en el remarketing de quienes ya conocen el spa, con “escríbannos para consultar disponibilidad y precio”. Cuando tengan precio se pueden probar en el ad set de regalos."
+      },
+      {
+        "tipo": "neutral",
+        "tag": "🟡 Navidad en calma",
+        "metrica": "21–31 dic",
+        "metrica_cls": "mid",
+        "titulo": "La inversión baja cuando baja la agenda",
+        "desc": "Del 21 al 27 solo remarketing de regalos de último minuto (hasta el 23) y del 28 al 31 se pauta la agenda de enero. Los saludos y el recap de cambios reales van en orgánico."
+      },
+      {
+        "tipo": "opportunity",
+        "tag": "🟢 Enero: Fase 2 con el CRM",
+        "metrica": "Ventas vs. Interacción",
+        "metrica_cls": "good",
+        "titulo": "Con dos meses de datos del CRM se prueba optimizar por citas",
+        "desc": "Si el CRM registra ≥15 citas por semana o el presupuesto sube a ~$1,2M, en enero corremos un A/B de 14 días: objetivo Ventas (optimiza por citas que reporta el CRM) contra Interacción. Gana el menor costo por cita."
       }
     ],
-    "struct_titulo": "Estructura de la <em>Fase 2</em>",
+    "struct_titulo": "Diciembre: <em>Regala bienestar</em> + corporal",
     "estructura": [
       {
-        "emoji": "🛒",
-        "nombre": "VEN · MSJ-WA · Citas (A/B contra Interacción)",
+        "emoji": "🎁",
+        "nombre": "INT · MSJ-WA · Prospección · Regala bienestar (1–20 dic)",
         "grupos": [
-          "Ad set: el público ganador de la Fase 1",
-          "Objetivo Ventas · destino WhatsApp · eventos del CRM vía conjunto de datos",
-          "A/B 50/50 contra la campaña de Interacción durante 14 días"
+          "Ad set Regalos · Hombres y mujeres 28–55 · Manizales + Villamaría · guion 11 y 12 (gift cards) y guion 8 (parejas) · texto “REGALO” / “PAREJA” · $10K/día",
+          "Ad set Corporal · Mujeres 28–55 · celulitis, moldeamiento y lipo sin cirugía con financiación · texto “CELULITIS” / “QUIERO MI VALORACIÓN” · $9K/día"
         ],
-        "estrategia": "Gana el menor costo por cita en el CRM"
+        "estrategia": "Mismas campañas de noviembre: se agregan anuncios nuevos, se conservan los ganadores"
       },
       {
-        "emoji": "📣",
-        "nombre": "REC · ThruPlay · Videos de marca (si presupuesto ≥$1,5M)",
+        "emoji": "🔁",
+        "nombre": "INT · MSJ-WA · Remarketing",
         "grupos": [
-          "Videos de Brigitte: proceso del tratamiento, ambiente del spa, testimonios de experiencia",
-          "Manizales + Villamaría · mujeres 25–55"
+          "Escribieron en Black Friday y no agendaron · vieron los reels de regalos o parejas",
+          "Piezas: rifa navideña, Plan Amigas, Bride to Be, fecha límite de gift cards"
         ],
-        "estrategia": "~15% del presupuesto · alimenta el público de remarketing de video 50%"
+        "estrategia": "$5K/día del 1 al 20 · $10K/día del 21 al 23 (último minuto)"
       },
       {
-        "emoji": "📍",
-        "nombre": "Expansión Caldas (prueba)",
+        "emoji": "📅",
+        "nombre": "Cierre de año (28–31 dic)",
         "grupos": [
-          "Ad set aparte: Chinchiná, Neira, Santa Rosa, Manzanares, Salamina, Aranzazu, Marulanda",
-          "Mismo anuncio ganador de Manizales"
+          "“Empieza el año con tu valoración”: corporal para agenda de enero"
         ],
-        "estrategia": "Solo si el costo por cita de Manizales está en meta · se mide aparte para no contaminar el núcleo"
+        "estrategia": "$12,5K/día · prepara enero"
       }
     ],
-    "aud_titulo": "Audiencias de la <em>Fase 2</em>",
+    "aud_titulo": "Audiencias de <em>diciembre</em>",
     "audiencias": [
       {
         "tipo": "frio",
         "label": "Prospección",
-        "nombre": "Público ganador de la Fase 1",
+        "nombre": "Quien regala",
         "items": [
-          "Mismo público y anuncios ganadores",
-          "Optimización por citas del CRM",
-          "Exclusión de clientes actuales"
+          "Hombres y mujeres 28–55 · Manizales + Villamaría",
+          "Parejas y quien busca regalo para mamá, amiga o hermana",
+          "Gift cards y experiencias de pareja",
+          "Excluir clientas actuales"
         ],
-        "budget": "50% en el A/B"
+        "budget": "$10K/día"
       },
       {
         "tipo": "retargeting",
         "label": "Remarketing",
-        "nombre": "Conversaron y no agendaron",
+        "nombre": "Conocen el spa",
         "items": [
-          "Lista del CRM: conversaciones sin cita, 30 días",
-          "Vieron 50% de videos de marca (si hay Reconocimiento)",
-          "Visitantes del sitio con Pixel: 30 días"
+          "Escribieron en noviembre y no agendaron",
+          "Vieron 50% de reels de regalos o corporal",
+          "Rifa, Plan Amigas y Bride to Be",
+          "Último minuto 21–23 dic"
         ],
-        "budget": "~20%"
+        "budget": "$5K/día"
       },
       {
         "tipo": "lookalike",
-        "label": "Lookalike",
-        "nombre": "Clientes que pagaron",
+        "label": "Base CRM",
+        "nombre": "Clientas actuales",
         "items": [
-          "Fuente: compras registradas en el CRM",
-          "Activar con ≥100 clientes en la fuente",
-          "Filtrado por Manizales y Villamaría"
+          "Gift cards y rifa por WhatsApp a la lista",
+          "Plasma + masaje solo para ellas",
+          "Agradecimiento y agenda de enero"
         ],
-        "budget": "Señal para Advantage+"
+        "budget": "Por WhatsApp, sin pauta"
       }
     ],
-    "copy_titulo": "Copies de la <em>Fase 2</em>",
+    "copy_titulo": "Guiones de diciembre <em>como anuncios</em>",
     "copies": [
       {
-        "campana": "Ventas · Cita de valoración",
-        "tipo": "Anuncio ganador de la Fase 1 + ángulo de garantía",
+        "campana": "Gift cards · Guion 11 “Hay regalos que se sienten”",
+        "tipo": "Reel 25–35 s · prospección Regalos",
         "titulares": [
-          "Agenda tu valoración gratis",
-          "Resultados con acompañamiento"
+          "Regala bienestar esta Navidad",
+          "Elige, compra y regala"
         ],
         "descripciones": [
-          "En Brigitte Spa no te vendemos una sesión: armamos tu plan, te acompañamos en cada paso y respondemos por el resultado. Agenda tu valoración gratuita en Manizales.",
-          "Valoración gratis · plan a la medida."
+          "Hay regalos que se guardan… y hay regalos que se disfrutan. Esta Navidad regala un momento de cuidado con las gift cards de Brigitte Spa: un masaje, una limpieza facial o una experiencia que sabes que le va a encantar.",
+          "Escríbenos “REGALO” y te contamos las opciones."
         ],
-        "path": "Enviar mensaje"
+        "path": "Enviar mensaje · “REGALO”"
       },
       {
-        "campana": "Reconocimiento · Video de marca",
-        "tipo": "Brigitte a cámara · 30–45 s",
+        "campana": "Gift cards · Guion 12 “¿A quién le regalarías una pausa?”",
+        "tipo": "Reel 15–20 s · prospección Regalos (A/B contra guion 11)",
         "titulares": [
-          "Conoce Brigitte Spa",
-          "Bienestar en Manizales"
+          "¿A quién le regalarías una pausa?",
+          "Gift cards Brigitte Spa"
         ],
         "descripciones": [
-          "Esto es lo que pasa en una sesión de moldeamiento en Brigitte Spa, contado por Brigitte: cómo armamos tu plan, cómo te acompañamos y por qué nuestras clientas vuelven.",
+          "A esa mamá que siempre está pendiente de todos. A tu pareja. A tu mejor amiga. O, seamos honestas, a ti también. Esta Navidad regala bienestar.",
           "Brigitte Spa · Manizales."
         ],
-        "path": "Más información"
+        "path": "Enviar mensaje · “REGALO”"
+      },
+      {
+        "campana": "Parejas · Guion 8 / 8.2",
+        "tipo": "Audio sobre tomas de la experiencia preparada",
+        "titulares": [
+          "Una cita, dos personas",
+          "Experiencias para dos con 10%"
+        ],
+        "descripciones": [
+          "¿Y si esta vez su cita fuera mucho más que una cena? Amor en Calma ($243.000), Conexión Profunda ($333.000) o Dulce Tentación ($387.000): masaje o chocolaterapia para dos, vino tinto, tabla de quesos y decoración romántica.",
+          "Precio por pareja · reserva por WhatsApp."
+        ],
+        "path": "Enviar mensaje · “PAREJA”"
+      },
+      {
+        "campana": "Corporal · Celulitis y moldeamiento",
+        "tipo": "Video de Brigitte explicando la valoración · prospección Corporal",
+        "titulares": [
+          "Empieza antes de enero",
+          "Valoración gratis + financiación"
+        ],
+        "descripciones": [
+          "Tratamiento para celulitis en Brigitte Spa, Manizales: empezamos con una valoración gratuita para conocer tus objetivos y armar tu plan. Puedes empezar con el 50% y pagar con Addi o Sistecrédito.",
+          "Escríbenos “CELULITIS” y agenda tu valoración."
+        ],
+        "path": "Enviar mensaje · “CELULITIS”"
+      },
+      {
+        "campana": "Remarketing · Rifa, Amigas y Bride to Be",
+        "tipo": "Historias y reels cortos · audiencia caliente",
+        "titulares": [
+          "Participa en nuestra rifa navideña",
+          "Ese plan con tus amigas, esta vez sí"
+        ],
+        "descripciones": [
+          "Rifa: se completa con el premio, precio del número y mecánica confirmados. Plan Amigas (guion 9) y Bride to Be (guion 10): “escríbannos para consultar disponibilidad y precio” hasta que tengan precio.",
+          "Fecha límite de gift cards en pantalla cuando esté definida."
+        ],
+        "path": "Enviar mensaje · “REGALO” / “AMIGAS”"
       }
     ],
-    "kpi_titulo": "Metas de la <em>Fase 2</em>",
-    "targets": [
-      {
-        "metrica": "Costo por cita",
-        "actual": "<$20K",
-        "meta": "<$15K",
-        "label": "Ventas vs. Interacción en el A/B"
-      },
-      {
-        "metrica": "Conversación → cita",
-        "actual": "≥20%",
-        "meta": "≥25%",
-        "label": "Conversaciones de mejor intención"
-      },
-      {
-        "metrica": "ROAS (CRM)",
-        "actual": ">10×",
-        "meta": ">12×",
-        "label": "Facturación de citas ÷ inversión"
-      },
-      {
-        "metrica": "Citas por pauta / mes",
-        "actual": "30–40",
-        "meta": "50+",
-        "label": "Con presupuesto ≥$1,2M"
-      }
-    ],
-    "pixel_titulo": "Eventos que el <em>CRM</em> envía a Meta",
+    "pixel_titulo": "Medición de <em>diciembre</em>",
     "pixel": [
       {
         "icon": "⚠️",
-        "text": "Lead calificado",
-        "note": "Conversación de Manizales/Villamaría con interés real"
+        "text": "Textos por campaña: REGALO · PAREJA · CELULITIS · AMIGAS",
+        "note": "Atribución de cada conversación en el CRM"
       },
       {
         "icon": "⚠️",
-        "text": "Cita agendada",
-        "note": "Evento clave para optimizar en Ventas"
+        "text": "Venta de gift card registrada en el CRM con su valor",
+        "note": "Para medir ventas de gift cards, como pide el plan"
       },
       {
         "icon": "⚠️",
-        "text": "Compra con valor",
-        "note": "Permite medir ROAS real por campaña"
+        "text": "Datos completos de gift cards, rifa y experiencias grupales",
+        "note": "Antes del 27 de noviembre"
+      },
+      {
+        "icon": "⚠️",
+        "text": "Horarios de diciembre y fecha de reapertura",
+        "note": "Ajustar pauta para no generar mensajes que no se pueden atender"
       }
     ],
-    "roadmap_titulo": "Ruta de la <em>Fase 2</em>",
+    "kpi_titulo": "Metas de <em>diciembre</em>",
+    "targets": [
+      {
+        "metrica": "Conversaciones",
+        "actual": "—",
+        "meta": "170–220",
+        "label": "Con $600K"
+      },
+      {
+        "metrica": "Costo por conversación",
+        "actual": "—",
+        "meta": "<$3.500",
+        "label": "Igual que noviembre"
+      },
+      {
+        "metrica": "Gift cards + experiencias de pareja",
+        "actual": "—",
+        "meta": "15–25",
+        "label": "Estimado · se ajusta con los datos de las primeras 2 semanas"
+      },
+      {
+        "metrica": "Valoraciones corporales",
+        "actual": "—",
+        "meta": "15–20",
+        "label": "Menos que noviembre: el presupuesto se reparte con regalos"
+      },
+      {
+        "metrica": "Citas agendadas para enero",
+        "actual": "—",
+        "meta": "≥10",
+        "label": "Desde la pauta del 21 al 31"
+      }
+    ],
+    "roadmap_titulo": "Diciembre <em>semana a semana</em>",
     "roadmap": [
       {
         "color": "amber",
-        "semana": "Febrero 2027",
-        "titulo": "A/B Ventas vs. Interacción",
+        "semana": "1–6 dic · Regalos con sentido",
+        "titulo": "Lanzar gift cards y parejas",
         "acciones": [
-          "Confirmar que el CRM envía eventos a Meta",
-          "Correr el A/B 14 días con el público y anuncios ganadores",
-          "Elegir por costo por cita en el CRM"
+          "Guiones 11 y 8 en pauta; guion 12 como A/B",
+          "Ad set corporal con celulitis y moldeamiento"
+        ]
+      },
+      {
+        "color": "amber",
+        "semana": "7–13 dic · Velitas y pausa",
+        "titulo": "Optimizar",
+        "acciones": [
+          "Pausar el anuncio de regalos que pierda el A/B",
+          "Remarketing a quienes escribieron en Black Friday"
+        ]
+      },
+      {
+        "color": "red",
+        "semana": "14–20 dic · Últimos regalos",
+        "titulo": "Urgencia real",
+        "acciones": [
+          "Fecha límite de gift cards en los anuncios",
+          "Rifa, Plan Amigas y Bride to Be en remarketing"
         ]
       },
       {
         "color": "green",
-        "semana": "Marzo 2027",
-        "titulo": "Escala",
+        "semana": "21–31 dic",
+        "titulo": "Navidad en calma y cierre de año",
         "acciones": [
-          "Pasar el presupuesto a la campaña ganadora",
-          "Prueba de expansión a municipios de Caldas",
-          "Si el presupuesto sube a ≥$1,5M: activar Reconocimiento con video"
+          "21–23: último minuto en remarketing",
+          "24–27: inversión mínima; saludos en orgánico",
+          "28–31: “Empieza el año con tu valoración”"
+        ]
+      },
+      {
+        "color": "green",
+        "semana": "Enero 2027",
+        "titulo": "Evaluación y Fase 2",
+        "acciones": [
+          "Costo por cita y ventas por campaña desde el CRM",
+          "Decidir A/B Ventas vs. Interacción y presupuesto de enero"
         ]
       }
     ]
