@@ -574,6 +574,7 @@
     <div class="nav-item" onclick="goToM('m6')">06 Pixel</div>
     <div class="nav-item" onclick="goToM('m7')">07 KPIs</div>
     <div class="nav-item" onclick="goToM('m8')">08 Roadmap</div>
+    <div class="nav-item" onclick="goToM('m9')">09 Ruta</div>
   </div>
 </nav>
 
@@ -695,6 +696,19 @@
     </div>
 
   </div><!-- /obj-leads -->
+
+  <div class="container" style="padding-top:0">
+    <div class="section" id="m9">
+      <div class="section-label">09 · Ruta estacional</div>
+      <div class="section-title" id="mt9"></div>
+      <div class="table-wrap" id="mRuta"></div>
+    </div>
+    <div class="section" id="m10">
+      <div class="section-label">10 · Reglas de decisión</div>
+      <div class="section-title" id="mt10"></div>
+      <div class="timeline" id="mRutaRules"></div>
+    </div>
+  </div>
 
 </div><!-- /container meta -->
 </div><!-- /panel-meta -->
@@ -1163,6 +1177,86 @@ function initNav() {
 // ══════════════════════════════════════════════════════════════
 // DATA — META ADS
 // ══════════════════════════════════════════════════════════════
+const RUTA = {
+  "titulo": "Ruta estacional: <em>noviembre → enero → todo el año</em>",
+  "filas": [
+    {
+      "etapa": "Nov 16–30 · Lanzamiento + Black Friday",
+      "mercado": "Black Friday (27 nov) y Cyber Monday (30 nov): mucha demanda y CPM al alza.",
+      "foco": "Dar a conocer la marca, oferta de valor sin descuento y exploración de públicos nuevos.",
+      "mix": "Sem. 1: reconocimiento 50% · venta 30% · retargeting 20%. Luego 30/35/35. TikTok: ráfaga 20 nov–4 dic.",
+      "meta": "Alcance ≥ 45.000 personas · CPA ≤ $70K"
+    },
+    {
+      "etapa": "Dic 1–24 · Regalo y prima",
+      "mercado": "Prima de servicios (hasta el 20 dic), Día de las Velitas (7 dic), novenas desde el 16, amigo secreto y regalos. CPM sube hacia el 24.",
+      "foco": "Vender regalo: combos, mensaje para otros y fechas límite de envío visibles desde el 12 dic.",
+      "mix": "Reconocimiento 20% · venta 45% · retargeting 35%. TikTok pausado; solo Spark Ads orgánicos.",
+      "meta": "CPA ≤ $60K · ROAS ≥ 1.5×"
+    },
+    {
+      "etapa": "Dic 26 – Ene 5 · Valle",
+      "mercado": "Vacaciones, pocas compras y gente fuera de casa. Se debe cuidar el presupuesto.",
+      "foco": "Mantener presencia con retargeting y recompra; preparar los creativos de enero.",
+      "mix": "Bajar a ~50% del gasto diario, solo retargeting y clientes.",
+      "meta": "Sin metas de venta nuevas; producir 6–9 piezas de rutina"
+    },
+    {
+      "etapa": "Ene 6–31 · Marca y hábito",
+      "mercado": "Vuelta a la rutina y propósitos de año nuevo. CPM más bajos porque muchos anunciantes reducen inversión; el bolsillo está más apretado.",
+      "foco": "Ritual de la mañana, hábito y reconocimiento barato, sin promesas de salud. Recompra para quienes compraron en diciembre.",
+      "mix": "Reconocimiento 45% · venta 25% · retargeting 30%. TikTok: segunda ráfaga de 15 días (≈6–20 ene).",
+      "meta": "Costo por ThruPlay más bajo que en noviembre · audiencia caliente >10.000"
+    },
+    {
+      "etapa": "Feb–Mar · Consolidar",
+      "mercado": "Demanda estable; 8 de marzo (Día de la Mujer) conecta con el público principal.",
+      "foco": "Leer 90 días, activar Lookalike (≥100 compradores) y definir si se escala.",
+      "mix": "Se decide con datos: sube venta si el CPA ≤ $43K; si no, se vuelve a reconocimiento.",
+      "meta": "ROAS ≥ 2.0× → 2.5×"
+    },
+    {
+      "etapa": "Abr–Jun · Fechas de regalo",
+      "mercado": "Día de la Madre (mayo), Día del Padre (junio) y prima de junio (hasta el 30).",
+      "foco": "Campañas de regalo preparadas 4–6 semanas antes; ráfagas de TikTok antes de cada fecha.",
+      "mix": "Repetir la lógica de diciembre: 20/45/35 en las 3 semanas previas.",
+      "meta": "CPA ≤ $43K con recompra creciente"
+    }
+  ],
+  "reglas": [
+    {
+      "color": "green",
+      "semana": "Regla de escala",
+      "titulo": "Cuándo subir presupuesto",
+      "acciones": [
+        "Subir 20% cada 3–4 días solo donde el CPA sea ≤ $43K por 7 días",
+        "No tocar el ad set durante las primeras 72 horas",
+        "Activar Lookalike solo con ≥100 compradores"
+      ]
+    },
+    {
+      "color": "amber",
+      "semana": "Regla de ajuste",
+      "titulo": "Cuándo corregir",
+      "acciones": [
+        "CPA > $80K por 2 semanas: volver a reconocimiento y revisar creativos",
+        "Frecuencia > 3.5 en frío: renovar creativos antes de subir presupuesto",
+        "CTR de enlace < 0.8%: pausar la pieza"
+      ]
+    },
+    {
+      "color": "red",
+      "semana": "Regla de seguridad",
+      "titulo": "Cuándo frenar",
+      "acciones": [
+        "Rechazo de anuncios por políticas de salud: reformular copy antes de apelar",
+        "Sin pixel ni eventos verificados: no subir inversión",
+        "Stock agotado o envíos retrasados: pausar venta y dejar solo marca"
+      ]
+    }
+  ],
+  "reglas_titulo": "Reglas de <em>decisión</em> para toda la ruta"
+};
 const DM = {
   "header": {
     "titulo": "Estrategia Meta Ads",
@@ -2344,10 +2438,19 @@ function renderTimeline(items) {
     </div>`).join('');
 }
 
+function renderRuta() {
+  document.getElementById('mt9').innerHTML = RUTA.titulo;
+  document.getElementById('mRuta').innerHTML = '<table><thead><tr><th>Etapa</th><th>Qué pasa en el mercado</th><th>Foco y mensaje</th><th>Presupuesto Meta</th><th>Meta</th></tr></thead><tbody>' +
+    RUTA.filas.map(f => `<tr><td class="name">${f.etapa}</td><td>${f.mercado}</td><td>${f.foco}</td><td>${f.mix}</td><td>${f.meta}</td></tr>`).join('') + '</tbody></table>';
+  document.getElementById('mt10').innerHTML = RUTA.reglas_titulo;
+  document.getElementById('mRutaRules').innerHTML = renderTimeline(RUTA.reglas);
+}
+
 // Llamar renders al cargar
 document.addEventListener('DOMContentLoaded', () => {
   renderMeta();
   renderTikTok();
+  renderRuta();
 });
 
 </script>
