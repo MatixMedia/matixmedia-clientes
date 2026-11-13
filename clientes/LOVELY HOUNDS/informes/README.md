@@ -2,6 +2,6 @@
 
 | Archivo | Periodo vigente | Link |
 |---------|------------------|------|
-| Informe_LovelyHounds.html | Septiembre 2026 (1-27 sep, acumulativo Mayo-Septiembre) | [Ver](https://portal.matix.media/clientes/LOVELY%20HOUNDS/informes/Informe_LovelyHounds.html) |
+| Informe_LovelyHounds.html | Octubre 2026 (acumulativo Mayo-Octubre) | [Ver](https://portal.matix.media/clientes/LOVELY%20HOUNDS/informes/Informe_LovelyHounds.html) |
 
-*Actualizado: Septiembre 2026 (corte 27 sep) - MatixMedia*
+*Actualizado: Octubre 2026 (mes completo) - MatixMedia · template v2.1.1*
