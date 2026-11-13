@@ -401,6 +401,7 @@
   <div class="nav-inner">
     <div class="nav-brand" id="navBrand">MatixMedia · Estrategia</div>
     <div class="nav-item" onclick="goTo('s0')">00 Presupuesto</div>
+    <div class="nav-item" onclick="goTo('s0b')">00b Auditoría</div>
     <div class="nav-item active" onclick="goTo('s1')">01 Diagnóstico</div>
     <div class="nav-item" onclick="goTo('s2')">02 Estructura</div>
     <div class="nav-item" onclick="goTo('s3')">03 Keywords</div>
@@ -452,6 +453,25 @@
     <div class="section-title" id="p-t3" style="margin-top:36px"></div>
     <div class="tree" id="p-fix"></div>
     <div class="section-desc" id="p-note" style="margin-top:16px"></div>
+  </div>
+
+  <!-- 00b AUDITORÍA -->
+  <div class="section" id="s0b">
+    <div class="section-label">00b · Auditoría y plan a 6 meses</div>
+    <div class="section-title" id="a-t"></div>
+    <div class="section-desc" id="a-d"></div>
+    <div class="diagnosis-grid" id="a-cards"></div>
+    <div class="section-title" style="margin-top:36px">Hallazgos <em>y correcciones</em> aplicadas</div>
+    <div class="table-wrap" id="a-h"></div>
+    <div class="section-title" style="margin-top:36px">Meta: <em>escalar presupuesto o escalar el embudo</em></div>
+    <div class="table-wrap" id="a-p"></div>
+    <div class="section-desc" id="a-pn" style="margin-top:12px"></div>
+    <div class="section-title" style="margin-top:36px">Plan de presupuesto <em>dic 2026 – may 2027</em></div>
+    <div class="table-wrap" id="a-plan"></div>
+    <div class="section-title" style="margin-top:36px">Puertas de decisión <em>por canal</em></div>
+    <div class="timeline" id="a-g"></div>
+    <div class="section-title" style="margin-top:36px">KPIs que deciden <em>la escala</em></div>
+    <div class="targets-grid" id="a-k"></div>
   </div>
 
 
@@ -912,41 +932,61 @@ const D = {
   ]
  },
  "estructura": {
-  "titulo": "Las <em>7 campañas</em> que quedan activas, por zona y servicio",
+  "titulo": "Las <em>7 campañas</em> activas, en los estados que generan el 95% de los contratos",
   "campanas": [
    {
-    "emoji": "🗽",
-    "nombre": "1 · Campaña Búsqueda Asilos — NY · NJ · DC · FL (≈$400/mes · $13/día)",
-    "grupos": [
-     "Grupos: asilo por ciudad (NY, NJ, DC, Miami), defensa en corte y orden de deportación",
-     "Búsquedas por circunstancia y 'abogada de asilo en español'",
-     "Landing con consulta por videollamada"
-    ],
-    "estrategia": "Piloto de zona. Se escala solo si el CPL de cita queda ≤$25 y las citas llegan a contrato"
-   },
-   {
     "emoji": "🏠",
-    "nombre": "2 · Search · KW · abogado de inmigración — IL · WI · IN + Michigan piloto (≈$500/mes · $16/día)",
+    "nombre": "Search · KW · abogado de inmigración — IL · WI · IN (≈$450/mes · $15/día)",
     "grupos": [
      "'liliana jones' (exact) · 'abogados de inmigración' y 'abogada de inmigración en español' (phrase)",
-     "Grupos por ciudad: Chicago, Naperville, Aurora, Milwaukee, Indianapolis",
-     "Michigan (Detroit, Dearborn) como ubicación piloto dentro de esta campaña, con el mismo anuncio, para comparar CPL con Illinois"
+     "Grupos por ciudad: Chicago, Naperville, Aurora, Elgin, Milwaukee, Indianapolis",
+     "Oficina física en Naperville como diferenciador"
     ],
-    "estrategia": "Campaña probada (CPL $2–$7 en sus keywords núcleo). Recibe la mayor porción"
+    "estrategia": "Campaña probada (CPL $2–$7 en sus keywords núcleo). Michigan queda fuera por decisión del 5 de noviembre"
    },
    {
-    "emoji": "🪪",
-    "nombre": "3 · Campaña Búsqueda Análisis Residencia — IL · WI · IN · TX (≈$350/mes · $11/día)",
+    "emoji": "👨‍👩‍👧",
+    "nombre": "Búsqueda Leads Peticiones — IL · TX · FL · CA (≈$450/mes · $15/día)",
     "grupos": [
-     "Residentes permanentes con dudas: renovación, antecedentes, riesgos al viajar",
-     "Ajuste de estatus y green card en español",
-     "Mensaje de análisis de caso, sin promesas"
+     "Peticiones de cónyuge, hijos, padres y hermanos; perdón migratorio",
+     "Concordancia phrase/exact únicamente",
+     "Se mide por cita y contrato, no solo por clic"
     ],
-    "estrategia": "Servicio con CPL alto en Meta ($13.40): en Google se mide por cita y se controla con exacta/phrase"
+    "estrategia": "Peticiones fue el 39% de los ingresos de octubre: recibe la mayor porción junto con la campaña de marca"
+   },
+   {
+    "emoji": "🧾",
+    "nombre": "SEARCH | Revisión de Casos — Fraude — IL · TX · FL · CA (≈$400/mes · $13/día)",
+    "grupos": [
+     "Notario o 'consultor' que estafó, segunda opinión, revisión de expediente",
+     "Negativas: 'fraude de seguros', 'fraude bancario', 'fraude con tarjeta'",
+     "Copy directo con 'fraude' y 'estafa'"
+    ],
+    "estrategia": "Fraude alimenta VAWA y Fortalecimiento VAWA (19% + 16% de los ingresos de octubre) y cayó de 22 a 9 citas: se refuerza"
+   },
+   {
+    "emoji": "🗽",
+    "nombre": "Campaña Búsqueda Asilos — FL · TX · CA · IL (≈$350/mes · $11/día)",
+    "grupos": [
+     "Grupos por ciudad: Miami, Orlando, Houston, Los Angeles, Chicago",
+     "Defensa en corte y orden de deportación; 'abogada de asilo en español'",
+     "NY · NJ · DC pasan a fase 2 (desde marzo, solo si Asilo cumple su criterio)"
+    ],
+    "estrategia": "Contratos de Asilo todavía bajos; se espera crecimiento con la nueva abogada (Brenda). Se concentra en los estados prioritarios"
+   },
+   {
+    "emoji": "🔒",
+    "nombre": "Búsqueda Leads Visa U — TX · CA · IL · FL (≈$300/mes · $10/día)",
+    "grupos": [
+     "Búsquedas por circunstancia ('fui víctima de un robo y no tengo papeles')",
+     "Hoy sin keywords de circunstancia activas",
+     "En ChatGPT Ads fue el servicio más barato ($15.07 por WA)"
+    ],
+    "estrategia": "Servicio de alto valor: 37 contratos en el año frente a 5 de VAWA (dato a septiembre)"
    },
    {
     "emoji": "🛡️",
-    "nombre": "4 · Búsqueda Leads Visa VAWA — TX · CA (≈$300/mes · $10/día)",
+    "nombre": "Búsqueda Leads Visa VAWA — TX · CA · IL · FL (≈$300/mes · $10/día)",
     "grupos": [
      "Frases-circunstancia en exact/phrase ('mi esposo me golpea y no tengo papeles')",
      "Sin keywords informativas ('requisitos para vawa', 'vawa español')",
@@ -955,34 +995,14 @@ const D = {
     "estrategia": "En Google VAWA tuvo CPL $429 con keywords amplias: presupuesto de prueba con exacta"
    },
    {
-    "emoji": "👨‍👩‍👧",
-    "nombre": "5 · Búsqueda Leads Peticiones — IL · WI · IN · TX (≈$350/mes · $11/día)",
+    "emoji": "🪪",
+    "nombre": "Revisión de Casos — Residencia (antes 'Análisis Residencia') — IL · TX · FL · CA (≈$250/mes · $8/día)",
     "grupos": [
-     "Peticiones familiares (cónyuge, hijos, padres, hermanos) y perdón migratorio",
-     "Concordancia phrase/exact únicamente",
-     "Se mide por cita agendada, no solo por clic"
+     "Segunda opinión para residentes: caso negado, antecedentes, riesgos al viajar",
+     "Sin renovación de green card, permisos de trabajo ni ciudadanía (servicios de bajo valor que salen de pauta)",
+     "Renombrar la campaña a 'Revisión de Casos' (decisión del 5 de noviembre)"
     ],
-    "estrategia": "Sin historial sólido de conversión: presupuesto controlado hasta confirmar CPL"
-   },
-   {
-    "emoji": "🔒",
-    "nombre": "6 · Búsqueda Leads Visa U — TX · CA (≈$300/mes · $10/día)",
-    "grupos": [
-     "Búsquedas por circunstancia ('fui víctima de un robo y no tengo papeles')",
-     "Hoy sin keywords de circunstancia activas",
-     "En ChatGPT Ads fue el servicio más barato ($15.07 por WA)"
-    ],
-    "estrategia": "Probar la demanda en Google con presupuesto controlado"
-   },
-   {
-    "emoji": "🧾",
-    "nombre": "7 · SEARCH | Revisión de Casos — Fraude — IL · WI · IN · TX · CA (≈$300/mes · $10/día)",
-    "grupos": [
-     "Notario o 'consultor' que estafó, segunda opinión y revisión de expediente",
-     "Mismo ángulo que ya funciona en Meta (CPL $5.17)",
-     "Anuncios 'No somos notarios, somos abogados'"
-    ],
-    "estrategia": "Se traslada el patrón ganador de Meta y se mide el CPL en Google"
+    "estrategia": "La de menor presupuesto: se mantiene por su función de segunda opinión"
    }
   ]
  },
@@ -1080,30 +1100,19 @@ const D = {
    "visa juvenil y demanda corte federal (campañas pausadas)",
    "curso / escuela / estudiar derecho",
    "salario abogado de inmigración",
-   "cónsul / embajada (tráfico de visas de turista)"
+   "cónsul / embajada (tráfico de visas de turista)",
+   "fraude de seguros",
+   "fraude bancario / con tarjeta",
+   "renovación de green card (bajo valor)",
+   "permiso de trabajo (bajo valor)",
+   "ciudadanía / naturalización (bajo valor)"
   ]
  },
  "copies": {
   "titulo": "RSA sugeridos <em>por campaña y zona</em> — fuera '13 años', dentro licencia y oficina",
   "cards": [
    {
-    "campana": "1 · Asilos — NY · NJ · DC · FL",
-    "tipo": "Un grupo de anuncios por ciudad (insertar ciudad)",
-    "titulares": [
-     "Abogada de Asilo en Español",
-     "Defensa en Corte Migratoria",
-     "Evalúa tu Caso de Asilo",
-     "Consulta por Videollamada",
-     "Abogada con Licencia"
-    ],
-    "descripciones": [
-     "Abogada con licencia, no notario. Consulta directa por videollamada en NY, NJ, DC y FL.",
-     "Evaluamos tu caso de asilo o tu orden de deportación. Atención en español. Consulta $100."
-    ],
-    "path": "asilo / defensa-corte"
-   },
-   {
-    "campana": "2 · Abogado de inmigración — IL · WI · IN · MI",
+    "campana": "Abogado de inmigración — IL · WI · IN",
     "tipo": "Reemplaza copy genérico · CPL objetivo <$15",
     "titulares": [
      "Abogada con Licencia",
@@ -1114,45 +1123,13 @@ const D = {
     ],
     "descripciones": [
      "Abogada con licencia, no notario. Consulta directa con la abogada, sin asistentes.",
-     "Oficina en Naperville, IL o videollamada en Wisconsin, Indiana y Michigan."
+     "Oficina en Naperville, IL o consulta por videollamada desde Wisconsin e Indiana."
     ],
     "path": "consulta / inmigracion"
    },
    {
-    "campana": "3 · Análisis Residencia — IL · WI · IN · TX",
-    "tipo": "Residentes con dudas sobre su estatus",
-    "titulares": [
-     "Analiza tu Residencia Legal",
-     "Abogada de Green Card",
-     "¿Antecedentes y Residencia?",
-     "Revisión de tu Caso",
-     "Consulta Directa $100"
-    ],
-    "descripciones": [
-     "Si eres residente y tienes dudas, revisamos tu caso antes de que sea tarde. Consulta $100.",
-     "Abogada con licencia, en español. Vemos riesgos al renovar o viajar. Sin promesas falsas."
-    ],
-    "path": "residencia / analisis"
-   },
-   {
-    "campana": "4 · Visa VAWA — TX · CA",
-    "tipo": "Confidencialidad primero · por circunstancia",
-    "titulares": [
-     "Tu Caso es Confidencial",
-     "Abogada de Visa VAWA",
-     "Víctima de Maltrato",
-     "Consulta Directa y Privada",
-     "Atención en Español"
-    ],
-    "descripciones": [
-     "VAWA protege a víctimas de violencia doméstica. Consulta confidencial con la abogada.",
-     "Hablamos en español y con total privacidad. Evaluamos si calificas. Consulta $100."
-    ],
-    "path": "vawa / confidencial"
-   },
-   {
-    "campana": "5 · Peticiones — IL · WI · IN · TX",
-    "tipo": "Intención directa de contratar",
+    "campana": "Peticiones — IL · TX · FL · CA",
+    "tipo": "Servicio #1 en ingresos",
     "titulares": [
      "Abogado de Peticiones",
      "Peticiones Familiares",
@@ -1167,7 +1144,39 @@ const D = {
     "path": "peticiones / familiares"
    },
    {
-    "campana": "6 · Visa U — TX · CA",
+    "campana": "Revisión de Casos — Fraude",
+    "tipo": "Directo: 'fraude' y 'estafa'",
+    "titulares": [
+     "¿Te Estafó un Notario?",
+     "Fraude Migratorio",
+     "¿Estafa en tu Trámite?",
+     "Segunda Opinión Legal",
+     "No Somos Notarios"
+    ],
+    "descripciones": [
+     "Un notario no es abogado. Si te estafaron, revisamos tu caso. Consulta $100.",
+     "Revisamos tu expediente en persona o por videollamada. Sin promesas imposibles."
+    ],
+    "path": "fraude / segunda-opinion"
+   },
+   {
+    "campana": "Asilos — FL · TX · CA · IL",
+    "tipo": "Un grupo por ciudad",
+    "titulares": [
+     "Abogada de Asilo en Español",
+     "Defensa en Corte Migratoria",
+     "Evalúa tu Caso de Asilo",
+     "Consulta por Videollamada",
+     "Abogada con Licencia"
+    ],
+    "descripciones": [
+     "Abogada con licencia, no notario. Consulta directa por videollamada, en español.",
+     "Evaluamos tu caso de asilo o tu orden de deportación. Consulta $100."
+    ],
+    "path": "asilo / defensa-corte"
+   },
+   {
+    "campana": "Visa U — TX · CA · IL · FL",
     "tipo": "Búsquedas por circunstancia",
     "titulares": [
      "Abogada de Visa U",
@@ -1183,126 +1192,142 @@ const D = {
     "path": "visa-u / victimas"
    },
    {
-    "campana": "7 · Revisión de Casos — Fraude",
-    "tipo": "Diferenciador de marca · segunda opinión",
+    "campana": "Visa VAWA — TX · CA · IL · FL",
+    "tipo": "Confidencialidad primero",
     "titulares": [
-     "¿Te Estafó un Notario?",
-     "No Somos Notarios",
-     "Segunda Opinión Legal",
-     "Revisamos tu Expediente",
-     "Abogada con Licencia"
+     "Tu Caso es Confidencial",
+     "Abogada de Visa VAWA",
+     "Víctima de Maltrato",
+     "Consulta Directa y Privada",
+     "Atención en Español"
     ],
     "descripciones": [
-     "Un notario no es abogado. Verifica la licencia de quien lleva tu caso. Consulta $100.",
-     "Revisamos tu expediente en persona o por videollamada. Sin promesas imposibles."
+     "VAWA protege a víctimas de violencia doméstica. Consulta confidencial con la abogada.",
+     "Hablamos en español y con total privacidad. Evaluamos si calificas. Consulta $100."
     ],
-    "path": "segunda-opinion / fraude"
+    "path": "vawa / confidencial"
+   },
+   {
+    "campana": "Revisión de Casos — Residencia",
+    "tipo": "Segunda opinión para residentes",
+    "titulares": [
+     "Revisión de tu Caso",
+     "¿Te Negaron la Residencia?",
+     "Segunda Opinión Migratoria",
+     "Abogada con Licencia",
+     "Consulta Directa $100"
+    ],
+    "descripciones": [
+     "Si te negaron un trámite o tienes antecedentes, revisamos tu caso antes de actuar.",
+     "Abogada con licencia, en español. Revisión honesta, sin promesas falsas."
+    ],
+    "path": "revision / residencia"
    }
   ]
  },
  "presupuesto": {
-  "titulo": "<em>Redistribución</em> de $2,500 en las 7 campañas activas",
-  "desc": "Propuesta de distribución (a validar con Liliana y el equipo). Referencia: antes se repartían ≈$10/día en 15 campañas. Con $2,500 y 7 campañas, cada una recibe entre $300 y $500, el rango acordado en reunión para tener señal suficiente.",
+  "titulo": "<em>Redistribución</em> de $2,500 según ingresos por servicio",
+  "desc": "Propuesta (a validar). Se ordena por lo que genera ingresos: Peticiones (39% de octubre) y la cadena Fraude → VAWA (35%) suben; Revisión de Casos de residencia baja. Cada campaña queda entre $250 y $450 al mes.",
   "tabla": [
    {
-    "campana": "2 · Search · KW · abogado de inmigración",
+    "campana": "Search · KW · abogado de inmigración",
     "actual": "~$10/día",
-    "propuesto": "$500/mes",
-    "cambio": "+$200",
-    "justificacion": "CPL real más bajo de la cuenta; incluye el piloto de Michigan",
+    "propuesto": "$450/mes",
+    "cambio": "+$150",
+    "justificacion": "CPL real más bajo de la cuenta",
     "cambio_cls": "good"
    },
    {
-    "campana": "1 · Campaña Búsqueda Asilos",
+    "campana": "Búsqueda Leads Peticiones",
+    "actual": "~$10/día",
+    "propuesto": "$450/mes",
+    "cambio": "+$150",
+    "justificacion": "39% de los ingresos de octubre",
+    "cambio_cls": "good"
+   },
+   {
+    "campana": "SEARCH | Revisión de Casos — Fraude",
     "actual": "~$10/día",
     "propuesto": "$400/mes",
-    "cambio": "piloto",
-    "justificacion": "Zonas NY · NJ · DC · FL con mayor volumen de asilo y deportación",
-    "cambio_cls": ""
+    "cambio": "+$100",
+    "justificacion": "Alimenta VAWA y Fortalecimiento VAWA; citas cayeron de 22 a 9",
+    "cambio_cls": "good"
    },
    {
-    "campana": "3 · Análisis Residencia",
+    "campana": "Campaña Búsqueda Asilos",
     "actual": "~$10/día",
     "propuesto": "$350/mes",
-    "cambio": "controlar",
-    "justificacion": "CPL alto en Meta: exacta/phrase y medir por cita",
+    "cambio": "+$50",
+    "justificacion": "Estados prioritarios; NY · NJ · DC en fase 2",
     "cambio_cls": ""
    },
    {
-    "campana": "5 · Leads Peticiones",
+    "campana": "Búsqueda Leads Visa U",
     "actual": "~$10/día",
-    "propuesto": "$350/mes",
-    "cambio": "controlar",
-    "justificacion": "Sin historial: prueba controlada",
-    "cambio_cls": ""
-   },
-   {
-    "campana": "4 · Leads Visa VAWA",
-    "actual": "$10/día",
     "propuesto": "$300/mes",
-    "cambio": "reconstruir",
+    "cambio": "0",
+    "justificacion": "Alto valor (37 contratos en el año)",
+    "cambio_cls": ""
+   },
+   {
+    "campana": "Búsqueda Leads Visa VAWA",
+    "actual": "~$10/día",
+    "propuesto": "$300/mes",
+    "cambio": "0",
     "justificacion": "Solo exacta y por circunstancia",
     "cambio_cls": ""
    },
    {
-    "campana": "6 · Leads Visa U",
+    "campana": "Revisión de Casos — Residencia",
     "actual": "~$10/día",
-    "propuesto": "$300/mes",
-    "cambio": "prueba",
-    "justificacion": "Gap de búsquedas por circunstancia",
-    "cambio_cls": ""
-   },
-   {
-    "campana": "7 · Revisión de Casos — Fraude",
-    "actual": "~$10/día",
-    "propuesto": "$300/mes",
-    "cambio": "prueba",
-    "justificacion": "Patrón ganador en Meta",
-    "cambio_cls": ""
+    "propuesto": "$250/mes",
+    "cambio": "−$50",
+    "justificacion": "Segunda opinión; sin servicios de bajo valor",
+    "cambio_cls": "bad"
    }
   ],
   "barras": [
    {
     "nombre": "Abogado inmig.",
-    "pct": 20,
+    "pct": 18,
     "cls": "b-green",
-    "label": "20%"
+    "label": "18%"
    },
    {
-    "nombre": "Asilos",
+    "nombre": "Peticiones",
+    "pct": 18,
+    "cls": "b-blue",
+    "label": "18%"
+   },
+   {
+    "nombre": "Fraude",
     "pct": 16,
     "cls": "b-amber",
     "label": "16%"
    },
    {
-    "nombre": "Residencia",
+    "nombre": "Asilos",
     "pct": 14,
     "cls": "b-ink",
     "label": "14%"
    },
    {
-    "nombre": "Peticiones",
-    "pct": 14,
-    "cls": "b-blue",
-    "label": "14%"
-   },
-   {
-    "nombre": "VAWA",
+    "nombre": "Visa U",
     "pct": 12,
     "cls": "b-green-l",
     "label": "12%"
    },
    {
-    "nombre": "Visa U",
+    "nombre": "VAWA",
     "pct": 12,
     "cls": "b-amber",
     "label": "12%"
    },
    {
-    "nombre": "Fraude",
-    "pct": 12,
-    "cls": "b-green",
-    "label": "12%"
+    "nombre": "Residencia",
+    "pct": 10,
+    "cls": "b-ink",
+    "label": "10%"
    }
   ]
  },
@@ -1312,7 +1337,7 @@ const D = {
    {
     "ajuste": "Ubicación por zona",
     "actual": "Cobertura amplia, sin separar zonas de volumen",
-    "propuesto": "Campañas por zona (IL/WI/IN · NY/NJ/DC/FL · TX/CA · MI) con ubicación 'presencia' y reporte de ubicación por ciudad",
+    "propuesto": "Ubicaciones en los estados prioritarios (IL · TX · FL · CA; WI · IN en la campaña de marca) con ubicación 'presencia' y reporte de ubicación por ciudad",
     "impacto": "Permite subir puja solo donde el CPL y las citas lo justifican"
    },
    {
@@ -1337,51 +1362,51 @@ const D = {
  },
  "expansion": {
   "titulo": "Zonas específicas y <em>ruta real</em> de crecimiento",
-  "desc": "La prioridad es crecer por zonas con evidencia, no abrir todo el país. Ruta: núcleo (IL · WI · IN) → pilotos medibles (NY · NJ · DC · FL por asilo/deportación y Michigan) → estados de alta población hispana (TX · CA) para VAWA y Visa U. Cada zona se evalúa a 30 días con CPL, cita agendada y contrato.",
+  "desc": "Illinois, Texas, Florida y California aportan más del 95% de los contratos (reunión del 5 de noviembre). La ruta es concentrar ahí, sumar zonas nuevas solo con criterio y sacar las que no cierran: Michigan sale por baja población inmigrante y políticas no santuario.",
   "canales": [
    {
     "tipo": "meta",
     "titulo": "Google · ruta por zonas",
-    "desc": "Cada zona tiene un criterio de entrada, un criterio de salida y un responsable de revisión.",
+    "desc": "Cada zona tiene un criterio de entrada y uno de salida.",
     "campanas": [
      {
-      "nombre": "Núcleo · IL · WI · IN",
-      "desc": "Base probada. Mantener CPL ≤$15 y subir presupuesto solo si cita→contrato mejora."
+      "nombre": "Núcleo · IL (+ WI · IN en marca)",
+      "desc": "Oficina en Naperville. Base de la campaña de marca y de todos los servicios."
      },
      {
-      "nombre": "Piloto · NY · NJ · DC · FL",
-      "desc": "Asilo y defensa de deportación. Salida: CPL de cita >$40 tras 30 días sin contratos."
+      "nombre": "Prioritarios · TX · FL · CA",
+      "desc": "Todas las campañas de servicio. Se compara costo por cita por estado cada 2 semanas."
      },
      {
-      "nombre": "Piloto · Michigan",
-      "desc": "Ubicación dentro de la campaña 'abogado de inmigración' (sin campaña nueva) para comparar con Illinois a 30 días."
+      "nombre": "Fase 2 · NY · NJ · DC (Asilo)",
+      "desc": "Entra desde marzo solo si Asilo logra cita a ≤$40 y al menos 1 contrato al mes en los estados prioritarios."
      },
      {
-      "nombre": "Fase siguiente · TX · CA",
-      "desc": "VAWA y Visa U por circunstancia. Entra cuando la reconstrucción en exacta muestre CPL <$100."
+      "nombre": "Fuera · Michigan",
+      "desc": "Despriorizado el 5 de noviembre. No se invierte."
      }
     ]
    },
    {
     "tipo": "tiktok",
     "titulo": "ChatGPT Ads · cobertura de intención alta ($750/mes)",
-    "desc": "Octubre: 368 clics, CTR 1.14%, CPC $2.04 y 16 conversaciones WA a $46.96. Residencia dio 14 WA a $39.04 y Visa U fue el mejor servicio ($15.07 por WA); Peticiones se pausó tras $97.02 sin resultado.",
+    "desc": "Octubre: 368 clics, CTR 1.14%, 749 visitas al sitio y 16 conversaciones WA a $46.96 (2.1% de visita a WA). El costo subió por rechazos de anuncios con la palabra 'legal'. Residencia dio 14 WA a $39.04 y Visa U fue el más barato ($15.07 por WA).",
     "campanas": [
      {
-      "nombre": "Visa U + Residencia",
-      "desc": "Concentrar el presupuesto: son los que dieron WA a menor costo."
+      "nombre": "Visa U + Peticiones",
+      "desc": "Concentrar en servicios de alto valor; evitar la palabra 'legal' en títulos."
      },
      {
-      "nombre": "Meta de noviembre",
-      "desc": "WA a ≤$40 (hoy $46.96) y ≈19 conversaciones con $750."
+      "nombre": "Test A/B de landing",
+      "desc": "Las dos landing (con y sin 'C') para subir el 2.1% de visita a WhatsApp."
      },
      {
-      "nombre": "Peticiones",
-      "desc": "Continúa pausada; se reabre solo con un ángulo de mensaje nuevo."
+      "nombre": "Pausas",
+      "desc": "'Plan Escudo Migrante' pausado por bajo desempeño; Peticiones se reabre con ángulo nuevo."
      },
      {
       "nombre": "Regla de corte",
-      "desc": "Si un servicio gasta $80 sin WA, se pausa."
+      "desc": "Si un servicio gasta $80 sin WA, se pausa. Meta: WA ≤$40."
      }
     ]
    }
@@ -1442,7 +1467,7 @@ const D = {
     "semana": "Semana 1 · Reordenar",
     "titulo": "Consolidar en 7 campañas",
     "acciones": [
-     "Confirmar que solo corren las 7 campañas actuales (Visa Juvenil y Demanda en Corte Federal siguen pausadas)",
+     "Confirmar las 7 campañas, renombrar 'Análisis Residencia' a 'Revisión de Casos' y excluir Michigan",
      "Aplicar negativas del análisis y excluir inglés genérico",
      "Cargar presupuestos por campaña y ubicaciones por zona"
     ]
@@ -1462,7 +1487,7 @@ const D = {
     "semana": "Semana 3–4 · Primera lectura",
     "titulo": "Evaluar pilotos",
     "acciones": [
-     "Comparar CPL de NY/NJ/DC/FL y Michigan con Illinois",
+     "Comparar costo por cita por estado (IL · TX · FL · CA)",
      "Depurar términos cada lunes",
      "Reasignar hasta 15% del presupuesto entre campañas según CPL"
     ]
@@ -1473,7 +1498,7 @@ const D = {
     "titulo": "Subir donde hay contrato",
     "acciones": [
      "Escalar 15–20% cada 72 h solo campañas con CPL ≤$15 y cita→contrato en mejora",
-     "Cerrar zona piloto que no cumpla criterio de salida",
+     "Sacar el estado que no cumpla criterio de salida",
      "Reunión mensual con el equipo de cierre para cruzar citas y contratos"
     ]
    }
@@ -1483,69 +1508,7 @@ const D = {
   "titulo": "Keywords sugeridas por campaña, <em>zona e intención</em>",
   "grupos": [
    {
-    "producto": "1 · Búsqueda Asilos — NY · NJ · DC · FL",
-    "color_cls": "badge-g",
-    "color_bg": "#E8F5EE",
-    "keywords": [
-     {
-      "kw": "abogado de asilo en nueva york",
-      "intent": "intent-buy",
-      "nota": "Phrase · grupo NY"
-     },
-     {
-      "kw": "abogado de asilo en nueva jersey",
-      "intent": "intent-buy",
-      "nota": "Phrase · grupo NJ"
-     },
-     {
-      "kw": "abogado de asilo en washington dc",
-      "intent": "intent-buy",
-      "nota": "Phrase · grupo DC"
-     },
-     {
-      "kw": "abogado de asilo en miami",
-      "intent": "intent-buy",
-      "nota": "Phrase · grupo FL"
-     },
-     {
-      "kw": "abogada de asilo en español",
-      "intent": "intent-buy",
-      "nota": "Phrase · todas las zonas"
-     },
-     {
-      "kw": "audiencia de asilo abogado",
-      "intent": "intent-buy",
-      "nota": "Phrase · alta intención"
-     },
-     {
-      "kw": "abogado corte de inmigración nueva york",
-      "intent": "intent-buy",
-      "nota": "Phrase · defensa en corte"
-     },
-     {
-      "kw": "abogado orden de deportación",
-      "intent": "intent-buy",
-      "nota": "Phrase · urgencia real"
-     },
-     {
-      "kw": "abogado para detener deportación miami",
-      "intent": "intent-buy",
-      "nota": "Phrase · FL"
-     },
-     {
-      "kw": "formulario i-589 pdf",
-      "intent": "intent-info",
-      "nota": "Negativizar"
-     },
-     {
-      "kw": "qué es el asilo político",
-      "intent": "intent-info",
-      "nota": "Negativizar"
-     }
-    ]
-   },
-   {
-    "producto": "2 · KW abogado de inmigración — IL · WI · IN + Michigan",
+    "producto": "Search · KW · abogado de inmigración — IL · WI · IN",
     "color_cls": "badge-a",
     "color_bg": "#FDF3E3",
     "keywords": [
@@ -1567,17 +1530,22 @@ const D = {
      {
       "kw": "abogado de inmigración en chicago",
       "intent": "intent-buy",
-      "nota": "Phrase · grupo Chicago"
+      "nota": "Phrase · IL"
      },
      {
       "kw": "abogado de inmigración en naperville",
       "intent": "intent-buy",
-      "nota": "Phrase · oficina física"
+      "nota": "Phrase · oficina"
      },
      {
       "kw": "abogado de inmigración aurora il",
       "intent": "intent-buy",
-      "nota": "Phrase"
+      "nota": "Phrase · IL"
+     },
+     {
+      "kw": "abogado de inmigración elgin",
+      "intent": "intent-buy",
+      "nota": "Phrase · IL"
      },
      {
       "kw": "abogado de inmigración en milwaukee",
@@ -1588,16 +1556,6 @@ const D = {
       "kw": "abogado de inmigración en indianapolis",
       "intent": "intent-buy",
       "nota": "Phrase · IN"
-     },
-     {
-      "kw": "abogado de inmigración en detroit",
-      "intent": "intent-buy",
-      "nota": "Phrase · piloto MI"
-     },
-     {
-      "kw": "abogado de inmigración dearborn mi",
-      "intent": "intent-buy",
-      "nota": "Phrase · piloto MI"
      },
      {
       "kw": "consulta con abogado de inmigración",
@@ -1612,106 +1570,7 @@ const D = {
     ]
    },
    {
-    "producto": "3 · Análisis Residencia — IL · WI · IN · TX",
-    "color_cls": "badge-a",
-    "color_bg": "#FDF3E3",
-    "keywords": [
-     {
-      "kw": "abogado para residencia permanente",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "abogado para green card en español",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "renovar green card abogado",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "ajuste de estatus abogado",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "residente permanente con antecedentes abogado",
-      "intent": "intent-buy",
-      "nota": "Phrase · riesgo real"
-     },
-     {
-      "kw": "puedo perder mi residencia permanente",
-      "intent": "intent-buy",
-      "nota": "Phrase · circunstancia"
-     },
-     {
-      "kw": "abogado green card chicago",
-      "intent": "intent-buy",
-      "nota": "Phrase · IL"
-     },
-     {
-      "kw": "abogado de residencia houston",
-      "intent": "intent-buy",
-      "nota": "Phrase · TX"
-     },
-     {
-      "kw": "renovación de green card costo",
-      "intent": "intent-info",
-      "nota": "Negativizar"
-     }
-    ]
-   },
-   {
-    "producto": "4 · Leads Visa VAWA — TX · CA",
-    "color_cls": "badge-r",
-    "color_bg": "#FBE9E9",
-    "keywords": [
-     {
-      "kw": "visa por violencia domestica usa",
-      "intent": "intent-buy",
-      "nota": "Phrase · 65 clics, 1 conv."
-     },
-     {
-      "kw": "mi esposo me golpea y no tengo papeles",
-      "intent": "intent-buy",
-      "nota": "Phrase · circunstancia"
-     },
-     {
-      "kw": "puedo arreglar mis papeles si mi esposo me maltrata",
-      "intent": "intent-buy",
-      "nota": "Phrase · circunstancia"
-     },
-     {
-      "kw": "abogada vawa houston",
-      "intent": "intent-buy",
-      "nota": "Phrase · TX"
-     },
-     {
-      "kw": "abogada vawa los angeles",
-      "intent": "intent-buy",
-      "nota": "Phrase · CA"
-     },
-     {
-      "kw": "abogada confidencial violencia doméstica inmigración",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "requisitos para vawa",
-      "intent": "intent-info",
-      "nota": "$128 sin conv. · Negativizar"
-     },
-     {
-      "kw": "vawa español",
-      "intent": "intent-info",
-      "nota": "$80 sin conv. · Negativizar"
-     }
-    ]
-   },
-   {
-    "producto": "5 · Leads Peticiones — IL · WI · IN · TX",
+    "producto": "Búsqueda Leads Peticiones — IL · TX · FL · CA",
     "color_cls": "badge-g",
     "color_bg": "#E8F5EE",
     "keywords": [
@@ -1721,7 +1580,7 @@ const D = {
       "nota": "Phrase"
      },
      {
-      "kw": "abogado para pedir a mi esposa residente",
+      "kw": "abogado para pedir a mi esposa",
       "intent": "intent-buy",
       "nota": "Phrase · circunstancia"
      },
@@ -1736,6 +1595,21 @@ const D = {
       "nota": "Phrase · IL"
      },
      {
+      "kw": "abogado de peticiones houston",
+      "intent": "intent-buy",
+      "nota": "Phrase · TX"
+     },
+     {
+      "kw": "abogado de peticiones miami",
+      "intent": "intent-buy",
+      "nota": "Phrase · FL"
+     },
+     {
+      "kw": "abogado de peticiones los angeles",
+      "intent": "intent-buy",
+      "nota": "Phrase · CA"
+     },
+     {
       "kw": "abogado i-130 en español",
       "intent": "intent-buy",
       "nota": "Phrase"
@@ -1746,11 +1620,6 @@ const D = {
       "nota": "Phrase"
      },
      {
-      "kw": "abogado de peticiones houston",
-      "intent": "intent-buy",
-      "nota": "Phrase · TX"
-     },
-     {
       "kw": "tiempo de espera petición i-130",
       "intent": "intent-info",
       "nota": "Negativizar"
@@ -1758,7 +1627,116 @@ const D = {
     ]
    },
    {
-    "producto": "6 · Leads Visa U — TX · CA",
+    "producto": "SEARCH | Revisión de Casos — Fraude — IL · TX · FL · CA",
+    "color_cls": "badge-r",
+    "color_bg": "#FBE9E9",
+    "keywords": [
+     {
+      "kw": "notario me estafó inmigración",
+      "intent": "intent-buy",
+      "nota": "Phrase · circunstancia"
+     },
+     {
+      "kw": "estafa de notario inmigración",
+      "intent": "intent-buy",
+      "nota": "Phrase · 'estafa'"
+     },
+     {
+      "kw": "fraude migratorio abogado",
+      "intent": "intent-buy",
+      "nota": "Phrase · 'fraude'"
+     },
+     {
+      "kw": "denunciar notario fraude inmigración",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "segunda opinión abogado de inmigración",
+      "intent": "intent-buy",
+      "nota": "Phrase · alta intención"
+     },
+     {
+      "kw": "revisión de caso de inmigración abogado",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "me cobraron y no hicieron mi trámite de inmigración",
+      "intent": "intent-buy",
+      "nota": "Phrase · circunstancia"
+     },
+     {
+      "kw": "fraude de seguros",
+      "intent": "intent-info",
+      "nota": "Negativizar (decisión 5 nov)"
+     },
+     {
+      "kw": "notario público cerca de mí",
+      "intent": "intent-info",
+      "nota": "Negativizar"
+     }
+    ]
+   },
+   {
+    "producto": "Campaña Búsqueda Asilos — FL · TX · CA · IL",
+    "color_cls": "badge-g",
+    "color_bg": "#E8F5EE",
+    "keywords": [
+     {
+      "kw": "abogado de asilo en miami",
+      "intent": "intent-buy",
+      "nota": "Phrase · FL"
+     },
+     {
+      "kw": "abogado de asilo en orlando",
+      "intent": "intent-buy",
+      "nota": "Phrase · FL"
+     },
+     {
+      "kw": "abogado de asilo en houston",
+      "intent": "intent-buy",
+      "nota": "Phrase · TX"
+     },
+     {
+      "kw": "abogado de asilo en los angeles",
+      "intent": "intent-buy",
+      "nota": "Phrase · CA"
+     },
+     {
+      "kw": "abogado de asilo en chicago",
+      "intent": "intent-buy",
+      "nota": "Phrase · IL"
+     },
+     {
+      "kw": "abogada de asilo en español",
+      "intent": "intent-buy",
+      "nota": "Phrase · todas"
+     },
+     {
+      "kw": "audiencia de asilo abogado",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "abogado orden de deportación",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "abogado de asilo en nueva york",
+      "intent": "intent-buy",
+      "nota": "Fase 2 (desde marzo, con criterio)"
+     },
+     {
+      "kw": "formulario i-589 pdf",
+      "intent": "intent-info",
+      "nota": "Negativizar"
+     }
+    ]
+   },
+   {
+    "producto": "Búsqueda Leads Visa U — TX · CA · IL · FL",
     "color_cls": "badge-a",
     "color_bg": "#FDF3E3",
     "keywords": [
@@ -1788,9 +1766,9 @@ const D = {
       "nota": "Phrase · CA"
      },
      {
-      "kw": "certificación visa u policía abogado",
+      "kw": "abogado visa u chicago",
       "intent": "intent-buy",
-      "nota": "Phrase"
+      "nota": "Phrase · IL"
      },
      {
       "kw": "visa u para víctimas de crimen abogado",
@@ -1805,49 +1783,91 @@ const D = {
     ]
    },
    {
-    "producto": "7 · Revisión de Casos — Fraude — IL · WI · IN · TX · CA",
+    "producto": "Búsqueda Leads Visa VAWA — TX · CA · IL · FL",
     "color_cls": "badge-r",
     "color_bg": "#FBE9E9",
     "keywords": [
      {
-      "kw": "notario me estafó inmigración",
+      "kw": "visa por violencia domestica usa",
+      "intent": "intent-buy",
+      "nota": "Phrase · 65 clics, 1 conv."
+     },
+     {
+      "kw": "mi esposo me golpea y no tengo papeles",
       "intent": "intent-buy",
       "nota": "Phrase · circunstancia"
      },
      {
-      "kw": "qué hacer si un notario me estafó",
+      "kw": "puedo arreglar mis papeles si mi esposo me maltrata",
       "intent": "intent-buy",
       "nota": "Phrase · circunstancia"
      },
      {
-      "kw": "denunciar notario fraude inmigración",
+      "kw": "abogada vawa houston",
       "intent": "intent-buy",
-      "nota": "Phrase"
+      "nota": "Phrase · TX"
      },
      {
-      "kw": "segunda opinión abogado de inmigración",
+      "kw": "abogada vawa los angeles",
       "intent": "intent-buy",
-      "nota": "Phrase · alta intención"
+      "nota": "Phrase · CA"
      },
      {
-      "kw": "revisión de caso de inmigración abogado",
+      "kw": "abogada vawa chicago",
       "intent": "intent-buy",
-      "nota": "Phrase"
+      "nota": "Phrase · IL"
      },
      {
-      "kw": "mi caso de inmigración fue negado abogado",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "apelar negación de inmigración",
-      "intent": "intent-buy",
-      "nota": "Phrase"
-     },
-     {
-      "kw": "notario público cerca de mí",
+      "kw": "requisitos para vawa",
       "intent": "intent-info",
-      "nota": "Negativizar (tráfico de notarios)"
+      "nota": "$128 sin conv. · Negativizar"
+     },
+     {
+      "kw": "vawa español",
+      "intent": "intent-info",
+      "nota": "$80 sin conv. · Negativizar"
+     }
+    ]
+   },
+   {
+    "producto": "Revisión de Casos — Residencia — IL · TX · FL · CA",
+    "color_cls": "badge-a",
+    "color_bg": "#FDF3E3",
+    "keywords": [
+     {
+      "kw": "me negaron la residencia abogado",
+      "intent": "intent-buy",
+      "nota": "Phrase · segunda opinión"
+     },
+     {
+      "kw": "caso de green card negado",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "residente permanente con antecedentes abogado",
+      "intent": "intent-buy",
+      "nota": "Phrase · riesgo real"
+     },
+     {
+      "kw": "puedo perder mi residencia permanente",
+      "intent": "intent-buy",
+      "nota": "Phrase · circunstancia"
+     },
+     {
+      "kw": "segunda opinión caso de residencia",
+      "intent": "intent-buy",
+      "nota": "Phrase"
+     },
+     {
+      "kw": "renovar green card",
+      "intent": "intent-info",
+      "nota": "Negativizar (bajo valor)"
+     },
+     {
+      "kw": "ciudadanía requisitos",
+      "intent": "intent-info",
+      "nota": "Negativizar (bajo valor)"
      }
     ]
    }
@@ -1912,33 +1932,33 @@ const D = {
   ]
  },
  "escalabilidad": {
-  "titulo": "<em>Asilo y Defensa de Deportación</em> en NY · NJ · DC · FL: la apuesta a medir",
-  "desc": "Los reportes muestran que Google trae volumen a menor costo en búsquedas de marca y de abogado de inmigración, pero la decisión de reunión fue probar zonas con alta concentración de casos de asilo y deportación. Es un piloto con presupuesto acotado ($500 al mes), criterios de salida claros y lectura a 30 días.",
+  "titulo": "<em>Peticiones y Fraude → VAWA</em>: donde está el ingreso",
+  "desc": "En octubre, Peticiones fue el 39% de los ingresos, VAWA el 19% y Fortalecimiento VAWA (recompra que nace de Fraude) otro 16%. Octubre fue el segundo mejor mes del año en contratos aun con 30% menos citas: la escala viene de pautar los servicios que facturan, no de más volumen.",
   "oportunidades": [
    {
-    "nombre": "ASILO Y DEFENSA DE DEPORTACIÓN (piloto)",
-    "tipo": "amber",
-    "precio": "Consulta inicial $100 USD",
-    "url": "lilianajones.com (landing por zona)",
-    "roas_historico": "Sin historial de zona · se mide a 30 días",
-    "desc": "En Meta, Asilo rinde CPL $6.96 con 291 leads (jun–ago); en Google el CPL fue alto ($192.89 con el tracking aún sin conversiones registradas). Con el tracking activo desde agosto y búsquedas por circunstancia, se prueba si Google puede aportar citas calificadas en estas zonas.",
-    "keywords": [
-     "abogado de asilo",
-     "defensa de deportación",
-     "orden de deportación abogado"
-    ]
-   },
-   {
-    "nombre": "GENERAL — ABOGADA DE INMIGRACIÓN",
+    "nombre": "PETICIONES FAMILIARES",
     "tipo": "green",
     "precio": "Consulta inicial $100 USD",
     "url": "lilianajones.com",
-    "roas_historico": "CPL oct $15.85 (cuenta) · $2.10 marca",
-    "desc": "Núcleo de la cuenta. Con la depuración semanal y la reducción de campañas, el CPL puede bajar de $15.85 a ≤$15 con la misma señal.",
+    "roas_historico": "39% de los ingresos de oct.",
+    "desc": "Mejor campaña de Meta en octubre y motor de ingresos. En Google sube a $450 al mes en IL · TX · FL · CA, con keywords de intención directa por estado.",
     "keywords": [
-     "abogados de inmigración",
-     "liliana jones",
-     "abogada de inmigración en español"
+     "abogado petición familiar",
+     "abogado para pedir a mi esposa",
+     "perdón migratorio abogado i-601a"
+    ]
+   },
+   {
+    "nombre": "FRAUDE MIGRATORIO → VAWA",
+    "tipo": "amber",
+    "precio": "Consulta inicial $100 USD",
+    "url": "lilianajones.com",
+    "roas_historico": "19% + 16% de los ingresos de oct. (VAWA + Fortalecimiento)",
+    "desc": "Fraude es la puerta de entrada a VAWA, pero cayó de 22 a 9 citas. Se refuerza con copy directo ('fraude', 'estafa') en Google y Meta y negativas para no pagar 'fraude de seguros'.",
+    "keywords": [
+     "notario me estafó inmigración",
+     "fraude migratorio abogado",
+     "estafa de notario inmigración"
     ]
    }
   ]
@@ -2345,6 +2365,14 @@ const DM = {
     "desc": "Son campañas de alcance: se miden por costo por 1,000 personas y frecuencia, no por CPA. Se mantienen con tope y se revisan con la regla de CPM de noviembre."
    },
    {
+    "tipo": "problem",
+    "tag": "🔴 Fraude en caída",
+    "metrica": "22 → 9 citas",
+    "metrica_cls": "bad",
+    "titulo": "Fraude es la puerta de entrada a VAWA y está cayendo",
+    "desc": "VAWA (19%) y Fortalecimiento VAWA (16%) sumaron 35% de los ingresos de octubre, y nacen de Fraude. Contenido más directo con 'fraude' y 'estafa' (reunión del 5 de noviembre)."
+   },
+   {
     "tipo": "neutral",
     "tag": "🟡 Frecuencia sin medir en el reporte",
     "metrica": "Falta dato",
@@ -2392,7 +2420,7 @@ const DM = {
      "Las pruebas no mezclan con campañas ganadoras",
      "Si un creativo gana, pasa a la campaña de WA o de Llamadas; si no, se apaga al día 3"
     ],
-    "estrategia": "Aquí se ensayan los ángulos por zona (NY · NJ · DC · FL · Michigan) antes de gastarles presupuesto grande"
+    "estrategia": "Aquí se ensayan los ángulos nuevos de Fraude y Peticiones por estado (IL · TX · FL · CA) antes de gastarles presupuesto grande"
    }
   ],
   "aud_titulo": "Segmentación <em>por servicio y por zona</em>",
@@ -2411,24 +2439,24 @@ const DM = {
    {
     "tipo": "retargeting",
     "label": "Zonas",
-    "nombre": "Núcleo IL · WI · IN + TX · CA",
+    "nombre": "IL · TX · FL · CA",
     "items": [
-     "Estados prioritarios por población y oficina",
-     "Segmentación geográfica por estado, un conjunto por zona",
-     "Se compara CPA por estado cada semana"
+     "Más del 95% de los contratos (reunión 5 nov.)",
+     "Un conjunto por estado para leer costo por cita",
+     "Michigan fuera; WI · IN solo con IL"
     ],
     "budget": "~25% del presupuesto de Meta"
    },
    {
     "tipo": "lookalike",
-    "label": "Pilotos",
-    "nombre": "NY · NJ · DC · FL y Michigan",
+    "label": "Motor de ingresos",
+    "nombre": "Peticiones y Fraude → VAWA",
     "items": [
-     "Asilo y defensa de deportación",
-     "Se prueban en la Sala de Pruebas antes de escalar",
-     "Si el CPA queda dentro del tope tras 7 días, entran a las campañas de conversión"
+     "Peticiones: 39% de los ingresos de oct. y mejor campaña de Meta",
+     "Fraude alimenta VAWA y Fortalecimiento VAWA (35%)",
+     "Nuevos ángulos de Fraude pasan por la Sala de Pruebas"
     ],
-    "budget": "~10% del presupuesto de Meta"
+    "budget": "prioridad en la Sala de Pruebas"
    }
   ],
   "copy_titulo": "Copies que <em>ya funcionan</em> — replicar el patrón",
@@ -2503,6 +2531,12 @@ const DM = {
     "actual": "$7.42",
     "meta": "≤$7.00",
     "label": "Con $8–$10K ≈1,080–1,350 resultados al CPR de octubre"
+   },
+   {
+    "metrica": "Llamadas de 60s+ (calidad)",
+    "actual": "293 (sep)",
+    "meta": "reporte mensual ↑",
+    "label": "Decisión de reunión: medir 60s además de 20s"
    },
    {
     "metrica": "Cita → contrato (Meta)",
@@ -2581,7 +2615,7 @@ const DM = {
     "semana": "Semana 2–3 · Probar por zona",
     "titulo": "Sala de pruebas",
     "acciones": [
-     "Lanzar ABO de $12–$15/día para NY · NJ · DC · FL y Michigan (máx. 2 creativos)",
+     "Lanzar ABO de $12–$15/día con ángulos directos de Fraude ('fraude', 'estafa') y Peticiones (máx. 2 creativos)",
      "Replicar el patrón ganador de Fraude Migratorio y VAWA en cada zona",
      "Pasar a la campaña principal solo lo que cumpla el CPA"
     ]
@@ -2681,14 +2715,14 @@ const DT = {
    "metrica": "Prueba de zona",
    "metrica_cls": "good",
    "titulo": "El canal sirve para probar mensajes por zona sin tocar Meta",
-   "desc": "Se corre un conjunto por zona (NY · NJ · DC · FL · Michigan) con el mismo guion para comparar CPA limpio."
+   "desc": "Se corre un conjunto por estado prioritario (IL · TX · FL · CA) con el mismo guion para comparar CPA limpio."
   }
  ],
  "struct_titulo": "Arquitectura <em>de campañas</em> en TikTok ($1,500)",
  "estructura": [
   {
    "emoji": "🎓",
-   "nombre": "1 · Educativo — Asilo y procesos en corte · NY · NJ · DC · FL (≈$350)",
+   "nombre": "1 · Educativo — Asilo y procesos en corte · FL · TX · CA (≈$350)",
    "grupos": [
     "Video 9:16 de 15–30 s, informativo: cómo funciona el proceso, qué esperar, qué preparar",
     "Audiencia 18+ (obligatorio); sin ofrecer consulta ni representación en el anuncio",
@@ -2717,13 +2751,13 @@ const DT = {
    "estrategia": "Base de comparación del plan; es el ángulo con mejor CPL en Meta ($5.17)"
   },
   {
-   "emoji": "📍",
-   "nombre": "4 · Michigan — mismo guion que la campaña 3 (≈$250)",
+   "emoji": "👨‍👩‍👧",
+   "nombre": "4 · Educativo — Peticiones familiares · IL · TX · FL · CA (≈$250)",
    "grupos": [
-    "Mismo video educativo para comparar zona",
-    "Revisión a 14 días"
+    "Cómo funciona una petición familiar, tiempos y documentos (informativo)",
+    "Audiencia 18+, sin ofrecer el servicio en el anuncio"
    ],
-   "estrategia": "Compara la zona piloto con Illinois"
+   "estrategia": "Acompaña al servicio que más factura"
   },
   {
    "emoji": "🎬",
@@ -3153,7 +3187,7 @@ const PROG = {
    [
     "ChatGPT Ads",
     "$750",
-    "Visa U y Residencia · WA ≤$40"
+    "Visa U y Peticiones · WA ≤$40"
    ],
    [
     "TikTok Ads",
@@ -3267,8 +3301,10 @@ const PROG = {
    "Meta reporta por separado conversaciones WA y llamadas de 20+ segundos, cada una con su costo.",
    "Google pasa de 15 a 7 campañas, cada una con $300–$500 al mes de referencia.",
    "Se pausan Visa Juvenil y Demanda en Corte Federal.",
-   "Pilotos por zona: asilo y deportación en NY · NJ · DC · FL, y Michigan.",
-   "Estados prioritarios: IL · WI · IN · TX · CA.",
+   "5 nov: estados prioritarios IL · TX · FL · CA (más del 95% de los contratos); Michigan sale.",
+   "5 nov: servicios de bajo valor (permisos de trabajo, ciudadanía) salen de la pauta y pasan a orgánico.",
+   "5 nov: Meta reporta también llamadas de 60s; ChatGPT evita la palabra 'legal' y prueba A/B de landing.",
+   "5 nov: etiquetar leads calificados en el CDM de MatixMedia y seguimiento formal de 30 días a quien no cierra en la consulta.",
    "Se revisan enlaces de llamada y agenda, y la campaña de sábados.",
    "Se evalúa subir listas de clientes y contratos para optimizar hacia los leads que cierran.",
    "TikTok pasa de prueba a canal activo con $1,500; ChatGPT Ads se concentra en lo que funciona."
@@ -3333,6 +3369,285 @@ const POL = {
  ],
  "fuente": "Fuentes: ads.tiktok.com/help/article/tiktok-ads-policy-other-products-and-services · tikadsuite.com (guía de cumplimiento para industrias reguladas). Información general, no asesoría legal."
 };
+const AUD = {
+ "titulo": "Auditoría por canal: <em>¿escalable y rentable</em> a 6 meses?",
+ "desc": "Criterio: un canal es rentable si su costo por contrato (CAC) es menor que lo que factura un contrato, y escalable si al subir presupuesto el CAC se mantiene. El único CAC medido completo es el de Meta en agosto. Falta el dato clave: cuánto factura en promedio un contrato por servicio.",
+ "cards": [
+  {
+   "tipo": "opportunity",
+   "tag": "✅ Meta · rentable y escalable, con condición",
+   "metrica": "CAC ≈$985",
+   "metrica_cls": "good",
+   "titulo": "Es el canal que paga la cuenta, pero el límite está en el embudo, no en el presupuesto",
+   "desc": "Agosto: $8,866.70 → 1,183 resultados → 41 citas → 9 contratos. Costo por cita $216; CAC $985. Solo 3.5% de los resultados llegan a cita: subir de $8,000 a $10,000 sin mejorar ese paso deja el CAC igual o peor (al escalar el CPR suele subir)."
+  },
+  {
+   "tipo": "problem",
+   "tag": "❌ Google · no rentable hoy",
+   "metrica": "$0.15 por cada $1",
+   "metrica_cls": "bad",
+   "titulo": "Abril–septiembre: ≈$26.9k invertidos frente a $3,950 en contratos",
+   "desc": "En agosto: 5 citas y 0 contratos con $4,538. La estrategia nueva ($2,500, 7 campañas, servicios que facturan) es una prueba de rentabilidad de 60 días, no una apuesta de escala. Con ≈$350 por campaña varias quedarán limitadas por presupuesto: se acepta, se prioriza calidad."
+  },
+  {
+   "tipo": "neutral",
+   "tag": "🟡 ChatGPT · sin prueba de contrato",
+   "metrica": "$46.96 por WA",
+   "metrica_cls": "mid",
+   "titulo": "Tráfico alto, conversión baja",
+   "desc": "Octubre: 749 visitas → 16 WA (2.1%). Septiembre había dado 16 WA con $425 ($26.5 por WA); octubre costó más por rechazos de anuncios con 'legal'. No hay contratos atribuidos aún: se evalúa a 60 días."
+  },
+  {
+   "tipo": "neutral",
+   "tag": "🟡 TikTok · mejor cierre, mayor riesgo",
+   "metrica": "29% cierre · política restringida",
+   "metrica_cls": "mid",
+   "titulo": "7 citas y 2 contratos en agosto, pero la política no permite anunciar servicios migratorios",
+   "desc": "Solo es escalable si TikTok aprueba la versión educativa. Si no, los $1,500 se mueven a Meta. Se mide 3 meses antes de decidir."
+  },
+  {
+   "tipo": "problem",
+   "tag": "🔴 El cuello de botella está después del lead",
+   "metrica": "3.5% resultado → cita",
+   "metrica_cls": "bad",
+   "titulo": "Las citas cayeron de 120 de promedio a 89 en septiembre, y octubre tuvo 30% menos",
+   "desc": "La mayoría de los contratos se firman en la primera consulta, y hoy no hay seguimiento formal a quien no cierra. El seguimiento de 30 días y el etiquetado de leads calificados en el CDM valen más que cualquier aumento de presupuesto."
+  },
+  {
+   "tipo": "problem",
+   "tag": "🔴 Dato faltante para medir rentabilidad",
+   "metrica": "Ingreso por contrato",
+   "metrica_cls": "bad",
+   "titulo": "Sin el valor promedio por contrato no se puede calcular el retorno real",
+   "desc": "Se necesita, por servicio (Peticiones, VAWA, Fortalecimiento VAWA, Visa U, Asilo, Fraude): honorario promedio y lo cobrado en los primeros 90 días. Con eso cada canal tiene su CAC máximo permitido."
+  }
+ ],
+ "hallazgos": [
+  [
+   "Michigan seguía en la estrategia como piloto en Google, Meta y TikTok",
+   "Se sacó de los tres canales (decisión del 5 de noviembre: baja población inmigrante, no santuario)"
+  ],
+  [
+   "Zonas dispersas (NY · NJ · DC · FL + MI) con ≈$350 por campaña",
+   "Concentradas en IL · TX · FL · CA (más del 95% de los contratos); NY · NJ · DC pasa a fase 2 con criterio"
+  ],
+  [
+   "El reparto de Google no seguía los ingresos",
+   "Peticiones (39% de ingresos) y Fraude (puerta de VAWA, 35%) suben; Revisión de Casos de residencia baja"
+  ],
+  [
+   "'Análisis Residencia' incluía renovación de green card y ajuste",
+   "Renombrada a Revisión de Casos (segunda opinión); servicios de bajo valor fuera de la pauta"
+  ],
+  [
+   "Fraude sin negativas de otros fraudes",
+   "Negativas 'fraude de seguros', 'bancario', 'con tarjeta'; copy directo con 'fraude' y 'estafa'"
+  ],
+  [
+   "Meta solo medía llamadas de 20s",
+   "Se suma llamadas de 60s como KPI de calidad"
+  ],
+  [
+   "ChatGPT perdía anuncios por la palabra 'legal'",
+   "Títulos sin 'legal', A/B de landing, 'Plan Escudo Migrante' pausado"
+  ],
+  [
+   "Ningún canal tenía regla para cortar o escalar a 6 meses",
+   "Puertas de decisión por canal (ver abajo)"
+  ]
+ ],
+ "proy_cols": [
+  "Presupuesto Meta",
+  "Resultados",
+  "Resultado→cita",
+  "Citas",
+  "Contratos",
+  "Costo/cita",
+  "CAC"
+ ],
+ "proy": [
+  [
+   "$8,000",
+   "1,078",
+   "3.5%",
+   "38",
+   "8.3",
+   "$212",
+   "$964"
+  ],
+  [
+   "$8,000",
+   "1,078",
+   "5.0%",
+   "54",
+   "11.9",
+   "$148",
+   "$675"
+  ],
+  [
+   "$10,000",
+   "1,348",
+   "3.5%",
+   "47",
+   "10.4",
+   "$212",
+   "$964"
+  ],
+  [
+   "$10,000",
+   "1,348",
+   "5.0%",
+   "67",
+   "14.8",
+   "$148",
+   "$675"
+  ]
+ ],
+ "proy_nota": "Supuestos: CPR de octubre ($7.42) y cierre de agosto (22%). Con el embudo actual, pasar de $8,000 a $10,000 suma ≈2 contratos con el mismo CAC; subir el paso resultado→cita de 3.5% a 5% baja el CAC ≈30% sin gastar un dólar más. Si el CPR sube al escalar, el CAC sube en la misma proporción.",
+ "plan_cols": [
+  "Mes",
+  "Google",
+  "Meta",
+  "ChatGPT",
+  "TikTok",
+  "Total",
+  "Qué se decide"
+ ],
+ "plan": [
+  [
+   "Dic",
+   "$2,500",
+   "$8,000",
+   "$750",
+   "$0–1,500",
+   "$11,250–12,750",
+   "Medición: citas y contratos por canal en el CDM; seguimiento de 30 días; validar TikTok. Concentrar gasto en las 2 primeras semanas del mes (caída recurrente al cierre)"
+  ],
+  [
+   "Ene",
+   "$2,500",
+   "$8,000–8,800",
+   "$750",
+   "$0–1,500",
+   "≤$13,550",
+   "Meta sube 10% solo si el costo por cita ≤$216. Cierre de mes: puerta 1 (Google y ChatGPT, 60 días)"
+  ],
+  [
+   "Feb",
+   "$800–2,500",
+   "$8,800–9,600",
+   "$0–750",
+   "$0–1,500",
+   "≤$14,350",
+   "Lo que Google o ChatGPT liberen va a Meta sin pasar de $10,000; lo demás no se gasta"
+  ],
+  [
+   "Mar",
+   "$800–2,500",
+   "$9,600–10,000",
+   "$0–750",
+   "$0–1,500",
+   "≤$14,750",
+   "Puerta 2: TikTok (3 meses). Asilo NY · NJ · DC entra solo si cumple criterio"
+  ],
+  [
+   "Abr",
+   "según puertas",
+   "$10,000",
+   "según puertas",
+   "según puertas",
+   "≤$14,750",
+   "Revisión trimestral de CAC por canal y servicio con el ingreso por contrato"
+  ],
+  [
+   "May",
+   "según puertas",
+   "$10,000",
+   "según puertas",
+   "según puertas",
+   "≤$14,750",
+   "Reforecast del segundo semestre; más de $14,750 solo con aprobación y CAC probado"
+  ]
+ ],
+ "puertas": [
+  {
+   "color": "red",
+   "semana": "Puerta 1 · fin de enero (60 días)",
+   "titulo": "Google",
+   "acciones": [
+    "Sigue en $2,500 si suma ≥5 contratos en dic–ene (CAC ≤$1,000, similar a Meta)",
+    "Si no: baja a $800/mes (marca + Peticiones + Fraude en exacta) y $1,700 pasan a Meta",
+    "Si la campaña de marca sola cumple, se conserva aunque el resto se apague"
+   ]
+  },
+  {
+   "color": "amber",
+   "semana": "Puerta 1 · fin de enero (60 días)",
+   "titulo": "ChatGPT",
+   "acciones": [
+    "Sigue si WA ≤$40 y ≥2 contratos en dic–ene",
+    "Si no: se pausa y los $750 van a Meta"
+   ]
+  },
+  {
+   "color": "amber",
+   "semana": "Puerta 2 · fin de marzo (3 meses)",
+   "titulo": "TikTok",
+   "acciones": [
+    "Solo corre si TikTok aprueba la versión educativa en diciembre",
+    "Sigue si el CAC ≤ CAC de Meta; si no, $1,500 a Meta"
+   ]
+  },
+  {
+   "color": "green",
+   "semana": "Continuo · cada 2 semanas",
+   "titulo": "Meta",
+   "acciones": [
+    "Escala 15–20% cada 48–72 h solo si costo por cita ≤$216 y CPA dentro de topes",
+    "Si el paso resultado→cita no mejora en enero, Meta se queda en $8,000 y el foco va al seguimiento",
+    "Techo de $10,000 hasta tener ingreso por contrato y CAC probado"
+   ]
+  }
+ ],
+ "kpis": [
+  {
+   "metrica": "CAC por canal (costo por contrato)",
+   "actual": "Meta $985 (ago)",
+   "meta": "≤ ingreso por contrato",
+   "label": "KPI que decide escalar o cortar"
+  },
+  {
+   "metrica": "Costo por cita",
+   "actual": "Meta $216 · Google $908",
+   "meta": "≤$180 Meta",
+   "label": "Datos de agosto"
+  },
+  {
+   "metrica": "Resultado → cita (Meta)",
+   "actual": "3.5%",
+   "meta": "5%",
+   "label": "Seguimiento 30 días y respuesta rápida"
+  },
+  {
+   "metrica": "Cita → contrato",
+   "actual": "22% Meta · 29% TikTok",
+   "meta": "≥22%",
+   "label": "Agosto"
+  },
+  {
+   "metrica": "Citas al mes (todos los canales)",
+   "actual": "89 (sep)",
+   "meta": "≥120",
+   "label": "Promedio anual previo"
+  },
+  {
+   "metrica": "Ingreso por contrato por servicio",
+   "actual": "sin dato",
+   "meta": "reportar mensual",
+   "label": "Necesario para medir rentabilidad"
+  }
+ ]
+};
 function renderProg(){
   document.getElementById('p-t1').innerHTML=PROG.presupuesto.titulo;
   document.getElementById('p-budget').innerHTML='<table><thead><tr><th>Canal</th><th>Presupuesto</th><th>Cómo se usa</th></tr></thead><tbody>'+PROG.presupuesto.filas.map(r=>`<tr><td class="name">${r[0]}</td><td class="mono"><strong>${r[1]}</strong></td><td>${r[2]}</td></tr>`).join('')+'</tbody></table>';
@@ -3341,6 +3656,16 @@ function renderProg(){
   document.getElementById('p-t3').innerHTML=PROG.correcciones.titulo;
   document.getElementById('p-fix').innerHTML=PROG.correcciones.items.map(t=>`<div class="tree-group">${t}</div>`).join('');
   document.getElementById('p-note').textContent=PROG.nota;
+    const tb=(cols,rows,cls)=>'<table><thead><tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((c,i)=>`<td class="${i==0?'name':(cls&&cls(i))||''}">${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>';
+    document.getElementById('a-t').innerHTML=AUD.titulo;document.getElementById('a-d').textContent=AUD.desc;
+    document.getElementById('a-cards').innerHTML=renderDxCards(AUD.cards);
+    document.getElementById('a-h').innerHTML=tb(['Hallazgo','Corrección aplicada'],AUD.hallazgos);
+    document.getElementById('a-p').innerHTML=tb(AUD.proy_cols,AUD.proy,i=>'mono');
+    document.getElementById('a-pn').textContent=AUD.proy_nota;
+    document.getElementById('a-plan').innerHTML=tb(AUD.plan_cols,AUD.plan,i=>i<6?'mono':'');
+    document.getElementById('a-g').innerHTML=renderTimeline(AUD.puertas);
+    document.getElementById('a-k').innerHTML=renderTargets(AUD.kpis);
+  
   document.getElementById('pol-t').innerHTML=POL.titulo;document.getElementById('pol-d').textContent=POL.desc;document.getElementById('pol-i').innerHTML=renderPixel(POL.items);document.getElementById('pol-f').textContent=POL.fuente;
 }
 
