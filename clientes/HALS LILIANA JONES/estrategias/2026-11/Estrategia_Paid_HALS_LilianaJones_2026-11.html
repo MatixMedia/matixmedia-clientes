@@ -401,7 +401,7 @@
   <div class="nav-inner">
     <div class="nav-brand" id="navBrand">MatixMedia · Estrategia</div>
     <div class="nav-item" onclick="goTo('s0')">00 Presupuesto</div>
-    <div class="nav-item" onclick="goTo('s0b')">00b Auditoría</div>
+    <div class="nav-item" onclick="goTo('s0b')">00b Ruta 6 meses</div>
     <div class="nav-item active" onclick="goTo('s1')">01 Diagnóstico</div>
     <div class="nav-item" onclick="goTo('s2')">02 Estructura</div>
     <div class="nav-item" onclick="goTo('s3')">03 Keywords</div>
@@ -455,20 +455,21 @@
     <div class="section-desc" id="p-note" style="margin-top:16px"></div>
   </div>
 
-  <!-- 00b AUDITORÍA -->
+  <!-- 00b RUTA -->
   <div class="section" id="s0b">
-    <div class="section-label">00b · Auditoría y plan a 6 meses</div>
+    <div class="section-label">00b · Ruta y auditoría a 6 meses</div>
     <div class="section-title" id="a-t"></div>
     <div class="section-desc" id="a-d"></div>
     <div class="diagnosis-grid" id="a-cards"></div>
-    <div class="section-title" style="margin-top:36px">Hallazgos <em>y correcciones</em> aplicadas</div>
-    <div class="table-wrap" id="a-h"></div>
-    <div class="section-title" style="margin-top:36px">Meta: <em>escalar presupuesto o escalar el embudo</em></div>
-    <div class="table-wrap" id="a-p"></div>
-    <div class="section-desc" id="a-pn" style="margin-top:12px"></div>
-    <div class="section-title" style="margin-top:36px">Plan de presupuesto <em>dic 2026 – may 2027</em></div>
+    <div class="section-title" style="margin-top:36px">Un rol <em>por canal</em></div>
+    <div class="table-wrap" id="a-roles"></div>
+    <div class="section-title" style="margin-top:36px">Google: <em>prueba de escala</em> dic 2026 – may 2027</div>
+    <div class="table-wrap" id="a-gplan"></div>
+    <div class="section-desc" id="a-gn" style="margin-top:12px"></div>
+    <div class="section-title" style="margin-top:36px">Presupuesto total <em>mes a mes</em></div>
     <div class="table-wrap" id="a-plan"></div>
-    <div class="section-title" style="margin-top:36px">Puertas de decisión <em>por canal</em></div>
+    <div class="section-desc" id="a-pn" style="margin-top:12px"></div>
+    <div class="section-title" style="margin-top:36px">Puertas de los <em>otros canales</em></div>
     <div class="timeline" id="a-g"></div>
     <div class="section-title" style="margin-top:36px">KPIs que deciden <em>la escala</em></div>
     <div class="targets-grid" id="a-k"></div>
@@ -843,7 +844,7 @@ const D = {
  "base_datos": "Reportes mensuales Ene–Oct 2026, informe especial Ene–Nov y reuniones de seguimiento (jul–oct)",
  "header": {
   "titulo": "Estrategia Google Ads",
-  "subtitulo_italic": "$2,500 al mes · 7 campañas · cada dólar medido hasta el contrato",
+  "subtitulo_italic": "Canal principal de respuesta · prueba de escala a 6 meses",
   "sub": "Basada en reportes reales Ene–Oct 2026 · Nov 2026",
   "kpis": [
    {
@@ -1389,7 +1390,7 @@ const D = {
    },
    {
     "tipo": "tiktok",
-    "titulo": "ChatGPT Ads · cobertura de intención alta ($750/mes)",
+    "titulo": "ChatGPT · recomendación en IA, de la mano con SEO ($750/mes en anuncios)",
     "desc": "Octubre: 368 clics, CTR 1.14%, 749 visitas al sitio y 16 conversaciones WA a $46.96 (2.1% de visita a WA). El costo subió por rechazos de anuncios con la palabra 'legal'. Residencia dio 14 WA a $39.04 y Visa U fue el más barato ($15.07 por WA).",
     "campanas": [
      {
@@ -2265,13 +2266,13 @@ const DM = {
  "cliente": "HALS · Liliana Jones",
  "header": {
   "titulo": "Estrategia Meta Ads",
-  "subtitulo_italic": "$8,000–$10,000 · disciplina de CPA y estructura limpia",
+  "subtitulo_italic": "Autoridad: la abogada al frente, con el CPA bajo control",
   "sub": "Basada en reportes Ene–Oct 2026 · Nov 2026",
   "kpis": [
    {
-    "label": "Presupuesto nov.",
-    "val": "$8–10K",
-    "sub": "base $8,000 · escala hasta $10,000",
+    "label": "Presupuesto",
+    "val": "$8,000",
+    "sub": "incluye $1,400 de autoridad",
     "cls": ""
    },
    {
@@ -2365,6 +2366,14 @@ const DM = {
     "desc": "Son campañas de alcance: se miden por costo por 1,000 personas y frecuencia, no por CPA. Se mantienen con tope y se revisan con la regla de CPM de noviembre."
    },
    {
+    "tipo": "opportunity",
+    "tag": "🟢 El contenido es el motor",
+    "metrica": "Autoridad",
+    "metrica_cls": "good",
+    "titulo": "Cuando Liliana produce contenido, los anuncios rinden",
+    "desc": "Reunión del 2 de octubre: la caída de citas de VAWA y Asilo coincidió con menos contenido de la abogada; Fraude creció en TikTok con un video de 3 minutos; el formato de noticias en carrusel sumó cerca de 600 seguidores. Meta pasa a ser el canal de autoridad: la abogada al frente y retargeting de quien la ve."
+   },
+   {
     "tipo": "problem",
     "tag": "🔴 Fraude en caída",
     "metrica": "22 → 9 citas",
@@ -2385,7 +2394,7 @@ const DM = {
   "estructura": [
    {
     "emoji": "💬",
-    "nombre": "efe | Ventas | WA | All Services — NON SOCIALS (≈$3,400 base)",
+    "nombre": "efe | Ventas | WA | All Services — NON SOCIALS (≈$3,000 base)",
     "grupos": [
      "Objetivo: conversaciones de WhatsApp iniciadas · oct $3,348.61 → 615 conv. a $5.44",
      "Máximo 3 a 5 anuncios activos por conjunto; los anuncios sobrantes se pausan",
@@ -2395,7 +2404,7 @@ const DM = {
    },
    {
     "emoji": "📞",
-    "nombre": "efe | Ventas | Llamadas | Todos los servicios (≈$3,800 base)",
+    "nombre": "efe | Ventas | Llamadas | Todos los servicios (≈$3,300 base)",
     "grupos": [
      "Objetivo: llamadas de 20+ segundos · oct $4,801.20 → 594 resultados a $8.08",
      "Máximo 3 a 5 anuncios activos por conjunto",
@@ -2404,13 +2413,14 @@ const DM = {
     "estrategia": "Tope rentable $10.00; guillotina: pausar anuncio que gaste $20–$27 sin resultados"
    },
    {
-    "emoji": "👁️",
-    "nombre": "Reconocimiento (≈$500)",
+    "emoji": "🎙️",
+    "nombre": "Autoridad — la abogada al frente · IL · TX · FL · CA (≈$1,400; absorbe Reconocimiento y TRF-PRFL-IG)",
     "grupos": [
-     "Alcance de marca y servicios de mayor demanda",
-     "Medir por costo por 1,000 personas ($2.00–$3.20 ideal; tope $3.50) y frecuencia (2.20–2.50)"
+     "Videos de Liliana: noticias migratorias explicadas, preguntas frecuentes, 'No somos notarios', cómo revisar un caso",
+     "Objetivo: reproducciones de video (ThruPlay) y alcance; costo por 1,000 alcanzadas $2.00–$3.20 (tope $3.50), frecuencia 2.20–2.50",
+     "Quien ve 50% o más del video pasa a las campañas de WA y Llamadas (público personalizado de 30 días)"
     ],
-    "estrategia": "CTR sano 0.60%–1.20%. Si el CPM supera el tope, se rota la creatividad antes de subir presupuesto"
+    "estrategia": "La autoridad baja el costo de las campañas de conversión. Se mide por costo por ThruPlay, vistas al 75% y CPA del público de retargeting frente al frío"
    },
    {
     "emoji": "🧪",
@@ -2488,7 +2498,7 @@ const DM = {
     "path": "Enviar WhatsApp / Agendar consulta"
    }
   ],
-  "kpi_titulo": "KPIs de Meta: <em>tabla maestra de costos medios y topes</em>",
+  "kpi_titulo": "KPIs de Meta: <em>tabla maestra de costos medios y topes</em> + autoridad",
   "targets": [
    {
     "metrica": "CPA por conversación (WA)",
@@ -2530,7 +2540,13 @@ const DM = {
     "metrica": "CPR global de la cuenta",
     "actual": "$7.42",
     "meta": "≤$7.00",
-    "label": "Con $8–$10K ≈1,080–1,350 resultados al CPR de octubre"
+    "label": "Con $8,000 ≈1,080 resultados al CPR de octubre"
+   },
+   {
+    "metrica": "Autoridad: costo por ThruPlay y vistas al 75%",
+    "actual": "línea base dic.",
+    "meta": "mejorar mes a mes",
+    "label": "Y CPA del retargeting menor que el del público frío"
    },
    {
     "metrica": "Llamadas de 60s+ (calidad)",
@@ -2623,10 +2639,10 @@ const DM = {
    {
     "color": "green",
     "semana": "Semana 4+ · Escalar",
-    "titulo": "De $8,000 hacia $10,000",
+    "titulo": "Mover presupuesto hacia lo que gana",
     "acciones": [
-     "Subir 15%–20% cada 48–72 h solo en campañas con CPA dentro del ideal",
-     "Si el CPA supera el tope, se frena el aumento",
+     "Dentro de los $8,000, subir 15%–20% cada 48–72 h los conjuntos con CPA dentro del ideal y bajar los que superan el tope",
+     "Revisar si el retargeting de quienes vieron los videos de autoridad cuesta menos que el público frío",
      "Reunión mensual para cruzar citas y contratos"
     ]
    }
@@ -2640,7 +2656,7 @@ const DM = {
 const DT = {
  "header": {
   "titulo": "Estrategia TikTok Ads",
-  "subtitulo_italic": "Activación en noviembre · $1,500",
+  "subtitulo_italic": "Canal nuevo de descubrimiento · dentro de la política",
   "sub": "Video-first · Conversaciones WA y citas · Nov 2026",
   "kpis": [
    {
@@ -2662,9 +2678,9 @@ const DT = {
     "cls": "gold"
    },
    {
-    "label": "Hook Rate objetivo",
-    "val": ">30%",
-    "sub": "referencia",
+    "label": "Rol del canal",
+    "val": "Descubrir",
+    "sub": "alcance, seguidores, búsquedas de marca",
     "cls": ""
    },
    {
@@ -3172,32 +3188,32 @@ function renderTimeline(items) {
 
 const PROG = {
  "presupuesto": {
-  "titulo": "Presupuesto por canal — <em>noviembre 2026</em>",
+  "titulo": "Un rol por canal — <em>presupuesto noviembre 2026</em>",
   "filas": [
    [
-    "Google Ads",
-    "$2,500",
-    "7 campañas por zona/servicio · CPL ≤$15"
+    "Google Ads · respuesta (principal)",
+    "$2,500 → $4,500",
+    "prueba de escala a 6 meses: +$500/mes si cumple su puerta"
    ],
    [
-    "Meta Ads",
-    "$8,000 – $10,000",
-    "base $8,000; sube a $10,000 por escalamiento de 15–20% cada 48–72 h"
+    "Meta Ads · autoridad",
+    "$8,000",
+    "conversión (WA y llamadas) + $1,400 de autoridad con la abogada al frente"
    ],
    [
-    "ChatGPT Ads",
+    "TikTok Ads · descubrimiento",
+    "$0 – $1,500",
+    "contenido educativo dentro de la política; si TikTok no aprueba, pasa a Meta"
+   ],
+   [
+    "ChatGPT · recomendación en IA",
     "$750",
-    "Visa U y Peticiones · WA ≤$40"
-   ],
-   [
-    "TikTok Ads",
-    "$1,500",
-    "4 campañas + anuncio de marca"
+    "anuncios como puente mientras el SEO construye la recomendación orgánica"
    ],
    [
     "Total",
-    "$12,750 – $14,750",
-    "octubre invirtió $12,589 en Google, Meta y ChatGPT (Google ya con 7 campañas)"
+    "$12,750 → $14,750",
+    "dentro del rango confirmado; crece solo con el escalón de Google"
    ]
   ]
  },
@@ -3370,281 +3386,267 @@ const POL = {
  "fuente": "Fuentes: ads.tiktok.com/help/article/tiktok-ads-policy-other-products-and-services · tikadsuite.com (guía de cumplimiento para industrias reguladas). Información general, no asesoría legal."
 };
 const AUD = {
- "titulo": "Auditoría por canal: <em>¿escalable y rentable</em> a 6 meses?",
- "desc": "Criterio: un canal es rentable si su costo por contrato (CAC) es menor que lo que factura un contrato, y escalable si al subir presupuesto el CAC se mantiene. El único CAC medido completo es el de Meta en agosto. Falta el dato clave: cuánto factura en promedio un contrato por servicio.",
+ "titulo": "Ruta a 6 meses: <em>un rol por canal</em>",
+ "desc": "Google responde a quien ya está buscando y es el canal principal; Meta construye autoridad con la abogada al frente; TikTok abre descubrimiento dentro de su política; ChatGPT y SEO trabajan juntos para que la IA recomiende a Liliana Jones. Google se plantea como prueba de escala de 6 meses: sube por escalones solo cuando cumple su puerta.",
  "cards": [
   {
    "tipo": "opportunity",
-   "tag": "✅ Meta · rentable y escalable, con condición",
-   "metrica": "CAC ≈$985",
+   "tag": "🔎 Google · respuesta · principal",
+   "metrica": "$2,500 → $4,500",
    "metrica_cls": "good",
-   "titulo": "Es el canal que paga la cuenta, pero el límite está en el embudo, no en el presupuesto",
-   "desc": "Agosto: $8,866.70 → 1,183 resultados → 41 citas → 9 contratos. Costo por cita $216; CAC $985. Solo 3.5% de los resultados llegan a cita: subir de $8,000 a $10,000 sin mejorar ese paso deja el CAC igual o peor (al escalar el CPR suele subir)."
+   "titulo": "Prueba de escala de 6 meses por escalones de $500",
+   "desc": "La gente busca y encuentra. La estructura anterior devolvía ≈$0.15 por cada $1 (abr–sep, ≈$26.9k frente a $3,950 en contratos); la nueva arranca con servicios que facturan, estados que cierran y medición hasta el contrato. Cada escalón exige cumplir su puerta; si falla, el presupuesto se mantiene y, si falla dos meses, vuelve al escalón anterior."
   },
   {
-   "tipo": "problem",
-   "tag": "❌ Google · no rentable hoy",
-   "metrica": "$0.15 por cada $1",
-   "metrica_cls": "bad",
-   "titulo": "Abril–septiembre: ≈$26.9k invertidos frente a $3,950 en contratos",
-   "desc": "En agosto: 5 citas y 0 contratos con $4,538. La estrategia nueva ($2,500, 7 campañas, servicios que facturan) es una prueba de rentabilidad de 60 días, no una apuesta de escala. Con ≈$350 por campaña varias quedarán limitadas por presupuesto: se acepta, se prioriza calidad."
-  },
-  {
-   "tipo": "neutral",
-   "tag": "🟡 ChatGPT · sin prueba de contrato",
-   "metrica": "$46.96 por WA",
-   "metrica_cls": "mid",
-   "titulo": "Tráfico alto, conversión baja",
-   "desc": "Octubre: 749 visitas → 16 WA (2.1%). Septiembre había dado 16 WA con $425 ($26.5 por WA); octubre costó más por rechazos de anuncios con 'legal'. No hay contratos atribuidos aún: se evalúa a 60 días."
+   "tipo": "opportunity",
+   "tag": "🎙️ Meta · autoridad",
+   "metrica": "CAC ≈$985 (ago)",
+   "metrica_cls": "good",
+   "titulo": "La abogada al frente para que las campañas de conversión cuesten menos",
+   "desc": "Meta ya es el canal que más contratos trae (agosto: 41 citas, 9 contratos). $1,400 de los $8,000 pasan a autoridad: videos de Liliana con noticias, preguntas y revisión de casos, y retargeting de quien los ve hacia WhatsApp y llamadas."
   },
   {
    "tipo": "neutral",
-   "tag": "🟡 TikTok · mejor cierre, mayor riesgo",
-   "metrica": "29% cierre · política restringida",
+   "tag": "🎬 TikTok · descubrimiento",
+   "metrica": "29% cierre (ago)",
    "metrica_cls": "mid",
-   "titulo": "7 citas y 2 contratos en agosto, pero la política no permite anunciar servicios migratorios",
-   "desc": "Solo es escalable si TikTok aprueba la versión educativa. Si no, los $1,500 se mueven a Meta. Se mide 3 meses antes de decidir."
+   "titulo": "Canal nuevo para llegar a quien todavía no busca",
+   "desc": "Contenido educativo dentro de la política (los anuncios de servicios migratorios no están permitidos). Se mide por alcance, seguidores, visitas al perfil y aumento de búsquedas de 'liliana jones', no por CPA directo."
+  },
+  {
+   "tipo": "neutral",
+   "tag": "🤖 ChatGPT · recomendación en IA",
+   "metrica": "$46.96 por WA (oct)",
+   "metrica_cls": "mid",
+   "titulo": "Que la IA recomiende a Liliana Jones, de la mano con SEO",
+   "desc": "Los anuncios ($750) son un puente. La recomendación orgánica depende del SEO: hoy el sitio no tiene datos estructurados ni H1 en el inicio y el último artículo del blog es de marzo de 2025 (auditoría SEO del 5 de noviembre)."
   },
   {
    "tipo": "problem",
    "tag": "🔴 El cuello de botella está después del lead",
    "metrica": "3.5% resultado → cita",
    "metrica_cls": "bad",
-   "titulo": "Las citas cayeron de 120 de promedio a 89 en septiembre, y octubre tuvo 30% menos",
-   "desc": "La mayoría de los contratos se firman en la primera consulta, y hoy no hay seguimiento formal a quien no cierra. El seguimiento de 30 días y el etiquetado de leads calificados en el CDM valen más que cualquier aumento de presupuesto."
+   "titulo": "Ningún canal escala si el lead no llega a cita",
+   "desc": "Las citas bajaron de 120 de promedio a 89 en septiembre. La mayoría de los contratos se firma en la primera consulta: el seguimiento de 30 días y el etiquetado de leads en el CDM son condición para cualquier escalón."
   },
   {
    "tipo": "problem",
-   "tag": "🔴 Dato faltante para medir rentabilidad",
+   "tag": "🔴 Dato faltante",
    "metrica": "Ingreso por contrato",
    "metrica_cls": "bad",
-   "titulo": "Sin el valor promedio por contrato no se puede calcular el retorno real",
-   "desc": "Se necesita, por servicio (Peticiones, VAWA, Fortalecimiento VAWA, Visa U, Asilo, Fraude): honorario promedio y lo cobrado en los primeros 90 días. Con eso cada canal tiene su CAC máximo permitido."
+   "titulo": "Sin el valor promedio por contrato no se puede fijar el CAC máximo",
+   "desc": "Se necesita por servicio (Peticiones, VAWA, Fortalecimiento VAWA, Visa U, Asilo, Fraude): honorario promedio y lo cobrado en 90 días."
   }
  ],
- "hallazgos": [
+ "roles_cols": [
+  "Canal",
+  "Rol",
+  "Presupuesto",
+  "KPI principal",
+  "Señal para escalar"
+ ],
+ "roles": [
   [
-   "Michigan seguía en la estrategia como piloto en Google, Meta y TikTok",
-   "Se sacó de los tres canales (decisión del 5 de noviembre: baja población inmigrante, no santuario)"
+   "Google",
+   "Respuesta (principal)",
+   "$2,500 → $4,500",
+   "Contratos al mes y costo por cita",
+   "Campañas limitadas por presupuesto con costo por cita en meta"
   ],
   [
-   "Zonas dispersas (NY · NJ · DC · FL + MI) con ≈$350 por campaña",
-   "Concentradas en IL · TX · FL · CA (más del 95% de los contratos); NY · NJ · DC pasa a fase 2 con criterio"
+   "Meta",
+   "Autoridad",
+   "$8,000 (incl. $1,400 de autoridad)",
+   "Costo por cita y CPA de retargeting",
+   "El retargeting de vistas cuesta menos que el público frío"
   ],
   [
-   "El reparto de Google no seguía los ingresos",
-   "Peticiones (39% de ingresos) y Fraude (puerta de VAWA, 35%) suben; Revisión de Casos de residencia baja"
+   "TikTok",
+   "Descubrimiento",
+   "$0 – $1,500",
+   "Alcance, seguidores, búsquedas de marca",
+   "Política aprobada y crecimiento de búsquedas de 'liliana jones'"
   ],
   [
-   "'Análisis Residencia' incluía renovación de green card y ajuste",
-   "Renombrada a Revisión de Casos (segunda opinión); servicios de bajo valor fuera de la pauta"
-  ],
-  [
-   "Fraude sin negativas de otros fraudes",
-   "Negativas 'fraude de seguros', 'bancario', 'con tarjeta'; copy directo con 'fraude' y 'estafa'"
-  ],
-  [
-   "Meta solo medía llamadas de 20s",
-   "Se suma llamadas de 60s como KPI de calidad"
-  ],
-  [
-   "ChatGPT perdía anuncios por la palabra 'legal'",
-   "Títulos sin 'legal', A/B de landing, 'Plan Escudo Migrante' pausado"
-  ],
-  [
-   "Ningún canal tenía regla para cortar o escalar a 6 meses",
-   "Puertas de decisión por canal (ver abajo)"
+   "ChatGPT + SEO",
+   "Recomendación en IA",
+   "$750 en anuncios",
+   "% de preguntas de prueba donde aparece Liliana Jones",
+   "Aparición creciente y WA ≤$40"
   ]
  ],
- "proy_cols": [
-  "Presupuesto Meta",
-  "Resultados",
-  "Resultado→cita",
-  "Citas",
-  "Contratos",
-  "Costo/cita",
-  "CAC"
+ "g_cols": [
+  "Mes",
+  "Presupuesto Google",
+  "Fase",
+  "Puerta para subir al siguiente escalón"
  ],
- "proy": [
+ "g_plan": [
   [
-   "$8,000",
-   "1,078",
-   "3.5%",
-   "38",
-   "8.3",
-   "$212",
-   "$964"
+   "Dic",
+   "$2,500",
+   "1 · Base y medición",
+   "Todas las conversiones activas (incluido el formulario); citas y contratos de Google etiquetados en el CDM; importación de contratos"
   ],
   [
-   "$8,000",
-   "1,078",
-   "5.0%",
-   "54",
-   "11.9",
-   "$148",
-   "$675"
+   "Ene",
+   "$2,500",
+   "1 · Base y medición",
+   "Costo por conversión ≤$16, ≥10 citas al mes desde Google y ≥2 contratos en dic–ene"
   ],
   [
-   "$10,000",
-   "1,348",
-   "3.5%",
-   "47",
-   "10.4",
-   "$212",
-   "$964"
+   "Feb",
+   "$3,000",
+   "2 · Escala controlada",
+   "El +$500 va a las campañas limitadas por presupuesto con mejor costo por cita. Puerta: costo por conversión ≤$17 y ≥3 contratos en el mes"
   ],
   [
-   "$10,000",
-   "1,348",
-   "5.0%",
-   "67",
-   "14.8",
-   "$148",
-   "$675"
+   "Mar",
+   "$3,500",
+   "2 · Escala controlada",
+   "Puja por CPA objetivo en las campañas con ≥30 conversiones al mes. Puerta: ≥15 citas y ≥3 contratos en el mes"
+  ],
+  [
+   "Abr",
+   "$4,000",
+   "3 · Expansión",
+   "Asilo entra en NY · NJ · DC; keywords de las páginas nuevas del SEO. Puerta: CAC de Google ≤ CAC de Meta"
+  ],
+  [
+   "May",
+   "$4,500",
+   "3 · Expansión",
+   "Puerta: ≥5 contratos al mes. Si se cumple, Google queda como canal principal para el segundo semestre"
   ]
  ],
- "proy_nota": "Supuestos: CPR de octubre ($7.42) y cierre de agosto (22%). Con el embudo actual, pasar de $8,000 a $10,000 suma ≈2 contratos con el mismo CAC; subir el paso resultado→cita de 3.5% a 5% baja el CAC ≈30% sin gastar un dólar más. Si el CPR sube al escalar, el CAC sube en la misma proporción.",
+ "g_nota": "Regla de la prueba: si una puerta no se cumple, el presupuesto se mantiene un mes; si falla dos meses seguidos, vuelve al escalón anterior. Las metas de citas y contratos son propuestas y se ajustan cuando llegue el ingreso por contrato.",
  "plan_cols": [
   "Mes",
   "Google",
   "Meta",
-  "ChatGPT",
   "TikTok",
-  "Total",
-  "Qué se decide"
+  "ChatGPT",
+  "Total"
  ],
  "plan": [
   [
    "Dic",
    "$2,500",
    "$8,000",
-   "$750",
    "$0–1,500",
-   "$11,250–12,750",
-   "Medición: citas y contratos por canal en el CDM; seguimiento de 30 días; validar TikTok. Concentrar gasto en las 2 primeras semanas del mes (caída recurrente al cierre)"
+   "$750",
+   "$11,250–12,750"
   ],
   [
    "Ene",
    "$2,500",
-   "$8,000–8,800",
+   "$8,000",
+   "$1,500",
    "$750",
-   "$0–1,500",
-   "≤$13,550",
-   "Meta sube 10% solo si el costo por cita ≤$216. Cierre de mes: puerta 1 (Google y ChatGPT, 60 días)"
+   "$12,750"
   ],
   [
    "Feb",
-   "$800–2,500",
-   "$8,800–9,600",
-   "$0–750",
-   "$0–1,500",
-   "≤$14,350",
-   "Lo que Google o ChatGPT liberen va a Meta sin pasar de $10,000; lo demás no se gasta"
+   "$3,000",
+   "$8,000",
+   "$1,500",
+   "$750",
+   "$13,250"
   ],
   [
    "Mar",
-   "$800–2,500",
-   "$9,600–10,000",
-   "$0–750",
-   "$0–1,500",
-   "≤$14,750",
-   "Puerta 2: TikTok (3 meses). Asilo NY · NJ · DC entra solo si cumple criterio"
+   "$3,500",
+   "$8,000",
+   "$1,500",
+   "$750",
+   "$13,750"
   ],
   [
    "Abr",
-   "según puertas",
-   "$10,000",
-   "según puertas",
-   "según puertas",
-   "≤$14,750",
-   "Revisión trimestral de CAC por canal y servicio con el ingreso por contrato"
+   "$4,000",
+   "$8,000",
+   "$1,500",
+   "$750",
+   "$14,250"
   ],
   [
    "May",
-   "según puertas",
-   "$10,000",
-   "según puertas",
-   "según puertas",
-   "≤$14,750",
-   "Reforecast del segundo semestre; más de $14,750 solo con aprobación y CAC probado"
+   "$4,500",
+   "$8,000",
+   "$1,500",
+   "$750",
+   "$14,750"
   ]
  ],
+ "plan_nota": "Con todos los escalones cumplidos, mayo llega al techo confirmado de $14,750. Si TikTok no se aprueba, sus $1,500 pasan a autoridad en Meta. Si Google no sube un escalón, ese dinero no se gasta.",
  "puertas": [
   {
-   "color": "red",
-   "semana": "Puerta 1 · fin de enero (60 días)",
-   "titulo": "Google",
+   "color": "amber",
+   "semana": "Meta · cada 2 semanas",
+   "titulo": "Autoridad que abarata la conversión",
    "acciones": [
-    "Sigue en $2,500 si suma ≥5 contratos en dic–ene (CAC ≤$1,000, similar a Meta)",
-    "Si no: baja a $800/mes (marca + Peticiones + Fraude en exacta) y $1,700 pasan a Meta",
-    "Si la campaña de marca sola cumple, se conserva aunque el resto se apague"
+    "Dic: línea base de costo por ThruPlay, vistas al 75% y CPA de retargeting",
+    "Las campañas de WA y llamadas siguen la tabla maestra de topes y guillotinas",
+    "Si el retargeting de vistas no baja el CPA en 60 días, se cambia el formato de contenido antes de subir presupuesto"
    ]
   },
   {
-   "color": "amber",
-   "semana": "Puerta 1 · fin de enero (60 días)",
-   "titulo": "ChatGPT",
+   "color": "ink",
+   "semana": "TikTok · dic, validación; mar, decisión",
+   "titulo": "Descubrimiento dentro de la política",
    "acciones": [
-    "Sigue si WA ≤$40 y ≥2 contratos en dic–ene",
-    "Si no: se pausa y los $750 van a Meta"
-   ]
-  },
-  {
-   "color": "amber",
-   "semana": "Puerta 2 · fin de marzo (3 meses)",
-   "titulo": "TikTok",
-   "acciones": [
-    "Solo corre si TikTok aprueba la versión educativa en diciembre",
-    "Sigue si el CAC ≤ CAC de Meta; si no, $1,500 a Meta"
+    "Dic: validar con TikTok el contenido educativo; sin aprobación no se gasta",
+    "Ene–mar: alcance, seguidores, visitas al perfil y búsquedas de 'liliana jones'",
+    "Mar: sigue si crecen las búsquedas de marca; si no, $1,500 a Meta"
    ]
   },
   {
    "color": "green",
-   "semana": "Continuo · cada 2 semanas",
-   "titulo": "Meta",
+   "semana": "ChatGPT + SEO · mensual",
+   "titulo": "Recomendación en IA",
    "acciones": [
-    "Escala 15–20% cada 48–72 h solo si costo por cita ≤$216 y CPA dentro de topes",
-    "Si el paso resultado→cita no mejora en enero, Meta se queda en $8,000 y el foco va al seguimiento",
-    "Techo de $10,000 hasta tener ingreso por contrato y CAC probado"
+    "Dic: SEO urgente (H1, datos estructurados de abogado y preguntas frecuentes, enlace de llamada) y línea base de 20 preguntas de prueba en ChatGPT ('mejor abogada de inmigración en español en Illinois', etc.)",
+    "Ficha de Google Business Profile completa, reseñas reales y el mismo nombre, dirección y teléfono en los directorios legales",
+    "2 artículos al mes que respondan esas preguntas, uno por servicio con campaña activa; anuncios sin la palabra 'legal' y A/B de landing"
    ]
   }
  ],
  "kpis": [
   {
-   "metrica": "CAC por canal (costo por contrato)",
-   "actual": "Meta $985 (ago)",
-   "meta": "≤ ingreso por contrato",
-   "label": "KPI que decide escalar o cortar"
+   "metrica": "Google: contratos al mes",
+   "actual": "5 citas / 0 (ago)",
+   "meta": "≥5 en may",
+   "label": "Meta final de la prueba de escala"
   },
   {
-   "metrica": "Costo por cita",
-   "actual": "Meta $216 · Google $908",
-   "meta": "≤$180 Meta",
-   "label": "Datos de agosto"
+   "metrica": "Google: costo por conversión",
+   "actual": "$15.85",
+   "meta": "≤$16–17",
+   "label": "Mientras sube el presupuesto"
+  },
+  {
+   "metrica": "Meta: costo por cita",
+   "actual": "$216 (ago)",
+   "meta": "≤$180",
+   "label": "Autoridad + seguimiento de 30 días"
   },
   {
    "metrica": "Resultado → cita (Meta)",
    "actual": "3.5%",
    "meta": "5%",
-   "label": "Seguimiento 30 días y respuesta rápida"
+   "label": "Condición para cualquier escalón"
   },
   {
-   "metrica": "Cita → contrato",
-   "actual": "22% Meta · 29% TikTok",
-   "meta": "≥22%",
-   "label": "Agosto"
+   "metrica": "TikTok: búsquedas de 'liliana jones'",
+   "actual": "línea base dic.",
+   "meta": "crecer",
+   "label": "Prueba de descubrimiento"
   },
   {
-   "metrica": "Citas al mes (todos los canales)",
-   "actual": "89 (sep)",
-   "meta": "≥120",
-   "label": "Promedio anual previo"
-  },
-  {
-   "metrica": "Ingreso por contrato por servicio",
-   "actual": "sin dato",
-   "meta": "reportar mensual",
-   "label": "Necesario para medir rentabilidad"
+   "metrica": "IA: aparición en 20 preguntas de prueba",
+   "actual": "línea base dic.",
+   "meta": "crecer cada mes",
+   "label": "ChatGPT + SEO"
   }
  ]
 };
@@ -3659,12 +3661,13 @@ function renderProg(){
     const tb=(cols,rows,cls)=>'<table><thead><tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((c,i)=>`<td class="${i==0?'name':(cls&&cls(i))||''}">${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>';
     document.getElementById('a-t').innerHTML=AUD.titulo;document.getElementById('a-d').textContent=AUD.desc;
     document.getElementById('a-cards').innerHTML=renderDxCards(AUD.cards);
-    document.getElementById('a-h').innerHTML=tb(['Hallazgo','Corrección aplicada'],AUD.hallazgos);
-    document.getElementById('a-p').innerHTML=tb(AUD.proy_cols,AUD.proy,i=>'mono');
-    document.getElementById('a-pn').textContent=AUD.proy_nota;
-    document.getElementById('a-plan').innerHTML=tb(AUD.plan_cols,AUD.plan,i=>i<6?'mono':'');
+    document.getElementById('a-roles').innerHTML=tb(AUD.roles_cols,AUD.roles);
+    document.getElementById('a-gplan').innerHTML=tb(AUD.g_cols,AUD.g_plan,i=>i==1?'mono':'');
+    document.getElementById('a-gn').textContent=AUD.g_nota;
+    document.getElementById('a-plan').innerHTML=tb(AUD.plan_cols,AUD.plan,i=>'mono');
+    document.getElementById('a-pn').textContent=AUD.plan_nota;
     document.getElementById('a-g').innerHTML=renderTimeline(AUD.puertas);
-    document.getElementById('a-k').innerHTML=renderTargets(AUD.kpis);
+  document.getElementById('a-k').innerHTML=renderTargets(AUD.kpis);
   
   document.getElementById('pol-t').innerHTML=POL.titulo;document.getElementById('pol-d').textContent=POL.desc;document.getElementById('pol-i').innerHTML=renderPixel(POL.items);document.getElementById('pol-f').textContent=POL.fuente;
 }
