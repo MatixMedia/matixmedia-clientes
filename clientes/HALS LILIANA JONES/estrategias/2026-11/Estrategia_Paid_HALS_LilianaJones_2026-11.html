@@ -854,22 +854,22 @@ const D = {
     "cls": ""
    },
    {
-    "label": "CPL octubre",
-    "val": "$15.85",
-    "sub": "sep $18.75 · objetivo ≤$15",
-    "cls": "green"
+    "label": "Costo por contacto real",
+    "val": "$43",
+    "sub": "oct · llamadas + WA + conversaciones",
+    "cls": "gold"
    },
    {
-    "label": "Conversiones oct.",
+    "label": "Conversiones de plataforma",
     "val": "179",
-    "sub": "sep 243 · obj. ~160 con $2,500",
+    "sub": "$15.85 c/u · 34% son 'Cómo llegar'",
     "cls": ""
    },
    {
-    "label": "Tasa de conv. oct.",
-    "val": "4.4%",
-    "sub": "179 conv. / 4,079 clics",
-    "cls": "gold"
+    "label": "Contactos reales oct.",
+    "val": "66",
+    "sub": "48 llamadas · 11 conv. · 7 WhatsApp",
+    "cls": "green"
    },
    {
     "label": "Gasto sin conversión",
@@ -883,20 +883,20 @@ const D = {
   "titulo": "Lo que los reportes <em>realmente</em> dicen",
   "cards": [
    {
-    "tipo": "opportunity",
-    "tag": "🟢 Tracking registrando, costo por lead a la baja",
-    "metrica": "CPL $15.85",
-    "metrica_cls": "good",
-    "titulo": "Octubre cierra con el mejor costo por conversión desde que el tracking registra conversiones",
-    "desc": "Septiembre: 243 conversiones a $18.75. Octubre: 179 conversiones a $15.85 (−15% en costo). El tracking de Google empezó a registrar conversiones en agosto, pero no todas las conversiones están activas: algunas esperan a tener movimiento. El formulario se activó en octubre. Por eso las cifras de Google solo se comparan desde agosto y octubre incluye una conversión nueva (formulario)."
+    "tipo": "problem",
+    "tag": "🔴 El costo por conversión de $15.85 no es el costo real por lead",
+    "metrica": "$15.85 → $43 real",
+    "metrica_cls": "bad",
+    "titulo": "Un tercio de las conversiones son clics en 'Cómo llegar' de Google Maps",
+    "desc": "De las 179 conversiones de octubre, 61 son 'Cómo llegar' (34%) y 52 son clics para llamar, que pueden duplicar las 48 llamadas de extensión. Contando solo contactos reales (48 llamadas, 11 conversaciones iniciadas y 7 clics a WhatsApp = 66), el costo es $43 por contacto; en septiembre fue $42 (109 contactos, incluidas 6 citas de Calendly). Además, 121 de las 179 conversiones vienen de la campaña 'abogado de inmigración' (66.9% de conversión sobre clics, propio de acciones de marca y mapa). El tracking empezó a registrar en agosto y el formulario se activó en octubre."
    },
    {
     "tipo": "neutral",
-    "tag": "🟡 El presupuesto baja 45%",
-    "metrica": "$4,556 → $2,500",
+    "tag": "🟡 Costo real por campaña",
+    "metrica": "Asilos $57 · Peticiones $115",
     "metrica_cls": "mid",
-    "titulo": "Con el CPL de octubre, $2,500 rinden ≈158 conversiones al mes",
-    "desc": "Septiembre invirtió $4,556 y octubre $2,836 (octubre ya opera con 7 campañas, frente a 15 antes de la depuración). La meta de noviembre es sostener el CPL, no el volumen: menos campañas, cada una con señal suficiente."
+    "titulo": "Fuera de marca y Fraude, las campañas de servicio todavía convierten poco",
+    "desc": "Octubre por campaña (conversiones de plataforma): abogado de inmigración $3.83 (121), Fraude $13.74 (44), Asilos $57.19 (8), Peticiones $114.84 (4), VAWA $152.13 (2), Visa U $243 y Análisis Residencia $304 sin conversiones. Con $2,500 y $43 por contacto real se esperan ≈58 contactos al mes; la prueba de escala mide si ese costo se sostiene al subir."
    },
    {
     "tipo": "problem",
@@ -1114,7 +1114,7 @@ const D = {
   "cards": [
    {
     "campana": "Abogado de inmigración — IL · WI · IN",
-    "tipo": "Reemplaza copy genérico · CPL objetivo <$15",
+    "tipo": "Reemplaza copy genérico · contacto real ≤$40",
     "titulares": [
      "Abogada con Licencia",
      "Oficina en Naperville, IL",
@@ -1336,6 +1336,12 @@ const D = {
   "titulo": "Optimizaciones de <em>configuración</em> y de ruta real",
   "ajustes": [
    {
+    "ajuste": "Conversiones principales",
+    "actual": "'Cómo llegar' (61) y clics para llamar (52) cuentan como conversión principal",
+    "propuesto": "Dejarlas como secundarias; principales: llamadas de extensión de 60s+, conversación iniciada, clic a WhatsApp, Calendly y formulario",
+    "impacto": "Google puja hacia contactos reales y el costo reportado deja de verse más bajo de lo que es"
+   },
+   {
     "ajuste": "Ubicación por zona",
     "actual": "Cobertura amplia, sin separar zonas de volumen",
     "propuesto": "Ubicaciones en los estados prioritarios (IL · TX · FL · CA; WI · IN en la campaña de marca) con ubicación 'presencia' y reporte de ubicación por ciudad",
@@ -1417,22 +1423,22 @@ const D = {
   "titulo": "KPIs reales de Google: <em>de dónde venimos, a dónde vamos</em>",
   "targets": [
    {
-    "metrica": "CPL (costo/conversión)",
+    "metrica": "Costo por contacto real",
+    "actual": "$43",
+    "meta": "≤$40",
+    "label": "Llamadas de extensión + conversaciones + WhatsApp + Calendly (sep $42)"
+   },
+   {
+    "metrica": "Contactos reales al mes",
+    "actual": "66",
+    "meta": "≥60 con $2,500",
+    "label": "Sube con cada escalón de la prueba de escala"
+   },
+   {
+    "metrica": "Costo por conversión de plataforma",
     "actual": "$15.85",
-    "meta": "≤$15",
-    "label": "Oct vs objetivo noviembre (sep $18.75)"
-   },
-   {
-    "metrica": "Conversiones al mes",
-    "actual": "179",
-    "meta": "≈160",
-    "label": "Con $2,500 (45% menos presupuesto)"
-   },
-   {
-    "metrica": "Tasa de conversión",
-    "actual": "4.4%",
-    "meta": "≥4.4%",
-    "label": "Oct: 179 conv. / 4,079 clics; sep 2.7%"
+    "meta": "solo referencia",
+    "label": "Incluye 'Cómo llegar' (61 de 179); no sirve para decidir"
    },
    {
     "metrica": "CPC",
@@ -1498,7 +1504,7 @@ const D = {
     "semana": "Semana 5–8 · Escalar lo que cierra",
     "titulo": "Subir donde hay contrato",
     "acciones": [
-     "Escalar 15–20% cada 72 h solo campañas con CPL ≤$15 y cita→contrato en mejora",
+     "Escalar 15–20% cada 72 h solo campañas con costo por contacto real ≤$40 y cita→contrato en mejora",
      "Sacar el estado que no cumpla criterio de salida",
      "Reunión mensual con el equipo de cierre para cruzar citas y contratos"
     ]
@@ -1876,7 +1882,7 @@ const D = {
  },
  "pmax": {
   "titulo": "P-Max <em>no es prioridad</em> todavía para esta cuenta",
-  "desc": "Octubre registró 179 conversiones, pero el presupuesto baja a $2,500 (≈158 conversiones esperadas). P-Max necesita más señal que la que dejaría una cuenta de 7 campañas con ese gasto: se mantiene Search como único formato hasta tener 150+ conversiones al mes estables con CPL ≤$15 durante 2 meses seguidos.",
+  "desc": "Octubre registró 179 conversiones de plataforma pero solo 66 contactos reales. P-Max optimizaría hacia acciones como 'Cómo llegar' y clics de marca, no hacia leads: se mantiene Search hasta tener 150+ contactos reales al mes y conversiones de contrato importadas.",
   "cards": [
    {
     "producto": "Condición para activar P-Max",
@@ -3486,19 +3492,19 @@ const AUD = {
    "Dic",
    "$2,500",
    "1 · Base y medición",
-   "Todas las conversiones activas (incluido el formulario); citas y contratos de Google etiquetados en el CDM; importación de contratos"
+   "'Cómo llegar' y clics para llamar pasan a conversiones secundarias; todas las demás activas (incluido el formulario); citas y contratos de Google etiquetados en el CDM; importación de contratos"
   ],
   [
    "Ene",
    "$2,500",
    "1 · Base y medición",
-   "Costo por conversión ≤$16, ≥10 citas al mes desde Google y ≥2 contratos en dic–ene"
+   "Costo por contacto real ≤$45, ≥10 citas al mes desde Google y ≥2 contratos en dic–ene"
   ],
   [
    "Feb",
    "$3,000",
    "2 · Escala controlada",
-   "El +$500 va a las campañas limitadas por presupuesto con mejor costo por cita. Puerta: costo por conversión ≤$17 y ≥3 contratos en el mes"
+   "El +$500 va a las campañas limitadas por presupuesto con mejor costo por cita. Puerta: costo por contacto real ≤$45 y ≥3 contratos en el mes"
   ],
   [
    "Mar",
@@ -3619,10 +3625,10 @@ const AUD = {
    "label": "Meta final de la prueba de escala"
   },
   {
-   "metrica": "Google: costo por conversión",
-   "actual": "$15.85",
-   "meta": "≤$16–17",
-   "label": "Mientras sube el presupuesto"
+   "metrica": "Google: costo por contacto real",
+   "actual": "$43 (oct)",
+   "meta": "≤$40–45",
+   "label": "Llamadas + WA + conversaciones; sin 'Cómo llegar'"
   },
   {
    "metrica": "Meta: costo por cita",
