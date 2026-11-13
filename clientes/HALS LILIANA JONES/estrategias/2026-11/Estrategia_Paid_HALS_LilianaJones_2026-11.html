@@ -738,6 +738,15 @@
 </div>
 
 <div class="container">
+  <!-- POLÍTICAS TIKTOK -->
+  <div class="section" id="tpol">
+    <div class="section-label">Políticas · versión white</div>
+    <div class="section-title" id="pol-t"></div>
+    <div class="section-desc" id="pol-d"></div>
+    <div id="pol-i"></div>
+    <div class="section-desc" id="pol-f" style="margin-top:14px"></div>
+  </div>
+
 
   <div class="section" id="t1">
     <div class="section-label">01 · Diagnóstico</div>
@@ -2316,10 +2325,10 @@ const DT = {
     "cls": ""
    },
    {
-    "label": "Completion Rate",
-    "val": ">25%",
-    "sub": "referencia",
-    "cls": ""
+    "label": "Política TikTok",
+    "val": "Restringido",
+    "sub": "inmigración: versión white",
+    "cls": "gold"
    }
   ]
  },
@@ -2331,7 +2340,7 @@ const DT = {
    "metrica": "29% cita→contrato",
    "metrica_cls": "good",
    "titulo": "En agosto TikTok dio 7 citas y 2 contratos",
-   "desc": "Con muestra pequeña, pero la tasa de cierre (29%) supera a Meta (22%) y a Google (0 de 5). Justifica probar con presupuesto propio."
+   "desc": "Con muestra pequeña, pero la tasa de cierre (29%) supera a Meta (22%) y a Google (0 de 5). Justifica validar el canal en versión white antes de invertir."
   },
   {
    "tipo": "neutral",
@@ -2340,6 +2349,22 @@ const DT = {
    "metrica_cls": "mid",
    "titulo": "No hay métricas de hook, completion ni CPA de TikTok en los reportes cargados",
    "desc": "Los reportes mensuales Ene–Oct cubren Google, Meta y ChatGPT. Se establece medición desde el día 1 de noviembre para fijar objetivos reales a los 14 días."
+  },
+  {
+   "tipo": "problem",
+   "tag": "🔴 Política de TikTok en el nicho",
+   "metrica": "Inmigración: no permitido",
+   "metrica_cls": "bad",
+   "titulo": "TikTok no permite anunciar servicios de derecho migratorio en EE.UU.",
+   "desc": "La política de TikTok Ads para 'Otros productos y servicios' indica que los anuncios de servicios de derecho de familia, inmigración, laboral y lesiones personales no están permitidos. Sí permite contenido puramente educativo sobre temas legales, siempre con audiencia de 18 años o más y sin prometer ni facilitar conductas engañosas. Por eso este plan opera en versión white (ver sección de políticas) y no se gasta hasta validar la cuenta."
+  },
+  {
+   "tipo": "opportunity",
+   "tag": "🟢 Versión white: educar y construir marca",
+   "metrica": "18+ · educativo",
+   "metrica_cls": "good",
+   "titulo": "El camino compatible es contenido informativo y marca de la abogada",
+   "desc": "Videos educativos (cómo identificar un fraude de notario, qué es una audiencia, qué documentos guardar), impulso de contenido orgánico con Spark Ads y audiencia 18+. La conversión a cita se apoya en el perfil y en el contenido, no en un anuncio que ofrezca servicios migratorios."
   },
   {
    "tipo": "opportunity",
@@ -2353,49 +2378,52 @@ const DT = {
  "struct_titulo": "Arquitectura <em>de campañas</em> en TikTok ($1,500)",
  "estructura": [
   {
-   "emoji": "🗽",
-   "nombre": "1 · Asilo y Defensa — NY · NJ · DC · FL (≈$350)",
+   "emoji": "🎓",
+   "nombre": "1 · Educativo — Asilo y procesos en corte · NY · NJ · DC · FL (≈$350)",
    "grupos": [
-    "Video 9:16 de 15–30 s, hook en los primeros 3 s",
-    "Objetivo: conversaciones/clics a WhatsApp"
+    "Video 9:16 de 15–30 s, informativo: cómo funciona el proceso, qué esperar, qué preparar",
+    "Audiencia 18+ (obligatorio); sin ofrecer consulta ni representación en el anuncio",
+    "CTA informativo ('Más información') hacia contenido educativo"
    ],
-   "estrategia": "Piloto. Se evalúa a los 14 días con CPA"
+   "estrategia": "Piloto de zona en versión white. Se mide alcance, retención y visitas al perfil; no se promete ni se ofrece servicio"
   },
   {
    "emoji": "🛡️",
-   "nombre": "2 · VAWA y Visa U — TX · CA (≈$350)",
+   "nombre": "2 · Educativo — Protección y derechos · TX · CA (≈$350)",
    "grupos": [
-    "Storytelling emocional, sin exponer a la víctima",
-    "Objetivo: conversaciones a WhatsApp"
+    "Información general sobre derechos y recursos, sin imágenes de violencia ni dramatización",
+    "Audiencia 18+",
+    "Sin apuntar a personas por estatus migratorio"
    ],
-   "estrategia": "Replicar el patrón ganador de Meta"
+   "estrategia": "Mismo estilo informativo que funciona en Meta, sin promesas de resultado"
   },
   {
-   "emoji": "🏠",
-   "nombre": "3 · General IL · WI · IN (≈$350)",
+   "emoji": "🧾",
+   "nombre": "3 · Educativo — Fraude de notarios · IL · WI · IN (≈$350)",
    "grupos": [
-    "'No somos notarios, somos abogados'",
-    "Objetivo: conversaciones a WhatsApp"
+    "'Un notario no es abogado': cómo verificar a quien lleva tu caso",
+    "Audiencia 18+",
+    "Contenido de utilidad pública, sin nombrar servicios en venta"
    ],
-   "estrategia": "Base de comparación"
+   "estrategia": "Base de comparación del plan; es el ángulo con mejor CPL en Meta ($5.17)"
   },
   {
    "emoji": "📍",
-   "nombre": "4 · Michigan (≈$250)",
+   "nombre": "4 · Michigan — mismo guion que la campaña 3 (≈$250)",
    "grupos": [
-    "Mismo guion que la campaña 3",
+    "Mismo video educativo para comparar zona",
     "Revisión a 14 días"
    ],
    "estrategia": "Compara la zona piloto con Illinois"
   },
   {
    "emoji": "🎬",
-   "nombre": "Anuncio de marca (≈$200)",
+   "nombre": "Marca de la abogada (≈$200)",
    "grupos": [
-    "Presentación de la abogada y la oficina",
+    "Presentación de Liliana Jones y la oficina, sin ofrecer servicios migratorios",
     "Impulsar contenido orgánico con buen desempeño (Spark Ad)"
    ],
-   "estrategia": "Confianza antes del contacto"
+   "estrategia": "Confianza y reconocimiento antes del contacto"
   }
  ],
  "creative_titulo": "Qué <em>medir</em> en los primeros 14 días",
@@ -2424,7 +2452,7 @@ const DT = {
  ],
  "creatividades": [
   {
-   "video": "Video 1 · 'No somos notarios, somos abogados' (General)",
+   "video": "Video 1 · Fraude de notarios, educativo (General)",
    "hook": "—",
    "completion": "—",
    "ctr": "—",
@@ -2433,7 +2461,7 @@ const DT = {
    "decision": "watch"
   },
   {
-   "video": "Video 2 · Asilo / defensa de deportación (zona piloto)",
+   "video": "Video 2 · Cómo funciona una audiencia en corte, educativo (zona piloto)",
    "hook": "—",
    "completion": "—",
    "ctr": "—",
@@ -2442,7 +2470,7 @@ const DT = {
    "decision": "watch"
   },
   {
-   "video": "Video 3 · VAWA — 'Tu caso es confidencial'",
+   "video": "Video 3 · Derechos y recursos, educativo (TX · CA)",
    "hook": "—",
    "completion": "—",
    "ctr": "—",
@@ -2451,38 +2479,38 @@ const DT = {
    "decision": "watch"
   }
  ],
- "hooks_titulo": "Hooks y guiones <em>para arrancar</em>",
- "hooks_desc": "Hooks que empiezan por la situación de la persona, no por el servicio. Son propuestas de partida para probar en los primeros 14 días.",
+ "hooks_titulo": "Hooks y guiones <em>en versión white</em>",
+ "hooks_desc": "Hooks informativos: empiezan por la duda de la persona y entregan información útil, sin ofrecer servicios migratorios, sin promesas y sin lenguaje de miedo. Son propuestas de partida para los primeros 14 días.",
  "hooks": [
   {
-   "producto": "Fraude migratorio / General",
+   "producto": "Fraude de notarios (educativo)",
    "cls": "g",
    "titulares": [
     {
-     "headline": "\"¿Te cobraron por un papeleo que nunca avanzó?\"",
-     "why": "Empieza por el problema; conecta con el ángulo ganador de Meta.",
-     "chars": "46 chars"
+     "headline": "\"3 señales de que tu notario no es abogado\"",
+     "why": "Información de utilidad pública; empieza por la duda y no vende un servicio.",
+     "chars": "43 chars"
     },
     {
-     "headline": "\"Un notario no es abogado. Verifica antes de pagar.\"",
-     "why": "Dato corto que genera curiosidad.",
+     "headline": "\"Cómo verificar la licencia de quien lleva tu caso\"",
+     "why": "Contenido práctico que refuerza la marca de la abogada.",
      "chars": "51 chars"
     }
    ]
   },
   {
-   "producto": "Asilo / defensa de deportación",
+   "producto": "Procesos en corte (educativo)",
    "cls": "a",
    "titulares": [
     {
-     "headline": "\"Si tienes audiencia en corte, mira esto\"",
-     "why": "Habla a quien tiene urgencia real.",
-     "chars": "38 chars"
+     "headline": "\"Qué esperar en tu primera audiencia en corte\"",
+     "why": "Explica el proceso sin presionar ni prometer resultados.",
+     "chars": "45 chars"
     },
     {
-     "headline": "\"Lo que nadie te dice de tu orden de deportación\"",
-     "why": "Formato de revelación, nativo de TikTok.",
-     "chars": "49 chars"
+     "headline": "\"Documentos que conviene guardar siempre\"",
+     "why": "Lista útil y compartible; formato nativo de TikTok.",
+     "chars": "40 chars"
     }
    ]
   }
@@ -2524,6 +2552,12 @@ const DT = {
    "actual": "—",
    "meta": "2 por semana",
    "label": "Para evitar fatiga"
+  },
+  {
+   "metrica": "Anuncios rechazados / cuenta sancionada",
+   "actual": "—",
+   "meta": "0",
+   "label": "Meta de cumplimiento de política"
   }
  ],
  "roadmap_titulo": "Roadmap <em>de video</em> — noviembre",
@@ -2531,11 +2565,11 @@ const DT = {
   {
    "color": "red",
    "semana": "Semana 1 · Activar",
-   "titulo": "Instalar medición y lanzar",
+   "titulo": "Validar política, medir y lanzar",
    "acciones": [
-    "Verificar Pixel/eventos de TikTok y el enlace a WhatsApp",
-    "Lanzar 3 videos por campaña",
-    "Anuncio de marca como Spark Ad"
+    "Antes de gastar: validar con el soporte o representante de TikTok si la cuenta puede correr contenido educativo de un despacho de inmigración",
+    "Verificar Pixel/eventos y que todo grupo tenga audiencia 18+",
+    "Lanzar 2–3 videos educativos por campaña y el anuncio de marca como Spark Ad"
    ]
   },
   {
@@ -2933,6 +2967,63 @@ const PROG = {
  },
  "nota": "Cifras de gasto y resultados salen de los reportes mensuales; citas y contratos son los reportados por el cliente en reunión. Los repartos por campaña y por zona son propuestas a validar. El reparto de $2,500 en Google sigue el rango de $300–$500 acordado; octubre de Google ya opera con 7 campañas."
 };
+const POL = {
+ "titulo": "Políticas de TikTok y <em>versión white</em>",
+ "desc": "Fuente: política de TikTok Ads 'Otros productos y servicios' (servicios legales). 'White' significa cumplir la política tal como está escrita: lo que ve el revisor de TikTok es exactamente lo que ve la persona; no se usan páginas ni videos distintos para el revisor.",
+ "items": [
+  {
+   "icon": "🚫",
+   "text": "Los anuncios de servicios de derecho migratorio no están permitidos en EE.UU.",
+   "note": "La política cita familia, inmigración, laboral y lesiones personales. El plan no promociona servicios, consulta ni representación migratoria en TikTok."
+  },
+  {
+   "icon": "✅",
+   "text": "Contenido educativo puramente informativo sí está permitido",
+   "note": "Todo video de este plan es informativo (fraude de notarios, procesos en corte, documentos) y de utilidad pública."
+  },
+  {
+   "icon": "🔞",
+   "text": "Audiencia de 18 años o más en todos los grupos de anuncios",
+   "note": "Requisito de la política para servicios legales; se revisa en cada grupo antes de publicar."
+  },
+  {
+   "icon": "🤝",
+   "text": "Sin promesas ni garantías de resultado",
+   "note": "Nada de 'casos ganados', 'te conseguimos tu residencia' o cifras de éxito."
+  },
+  {
+   "icon": "🧯",
+   "text": "Sin lenguaje de miedo, urgencia ni señalar a las personas por su estatus",
+   "note": "No se menciona 'si te van a deportar' ni se segmenta por condición migratoria."
+  },
+  {
+   "icon": "🎥",
+   "text": "Sin dramatizar violencia ni involucrar menores",
+   "note": "VAWA y Visa U se tratan como información general de derechos y recursos; Visa Juvenil sigue pausada."
+  },
+  {
+   "icon": "🔗",
+   "text": "Anuncio, perfil y destino coherentes",
+   "note": "Mismo mensaje y misma identidad en video, perfil y página; el destino es contenido educativo, no una oferta de servicios."
+  },
+  {
+   "icon": "⚖️",
+   "text": "Reglas de publicidad del colegio de abogados del estado",
+   "note": "Aprobar en TikTok no equivale a cumplir; se revisan las reglas de Illinois y de cada estado donde se pauta."
+  },
+  {
+   "icon": "🔁",
+   "text": "Un anuncio rechazado se corrige o se apela, no se vuelve a subir igual",
+   "note": "Los rechazos repetidos pueden llevar a una revisión de toda la cuenta."
+  },
+  {
+   "icon": "🛑",
+   "text": "Condición de gasto: no se invierte hasta validar la cuenta con TikTok",
+   "note": "Si TikTok indica que el nicho no puede pautar ni con contenido educativo, los $1,500 se reasignan a Meta (CPR $7.42, cierre 22%)."
+  }
+ ],
+ "fuente": "Fuentes: ads.tiktok.com/help/article/tiktok-ads-policy-other-products-and-services · tikadsuite.com (guía de cumplimiento para industrias reguladas). Información general, no asesoría legal."
+};
 function renderProg(){
   document.getElementById('p-t1').innerHTML=PROG.presupuesto.titulo;
   document.getElementById('p-budget').innerHTML='<table><thead><tr><th>Canal</th><th>Presupuesto</th><th>Cómo se usa</th></tr></thead><tbody>'+PROG.presupuesto.filas.map(r=>`<tr><td class="name">${r[0]}</td><td class="mono"><strong>${r[1]}</strong></td><td>${r[2]}</td></tr>`).join('')+'</tbody></table>';
@@ -2941,6 +3032,7 @@ function renderProg(){
   document.getElementById('p-t3').innerHTML=PROG.correcciones.titulo;
   document.getElementById('p-fix').innerHTML=PROG.correcciones.items.map(t=>`<div class="tree-group">${t}</div>`).join('');
   document.getElementById('p-note').textContent=PROG.nota;
+  document.getElementById('pol-t').innerHTML=POL.titulo;document.getElementById('pol-d').textContent=POL.desc;document.getElementById('pol-i').innerHTML=renderPixel(POL.items);document.getElementById('pol-f').textContent=POL.fuente;
 }
 
 // Llamar renders al cargar
