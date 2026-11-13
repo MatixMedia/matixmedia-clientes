@@ -814,7 +814,7 @@ const D = {
  "base_datos": "Reportes mensuales Ene–Oct 2026, informe especial Ene–Nov y reuniones de seguimiento (jul–oct)",
  "header": {
   "titulo": "Estrategia Google Ads",
-  "subtitulo_italic": "$2,500 al mes · 5 campañas · cada dólar medido hasta el contrato",
+  "subtitulo_italic": "$2,500 al mes · 7 campañas · cada dólar medido hasta el contrato",
   "sub": "Basada en reportes reales Ene–Oct 2026 · Nov 2026",
   "kpis": [
    {
@@ -854,11 +854,11 @@ const D = {
   "cards": [
    {
     "tipo": "opportunity",
-    "tag": "🟢 Medición corregida, costo por lead a la baja",
+    "tag": "🟢 Tracking registrando, costo por lead a la baja",
     "metrica": "CPL $15.85",
     "metrica_cls": "good",
-    "titulo": "Octubre cierra con el mejor costo por conversión desde que la medición es comparable",
-    "desc": "Septiembre: 243 conversiones a $18.75. Octubre: 179 conversiones a $15.85 (−15% en costo). Las conversiones de Google son comparables solo desde agosto, cuando quedó corregida la medición (julio); antes de eso las cifras no se comparan."
+    "titulo": "Octubre cierra con el mejor costo por conversión desde que el tracking registra conversiones",
+    "desc": "Septiembre: 243 conversiones a $18.75. Octubre: 179 conversiones a $15.85 (−15% en costo). El tracking de Google empezó a registrar conversiones en agosto, pero no todas las conversiones están activas: algunas esperan a tener movimiento. El formulario se activó en octubre. Por eso las cifras de Google solo se comparan desde agosto y octubre incluye una conversión nueva (formulario)."
    },
    {
     "tipo": "neutral",
@@ -866,7 +866,7 @@ const D = {
     "metrica": "$4,556 → $2,500",
     "metrica_cls": "mid",
     "titulo": "Con el CPL de octubre, $2,500 rinden ≈158 conversiones al mes",
-    "desc": "Septiembre invirtió $4,556 y octubre $2,836 (el export de octubre cubre 7 campañas frente a 16 en septiembre, por lo que el total de octubre debe confirmarse en la cuenta). La meta de noviembre es sostener el CPL, no el volumen: menos campañas, cada una con señal suficiente."
+    "desc": "Septiembre invirtió $4,556 y octubre $2,836 (octubre ya opera con 7 campañas, frente a 15 antes de la depuración). La meta de noviembre es sostener el CPL, no el volumen: menos campañas, cada una con señal suficiente."
    },
    {
     "tipo": "problem",
@@ -898,56 +898,76 @@ const D = {
     "metrica": "$0.43 → $0.70",
     "metrica_cls": "mid",
     "titulo": "El costo por clic subió 63% entre agosto y octubre",
-    "desc": "Agosto $0.43, septiembre $0.51, octubre $0.70. Con 5 campañas concentradas y puja por zonas específicas es esperable un CPC mayor; se vigila que el CPL no suba (hoy baja)."
+    "desc": "Agosto $0.43, septiembre $0.51, octubre $0.70. Con 7 campañas concentradas y puja por zonas específicas es esperable un CPC mayor; se vigila que el CPL no suba (hoy baja)."
    }
   ]
  },
  "estructura": {
-  "titulo": "Arquitectura <em>propuesta</em> — de 13 a 5 campañas, por zona y servicio",
+  "titulo": "Arquitectura <em>propuesta</em> — de 15 a 7 campañas, por zona y servicio",
   "campanas": [
    {
     "emoji": "🏠",
-    "nombre": "1 · General + Marca — IL · WI · IN (≈$600/mes · $20/día)",
+    "nombre": "1 · General + Marca — IL · WI · IN (≈$500/mes · $16/día)",
     "grupos": [
      "'liliana jones' (exact) · 'abogados de inmigración' y 'abogada de inmigración en español' (phrase)",
      "Zonas núcleo: Illinois (oficina en Naperville), Wisconsin e Indiana",
      "Anuncios RSA 'licencia + oficina + consulta directa'"
     ],
-    "estrategia": "Es la campaña probada (CPL $2–$7 en sus keywords núcleo). Gana la mayor porción del presupuesto"
+    "estrategia": "Campaña probada (CPL $2–$7 en sus keywords núcleo). Recibe la mayor porción"
    },
    {
     "emoji": "⚖️",
-    "nombre": "2 · Asilo y Defensa de Deportación — NY · NJ · DC · FL (≈$500/mes · $16/día)",
+    "nombre": "2 · Asilo y Defensa de Deportación — NY · NJ · DC · FL (≈$400/mes · $13/día)",
     "grupos": [
      "Búsquedas por circunstancia: 'asilo político abogado', 'orden de deportación', 'audiencia en corte de inmigración'",
-     "Piloto geográfico en las zonas con mayor volumen de casos de asilo y deportación",
-     "Landing con consulta por videollamada (la oficina física no limita)"
+     "Piloto geográfico en zonas con mayor volumen de asilo y deportación",
+     "Landing con consulta por videollamada"
     ],
     "estrategia": "Piloto de 6–8 semanas. Se escala solo si el CPL de cita queda ≤$25 y las citas llegan a contrato"
    },
    {
     "emoji": "🛡️",
-    "nombre": "3 · VAWA y Visa U por circunstancia — TX · CA (≈$450/mes · $15/día)",
+    "nombre": "3 · VAWA — TX · CA (≈$300/mes · $10/día)",
     "grupos": [
-     "Frases-circunstancia en exact/phrase ('mi esposo me golpea y no tengo papeles', 'fui víctima de un robo y no tengo papeles')",
+     "Frases-circunstancia en exact/phrase ('mi esposo me golpea y no tengo papeles')",
      "Sin keywords informativas ('requisitos para vawa', 'vawa español')",
-     "Meta sigue siendo el canal principal para estos dos servicios"
+     "Meta sigue siendo el canal principal de VAWA"
     ],
-    "estrategia": "VAWA tuvo CPL $429 en Google con keywords amplias: se reconstruye en exacta y presupuesto de prueba"
+    "estrategia": "En Google VAWA tuvo CPL $429 con keywords amplias: se reconstruye en exacta, con presupuesto de prueba"
+   },
+   {
+    "emoji": "🔒",
+    "nombre": "4 · Visa U — TX · CA (≈$300/mes · $10/día)",
+    "grupos": [
+     "Búsquedas por circunstancia ('fui víctima de un robo y no tengo papeles', 'denuncié un crimen')",
+     "Hoy sin keywords de circunstancia activas",
+     "En ChatGPT Ads fue el servicio más barato ($15.07 por WA)"
+    ],
+    "estrategia": "Probar la demanda en Google con presupuesto controlado"
    },
    {
     "emoji": "👨‍👩‍👧",
-    "nombre": "4 · Peticiones y Ajuste de Estatus — IL · WI · IN (≈$450/mes · $15/día)",
+    "nombre": "5 · Peticiones y Ajuste de Estatus — IL · WI · IN (≈$350/mes · $11/día)",
     "grupos": [
-     "Peticiones familiares, ajuste de estatus, permiso de trabajo (grupo consolidado)",
+     "Peticiones familiares, ajuste de estatus, permiso de trabajo",
      "Concordancia phrase/exact únicamente",
      "Se mide por cita agendada, no solo por clic"
     ],
     "estrategia": "Sin historial sólido de conversión: presupuesto controlado hasta confirmar CPL"
    },
    {
+    "emoji": "🧾",
+    "nombre": "6 · Fraude Migratorio (≈$300/mes · $10/día)",
+    "grupos": [
+     "'¿Te estafó un notario?', segunda opinión legal",
+     "Mismo ángulo que ya funciona en Meta (CPL $5.17)",
+     "Zonas núcleo y TX · CA"
+    ],
+    "estrategia": "Se traslada el patrón ganador de Meta y se mide el CPL en Google"
+   },
+   {
     "emoji": "🧪",
-    "nombre": "5 · Piloto Michigan (≈$500/mes · $16/día)",
+    "nombre": "7 · Piloto Michigan (≈$350/mes · $11/día)",
     "grupos": [
      "General + Asilo/Defensa con ubicación Michigan",
      "Mismo anuncio y landing que la campaña 1, para comparar limpio",
@@ -1084,80 +1104,108 @@ const D = {
   ]
  },
  "presupuesto": {
-  "titulo": "<em>Redistribución</em> de $2,500 en 5 campañas",
-  "desc": "Propuesta de distribución (a validar con Liliana y el equipo) para noviembre. Referencia: en septiembre se repartían ≈$10/día en 16 campañas. Con $2,500 al mes y 5 campañas, cada una recibe entre $450 y $600, el rango de $300–$500 que se acordó en reunión para tener señal suficiente.",
+  "titulo": "<em>Redistribución</em> de $2,500 en 7 campañas",
+  "desc": "Propuesta de distribución (a validar con Liliana y el equipo). Referencia: antes se repartían ≈$10/día en 15 campañas. Con $2,500 y 7 campañas, cada una recibe entre $300 y $500, el rango acordado en reunión para tener señal suficiente.",
   "tabla": [
    {
     "campana": "1 · General + Marca (IL · WI · IN)",
-    "actual": "~$10/día (de 16)",
-    "propuesto": "$600/mes",
-    "cambio": "+$300",
+    "actual": "~$10/día (de 15)",
+    "propuesto": "$500/mes",
+    "cambio": "+$200",
     "justificacion": "CPL real más bajo de la cuenta; mantiene prioridad",
     "cambio_cls": "good"
    },
    {
     "campana": "2 · Asilo y Defensa (NY · NJ · DC · FL)",
     "actual": "—",
-    "propuesto": "$500/mes",
+    "propuesto": "$400/mes",
     "cambio": "piloto",
     "justificacion": "Zonas con mayor volumen de asilo y deportación",
     "cambio_cls": ""
    },
    {
-    "campana": "3 · VAWA y Visa U (TX · CA)",
-    "actual": "$10/día en VAWA",
-    "propuesto": "$450/mes",
+    "campana": "3 · VAWA (TX · CA)",
+    "actual": "$10/día",
+    "propuesto": "$300/mes",
     "cambio": "reconstruir",
-    "justificacion": "Solo exacta y por circunstancia; Meta es el principal",
+    "justificacion": "Solo exacta y por circunstancia",
     "cambio_cls": ""
    },
    {
-    "campana": "4 · Peticiones y Ajuste (IL · WI · IN)",
+    "campana": "4 · Visa U (TX · CA)",
+    "actual": "—",
+    "propuesto": "$300/mes",
+    "cambio": "prueba",
+    "justificacion": "Gap de búsquedas por circunstancia",
+    "cambio_cls": ""
+   },
+   {
+    "campana": "5 · Peticiones y Ajuste (IL · WI · IN)",
     "actual": "$30/día (3 camp.)",
-    "propuesto": "$450/mes",
+    "propuesto": "$350/mes",
     "cambio": "consolidar",
     "justificacion": "Sin historial: prueba controlada",
     "cambio_cls": ""
    },
    {
-    "campana": "5 · Piloto Michigan",
+    "campana": "6 · Fraude Migratorio",
     "actual": "—",
-    "propuesto": "$500/mes",
+    "propuesto": "$300/mes",
+    "cambio": "prueba",
+    "justificacion": "Patrón ganador en Meta",
+    "cambio_cls": ""
+   },
+   {
+    "campana": "7 · Piloto Michigan",
+    "actual": "—",
+    "propuesto": "$350/mes",
     "cambio": "piloto",
-    "justificacion": "Prueba de zona nueva con un único mensaje",
+    "justificacion": "Zona nueva con un único mensaje",
     "cambio_cls": ""
    }
   ],
   "barras": [
    {
     "nombre": "General",
-    "pct": 24,
+    "pct": 20,
     "cls": "b-green",
-    "label": "24%"
+    "label": "20%"
    },
    {
     "nombre": "Asilo",
-    "pct": 20,
+    "pct": 16,
     "cls": "b-amber",
-    "label": "20%"
+    "label": "16%"
    },
    {
-    "nombre": "VAWA/Visa U",
-    "pct": 18,
+    "nombre": "VAWA",
+    "pct": 12,
     "cls": "b-ink",
-    "label": "18%"
+    "label": "12%"
+   },
+   {
+    "nombre": "Visa U",
+    "pct": 12,
+    "cls": "b-blue",
+    "label": "12%"
    },
    {
     "nombre": "Peticiones",
-    "pct": 18,
-    "cls": "b-blue",
-    "label": "18%"
+    "pct": 14,
+    "cls": "b-green-l",
+    "label": "14%"
+   },
+   {
+    "nombre": "Fraude",
+    "pct": 12,
+    "cls": "b-amber",
+    "label": "12%"
    },
    {
     "nombre": "Michigan",
-    "pct": 20,
-    "cls": "b-green-l",
-    "label": "20%"
+    "pct": 14,
+    "cls": "b-green",
+    "label": "14%"
    }
   ]
  },
@@ -1277,9 +1325,9 @@ const D = {
    },
    {
     "metrica": "Campañas activas",
-    "actual": "13",
-    "meta": "5",
-    "label": "Una por zona/servicio, cada una con $450–$600"
+    "actual": "15",
+    "meta": "7",
+    "label": "Una por zona/servicio, cada una con $300–$500"
    },
    {
     "metrica": "Cita → contrato (Google)",
@@ -1295,7 +1343,7 @@ const D = {
    {
     "color": "red",
     "semana": "Semana 1 · Reordenar",
-    "titulo": "Pasar de 13 a 5 campañas",
+    "titulo": "Consolidar en 7 campañas",
     "acciones": [
      "Pausar campañas sin historial (Visa Juvenil y Demanda en Corte Federal quedan fuera por decisión de reunión)",
      "Aplicar negativas del análisis y excluir inglés genérico",
@@ -1489,7 +1537,7 @@ const D = {
  },
  "pmax": {
   "titulo": "P-Max <em>no es prioridad</em> todavía para esta cuenta",
-  "desc": "Octubre registró 179 conversiones, pero el presupuesto baja a $2,500 (≈158 conversiones esperadas). P-Max necesita más señal que la que dejaría una cuenta de 5 campañas con ese gasto: se mantiene Search como único formato hasta tener 150+ conversiones al mes estables con CPL ≤$15 durante 2 meses seguidos.",
+  "desc": "Octubre registró 179 conversiones, pero el presupuesto baja a $2,500 (≈158 conversiones esperadas). P-Max necesita más señal que la que dejaría una cuenta de 7 campañas con ese gasto: se mantiene Search como único formato hasta tener 150+ conversiones al mes estables con CPL ≤$15 durante 2 meses seguidos.",
   "cards": [
    {
     "producto": "Condición para activar P-Max",
@@ -1555,7 +1603,7 @@ const D = {
     "precio": "Consulta inicial $100 USD",
     "url": "lilianajones.com (landing por zona)",
     "roas_historico": "Sin historial de zona · se mide a 30 días",
-    "desc": "En Meta, Asilo rinde CPL $6.96 con 291 leads (jun–ago); en Google el CPL fue alto ($192.89 antes de corregir el tracking). Con tracking corregido y búsquedas por circunstancia, se prueba si Google puede aportar citas calificadas en estas zonas.",
+    "desc": "En Meta, Asilo rinde CPL $6.96 con 291 leads (jun–ago); en Google el CPL fue alto ($192.89 con el tracking aún sin conversiones registradas). Con el tracking activo desde agosto y búsquedas por circunstancia, se prueba si Google puede aportar citas calificadas en estas zonas.",
     "keywords": [
      "abogado de asilo",
      "defensa de deportación",
@@ -2752,7 +2800,7 @@ const PROG = {
    [
     "Google Ads",
     "$2,500",
-    "5 campañas por zona/servicio · CPL ≤$15"
+    "7 campañas por zona/servicio · CPL ≤$15"
    ],
    [
     "Meta Ads",
@@ -2772,7 +2820,7 @@ const PROG = {
    [
     "Total",
     "$12,750 – $14,750",
-    "octubre invirtió $12,589 en Google, Meta y ChatGPT (con Google en 7 campañas)"
+    "octubre invirtió $12,589 en Google, Meta y ChatGPT (Google ya con 7 campañas)"
    ]
   ]
  },
@@ -2841,7 +2889,7 @@ const PROG = {
     "$9,003",
     "1,153",
     "$7.81",
-    "Medición de conversiones de Google corregida"
+    "Tracking de Google sin conversiones registradas todavía"
    ],
    [
     "Ago",
@@ -2849,7 +2897,7 @@ const PROG = {
     "$8,867",
     "1,183",
     "$7.50",
-    "Conversiones de Google comparables desde aquí; cierre: Meta 22%, TikTok 29%"
+    "El tracking de Google empieza a registrar conversiones (no todas activas, a la espera de movimiento); cierre: Meta 22%, TikTok 29%"
    ],
    [
     "Sep",
@@ -2865,16 +2913,16 @@ const PROG = {
     "$9,002",
     "1,213",
     "$7.42",
-    "Meta separa llamadas y WA, ambas dentro del tope; ChatGPT $751; decisión de pasar Google a 5 campañas"
+    "Meta separa llamadas y WA, ambas dentro del tope; ChatGPT $751; formulario activo en Google; Google pasa de 15 a 7 campañas"
    ]
   ]
  },
  "correcciones": {
   "titulo": "Correcciones y decisiones <em>de las reuniones de seguimiento</em>",
   "items": [
-   "Tracking de Google corregido: las conversiones son comparables desde agosto.",
+   "Tracking de Google: empieza a registrar conversiones en agosto; no todas están activas, a la espera de movimiento. El formulario se activa en octubre.",
    "Meta reporta por separado conversaciones WA y llamadas de 20+ segundos, cada una con su costo.",
-   "Google pasa de 13 a 5 campañas, cada una con $300–$500 al mes de referencia.",
+   "Google pasa de 15 a 7 campañas, cada una con $300–$500 al mes de referencia.",
    "Se pausan Visa Juvenil y Demanda en Corte Federal.",
    "Pilotos por zona: asilo y deportación en NY · NJ · DC · FL, y Michigan.",
    "Estados prioritarios: IL · WI · IN · TX · CA.",
@@ -2883,7 +2931,7 @@ const PROG = {
    "TikTok pasa de prueba a canal activo con $1,500; ChatGPT Ads se concentra en lo que funciona."
   ]
  },
- "nota": "Cifras de gasto y resultados salen de los reportes mensuales; citas y contratos son los reportados por el cliente en reunión. Los repartos por campaña y por zona son propuestas a validar. El reparto de $2,500 en Google sigue el rango de $300–$500 acordado; el total de Google en octubre cubre 7 campañas y debe confirmarse en la cuenta."
+ "nota": "Cifras de gasto y resultados salen de los reportes mensuales; citas y contratos son los reportados por el cliente en reunión. Los repartos por campaña y por zona son propuestas a validar. El reparto de $2,500 en Google sigue el rango de $300–$500 acordado; octubre de Google ya opera con 7 campañas."
 };
 function renderProg(){
   document.getElementById('p-t1').innerHTML=PROG.presupuesto.titulo;
