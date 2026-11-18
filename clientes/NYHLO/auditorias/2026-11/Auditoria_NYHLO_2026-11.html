@@ -262,9 +262,9 @@ const DATA = {
   ],
   "market": "Colombia",
   "summary": {
-    "issues_criticos": 6,
-    "quick_wins": 7,
-    "oportunidad": "Recuperar ≈12% del gasto",
+    "issues_criticos": 7,
+    "quick_wins": 8,
+    "oportunidad": "Ejecutar el 100% del presupuesto base (hoy 40,5%)",
     "proxima_revision": "Dic 2026"
   },
   "google": {
@@ -291,6 +291,12 @@ const DATA = {
         "val": "$2.783.167",
         "ref": "Ago $723K · Sep $721K · Oct $1,19M · Nov $148K (1–13)",
         "status": "warn"
+      },
+      {
+        "label": "Presupuesto NO gastado",
+        "val": "≈ $4,08M (59,5%)",
+        "ref": "Base ref. $6,87M (Meta $2M/mes) · ejecutado 40,5% · ago 36% · sep 36% · oct 60% · nov 17%",
+        "status": "bad"
       },
       {
         "label": "CPM (sin WA Estado)",
@@ -350,6 +356,24 @@ const DATA = {
       }
     ],
     "benchmarks": [
+      {
+        "metric": "Ejecución del presupuesto base",
+        "actual": "36% · 36% · 60% · 17% (acum. 40,5%)",
+        "bueno": "≥ 90–100% del presupuesto (≈ $66,7K/día)",
+        "estado": "bad"
+      },
+      {
+        "metric": "Presupuesto sin gastar (acumulado)",
+        "actual": "$1,28M · $1,28M · $0,81M · $0,72M = $4,08M",
+        "bueno": "≤ 10% del presupuesto del mes",
+        "estado": "bad"
+      },
+      {
+        "metric": "Días con gasto",
+        "actual": "22/31 · 25/30 · 27/31 · 10/13",
+        "bueno": "100% de los días con campañas activas",
+        "estado": "bad"
+      },
       {
         "metric": "Importe gastado/mes",
         "actual": "$723K · $721K · $1,19M · $148K",
@@ -442,6 +466,10 @@ const DATA = {
     "issues": [
       {
         "tipo": "bad",
+        "text": "Presupuesto sin gastar: solo se ejecutó el 40,5% del presupuesto base de referencia (Meta $2M/mes). Quedaron ≈ $4,08M sin invertir: ago $1,28M, sep $1,28M, oct $0,81M y nov (1–13) $0,72M. Meta no alcanza a aprender ni a escalar con $23K–38K/día cuando el presupuesto es $66,7K/día. Supuesto: el tope real autorizado en esos meses no está documentado; confirmarlo con Odette."
+      },
+      {
+        "tipo": "bad",
         "text": "CPA de compra $463.861 (6 compras con $2,78M) frente a un tope de $43K. Si las 6 fueran de $108.000, el ROAS sería ≈ 0,2×."
       },
       {
@@ -490,6 +518,7 @@ const DATA = {
       }
     ],
     "quick_wins": [
+      "Gastar el 100% del presupuesto: fijar ≈ $66,7K/día (Meta $2M/mes), revisar a diario que no queden campañas pausadas, con límite de gasto o sin pago, y alertar si el gasto del día < 80%",
       "Excluir WhatsApp Estado y las ubicaciones de CPM > $22K sin resultado (≈ $325K recuperables)",
       "Pedir a Odette que Daniel Correa apruebe el acceso; retirar la agencia saliente el 20 nov",
       "Reparar Pixel y API de Conversiones en Shopify con valor en COP y deduplicación",
@@ -504,6 +533,10 @@ const DATA = {
       "label": "Esta semana (corregir)",
       "color": "#199477",
       "items": [
+        {
+          "text": "Gastar el presupuesto completo: ≈ $66,7K/día, sin días en cero y alerta si el gasto < 80% del día",
+          "impact": "Alto"
+        },
         {
           "text": "Excluir WhatsApp Estado en ubicaciones manuales",
           "impact": "Alto"
