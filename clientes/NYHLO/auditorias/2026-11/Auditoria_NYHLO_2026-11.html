@@ -357,19 +357,19 @@ const DATA = {
     ],
     "benchmarks": [
       {
-        "metric": "Ejecución del presupuesto base",
-        "actual": "36% · 36% · 60% · 17% (acum. 40,5%)",
+        "metric": "Ejecución del presupuesto (ago·sep·oct·nov) · acum. 40,5%",
+        "actual": "36% · 36% · 60% · 17%",
         "bueno": "≥ 90–100% del presupuesto (≈ $66,7K/día)",
         "estado": "bad"
       },
       {
-        "metric": "Presupuesto sin gastar (acumulado)",
-        "actual": "$1,28M · $1,28M · $0,81M · $0,72M = $4,08M",
+        "metric": "Presupuesto sin gastar (ago·sep·oct·nov) · total $4,08M",
+        "actual": "$1,28M · $1,28M · $0,81M · $0,72M",
         "bueno": "≤ 10% del presupuesto del mes",
         "estado": "bad"
       },
       {
-        "metric": "Días con gasto",
+        "metric": "Días con gasto (ago·sep·oct·nov)",
         "actual": "22/31 · 25/30 · 27/31 · 10/13",
         "bueno": "100% de los días con campañas activas",
         "estado": "bad"
@@ -1031,7 +1031,7 @@ function renderMetaPanel(m){
     </div>
     <div class="section">
       <div class="section-header"><span class="section-num">02</span><span class="section-title">Embudo expandido · 7 etapas e-commerce</span></div>
-      <div class="grid-2">
+      <div class="grid-2" style="grid-template-columns:1fr">
         <div class="funnel-wrap">${renderFunnelHTML(m.funnel)}</div>
         <div>
           <div class="chart-title mb-8">Benchmarks vs. actual</div>
