@@ -1214,13 +1214,7 @@ function renderMetaPanel(m){
       <div class="chart-title" style="margin-top:8px;font-size:11px;opacity:.7">${m.ads_nota||''}</div>
     </div>
     <div class="section">
-      <div class="section-header"><span class="section-num">04</span><span class="section-title">Diagnóstico clínico · Salud del Pixel</span></div>
-      ${fugas}
-      <div class="chart-title mt16 mb-8" style="margin-top:16px;margin-bottom:8px">Salud del Pixel de Meta</div>
-      <div class="checklist">${pixel}</div>
-    </div>
-    <div class="section">
-      <div class="section-header"><span class="section-num">05</span><span class="section-title">Rendimiento por campaña · Decisión por campaña</span></div>
+      <div class="section-header"><span class="section-num">04</span><span class="section-title">Rendimiento por campaña · Decisión por campaña</span></div>
       <div class="table-wrap"><table class="bench-table">
         <thead><tr><th>Campaña</th><th>Anuncios</th><th>Gasto</th><th>% gasto</th><th>CPM</th><th>CTR</th><th>Conv. WA</th><th>CPL</th><th>Compras</th><th>Decisión</th></tr></thead>
         <tbody>${(m.campanas||[]).map(a=>`<tr><td>${a.camp}</td><td>${a.nads}</td><td>${a.gasto}</td><td>${a.pct}</td><td>${a.cpm}</td><td>${a.ctr}</td><td>${a.conv}</td><td>${a.cpl}</td><td>${a.compras}</td><td><span class="badge badge-${a.estado}">${a.decision}</span></td></tr>`).join('')}</tbody>
@@ -1228,11 +1222,17 @@ function renderMetaPanel(m){
       <div class="chart-title" style="margin-top:8px;font-size:11px;opacity:.7">${m.camp_nota||''}</div>
     </div>
     <div class="section">
-      <div class="section-header"><span class="section-num">06</span><span class="section-title">Issues encontrados · Quick wins</span></div>
+      <div class="section-header"><span class="section-num">05</span><span class="section-title">Issues encontrados · Quick wins</span></div>
       <div class="grid-2">
         <div><div class="chart-title mb-8">Issues detectados</div>${renderIssues(m.issues)}</div>
         <div><div class="chart-title mb-8">Quick wins</div>${renderQuickWins(m.quick_wins)}</div>
       </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><span class="section-num">06</span><span class="section-title">Diagnóstico clínico · Salud del Pixel</span></div>
+      ${fugas}
+      <div class="chart-title mt16 mb-8" style="margin-top:16px;margin-bottom:8px">Salud del Pixel de Meta</div>
+      <div class="checklist">${pixel}</div>
     </div>
   </div>`;
 }
